@@ -1,0 +1,51 @@
+{
+  "name": "bob-esbuild-cli",
+  "version": "0.1.0",
+  "author": "PabloSzx <pablosaez1995@gmail.com>",
+  "bin": {
+    "bob-esbuild": "./bin/run"
+  },
+  "bugs": "https://github.com/PabloSzx/bob-esbuild/issues",
+  "dependencies": {
+    "@oclif/command": "^1.8.0",
+    "@oclif/config": "^1.17.0",
+    "@oclif/errors": "^1.3.4",
+    "@oclif/parser": "^3.8.5",
+    "@oclif/plugin-help": "^3.2.2",
+    "bob-esbuild": "workspace:^1.0.0",
+    "tslib": "^2.2.0"
+  },
+  "devDependencies": {
+    "@oclif/dev-cli": "^1.26.0",
+    "@types/node": "^15.6.1",
+    "globby": "^11.0.3",
+    "rimraf": "^3.0.2",
+    "ts-node": "^10.0.0",
+    "typescript": "^4.3.2"
+  },
+  "engines": {
+    "node": ">=12.0.0"
+  },
+  "files": [
+    "/bin",
+    "/lib"
+  ],
+  "homepage": "https://github.com/PabloSzx/bob-esbuild",
+  "keywords": [
+    "oclif"
+  ],
+  "license": "MIT",
+  "main": "lib/index.js",
+  "oclif": {
+    "commands": "./lib/commands",
+    "bin": "bob",
+    "plugins": [
+      "@oclif/plugin-help"
+    ]
+  },
+  "repository": "PabloSzx/bob-esbuild",
+  "scripts": {
+    "prepare": "rimraf lib && tsc -b"
+  },
+  "types": "lib/index.d.ts"
+}

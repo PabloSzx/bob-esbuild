@@ -1,0 +1,32 @@
+{
+  "name": "depended",
+  "version": "1.0.0",
+  "license": "MIT",
+  "author": "PabloSzx <pablosaez1995@gmail.com>",
+  "exports": {
+    ".": {
+      "require": "./dist/index.js",
+      "import": "./dist/index.mjs"
+    },
+    "./*": {
+      "require": "./dist/*.js",
+      "import": "./dist/*.mjs"
+    }
+  },
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "scripts": {
+    "prepare": "bob-esbuild build"
+  },
+  "dependencies": {
+    "bob-esbuild-cli": "workspace:^0.1.0",
+    "psz-bob": "workspace:^1.0.0"
+  },
+  "typesVersions": {
+    "*": {
+      "*": [
+        "dist/*"
+      ]
+    }
+  }
+}
