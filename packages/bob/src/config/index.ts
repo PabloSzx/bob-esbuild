@@ -19,8 +19,8 @@ export interface ConfigOptions {
   cwd?: string;
 }
 
-export function getRollupConfig({ cwd = process.cwd(), clean = true }: ConfigOptions = {}) {
-  const input = globby.sync(path.join(cwd, "src/**/*.ts"));
+export async function getRollupConfig({ cwd = process.cwd(), clean = true }: ConfigOptions = {}) {
+  const input = await globby(path.join(cwd, "src/**/*.ts").replace(/\\/g, "/"));
 
   const outputOptions: OutputOptions[] = [
     {

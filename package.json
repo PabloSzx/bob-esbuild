@@ -10,8 +10,8 @@
     "prepare": "bob-esbuild tsc -t examples/* -t packages/*"
   },
   "dependencies": {
-    "bob-esbuild": "workspace:^1.0.0",
-    "bob-esbuild-cli": "workspace:^0.1.0",
+    "bob-esbuild": "workspace:^0.0.2",
+    "bob-esbuild-cli": "workspace:^0.0.2",
     "rimraf": "^3.0.2",
     "typescript": "^4.3.2"
   },
