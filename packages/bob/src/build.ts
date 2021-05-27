@@ -1,6 +1,6 @@
 import { rollup } from "rollup";
 
-import { getRollupConfig, ConfigOptions } from "./config";
+import { getRollupConfig, ConfigOptions } from "./config/rollup";
 
 export async function startBuild(options?: ConfigOptions) {
   const { config, outputOptions } = await getRollupConfig(options);

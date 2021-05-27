@@ -22,7 +22,8 @@
       "bob-esbuild": ["packages/bob/src/index.ts"],
       "bob-esbuild/*": ["packages/bob/src/*"]
     },
-    "baseUrl": "."
+    "baseUrl": ".",
+    "importsNotUsedAsValues": "error"
   },
-  "include": ["**/src/**/*.ts"]
+  "include": ["**/src/**/*.ts", "bob-esbuild.config.ts"]
 }

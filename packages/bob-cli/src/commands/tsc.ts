@@ -9,7 +9,6 @@ export default class TSC extends Command {
     help: flags.help({ char: "h" }),
     target: flags.string({
       multiple: true,
-      required: true,
       char: "t",
     }),
   };

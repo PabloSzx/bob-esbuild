@@ -7,7 +7,7 @@
   "author": "PabloSzx <pablosaez1995@gmail.com>",
   "scripts": {
     "build": "rimraf lib && pnpm prepare",
-    "prepare": "bob-esbuild tsc -t examples/* -t packages/*"
+    "prepare": "bob-esbuild tsc"
   },
   "dependencies": {
     "bob-esbuild": "workspace:^",

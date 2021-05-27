@@ -1,24 +1,19 @@
+import assert from "assert";
 import { execSync } from "child_process";
 import { copy } from "fs-extra";
 import globby from "globby";
 import { parse, resolve } from "path";
 
+import { resolvedTsconfig } from "./config";
+import { globalConfig } from "./config/cosmiconfig";
+
 export interface BuildTscOptions {
-  dirs: string[];
+  dirs?: string[];
   log?: (...message: any[]) => void;
-  /**
-   * @default process.cwd()
-   */
-  cwd?: string;
   /**
    * @default "tsc --emitDeclarationOnly"
    */
   tscCommand?: string;
-  /**
-   * Types source, relative to `cwd`
-   * @default "types"
-   */
-  typesSource?: string;
   /**
    * Target directory
    * @default "lib"
@@ -26,20 +21,29 @@ export interface BuildTscOptions {
   typesTarget?: string;
 }
 
-export async function buildTsc({
-  dirs,
-  log = console.log,
-  cwd = process.cwd(),
-  tscCommand = "tsc --emitDeclarationOnly",
-  typesSource = "types",
-  typesTarget = "lib",
-}: BuildTscOptions) {
+export async function buildTsc(options: BuildTscOptions) {
+  const {
+    config: { tsc: globalTsc, rootDir: cwd },
+  } = await globalConfig;
+
+  const dirs = [...(options.dirs || []), ...(globalTsc?.dirs || [])];
+
+  const log = globalTsc?.log || console.log;
+
+  const tscCommand = globalTsc?.tscCommand || "tsc --emitDeclarationOnly";
+
+  const typesTarget = options.typesTarget || globalTsc?.typesTarget || "lib";
+
+  assert(dirs.length, "tsc dirs not specified!");
+
   const targetDirs = await globby(dirs, {
     expandDirectories: false,
     absolute: false,
     onlyDirectories: true,
     cwd,
   });
+
+  const { outDir } = await resolvedTsconfig;
 
   log("Building types for: " + targetDirs.join(" | "));
 
@@ -50,7 +54,7 @@ export async function buildTsc({
 
   await Promise.all(
     targetDirs.map(async (dir) => {
-      await copy(resolve(cwd, `${typesSource}/${dir}/src`), resolve(cwd, `${dir}/${typesTarget}`), {
+      await copy(resolve(cwd, `${outDir}/${dir}/src`), resolve(cwd, `${dir}/${typesTarget}`), {
         filter(src) {
           // Check if is directory
           if (!parse(src).ext) return true;
