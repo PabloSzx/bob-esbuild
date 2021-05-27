@@ -1,2 +1,2 @@
-export * from "./start";
-export { buildTsc } from "./tsc";
+export * from "./build";
+export * from "./tsc";

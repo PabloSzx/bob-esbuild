@@ -5,16 +5,16 @@
   "author": "PabloSzx <pablosaez1995@gmail.com>",
   "exports": {
     ".": {
-      "require": "./dist/index.js",
-      "import": "./dist/index.mjs"
+      "require": "./lib/index.js",
+      "import": "./lib/index.mjs"
     },
     "./*": {
-      "require": "./dist/*.js",
-      "import": "./dist/*.mjs"
+      "require": "./lib/*.js",
+      "import": "./lib/*.mjs"
     }
   },
-  "main": "dist/index.js",
-  "module": "dist/index.mjs",
+  "main": "lib/index.js",
+  "module": "lib/index.mjs",
   "scripts": {
     "prepare": "bob-esbuild build"
   },
@@ -25,7 +25,7 @@
   "typesVersions": {
     "*": {
       "*": [
-        "dist/*"
+        "lib/*"
       ]
     }
   }

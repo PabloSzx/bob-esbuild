@@ -1,10 +1,9 @@
 {
   "compilerOptions": {
     "declaration": true,
-    "importHelpers": true,
     "module": "commonjs",
     "outDir": "lib",
-    "rootDir": "src",
+    "esModuleInterop": true,
     "strict": true,
     "target": "es2019",
     "skipLibCheck": true
