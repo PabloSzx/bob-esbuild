@@ -1,5 +1,5 @@
 {
-  "name": "depended",
+  "name": "shared",
   "version": "1.0.0",
   "license": "MIT",
   "author": "PabloSzx <pablosaez1995@gmail.com>",
@@ -15,6 +15,7 @@
   },
   "main": "lib/index.js",
   "module": "lib/index.mjs",
+  "types": "lib/index.d.ts",
   "scripts": {
     "prepare": "bob-esbuild build"
   },

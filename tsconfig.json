@@ -15,10 +15,11 @@
     "esModuleInterop": true /* Enables emit interoperability between CommonJS and ES Modules via creation of namespace objects for all imports. Implies 'allowSyntheticDefaultImports'. */,
     "skipLibCheck": true /* Skip type checking of declaration files. */,
     "forceConsistentCasingInFileNames": true /* Disallow inconsistently-cased references to the same file. */,
-    "emitDeclarationOnly": true,
     "paths": {
-      "depended/*": ["examples/depended/src/*"],
-      "depended": ["examples/depended/src/index.ts"]
+      "shared/*": ["examples/shared/src/*"],
+      "shared": ["examples/shared/src/index.ts"],
+      "bob-esbuild": ["packages/bob/src/index.ts"],
+      "bob-esbuild/*": ["packages/bob/src/*"]
     },
     "baseUrl": "."
   },

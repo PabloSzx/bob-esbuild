@@ -1,6 +1,6 @@
-import { Foo } from "depended";
+import { Foo } from "shared";
 
-import { Bar } from "depended/deep/two-deep/other";
+import { Bar } from "shared/deep/two-deep/other";
 
 /**
  * XD

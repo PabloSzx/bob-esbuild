@@ -19,7 +19,7 @@ export interface ConfigOptions {
   cwd?: string;
 }
 
-export function getRollupConfig({ cwd = process.cwd(), clean }: ConfigOptions = {}) {
+export function getRollupConfig({ cwd = process.cwd(), clean = true }: ConfigOptions = {}) {
   const input = globby.sync(path.join(cwd, "src/**/*.ts"));
 
   const outputOptions: OutputOptions[] = [
@@ -27,6 +27,7 @@ export function getRollupConfig({ cwd = process.cwd(), clean }: ConfigOptions = 
       dir: path.resolve(cwd, "lib"),
       format: "cjs",
       preserveModules: true,
+      exports: "auto",
     },
     {
       dir: path.resolve(cwd, "lib"),

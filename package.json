@@ -5,7 +5,7 @@
   "license": "MIT",
   "author": "PabloSzx <pablosaez1995@gmail.com>",
   "scripts": {
-    "prepare": "bob-esbuild tsc -t examples/* -t packages/* -t !packages/bob-cli",
+    "prepare": "bob-esbuild tsc -t examples/* -t packages/*",
     "build": "rimraf lib && pnpm prepare"
   },
   "dependencies": {

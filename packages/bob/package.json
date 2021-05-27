@@ -1,18 +1,25 @@
 {
   "name": "bob-esbuild",
   "version": "1.0.0",
-  "main": "lib/index.js",
+  "license": "MIT",
+  "author": "PabloSzx <pablosaez1995@gmail.com>",
   "exports": {
-    "require": "./lib/index.js",
-    "import": "./lib/index.mjs"
+    ".": {
+      "require": "./lib/index.js",
+      "import": "./lib/index.mjs"
+    },
+    "./*": {
+      "require": "./lib/*.js",
+      "import": "./lib/*.mjs"
+    }
   },
+  "main": "lib/index.js",
+  "module": "lib/index.mjs",
   "types": "lib/index.d.ts",
   "scripts": {
     "postpack": "rimraf oclif.manifest.json",
-    "prepare": "node -r sucrase/register build-self.ts"
+    "prepare": "node -r sucrase/register self-build.ts"
   },
-  "author": "PabloSzx <pablosaez1995@gmail.com>",
-  "license": "MIT",
   "dependencies": {
     "builtin-modules": "^3.2.0",
     "esbuild": "^0.12.4",
@@ -33,5 +40,12 @@
   },
   "peerDependencies": {
     "typescript": "^4.3.2"
+  },
+  "typesVersions": {
+    "*": {
+      "*": [
+        "lib/*"
+      ]
+    }
   }
 }

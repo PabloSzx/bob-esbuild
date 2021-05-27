@@ -15,13 +15,14 @@
   },
   "main": "lib/index.js",
   "module": "lib/index.mjs",
+  "types": "lib/index.d.ts",
   "scripts": {
     "prepare": "bob-esbuild build && node lib/index.js"
   },
   "dependencies": {
     "bob-esbuild-cli": "workspace:^0.1.0",
-    "depended": "workspace:^1.0.0",
-    "psz-bob": "workspace:^1.0.0"
+    "psz-bob": "workspace:^1.0.0",
+    "shared": "workspace:^1.0.0"
   },
   "typesVersions": {
     "*": {
