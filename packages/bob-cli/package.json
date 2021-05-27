@@ -1,6 +1,6 @@
 {
   "name": "bob-esbuild-cli",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "homepage": "https://github.com/PabloSzx/bob-esbuild",
   "bugs": "https://github.com/PabloSzx/bob-esbuild/issues",
   "repository": "https://github.com/PabloSzx/bob-esbuild",
@@ -35,7 +35,7 @@
     "@oclif/errors": "^1.3.4",
     "@oclif/parser": "^3.8.5",
     "@oclif/plugin-help": "^3.2.2",
-    "bob-esbuild": "workspace:^1.0.0"
+    "bob-esbuild": "workspace:^"
   },
   "devDependencies": {
     "@oclif/dev-cli": "^1.26.0",
