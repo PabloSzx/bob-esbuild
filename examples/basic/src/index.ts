@@ -1,6 +1,6 @@
 import { Foo } from "shared";
 
-import { Bar } from "shared/deep/two-deep/other";
+import { Bar } from "shared/lib/deep/two-deep/other";
 
 /**
  * XD

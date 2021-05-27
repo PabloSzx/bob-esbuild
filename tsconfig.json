@@ -17,10 +17,10 @@
     "skipLibCheck": true /* Skip type checking of declaration files. */,
     "forceConsistentCasingInFileNames": true /* Disallow inconsistently-cased references to the same file. */,
     "paths": {
-      "shared/*": ["examples/shared/src/*"],
+      "shared/lib/*": ["examples/shared/src/*"],
       "shared": ["examples/shared/src/index.ts"],
       "bob-esbuild": ["packages/bob/src/index.ts"],
-      "bob-esbuild/*": ["packages/bob/src/*"]
+      "bob-esbuild/lib/*": ["packages/bob/src/*"]
     },
     "baseUrl": ".",
     "importsNotUsedAsValues": "error"
