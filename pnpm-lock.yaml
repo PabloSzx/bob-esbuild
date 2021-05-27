@@ -7,8 +7,8 @@ importers:
 
   .:
     specifiers:
-      bob-esbuild: workspace:^0.0.2
-      bob-esbuild-cli: workspace:^0.0.2
+      bob-esbuild: workspace:^
+      bob-esbuild-cli: workspace:^
       rimraf: ^3.0.2
       typescript: ^4.3.2
     dependencies:
@@ -19,7 +19,7 @@ importers:
 
   examples/basic:
     specifiers:
-      bob-esbuild-cli: workspace:^0.0.2
+      bob-esbuild-cli: workspace:^
       psz-bob: workspace:^1.0.0
       shared: workspace:^1.0.0
     dependencies:
@@ -29,7 +29,7 @@ importers:
 
   examples/shared:
     specifiers:
-      bob-esbuild-cli: workspace:^0.0.2
+      bob-esbuild-cli: workspace:^
       psz-bob: workspace:^1.0.0
     dependencies:
       bob-esbuild-cli: link:../../packages/bob-cli
