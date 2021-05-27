@@ -1,6 +1,7 @@
 {
   "name": "shared",
   "version": "1.0.0",
+  "private": true,
   "license": "MIT",
   "author": "PabloSzx <pablosaez1995@gmail.com>",
   "exports": {

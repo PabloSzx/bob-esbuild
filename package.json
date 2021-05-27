@@ -1,12 +1,13 @@
 {
   "name": "psz-bob",
   "version": "1.0.0",
+  "private": true,
   "description": "",
   "license": "MIT",
   "author": "PabloSzx <pablosaez1995@gmail.com>",
   "scripts": {
-    "prepare": "bob-esbuild tsc -t examples/* -t packages/*",
-    "build": "rimraf lib && pnpm prepare"
+    "build": "rimraf lib && pnpm prepare",
+    "prepare": "bob-esbuild tsc -t examples/* -t packages/*"
   },
   "dependencies": {
     "bob-esbuild": "workspace:^1.0.0",
