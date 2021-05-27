@@ -66,7 +66,7 @@ export async function buildTsc(options: BuildTscOptions = {}) {
 
           return src.endsWith(".d.ts");
         },
-      });
+      }).catch(console.error);
     })
   );
 }
