@@ -10,8 +10,8 @@
       "import": "./lib/index.mjs"
     },
     "./*": {
-      "require": "./lib/*.js",
-      "import": "./lib/*.mjs"
+      "require": "./*.js",
+      "import": "./*.mjs"
     }
   },
   "main": "lib/index.js",
@@ -24,12 +24,5 @@
     "bob-esbuild-cli": "workspace:^",
     "psz-bob": "workspace:^1.0.0",
     "shared": "workspace:^1.0.0"
-  },
-  "typesVersions": {
-    "*": {
-      "*": [
-        "lib/*"
-      ]
-    }
   }
 }

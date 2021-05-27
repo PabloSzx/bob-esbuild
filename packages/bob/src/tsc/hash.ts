@@ -26,7 +26,12 @@ export async function getHash(): Promise<{
         exclude: ["node_modules", "lib", "temp", "dist", ".git", outDir],
       },
     }),
-    existsSync(typesHashJSON) ? fsExtra.readJSON(typesHashJSON) : null,
+    existsSync(typesHashJSON)
+      ? fsExtra.readJSON(typesHashJSON).then(
+          (v) => v as { hash: string },
+          () => null
+        )
+      : null,
   ]);
 
   if (jsonHash?.hash !== currentHash.hash) {

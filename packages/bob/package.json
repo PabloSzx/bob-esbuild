@@ -1,6 +1,6 @@
 {
   "name": "bob-esbuild",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "license": "MIT",
   "author": "PabloSzx <pablosaez1995@gmail.com>",
   "exports": {
@@ -9,8 +9,8 @@
       "import": "./lib/index.mjs"
     },
     "./*": {
-      "require": "./lib/*.js",
-      "import": "./lib/*.mjs"
+      "require": "./*.js",
+      "import": "./*.mjs"
     }
   },
   "main": "lib/index.js",
@@ -44,12 +44,5 @@
   },
   "peerDependencies": {
     "typescript": "^4.3.2"
-  },
-  "typesVersions": {
-    "*": {
-      "*": [
-        "lib/*"
-      ]
-    }
   }
 }
