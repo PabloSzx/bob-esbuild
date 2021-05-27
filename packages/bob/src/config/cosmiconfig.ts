@@ -1,10 +1,12 @@
-import type { BuildTscOptions } from "bob-esbuild/tsc";
 import { cosmiconfig } from "cosmiconfig";
 import fs from "fs";
 import { dirname } from "path";
 import { transform } from "sucrase";
 
 import { importFromString } from "../importFromString";
+
+import type { OutputPlugin, Plugin, RollupOptions } from "rollup";
+import type { BuildTscOptions } from "../tsc/build";
 
 export interface BobConfig {
   tsc?: BuildTscOptions;
@@ -16,6 +18,12 @@ export interface BobConfig {
    * It defaults to bob-esbuild.config.cjs directory
    */
   rootDir?: string;
+
+  outputPlugins?: OutputPlugin[];
+
+  plugins?: Plugin[];
+
+  rollupOptions?: RollupOptions;
 }
 
 export const globalConfig = cosmiconfig("bob-esbuild", {

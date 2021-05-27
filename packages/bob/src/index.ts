@@ -1,3 +1,3 @@
 export * from "./build";
-export * from "./tsc";
+export * from "./tsc/build";
 export * from "./config";

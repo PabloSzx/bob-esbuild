@@ -37,12 +37,14 @@ importers:
 
   packages/bob:
     specifiers:
+      '@types/folder-hash': ^4.0.0
       '@types/fs-extra': ^9.0.11
       '@types/rimraf': ^3.0.0
       builtin-modules: ^3.2.0
       cosmiconfig: ^7.0.0
       esbuild: latest
       esbuild-register: ^2.5.0
+      folder-hash: ^4.0.1
       fs-extra: ^10.0.0
       globby: ^11.0.3
       oclif: ^1.18.0
@@ -58,6 +60,7 @@ importers:
       builtin-modules: 3.2.0
       cosmiconfig: 7.0.0
       esbuild: 0.12.4
+      folder-hash: 4.0.1
       fs-extra: 10.0.0
       globby: 11.0.3
       oclif: 1.18.0
@@ -69,6 +72,7 @@ importers:
       sucrase: 3.18.1
       tsconfig: 7.0.0
     devDependencies:
+      '@types/folder-hash': 4.0.0
       '@types/fs-extra': 9.0.11
       '@types/rimraf': 3.0.0
       esbuild-register: 2.5.0
@@ -361,6 +365,10 @@ packages:
 
   /@tsconfig/node16/1.0.1:
     resolution: {integrity: sha512-FTgBI767POY/lKNDNbIzgAX6miIDBs6NTCbdlDb8TrWovHsSvaVIZDlTqym29C6UqhzwcJx4CYr+AlrMywA0cA==}
+    dev: true
+
+  /@types/folder-hash/4.0.0:
+    resolution: {integrity: sha512-y9hSfZVRC5oIodlNGBLrwASy5EudEasqyrnKhp9LU3oUmJvEkzzEMp5sq9P9z+dWIUt9PcDEQnFi/NFfw70gTw==}
     dev: true
 
   /@types/fs-extra/9.0.11:
@@ -1531,6 +1539,18 @@ packages:
     engines: {node: '>=0.10.0'}
     dependencies:
       readable-stream: 2.3.7
+    dev: false
+
+  /folder-hash/4.0.1:
+    resolution: {integrity: sha512-oF1MGtGAPezYJJRMRPzTwtDYwZdQ16UTnthsVAxjVZnlrQ36WuF6YxSgyZxnoUEK6JNPX+04FCFAkw5CzE5OMw==}
+    engines: {node: '>=10.10.0'}
+    hasBin: true
+    dependencies:
+      debug: 4.3.1
+      graceful-fs: 4.2.6
+      minimatch: 3.0.4
+    transitivePeerDependencies:
+      - supports-color
     dev: false
 
   /follow-redirects/1.14.1_debug@3.2.7:

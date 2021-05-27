@@ -4,8 +4,9 @@ import esbuild from "rollup-plugin-esbuild";
 import externals from "rollup-plugin-node-externals";
 import del from "rollup-plugin-delete";
 
-import type { OutputOptions, RollupOptions, Plugin } from "rollup";
 import { globalConfig } from "./cosmiconfig";
+
+import type { OutputOptions, RollupOptions, Plugin } from "rollup";
 
 export interface ConfigOptions {
   /**
@@ -17,7 +18,12 @@ export interface ConfigOptions {
 
 export async function getRollupConfig(options: ConfigOptions = {}) {
   const {
-    config: { clean: globalClean },
+    config: {
+      clean: globalClean,
+      outputPlugins: globalOutputPlugins,
+      plugins: globalConfigPlugins,
+      rollupOptions: globalRollupOptions,
+    },
   } = await globalConfig;
 
   const cwd = options.cwd || process.cwd();
@@ -32,12 +38,14 @@ export async function getRollupConfig(options: ConfigOptions = {}) {
       format: "cjs",
       preserveModules: true,
       exports: "auto",
+      plugins: globalOutputPlugins,
     },
     {
       dir: path.resolve(cwd, "lib"),
       format: "es",
       entryFileNames: "[name].mjs",
       preserveModules: true,
+      plugins: globalOutputPlugins,
     },
   ];
 
@@ -50,6 +58,7 @@ export async function getRollupConfig(options: ConfigOptions = {}) {
       packagePath: path.resolve(cwd, "package.json"),
       deps: true,
     }),
+    ...(globalConfigPlugins || []),
   ];
 
   if (clean) {
@@ -63,6 +72,7 @@ export async function getRollupConfig(options: ConfigOptions = {}) {
   const rollupConfig: RollupOptions = {
     input,
     plugins,
+    ...globalRollupOptions,
   };
 
   return { config: rollupConfig, outputOptions };
