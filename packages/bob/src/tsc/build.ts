@@ -27,9 +27,7 @@ export async function buildTsc(options: BuildTscOptions = {}) {
     config: { tsc: globalTsc, rootDir: cwd },
   } = await globalConfig;
 
-  const { shouldContinue } = await getHash();
-
-  if (!shouldContinue) return;
+  const hashPromise = getHash();
 
   const dirs = [...(options.dirs || []), ...(globalTsc?.dirs || [])];
 
@@ -48,14 +46,16 @@ export async function buildTsc(options: BuildTscOptions = {}) {
     cwd,
   });
 
+  if ((await hashPromise).shouldBuild) {
+    log("Building types for: " + targetDirs.join(" | "));
+
+    execSync(tscCommand, {
+      stdio: "inherit",
+      cwd,
+    });
+  }
+
   const { outDir } = await resolvedTsconfig;
-
-  log("Building types for: " + targetDirs.join(" | "));
-
-  execSync(tscCommand, {
-    stdio: "inherit",
-    cwd,
-  });
 
   await Promise.all(
     targetDirs.map(async (dir) => {

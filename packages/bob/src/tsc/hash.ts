@@ -7,7 +7,7 @@ import { globalConfig } from "../config/cosmiconfig";
 import { resolvedTsconfig } from "../config/resolveTsconfig";
 
 export async function getHash(): Promise<{
-  shouldContinue?: boolean;
+  shouldBuild?: boolean;
 }> {
   const {
     config: { rootDir },
@@ -44,10 +44,10 @@ export async function getHash(): Promise<{
     });
 
     return {
-      shouldContinue: true,
+      shouldBuild: true,
     };
   }
   return {
-    shouldContinue: false,
+    shouldBuild: false,
   };
 }
