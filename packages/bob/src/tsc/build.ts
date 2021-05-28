@@ -1,20 +1,23 @@
 import assert from "assert";
-import { execSync } from "child_process";
+import { command } from "execa";
 import { copy } from "fs-extra";
 import globby from "globby";
 import { parse, resolve } from "path";
 
 import { resolvedTsconfig } from "../config";
 import { globalConfig } from "../config/cosmiconfig";
+import { debug } from "../log/debug";
+import { error } from "../log/error";
 import { getHash } from "./hash";
 
 export interface BuildTscOptions {
   dirs?: string[];
-  log?: (...message: any[]) => void;
+
   /**
    * @default "tsc --emitDeclarationOnly"
    */
   tscCommand?: string;
+
   /**
    * Target directory
    * @default "lib"
@@ -27,13 +30,13 @@ export async function buildTsc(options: BuildTscOptions = {}) {
     config: { tsc: globalTsc, rootDir: cwd },
   } = await globalConfig;
 
+  const startTime = Date.now();
+
   const hashPromise = getHash();
 
   const dirs = [...(options.dirs || []), ...(globalTsc?.dirs || [])];
 
-  const log = globalTsc?.log || console.log;
-
-  const tscCommand = globalTsc?.tscCommand || "tsc --emitDeclarationOnly";
+  const tscCommand = options.tscCommand || globalTsc?.tscCommand || "tsc --emitDeclarationOnly";
 
   const typesTarget = options.typesTarget || globalTsc?.typesTarget || "lib";
 
@@ -46,12 +49,15 @@ export async function buildTsc(options: BuildTscOptions = {}) {
     cwd,
   });
 
-  if ((await hashPromise).shouldBuild) {
-    log("Building types for: " + targetDirs.join(" | "));
+  const shouldBuild = (await hashPromise).shouldBuild;
 
-    execSync(tscCommand, {
-      stdio: "inherit",
+  let cmdPromise: Promise<unknown> | undefined;
+  if (shouldBuild) {
+    debug("Building types for: " + targetDirs.join(" | "));
+
+    cmdPromise = command(tscCommand, {
       cwd,
+      stdio: "inherit",
     });
   }
 
@@ -66,7 +72,10 @@ export async function buildTsc(options: BuildTscOptions = {}) {
 
           return src.endsWith(".d.ts");
         },
-      }).catch(console.error);
+      }).catch(error);
     })
   );
+
+  await cmdPromise;
+  debug(`Types ${shouldBuild ? "built" : "prepared"} in ${Date.now() - startTime}ms`);
 }

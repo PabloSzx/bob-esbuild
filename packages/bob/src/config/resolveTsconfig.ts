@@ -1,6 +1,7 @@
 import assert from "assert";
 import tsconfig from "tsconfig";
 
+import { error } from "../log/error";
 import { globalConfig } from "./cosmiconfig";
 
 export const resolvedTsconfig = (async () => {
@@ -26,6 +27,6 @@ export const resolvedTsconfig = (async () => {
     outDir,
   };
 })().catch((err) => {
-  console.error(err);
+  error(err);
   process.exit(1);
 });

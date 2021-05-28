@@ -5,6 +5,7 @@ import externals from "rollup-plugin-node-externals";
 import del from "rollup-plugin-delete";
 
 import { globalConfig } from "./cosmiconfig";
+import { debug } from "../log/debug";
 
 import type { OutputOptions, RollupOptions, Plugin } from "rollup";
 
@@ -13,7 +14,22 @@ export interface ConfigOptions {
    * @default process.cwd()
    */
   cwd?: string;
+  /**
+   * By default it's `true` in global config
+   */
   clean?: boolean;
+  /**
+   * Input files
+   *
+   * By default it takes every ".ts" file inside src
+   */
+  inputFiles?: string[];
+  /**
+   * Enable bundling every entry point (no code-splitting available yet)
+   *
+   * @default false
+   */
+  bundle?: boolean;
 }
 
 export async function getRollupConfig(options: ConfigOptions = {}) {
@@ -23,6 +39,8 @@ export async function getRollupConfig(options: ConfigOptions = {}) {
       outputPlugins: globalOutputPlugins,
       plugins: globalConfigPlugins,
       rollupOptions: globalRollupOptions,
+      inputFiles: globalInputFiles,
+      bundle: globalBundle,
     },
   } = await globalConfig;
 
@@ -30,7 +48,27 @@ export async function getRollupConfig(options: ConfigOptions = {}) {
 
   const clean = options.clean ?? globalClean;
 
-  const input = await globby(path.join(cwd, "src/**/*.ts").replace(/\\/g, "/"));
+  const inputFiles = options.inputFiles || globalInputFiles || ["src/**/*.ts"];
+
+  debug("Checking", inputFiles.join(" | "));
+
+  if (!inputFiles.length) throw Error("No input files found!");
+
+  const input = (
+    await Promise.all(
+      inputFiles.map((pattern) => {
+        return globby(path.join(cwd, pattern).replace(/\\/g, "/"));
+      })
+    )
+  )
+    .flat()
+    .filter((file, index, self) => self.indexOf(file) === index);
+
+  if (!input.length) throw Error("No input files found!");
+
+  debug("Building", input.join(" | "));
+
+  const experimentalBundling = options.bundle ?? globalBundle ?? false;
 
   const outputOptions: OutputOptions[] = [
     {
@@ -39,6 +77,7 @@ export async function getRollupConfig(options: ConfigOptions = {}) {
       preserveModules: true,
       exports: "auto",
       plugins: globalOutputPlugins,
+      sourcemap: true,
     },
     {
       dir: path.resolve(cwd, "lib"),
@@ -46,6 +85,7 @@ export async function getRollupConfig(options: ConfigOptions = {}) {
       entryFileNames: "[name].mjs",
       preserveModules: true,
       plugins: globalOutputPlugins,
+      sourcemap: true,
     },
   ];
 
@@ -53,6 +93,7 @@ export async function getRollupConfig(options: ConfigOptions = {}) {
     esbuild({
       target: "es2019",
       sourceMap: true,
+      experimentalBundling,
     }),
     externals({
       packagePath: path.resolve(cwd, "package.json"),
@@ -64,7 +105,7 @@ export async function getRollupConfig(options: ConfigOptions = {}) {
   if (clean) {
     plugins.push(
       del({
-        targets: ["lib/**/*.js", "lib/**/*.mjs"],
+        targets: ["lib/**/*.js", "lib/**/*.mjs", "lib/**/*.map"],
         cwd,
       })
     );

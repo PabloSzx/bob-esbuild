@@ -1,10 +1,11 @@
 import { hashElement } from "folder-hash";
-import fsExtra from "fs-extra";
 import { existsSync, mkdir } from "fs";
+import fsExtra from "fs-extra";
 import { resolve } from "path";
 
 import { globalConfig } from "../config/cosmiconfig";
 import { resolvedTsconfig } from "../config/resolveTsconfig";
+import { error } from "../log/error";
 
 export async function getHash(): Promise<{
   shouldBuild?: boolean;
@@ -40,7 +41,7 @@ export async function getHash(): Promise<{
         .writeJSON(typesHashJSON, {
           hash: currentHash.hash,
         })
-        .catch(console.error);
+        .catch(error);
     });
 
     return {

@@ -1,1 +1,3 @@
-export const B = 2;
+import { C } from "./innerShared";
+
+export const B = C * 2;

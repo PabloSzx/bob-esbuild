@@ -16,13 +16,9 @@ export default class TSC extends Command {
   async run() {
     const { flags } = this.parse(TSC);
 
-    const startTime = Date.now();
     await buildTsc({
       dirs: flags.target,
-      log: this.log,
     });
-
-    this.log(`Done in ${Date.now() - startTime}ms.`);
   }
 }
 

@@ -9,12 +9,13 @@
   "dependencies": {
     "bob-esbuild": "workspace:^",
     "bob-esbuild-cli": "workspace:^",
+    "esbuild": "^0.12.5",
     "rimraf": "^3.0.2",
     "typescript": "^4.3.2"
   },
   "pnpm": {
     "overrides": {
-      "esbuild": "latest"
+      "esbuild": "^0.12.5"
     }
   }
 }

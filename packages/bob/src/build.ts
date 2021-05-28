@@ -1,10 +1,13 @@
 import { rollup } from "rollup";
 
-import { getRollupConfig, ConfigOptions } from "./config/rollup";
+import { ConfigOptions, getRollupConfig } from "./config/rollup";
+import { debug } from "./log/debug";
 import { buildTsc } from "./tsc/build";
 
 export async function startBuild(options?: ConfigOptions) {
   const { config, outputOptions } = await getRollupConfig(options);
+
+  const startTime = Date.now();
 
   const tscBuildPromise = buildTsc();
   const build = await rollup(config);
@@ -14,6 +17,8 @@ export async function startBuild(options?: ConfigOptions) {
       return build.write(output);
     })
   );
+
+  debug(`JS built in ${Date.now() - startTime}ms.`);
 
   await tscBuildPromise;
 }
