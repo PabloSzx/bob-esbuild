@@ -1,12 +1,13 @@
 import globby from "globby";
 import path from "path";
+import del from "rollup-plugin-delete";
 import esbuild from "rollup-plugin-esbuild";
 import externals from "rollup-plugin-node-externals";
-import del from "rollup-plugin-delete";
 
-import { globalConfig } from "./cosmiconfig";
 import { debug } from "../log/debug";
+import { cleanCwd, globalConfig } from "./cosmiconfig";
 
+import type { RollupBuild } from "rollup";
 import type { OutputOptions, RollupOptions, Plugin } from "rollup";
 
 export interface ConfigOptions {
@@ -50,14 +51,14 @@ export async function getRollupConfig(options: ConfigOptions = {}) {
 
   const inputFiles = options.inputFiles || globalInputFiles || ["src/**/*.ts"];
 
-  debug("Checking", inputFiles.join(" | "));
-
-  if (!inputFiles.length) throw Error("No input files found!");
+  if (!inputFiles.length) throw Error("No input files to check!");
 
   const input = (
     await Promise.all(
       inputFiles.map((pattern) => {
-        return globby(path.join(cwd, pattern).replace(/\\/g, "/"));
+        const glob = path.join(cleanCwd, pattern).replace(/\\/g, "/");
+        debug("Checking glob pattern: " + glob);
+        return globby(glob);
       })
     )
   )
@@ -116,5 +117,9 @@ export async function getRollupConfig(options: ConfigOptions = {}) {
     ...globalRollupOptions,
   };
 
-  return { config: rollupConfig, outputOptions };
+  async function write(bundle: RollupBuild, afterFileWrite = () => {}) {
+    await Promise.all(outputOptions.map((output) => bundle.write(output).then(afterFileWrite)));
+  }
+
+  return { config: rollupConfig, outputOptions, write };
 }

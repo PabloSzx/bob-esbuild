@@ -46,6 +46,7 @@ importers:
       builtin-modules: ^3.2.0
       chalk: ^4.1.1
       cosmiconfig: ^7.0.0
+      date-fns: ^2.22.1
       esbuild: ^0.12.5
       esbuild-register: ^2.5.0
       execa: ^5.0.0
@@ -59,12 +60,14 @@ importers:
       rollup-plugin-esbuild: ^4.2.3
       rollup-plugin-node-externals: ^2.2.0
       sucrase: ^3.18.1
+      tree-kill: ^1.2.2
       tsconfig: ^7.0.0
       typescript: ^4.3.2
     dependencies:
       builtin-modules: 3.2.0
       chalk: 4.1.1
       cosmiconfig: 7.0.0
+      date-fns: 2.22.1
       esbuild: 0.12.5
       execa: 5.0.0
       folder-hash: 4.0.1
@@ -77,6 +80,7 @@ importers:
       rollup-plugin-esbuild: 4.2.3_esbuild@0.12.5+rollup@2.50.3
       rollup-plugin-node-externals: 2.2.0_builtin-modules@3.2.0
       sucrase: 3.18.1
+      tree-kill: 1.2.2
       tsconfig: 7.0.0
     devDependencies:
       '@types/folder-hash': 4.0.0
@@ -1119,6 +1123,11 @@ packages:
 
   /date-fns/1.30.1:
     resolution: {integrity: sha512-hBSVCvSmWC+QypYObzwGOd9wqdDpOt+0wl0KbU+R+uuZBS1jN8VsD1ss3irQDknRj5NvxiTF6oj/nDRnN/UQNw==}
+    dev: false
+
+  /date-fns/2.22.1:
+    resolution: {integrity: sha512-yUFPQjrxEmIsMqlHhAhmxkuH769baF21Kk+nZwZGyrMoyLA+LugaQtC0+Tqf9CBUUULWwUJt6Q5ySI3LJDDCGg==}
+    engines: {node: '>=0.11'}
     dev: false
 
   /dateformat/3.0.3:

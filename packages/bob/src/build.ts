@@ -1,24 +1,14 @@
-import { rollup } from "rollup";
-
-import { ConfigOptions, getRollupConfig } from "./config/rollup";
-import { debug } from "./log/debug";
+import { buildRollup } from "./rollup/build";
 import { buildTsc } from "./tsc/build";
 
-export async function startBuild(options?: ConfigOptions) {
-  const { config, outputOptions } = await getRollupConfig(options);
+import type { ConfigOptions } from "./config";
+import type { TSCOptions } from "./tsc/types";
 
-  const startTime = Date.now();
+export interface BuildOptions {
+  rollup?: ConfigOptions;
+  tsc?: TSCOptions;
+}
 
-  const tscBuildPromise = buildTsc();
-  const build = await rollup(config);
-
-  await Promise.all(
-    outputOptions.map((output) => {
-      return build.write(output);
-    })
-  );
-
-  debug(`JS built in ${Date.now() - startTime}ms.`);
-
-  await tscBuildPromise;
+export async function startBuild(options: BuildOptions = {}) {
+  await Promise.all([buildRollup(options.rollup), buildTsc(options.tsc)]);
 }

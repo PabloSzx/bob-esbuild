@@ -18,6 +18,7 @@
   "module": "lib/index.mjs",
   "types": "lib/index.d.ts",
   "scripts": {
+    "dev": "bob-esbuild watch",
     "prepare": "bob-esbuild build && node lib/index.js"
   },
   "dependencies": {

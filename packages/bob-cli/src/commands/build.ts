@@ -1,4 +1,4 @@
-import { startBuild } from "bob-esbuild";
+import { startBuild } from "bob-esbuild/lib/build";
 
 import { Command, flags } from "@oclif/command";
 
@@ -33,7 +33,15 @@ export default class Build extends Command {
       flags: { cwd, input: inputFiles, bundle, clean },
     } = this.parse(Build);
 
-    await startBuild({ cwd, inputFiles, bundle, clean });
+    await startBuild({
+      rollup: {
+        cwd,
+        inputFiles,
+        bundle,
+        clean,
+      },
+      tsc: {},
+    });
   }
 }
 

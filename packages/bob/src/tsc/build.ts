@@ -10,35 +10,23 @@ import { debug } from "../log/debug";
 import { error } from "../log/error";
 import { getHash } from "./hash";
 
-export interface BuildTscOptions {
-  dirs?: string[];
+import type { TSCOptions } from "./types";
 
-  /**
-   * @default "tsc --emitDeclarationOnly"
-   */
-  tscCommand?: string;
-
-  /**
-   * Target directory
-   * @default "lib"
-   */
-  typesTarget?: string;
-}
-
-export async function buildTsc(options: BuildTscOptions = {}) {
+export async function buildTsc(options: TSCOptions = {}) {
   const {
-    config: { tsc: globalTsc, rootDir: cwd },
+    config: { tsc: globalTsc = {}, rootDir: cwd },
   } = await globalConfig;
 
   const startTime = Date.now();
 
   const hashPromise = getHash();
 
-  const dirs = [...(options.dirs || []), ...(globalTsc?.dirs || [])];
+  const dirs = [...(options.dirs || []), ...(globalTsc.dirs || [])];
 
-  const tscCommand = options.tscCommand || globalTsc?.tscCommand || "tsc --emitDeclarationOnly";
+  const tscCommand =
+    options.tscBuildCommand || globalTsc.tscBuildCommand || "tsc --emitDeclarationOnly";
 
-  const typesTarget = options.typesTarget || globalTsc?.typesTarget || "lib";
+  const typesTarget = options.typesTarget || globalTsc.typesTarget || "lib";
 
   assert(dirs.length, "tsc dirs not specified!");
 
@@ -51,11 +39,10 @@ export async function buildTsc(options: BuildTscOptions = {}) {
 
   const shouldBuild = (await hashPromise).shouldBuild;
 
-  let cmdPromise: Promise<unknown> | undefined;
   if (shouldBuild) {
     debug("Building types for: " + targetDirs.join(" | "));
 
-    cmdPromise = command(tscCommand, {
+    await command(tscCommand, {
       cwd,
       stdio: "inherit",
     });
@@ -76,6 +63,5 @@ export async function buildTsc(options: BuildTscOptions = {}) {
     })
   );
 
-  await cmdPromise;
   debug(`Types ${shouldBuild ? "built" : "prepared"} in ${Date.now() - startTime}ms`);
 }

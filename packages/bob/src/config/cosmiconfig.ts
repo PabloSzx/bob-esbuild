@@ -3,17 +3,17 @@ import fs from "fs";
 import { dirname } from "path";
 import { transform } from "sucrase";
 
-import { importFromString } from "../importFromString";
+import { importFromString } from "../utils/importFromString";
 import { error } from "../log/error";
 
 import type { OutputPlugin, Plugin, RollupOptions } from "rollup";
-import type { BuildTscOptions } from "../tsc/build";
 import type { ConfigOptions } from "./rollup";
+import type { TSCOptions } from "../tsc/types";
 
 export type PickRequired<T, K extends keyof T> = T & Required<Pick<T, K>>;
 
 export interface BobConfig extends Pick<ConfigOptions, "clean" | "inputFiles" | "bundle"> {
-  tsc?: BuildTscOptions;
+  tsc?: TSCOptions;
   /**
    * It defaults to bob-esbuild.config directory
    */
@@ -76,3 +76,5 @@ export const globalConfig: Promise<CosmiConfigResult> & {
     error(err);
     process.exit(1);
   });
+
+export const cleanCwd = process.cwd().replace(/\\/g, "/");
