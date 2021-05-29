@@ -1,6 +1,6 @@
 import assert from "assert";
 import { command } from "execa";
-import { copy } from "fs-extra";
+import { copy, pathExists } from "fs-extra";
 import globby from "globby";
 import { parse, resolve } from "path";
 
@@ -52,7 +52,11 @@ export async function buildTsc(options: TSCOptions = {}) {
 
   await Promise.all(
     targetDirs.map(async (dir) => {
-      await copy(resolve(cwd, `${outDir}/${dir}/src`), resolve(cwd, `${dir}/${typesTarget}`), {
+      const from = resolve(cwd, `${outDir}/${dir}/src`);
+
+      if (!(await pathExists(from))) return;
+
+      await copy(from, resolve(cwd, `${dir}/${typesTarget}`), {
         filter(src) {
           // Check if is directory
           if (!parse(src).ext) return true;
