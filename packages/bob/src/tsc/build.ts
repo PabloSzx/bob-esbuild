@@ -14,7 +14,7 @@ import type { TSCOptions } from "./types";
 
 export async function buildTsc(options: TSCOptions = {}) {
   const {
-    config: { tsc: globalTsc = {}, rootDir: cwd },
+    config: { tsc: globalTsc = {}, rootDir: rootDirCwd },
   } = await globalConfig;
 
   const startTime = Date.now();
@@ -34,7 +34,7 @@ export async function buildTsc(options: TSCOptions = {}) {
     expandDirectories: false,
     absolute: false,
     onlyDirectories: true,
-    cwd,
+    cwd: rootDirCwd,
   });
 
   const shouldBuild = (await hashPromise).shouldBuild;
@@ -43,7 +43,7 @@ export async function buildTsc(options: TSCOptions = {}) {
     debug("Building types for: " + targetDirs.join(" | "));
 
     await command(tscCommand, {
-      cwd,
+      cwd: rootDirCwd,
       stdio: "inherit",
     });
   }
@@ -52,18 +52,24 @@ export async function buildTsc(options: TSCOptions = {}) {
 
   await Promise.all(
     targetDirs.map(async (dir) => {
-      const from = resolve(cwd, `${outDir}/${dir}/src`);
+      const from = resolve(rootDirCwd, `${outDir}/${dir}/src`);
 
       if (!(await pathExists(from))) return;
 
-      await copy(from, resolve(cwd, `${dir}/${typesTarget}`), {
+      await copy(from, resolve(rootDirCwd, `${dir}/${typesTarget}`), {
         filter(src) {
           // Check if is directory
           if (!parse(src).ext) return true;
 
           return src.endsWith(".d.ts");
         },
-      }).catch(error);
+        
+      }).catch(err => {
+        // Silence this specific error that happens when multiple processes access the same file concurrently
+        if (err instanceof Error && err.message.includes("ENOENT: no such file or directory, chmod")) return;
+        
+        error(err)
+      });
     })
   );
 
