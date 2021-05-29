@@ -24,7 +24,9 @@ export async function buildTsc(options: TSCOptions = {}) {
   const dirs = [...(options.dirs || []), ...(globalTsc.dirs || [])];
 
   const tscCommand =
-    options.tscBuildCommand || globalTsc.tscBuildCommand || "tsc --emitDeclarationOnly";
+    options.tscBuildCommand ||
+    globalTsc.tscBuildCommand ||
+    "tsc --emitDeclarationOnly";
 
   const typesTarget = options.typesTarget || globalTsc.typesTarget || "lib";
 
@@ -63,15 +65,21 @@ export async function buildTsc(options: TSCOptions = {}) {
 
           return src.endsWith(".d.ts");
         },
-        
-      }).catch(err => {
-        // Silence this specific error that happens when multiple processes access the same file concurrently
-        if (err instanceof Error && err.message.includes("ENOENT: no such file or directory, chmod")) return;
-        
-        error(err)
+      }).catch((err) => {
+        const errCode: string | undefined = err?.code;
+        // Silence these specific error that happen when multiple processes access the same file concurrently
+        switch (errCode) {
+          case "ENOENT":
+          case "EBUSY":
+            return;
+        }
+
+        error(err);
       });
     })
   );
 
-  debug(`Types ${shouldBuild ? "built" : "prepared"} in ${Date.now() - startTime}ms`);
+  debug(
+    `Types ${shouldBuild ? "built" : "prepared"} in ${Date.now() - startTime}ms`
+  );
 }
