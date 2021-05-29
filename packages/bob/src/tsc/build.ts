@@ -71,6 +71,7 @@ export async function buildTsc(options: TSCOptions = {}) {
         switch (errCode) {
           case "ENOENT":
           case "EBUSY":
+          case "EPERM":
             return;
         }
 
