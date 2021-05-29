@@ -6,9 +6,11 @@ import { transform } from "sucrase";
 import { importFromString } from "../utils/importFromString";
 import { error } from "../log/error";
 
-import type { OutputPlugin, Plugin, RollupOptions } from "rollup";
+import type { Plugin, RollupOptions, OutputOptions } from "rollup";
 import type { ConfigOptions } from "./rollup";
 import type { TSCOptions } from "../tsc/types";
+import type { Options as EsbuildPluginOptions } from "rollup-plugin-esbuild";
+import type { ExternalsOptions } from "rollup-plugin-node-externals";
 
 export type PickRequired<T, K extends keyof T> = T & Required<Pick<T, K>>;
 
@@ -19,12 +21,15 @@ export interface BobConfig extends Pick<ConfigOptions, "clean" | "inputFiles" | 
    */
   rootDir?: string;
 
-  outputPlugins?: OutputPlugin[];
-
   plugins?: Plugin[];
 
   rollupOptions?: RollupOptions;
 
+  outputOptions?: Omit<OutputOptions, "format">;
+
+  esbuildPluginOptions?: EsbuildPluginOptions;
+
+  externalOptions?: ExternalsOptions;
   /**
    * Enabled debugging logs
    */

@@ -24,7 +24,21 @@ export async function getHash(): Promise<{
         include: ["*.ts", "*.json"],
       },
       folders: {
-        exclude: ["node_modules", "lib", "temp", "dist", ".git", outDir],
+        exclude: [
+          "node_modules",
+          "lib",
+          "temp",
+          "dist",
+          ".git",
+          ".next",
+          "coverage",
+          ".vscode",
+          ".github",
+          ".changeset",
+          ".husky",
+          ".bob",
+          outDir,
+        ],
       },
     }),
     existsSync(typesHashJSON)

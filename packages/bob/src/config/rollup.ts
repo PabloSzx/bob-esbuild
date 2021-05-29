@@ -34,22 +34,13 @@ export interface ConfigOptions {
 }
 
 export async function getRollupConfig(options: ConfigOptions = {}) {
-  const {
-    config: {
-      clean: globalClean,
-      outputPlugins: globalOutputPlugins,
-      plugins: globalConfigPlugins,
-      rollupOptions: globalRollupOptions,
-      inputFiles: globalInputFiles,
-      bundle: globalBundle,
-    },
-  } = await globalConfig;
+  const { config: globalOptions } = await globalConfig;
 
   const cwd = options.cwd || process.cwd();
 
-  const clean = options.clean ?? globalClean;
+  const clean = options.clean ?? globalOptions.clean;
 
-  const inputFiles = options.inputFiles || globalInputFiles || ["src/**/*.ts"];
+  const inputFiles = options.inputFiles || globalOptions.inputFiles || ["src/**/*.ts"];
 
   if (!inputFiles.length) throw Error("No input files to check!");
 
@@ -69,7 +60,7 @@ export async function getRollupConfig(options: ConfigOptions = {}) {
 
   debug("Building", input.join(" | "));
 
-  const experimentalBundling = options.bundle ?? globalBundle ?? false;
+  const experimentalBundling = options.bundle ?? globalOptions.bundle ?? false;
 
   const outputOptions: OutputOptions[] = [
     {
@@ -77,16 +68,16 @@ export async function getRollupConfig(options: ConfigOptions = {}) {
       format: "cjs",
       preserveModules: true,
       exports: "auto",
-      plugins: globalOutputPlugins,
       sourcemap: true,
+      ...globalOptions.outputOptions,
     },
     {
       dir: path.resolve(cwd, "lib"),
       format: "es",
       entryFileNames: "[name].mjs",
       preserveModules: true,
-      plugins: globalOutputPlugins,
       sourcemap: true,
+      ...globalOptions.outputOptions,
     },
   ];
 
@@ -95,12 +86,14 @@ export async function getRollupConfig(options: ConfigOptions = {}) {
       target: "es2019",
       sourceMap: true,
       experimentalBundling,
+      ...globalOptions.esbuildPluginOptions,
     }),
     externals({
       packagePath: path.resolve(cwd, "package.json"),
       deps: true,
+      ...globalOptions.externalOptions,
     }),
-    ...(globalConfigPlugins || []),
+    ...(globalOptions.plugins || []),
   ];
 
   if (clean) {
@@ -114,11 +107,11 @@ export async function getRollupConfig(options: ConfigOptions = {}) {
   const rollupConfig: RollupOptions = {
     input,
     plugins,
-    ...globalRollupOptions,
+    ...globalOptions.rollupOptions,
   };
 
-  async function write(bundle: RollupBuild, afterFileWrite = () => {}) {
-    await Promise.all(outputOptions.map((output) => bundle.write(output).then(afterFileWrite)));
+  async function write(bundle: RollupBuild) {
+    await Promise.all(outputOptions.map((output) => bundle.write(output)));
   }
 
   return { config: rollupConfig, outputOptions, write };
