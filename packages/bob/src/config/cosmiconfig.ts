@@ -81,5 +81,3 @@ export const globalConfig: Promise<CosmiConfigResult> & {
     error(err);
     process.exit(1);
   });
-
-export const cleanCwd = process.cwd().replace(/\\/g, "/");

@@ -2,7 +2,6 @@ import { command } from "execa";
 import { watch as rollupWatch } from "rollup";
 import kill from "tree-kill";
 
-import { cleanCwd } from "../config/cosmiconfig";
 import { ConfigOptions, getRollupConfig } from "../config/rollup";
 import { debug } from "../log/debug";
 import { error } from "../log/error";
@@ -66,6 +65,8 @@ export async function watchRollup(options: WatchRollupOptions = {}) {
 
   let buildsDone = 0;
 
+  const cwd = (options.config?.cwd || process.cwd()).replace(/\\/g, "/");
+
   watcher.on("event", (event) => {
     switch (event.code) {
       case "BUNDLE_START": {
@@ -78,7 +79,7 @@ export async function watchRollup(options: WatchRollupOptions = {}) {
 
         startTime = Date.now();
 
-        debug(`Starting build for ${cleanCwd}`);
+        debug(`Starting build for ${cwd}`);
         break;
       }
       case "BUNDLE_END": {
@@ -86,7 +87,7 @@ export async function watchRollup(options: WatchRollupOptions = {}) {
 
         write(result)
           .then(async () => {
-            debug(`JS built for ${cleanCwd} in ${Date.now() - startTime}ms`);
+            debug(`JS built for ${cwd} in ${Date.now() - startTime}ms`);
 
             options.onSuccessCallback?.(buildsDone);
 
@@ -110,7 +111,7 @@ export async function watchRollup(options: WatchRollupOptions = {}) {
         break;
       }
       case "START": {
-        debug(`JS watcher for ${cleanCwd} started`);
+        debug(`JS watcher for ${cwd} started`);
         break;
       }
     }

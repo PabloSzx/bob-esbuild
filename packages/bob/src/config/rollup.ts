@@ -5,7 +5,7 @@ import esbuild from "rollup-plugin-esbuild";
 import externals from "rollup-plugin-node-externals";
 
 import { debug } from "../log/debug";
-import { cleanCwd, globalConfig } from "./cosmiconfig";
+import { globalConfig } from "./cosmiconfig";
 
 import type { RollupBuild } from "rollup";
 import type { OutputOptions, RollupOptions, Plugin } from "rollup";
@@ -47,7 +47,7 @@ export async function getRollupConfig(options: ConfigOptions = {}) {
   const input = (
     await Promise.all(
       inputFiles.map((pattern) => {
-        const glob = path.join(cleanCwd, pattern).replace(/\\/g, "/");
+        const glob = path.join(cwd, pattern).replace(/\\/g, "/");
         debug("Checking glob pattern: " + glob);
         return globby(glob);
       })
