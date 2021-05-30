@@ -40,7 +40,7 @@ export async function getRollupConfig(options: ConfigOptions = {}) {
 
   const clean = options.clean ?? globalOptions.clean;
 
-  const inputFiles = options.inputFiles || globalOptions.inputFiles || ['src/**/*.ts'];
+  const inputFiles = options.inputFiles || globalOptions.inputFiles || ['src/**/*.{ts,tsx}'];
 
   if (!inputFiles.length) throw Error('No input files to check!');
 
