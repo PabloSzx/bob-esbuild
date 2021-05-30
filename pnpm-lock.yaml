@@ -26,20 +26,16 @@ importers:
   examples/basic:
     specifiers:
       bob-esbuild-cli: workspace:^0.1.14
-      psz-bob: workspace:^1.0.0
       shared: workspace:^1.0.0
     dependencies:
       bob-esbuild-cli: link:../../packages/bob-cli
-      psz-bob: link:../..
       shared: link:../shared
 
   examples/shared:
     specifiers:
       bob-esbuild-cli: workspace:^0.1.14
-      psz-bob: workspace:^1.0.0
     dependencies:
       bob-esbuild-cli: link:../../packages/bob-cli
-      psz-bob: link:../..
 
   packages/bob:
     specifiers:

@@ -23,7 +23,6 @@
   },
   "dependencies": {
     "bob-esbuild-cli": "workspace:^0.1.14",
-    "psz-bob": "workspace:^1.0.0",
     "shared": "workspace:^1.0.0"
   }
 }
