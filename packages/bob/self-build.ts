@@ -1,7 +1,6 @@
 import { startBuild } from "./src/build";
-import { error } from "./src/log/error";
 
 startBuild().catch((err) => {
-  error(err);
+  console.error(err);
   process.exit(1);
 });

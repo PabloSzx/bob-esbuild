@@ -7,11 +7,10 @@
   "author": "PabloSzx <pablosaez1995@gmail.com>",
   "scripts": {
     "dev": "pnpm dev -r --no-sort",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "test": "pnpm test -r"
   },
   "dependencies": {
-    "bob-esbuild": "workspace:^",
-    "bob-esbuild-cli": "workspace:^",
     "esbuild": "^0.12.5",
     "husky": "^6.0.0",
     "prettier": "^2.3.0",

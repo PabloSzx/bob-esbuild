@@ -9,12 +9,15 @@ import { error } from "../log/error";
 import type { Plugin, RollupOptions, OutputOptions } from "rollup";
 import type { ConfigOptions } from "./rollup";
 import type { TSCOptions } from "../tsc/types";
-import type { Options as EsbuildPluginOptions } from "rollup-plugin-esbuild";
+import type { Options as EsbuildPluginOptions } from "bob-esbuild-plugin";
 import type { ExternalsOptions } from "rollup-plugin-node-externals";
+
+console.log(1515, cosmiconfig);
 
 export type PickRequired<T, K extends keyof T> = T & Required<Pick<T, K>>;
 
-export interface BobConfig extends Pick<ConfigOptions, "clean" | "inputFiles" | "bundle"> {
+export interface BobConfig
+  extends Pick<ConfigOptions, "clean" | "inputFiles" | "bundle"> {
   tsc?: TSCOptions;
   /**
    * It defaults to bob-esbuild.config directory

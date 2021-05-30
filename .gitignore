@@ -3,3 +3,4 @@ lib
 tmp
 *.log
 /lib-types
+.temp

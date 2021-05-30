@@ -1,7 +1,7 @@
 import globby from "globby";
 import path from "path";
 import del from "rollup-plugin-delete";
-import esbuild from "rollup-plugin-esbuild";
+import { bobEsbuildPlugin } from "bob-esbuild-plugin";
 import externals from "rollup-plugin-node-externals";
 
 import { debug } from "../log/debug";
@@ -40,7 +40,8 @@ export async function getRollupConfig(options: ConfigOptions = {}) {
 
   const clean = options.clean ?? globalOptions.clean;
 
-  const inputFiles = options.inputFiles || globalOptions.inputFiles || ["src/**/*.ts"];
+  const inputFiles = options.inputFiles ||
+    globalOptions.inputFiles || ["src/**/*.ts"];
 
   if (!inputFiles.length) throw Error("No input files to check!");
 
@@ -75,6 +76,7 @@ export async function getRollupConfig(options: ConfigOptions = {}) {
       dir: path.resolve(cwd, "lib"),
       format: "es",
       entryFileNames: "[name].mjs",
+      exports: "auto",
       preserveModules: true,
       sourcemap: true,
       ...globalOptions.outputOptions,
@@ -82,7 +84,7 @@ export async function getRollupConfig(options: ConfigOptions = {}) {
   ];
 
   const plugins: Plugin[] = [
-    esbuild({
+    bobEsbuildPlugin({
       target: "es2019",
       sourceMap: true,
       experimentalBundling,
@@ -91,6 +93,7 @@ export async function getRollupConfig(options: ConfigOptions = {}) {
     externals({
       packagePath: path.resolve(cwd, "package.json"),
       deps: true,
+      exclude: ["cosmiconfig"],
       ...globalOptions.externalOptions,
     }),
     ...(globalOptions.plugins || []),
@@ -107,6 +110,7 @@ export async function getRollupConfig(options: ConfigOptions = {}) {
   const rollupConfig: RollupOptions = {
     input,
     plugins,
+    cache: false,
     ...globalOptions.rollupOptions,
   };
 
