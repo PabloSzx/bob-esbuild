@@ -22,7 +22,8 @@
   "scripts": {
     "build:types": "node -r esbuild-register build-types.cjs",
     "dev": "bob-esbuild watch",
-    "prepare": "tsup && pnpm build:types"
+    "prepare": "tsup && pnpm build:types",
+    "postpublish": "gh-release --repo PabloSzx/bob-esbuild"
   },
   "dependencies": {
     "bob-esbuild-plugin": "workspace:^0.1.0",
@@ -49,6 +50,7 @@
     "@types/fs-extra": "^9.0.11",
     "@types/node": "^15.6.1",
     "@types/rimraf": "^3.0.0",
+    "changesets-github-release": "^0.0.1",
     "esbuild-register": "^2.5.0",
     "tsup": "^4.11.1",
     "typescript": "^4.3.2"
