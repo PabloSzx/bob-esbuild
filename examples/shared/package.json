@@ -22,7 +22,7 @@
     "prepare": "bob-esbuild build"
   },
   "dependencies": {
-    "bob-esbuild-cli": "workspace:^",
+    "bob-esbuild-cli": "workspace:^0.1.0",
     "psz-bob": "workspace:^1.0.0"
   }
 }

@@ -1,5 +1,5 @@
 import assert from "assert";
-import tsconfig from "tsconfig";
+import { load } from "tsconfig";
 
 import { error } from "../log/error";
 import { globalConfig } from "./cosmiconfig";
@@ -9,7 +9,7 @@ export const resolvedTsconfig = (async () => {
     config: { rootDir: configRootDir },
   } = await globalConfig;
 
-  const { config, path } = await tsconfig.load(configRootDir);
+  const { config, path } = await load(configRootDir);
 
   if (!path) throw Error("tsconfig could not be found!");
 
@@ -19,9 +19,11 @@ export const resolvedTsconfig = (async () => {
 
   const outDir: string = compilerOptions?.outDir;
 
-  if (typeof outDir !== "string") throw Error("outDir not specified in " + path);
+  if (typeof outDir !== "string")
+    throw Error("outDir not specified in " + path);
 
-  if (compilerOptions.rootDir !== ".") throw Error("tsconfig.json rootDir has to be '.'");
+  if (compilerOptions.rootDir !== ".")
+    throw Error("tsconfig.json rootDir has to be '.'");
 
   return {
     outDir,

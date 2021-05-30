@@ -1,0 +1,49 @@
+{
+  "name": "bob-esbuild-plugin",
+  "version": "0.1.0",
+  "description": "bob-esbuild main plugin, based on https://github.com/egoist/rollup-plugin-esbuild",
+  "license": "MIT",
+  "author": "PabloSzx <pablosaez1995@gmail.com>",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "files": [
+    "lib"
+  ],
+  "scripts": {
+    "prepare": "tsup",
+    "test": "jest"
+  },
+  "dependencies": {
+    "@rollup/pluginutils": "^4.1.0",
+    "esbuild": "^0.12.5",
+    "joycon": "^3.0.1",
+    "jsonc-parser": "^3.0.0"
+  },
+  "devDependencies": {
+    "@types/jest": "^26.0.23",
+    "@types/mock-fs": "^4.13.0",
+    "@types/node": "^15.6.1",
+    "esbuild-register": "^2.5.0",
+    "jest": "^27.0.3",
+    "mock-fs": "^5.0.0",
+    "rollup": "^2.50.4",
+    "ts-jest": "^27.0.1",
+    "tsup": "^4.11.1"
+  },
+  "peerDependencies": {
+    "@types/node": "^15.6.1",
+    "rollup": "^2.50.3"
+  },
+  "tsup": {
+    "entryPoints": [
+      "src/**/*.ts"
+    ],
+    "outDir": "lib",
+    "clean": true,
+    "format": [
+      "cjs",
+      "esm"
+    ],
+    "target": "es2019"
+  }
+}

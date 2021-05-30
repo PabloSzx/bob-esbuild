@@ -1,7 +1,7 @@
+import { bobEsbuildPlugin } from "bob-esbuild-plugin";
 import globby from "globby";
 import path from "path";
 import del from "rollup-plugin-delete";
-import esbuild from "rollup-plugin-esbuild";
 import externals from "rollup-plugin-node-externals";
 
 import { debug } from "../log/debug";
@@ -40,7 +40,8 @@ export async function getRollupConfig(options: ConfigOptions = {}) {
 
   const clean = options.clean ?? globalOptions.clean;
 
-  const inputFiles = options.inputFiles || globalOptions.inputFiles || ["src/**/*.ts"];
+  const inputFiles = options.inputFiles ||
+    globalOptions.inputFiles || ["src/**/*.ts"];
 
   if (!inputFiles.length) throw Error("No input files to check!");
 
@@ -82,7 +83,7 @@ export async function getRollupConfig(options: ConfigOptions = {}) {
   ];
 
   const plugins: Plugin[] = [
-    esbuild({
+    bobEsbuildPlugin({
       target: "es2019",
       sourceMap: true,
       experimentalBundling,

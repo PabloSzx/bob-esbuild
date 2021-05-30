@@ -20,10 +20,11 @@
       "shared/lib/*": ["examples/shared/src/*"],
       "shared": ["examples/shared/src/index.ts"],
       "bob-esbuild": ["packages/bob/src/index.ts"],
-      "bob-esbuild/lib/*": ["packages/bob/src/*"]
+      "bob-esbuild/lib/*": ["packages/bob/src/*"],
+      "bob-esbuild-plugin": ["packages/esbuild-plugin/src/index.ts"]
     },
     "baseUrl": ".",
     "importsNotUsedAsValues": "error"
   },
-  "include": ["**/src/**/*.ts", "bob-esbuild.config.ts"]
+  "include": ["**/src/**/*.ts", "**/test/**/*.ts", "bob-esbuild.config.ts"]
 }

@@ -6,12 +6,16 @@
   "license": "MIT",
   "author": "PabloSzx <pablosaez1995@gmail.com>",
   "scripts": {
+    "ci:release": "pnpm -r publish --access public --no-git-checks",
+    "ci:version": "changeset version && pnpm i --no-frozen-lockfile --lockfile-only --ignore-scripts",
     "dev": "pnpm dev -r --no-sort",
-    "prepare": "husky install"
+    "prepare": "husky install && pnpm types",
+    "test": "pnpm test -r",
+    "types": "pnpm --filter bob-esbuild build:types",
+    "changesets": "changeset"
   },
   "dependencies": {
-    "bob-esbuild": "workspace:^",
-    "bob-esbuild-cli": "workspace:^",
+    "@changesets/cli": "^2.16.0",
     "esbuild": "^0.12.5",
     "husky": "^6.0.0",
     "prettier": "^2.3.0",
