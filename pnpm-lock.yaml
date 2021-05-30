@@ -43,7 +43,7 @@ importers:
       '@types/fs-extra': ^9.0.11
       '@types/node': ^15.6.1
       '@types/rimraf': ^3.0.0
-      bob-esbuild-plugin: workspace:^0.1.0
+      bob-esbuild-plugin: workspace:^0.1.1
       builtin-modules: ^3.2.0
       chalk: ^4.1.1
       changesets-github-release: ^0.0.1
@@ -101,7 +101,7 @@ importers:
       '@oclif/parser': ^3.8.5
       '@oclif/plugin-help': ^3.2.2
       '@types/node': ^15.6.1
-      bob-esbuild: workspace:^0.1.11
+      bob-esbuild: workspace:^0.1.12
       changesets-github-release: ^0.0.1
       esbuild-register: ^2.5.0
       globby: ^11.0.3
