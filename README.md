@@ -1,8 +1,8 @@
 # bob-esbuild
 
-This library is recommended to be used with [pnpm](https://pnpm.io/), but it's not a requirement and it should to work with package manager.
+Is recommended to be used with [pnpm](https://pnpm.io/), but it's not a requirement and it should to work with any package manager.
 
-This library is focused into monorepo projects, and all the instructions are going to be focused on that usage.
+This library is primarily focused into monorepo projects, and all the instructions are going to be focused on that usage.
 
 ## Install
 
