@@ -4,4 +4,4 @@
 'bob-esbuild-plugin': patch
 ---
 
-self build
+improve build
