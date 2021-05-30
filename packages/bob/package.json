@@ -20,6 +20,7 @@
     "lib"
   ],
   "scripts": {
+    "build:types": "node -r esbuild-register build-types.ts",
     "dev": "bob-esbuild watch",
     "prepare": "node -r esbuild-register self-build.ts",
     "postpublish": "gh-release --repo PabloSzx/bob-esbuild"
