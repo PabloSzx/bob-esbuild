@@ -1,4 +1,4 @@
-import { startBuild } from 'bob-esbuild/lib/build';
+import { startBuild } from 'bob-esbuild/build';
 
 import { Command, flags } from '@oclif/command';
 

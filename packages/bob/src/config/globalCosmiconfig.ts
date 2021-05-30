@@ -21,6 +21,11 @@ export interface BobConfig extends Pick<ConfigOptions, 'clean' | 'inputFiles' | 
    */
   rootDir?: string;
 
+  /**
+   * @default "dist"
+   */
+  distDir?: string;
+
   plugins?: Plugin[];
 
   rollupOptions?: RollupOptions;
@@ -36,7 +41,7 @@ export interface BobConfig extends Pick<ConfigOptions, 'clean' | 'inputFiles' | 
   verbose?: boolean;
 }
 
-export type ResolvedBobConfig = PickRequired<BobConfig, 'rootDir' | 'clean'>;
+export type ResolvedBobConfig = PickRequired<BobConfig, 'rootDir' | 'clean' | 'distDir'>;
 
 export interface CosmiConfigResult {
   filepath: string;
@@ -67,6 +72,7 @@ export const globalConfig: Promise<CosmiConfigResult> & {
 
     config.rootDir = config.rootDir || dirname(filepath).replace(/\\/g, '/');
     config.clean = config.clean ?? true;
+    config.distDir = config.distDir || 'dist';
 
     const data = {
       filepath,

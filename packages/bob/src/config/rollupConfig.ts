@@ -5,6 +5,7 @@ import del from 'rollup-plugin-delete';
 import externals from 'rollup-plugin-node-externals';
 
 import { debug } from '../log/debug';
+import { generatePackageJson } from './packageJson';
 import { globalConfig } from './globalCosmiconfig';
 
 import type { RollupBuild } from 'rollup';
@@ -44,6 +45,8 @@ export async function getRollupConfig(options: ConfigOptions = {}) {
 
   if (!inputFiles.length) throw Error('No input files to check!');
 
+  const distDir = globalOptions.distDir;
+
   const input = (
     await Promise.all(
       inputFiles.map(pattern => {
@@ -64,7 +67,7 @@ export async function getRollupConfig(options: ConfigOptions = {}) {
 
   const outputOptions: OutputOptions[] = [
     {
-      dir: path.resolve(cwd, 'lib'),
+      dir: path.resolve(cwd, distDir),
       format: 'cjs',
       preserveModules: true,
       exports: 'auto',
@@ -73,7 +76,7 @@ export async function getRollupConfig(options: ConfigOptions = {}) {
       ...globalOptions.outputOptions,
     },
     {
-      dir: path.resolve(cwd, 'lib'),
+      dir: path.resolve(cwd, distDir),
       format: 'es',
       entryFileNames: '[name].mjs',
       preserveModules: true,
@@ -95,13 +98,14 @@ export async function getRollupConfig(options: ConfigOptions = {}) {
       deps: true,
       ...globalOptions.externalOptions,
     }),
+    generatePackageJson(distDir),
     ...(globalOptions.plugins || []),
   ];
 
   if (clean) {
     plugins.push(
       del({
-        targets: ['lib/**/*.js', 'lib/**/*.mjs', 'lib/**/*.map'],
+        targets: [`${distDir}/**/*.js`, `${distDir}/**/*.mjs`, `${distDir}/**/*.map`],
         cwd,
       })
     );

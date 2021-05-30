@@ -9,8 +9,8 @@
       "import": "./lib/index.mjs"
     },
     "./*": {
-      "require": "./*.js",
-      "import": "./*.mjs"
+      "require": "./lib/*.js",
+      "import": "./lib/*.mjs"
     }
   },
   "main": "lib/index.js",
@@ -36,6 +36,7 @@
     "folder-hash": "^4.0.1",
     "fs-extra": "^10.0.0",
     "globby": "^11.0.3",
+    "lodash.get": "^4.4.2",
     "oclif": "^1.18.0",
     "rimraf": "^3.0.2",
     "rollup": "^2.50.4",
@@ -48,6 +49,7 @@
   "devDependencies": {
     "@types/folder-hash": "^4.0.0",
     "@types/fs-extra": "^9.0.11",
+    "@types/lodash.get": "^4.4.6",
     "@types/node": "^15.6.1",
     "@types/rimraf": "^3.0.0",
     "changesets-github-release": "^0.0.1",
@@ -56,5 +58,9 @@
   },
   "peerDependencies": {
     "typescript": "^4.3.2"
+  },
+  "publishConfig": {
+    "access": "public",
+    "directory": "lib"
   }
 }

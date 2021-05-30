@@ -11,7 +11,7 @@ export async function getHash(): Promise<{
   shouldBuild?: boolean;
 }> {
   const {
-    config: { rootDir },
+    config: { rootDir, distDir },
   } = await globalConfig;
   const { outDir } = await resolvedTsconfig;
 
@@ -27,6 +27,7 @@ export async function getHash(): Promise<{
         exclude: [
           'node_modules',
           'lib',
+          distDir,
           'temp',
           'dist',
           '.git',

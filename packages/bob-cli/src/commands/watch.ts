@@ -1,4 +1,4 @@
-import { startWatch } from 'bob-esbuild/lib/watch';
+import { startWatch } from 'bob-esbuild/watch';
 
 import { Command, flags } from '@oclif/command';
 

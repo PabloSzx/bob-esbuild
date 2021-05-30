@@ -10,8 +10,8 @@
       "import": "./lib/index.mjs"
     },
     "./*": {
-      "require": "./*.js",
-      "import": "./*.mjs"
+      "require": "./lib/*.js",
+      "import": "./lib/*.mjs"
     }
   },
   "main": "lib/index.js",

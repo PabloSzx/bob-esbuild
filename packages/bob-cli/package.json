@@ -12,8 +12,8 @@
       "import": "./lib/index.mjs"
     },
     "./*": {
-      "require": "./*.js",
-      "import": "./*.mjs"
+      "require": "./lib/*.js",
+      "import": "./lib/*.mjs"
     }
   },
   "main": "lib/index.js",
@@ -58,5 +58,9 @@
     "plugins": [
       "@oclif/plugin-help"
     ]
+  },
+  "publishConfig": {
+    "directory": "lib",
+    "access": "public"
   }
 }

@@ -14,7 +14,7 @@ import type { TSCOptions } from './types';
 
 export async function buildTsc(options: TSCOptions = {}) {
   const {
-    config: { tsc: globalTsc = {}, rootDir: rootDirCwd },
+    config: { tsc: globalTsc = {}, rootDir: rootDirCwd, distDir },
   } = await globalConfig;
 
   const startTime = Date.now();
@@ -24,8 +24,6 @@ export async function buildTsc(options: TSCOptions = {}) {
   const dirs = [...(options.dirs || []), ...(globalTsc.dirs || [])];
 
   const tscCommand = options.tscBuildCommand || globalTsc.tscBuildCommand || 'tsc --emitDeclarationOnly';
-
-  const typesTarget = options.typesTarget || globalTsc.typesTarget || 'lib';
 
   assert(dirs.length, 'tsc dirs not specified!');
 
@@ -55,7 +53,7 @@ export async function buildTsc(options: TSCOptions = {}) {
 
       if (!(await pathExists(from))) return;
 
-      await copy(from, resolve(rootDirCwd, `${dir}/${typesTarget}`), {
+      await copy(from, resolve(rootDirCwd, `${dir}/${distDir}`), {
         filter(src) {
           // Check if is directory
           if (!parse(src).ext) return true;

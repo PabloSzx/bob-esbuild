@@ -41,6 +41,7 @@ importers:
     specifiers:
       '@types/folder-hash': ^4.0.0
       '@types/fs-extra': ^9.0.11
+      '@types/lodash.get': ^4.4.6
       '@types/node': ^15.6.1
       '@types/rimraf': ^3.0.0
       bob-esbuild-plugin: workspace:^0.1.1
@@ -55,6 +56,7 @@ importers:
       folder-hash: ^4.0.1
       fs-extra: ^10.0.0
       globby: ^11.0.3
+      lodash.get: ^4.4.2
       oclif: ^1.18.0
       rimraf: ^3.0.2
       rollup: ^2.50.4
@@ -75,6 +77,7 @@ importers:
       folder-hash: 4.0.1
       fs-extra: 10.0.0
       globby: 11.0.3
+      lodash.get: 4.4.2
       oclif: 1.18.0
       rimraf: 3.0.2
       rollup: 2.50.4
@@ -86,6 +89,7 @@ importers:
     devDependencies:
       '@types/folder-hash': 4.0.0
       '@types/fs-extra': 9.0.11
+      '@types/lodash.get': 4.4.6
       '@types/node': 15.6.1
       '@types/rimraf': 3.0.0
       changesets-github-release: 0.0.1
@@ -1311,6 +1315,16 @@ packages:
     dependencies:
       jest-diff: 26.6.2
       pretty-format: 26.6.2
+    dev: true
+
+  /@types/lodash.get/4.4.6:
+    resolution: {integrity: sha512-E6zzjR3GtNig8UJG/yodBeJeIOtgPkMgsLjDU3CbgCAPC++vJ0eCMnJhVpRZb/ENqEFlov1+3K9TKtY4UdWKtQ==}
+    dependencies:
+      '@types/lodash': 4.14.170
+    dev: true
+
+  /@types/lodash/4.14.170:
+    resolution: {integrity: sha512-bpcvu/MKHHeYX+qeEN8GE7DIravODWdACVA1ctevD8CN24RhPZIKMn9ntfAsrvLfSX3cR5RrBKAbYm9bGs0A+Q==}
     dev: true
 
   /@types/minimatch/3.0.4:
@@ -4747,6 +4761,10 @@ packages:
 
   /lodash._reinterpolate/3.0.0:
     resolution: {integrity: sha1-DM8tiRZq8Ds2Y8eWU4t1rG4RTZ0=}
+
+  /lodash.get/4.4.2:
+    resolution: {integrity: sha1-LRd/ZS+jHpObRDjVNBSZ36OCXpk=}
+    dev: false
 
   /lodash.startcase/4.4.0:
     resolution: {integrity: sha1-lDbjTtJgk+1/+uGTYUQ1CRXZrdg=}

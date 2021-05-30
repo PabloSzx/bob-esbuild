@@ -5,10 +5,4 @@ export interface TSCOptions {
    * @default "tsc --emitDeclarationOnly"
    */
   tscBuildCommand?: string;
-
-  /**
-   * Target directory
-   * @default "lib"
-   */
-  typesTarget?: string;
 }

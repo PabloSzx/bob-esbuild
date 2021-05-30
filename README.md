@@ -23,9 +23,9 @@ pnpm add bob-esbuild-cli
 In your root, you have to make a file called `bob-esbuild.config.ts`, and it's body should be like this:
 
 ```ts
-export const config: import("bob-esbuild").BobConfig = {
+export const config: import('bob-esbuild').BobConfig = {
   tsc: {
-    dirs: ["packages/*"],
+    dirs: ['packages/*'],
   },
   verbose: true,
 };
@@ -69,53 +69,23 @@ This library is focused on giving first-class support for Node.js ESM, and for t
 
 In every package you build for, you have to specify the package.json fields like this:
 
+> You can also change the "dist" folder to any name, you only have to be consistent and change it in your root configuration in the field "distDir"
+
 > This also enables to import every module separately
 
 ```json
 {
-  "main": "lib/index.js",
-  "module": "lib/index.mjs",
-  "types": "lib/index.d.ts",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
   "exports": {
     ".": {
-      "require": "./lib/index.js",
-      "import": "./lib/index.mjs"
+      "require": "./dist/index.js",
+      "import": "./dist/index.mjs"
     },
     "./*": {
-      "require": "./*.js",
-      "import": "./*.mjs"
-    }
-  }
-}
-```
-
-## Why "lib" directory is enforced over "dist"?
-
-The reason is relatively simple:
-
-Due to lack of support of TypeScript for package.json exports ([Check this issue](https://github.com/microsoft/TypeScript/issues/33079)) to be able to import deep modules, the only good workaround is to just specify all the path inside the package, and if we are using `lib`, that results in something like this:
-
-```ts
-import { Hello } from "your-package/lib/bar/baz";
-```
-
-And if using `dist`, it would look something like this, and please be honest to yourself, this looks like we are doing something wrong, and it gives the impression that import from "dist" is not correct (and its also a longer and uglier path 😝):
-
-```ts
-import { Hello } from "your-package/dist/bar/baz";
-```
-
-### typesVersions workaround
-
-The `typesVersions` workaround kills TypeScript detection of the top-level entry, [check this issue](https://github.com/teppeis/typescript-subpath-exports-workaround/issues/1).
-
-If your package **doesn't have a top-level entry**, you are free to use:
-
-```json
-{
-  "typesVersions": {
-    "*": {
-      "*": ["lib/*"]
+      "require": "./dist/*.js",
+      "import": "./dist/*.mjs"
     }
   }
 }
