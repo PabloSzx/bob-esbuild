@@ -1,7 +1,7 @@
-import { Foo } from "shared";
+import { Foo } from 'shared';
 
-import { Bar } from "shared/lib/deep/two-deep/other";
-import { C } from "./innerShared";
+import { Bar } from 'shared/lib/deep/two-deep/other';
+import { C } from './innerShared';
 
 /**
  * XD
@@ -14,4 +14,4 @@ console.log(Bar);
 
 export { Foo, Bar };
 
-export { B } from "./other";
+export { B } from './other';

@@ -28,7 +28,7 @@
   ],
   "scripts": {
     "dev": "bob-esbuild watch",
-    "prepare": "node self-build.mjs",
+    "prepare": "node -r esbuild-register self-build.ts",
     "postpublish": "gh-release --repo PabloSzx/bob-esbuild"
   },
   "dependencies": {
@@ -43,6 +43,7 @@
     "@oclif/dev-cli": "^1.26.0",
     "@types/node": "^15.6.1",
     "changesets-github-release": "^0.0.1",
+    "esbuild-register": "^2.5.0",
     "globby": "^11.0.3",
     "rimraf": "^3.0.2",
     "ts-node": "^10.0.0",

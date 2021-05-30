@@ -1,3 +1,3 @@
-export * from "./cosmiconfig";
-export * from "./resolveTsconfig";
-export * from "./rollup";
+export * from './globalCosmiconfig';
+export * from './resolveTsconfig';
+export * from './rollupConfig';

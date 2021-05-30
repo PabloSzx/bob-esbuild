@@ -1,8 +1,8 @@
-import { buildRollup } from "./rollup/build";
-import { buildTsc } from "./tsc/build";
+import { buildRollup } from './rollup/build';
+import { buildTsc } from './tsc/build';
 
-import type { ConfigOptions } from "./config/rollup";
-import type { TSCOptions } from "./tsc/types";
+import type { ConfigOptions } from './config/rollupConfig';
+import type { TSCOptions } from './tsc/types';
 
 export interface BuildOptions {
   rollup?: ConfigOptions;

@@ -1,17 +1,17 @@
-import { existsSync, statSync } from "fs";
-import { extname, resolve, dirname, join } from "path";
-import { transform, Loader, formatMessages, Message } from "esbuild";
-import { createFilter, FilterPattern } from "@rollup/pluginutils";
-import { getOptions } from "./options";
-import { bundle } from "./bundle";
+import { existsSync, statSync } from 'fs';
+import { extname, resolve, dirname, join } from 'path';
+import { transform, Loader, formatMessages, Message } from 'esbuild';
+import { createFilter, FilterPattern } from '@rollup/pluginutils';
+import { getOptions } from './options';
+import { bundle } from './bundle';
 
-import type { Plugin, PluginContext } from "rollup";
+import type { Plugin, PluginContext } from 'rollup';
 
 const defaultLoaders: { [ext: string]: Loader } = {
-  ".js": "js",
-  ".jsx": "jsx",
-  ".ts": "ts",
-  ".tsx": "tsx",
+  '.js': 'js',
+  '.jsx': 'jsx',
+  '.ts': 'ts',
+  '.tsx': 'tsx',
 };
 
 export type Options = {
@@ -46,10 +46,10 @@ export type Options = {
 const warn = async (pluginContext: PluginContext, messages: Message[]) => {
   if (messages.length > 0) {
     const warnings = await formatMessages(messages, {
-      kind: "warning",
+      kind: 'warning',
       color: true,
     });
-    warnings.forEach((warning) => pluginContext.warn(warning));
+    warnings.forEach(warning => pluginContext.warn(warning));
   }
 };
 
@@ -63,7 +63,7 @@ export const bobEsbuildPlugin = (options: Options = {}): Plugin => {
   if (options.loaders) {
     for (const key of Object.keys(options.loaders)) {
       const value = options.loaders[key];
-      if (typeof value === "string") {
+      if (typeof value === 'string') {
         loaders[key] = value;
       } else if (value === false) {
         delete loaders[key];
@@ -72,15 +72,10 @@ export const bobEsbuildPlugin = (options: Options = {}): Plugin => {
   }
 
   const extensions: string[] = Object.keys(loaders);
-  const INCLUDE_REGEXP = new RegExp(
-    `\\.(${extensions.map((ext) => ext.slice(1)).join("|")})$`
-  );
+  const INCLUDE_REGEXP = new RegExp(`\\.(${extensions.map(ext => ext.slice(1)).join('|')})$`);
   const EXCLUDE_REGEXP = /node_modules/;
 
-  const filter = createFilter(
-    options.include || INCLUDE_REGEXP,
-    options.exclude || EXCLUDE_REGEXP
-  );
+  const filter = createFilter(options.include || INCLUDE_REGEXP, options.exclude || EXCLUDE_REGEXP);
 
   const resolveFile = (resolved: string, index: boolean = false) => {
     for (const ext of extensions) {
@@ -93,15 +88,12 @@ export const bobEsbuildPlugin = (options: Options = {}): Plugin => {
   let plugins: Plugin[] = [];
 
   return {
-    name: "esbuild",
+    name: 'esbuild',
 
     resolveId(importee, importer) {
-      if (!importer && importee[0] === ".") return;
+      if (!importer && importee[0] === '.') return;
 
-      const resolved = resolve(
-        importer ? dirname(importer) : process.cwd(),
-        importee
-      );
+      const resolved = resolve(importer ? dirname(importer) : process.cwd(), importee);
 
       let file = resolveFile(resolved);
       if (file) return file;
@@ -143,12 +135,9 @@ export const bobEsbuildPlugin = (options: Options = {}): Plugin => {
         return null;
       }
 
-      const defaultOptions =
-        options.tsconfig === false
-          ? {}
-          : await getOptions(dirname(id), options.tsconfig);
+      const defaultOptions = options.tsconfig === false ? {} : await getOptions(dirname(id), options.tsconfig);
 
-      target = options.target || defaultOptions.target || "es2017";
+      target = options.target || defaultOptions.target || 'es2017';
 
       const result = await transform(code, {
         loader,
@@ -171,14 +160,9 @@ export const bobEsbuildPlugin = (options: Options = {}): Plugin => {
     },
 
     async renderChunk(code) {
-      if (
-        options.minify ||
-        options.minifyWhitespace ||
-        options.minifyIdentifiers ||
-        options.minifySyntax
-      ) {
+      if (options.minify || options.minifyWhitespace || options.minifyIdentifiers || options.minifySyntax) {
         const result = await transform(code, {
-          loader: "js",
+          loader: 'js',
           minify: options.minify,
           minifyWhitespace: options.minifyWhitespace,
           minifyIdentifiers: options.minifyIdentifiers,

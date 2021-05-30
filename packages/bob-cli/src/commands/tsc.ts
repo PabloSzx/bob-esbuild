@@ -1,15 +1,15 @@
-import { buildTsc } from "bob-esbuild";
+import { buildTsc } from 'bob-esbuild';
 
-import { Command, flags } from "@oclif/command";
+import { Command, flags } from '@oclif/command';
 
 export default class TSC extends Command {
-  static description = "Run tsc and then copy the types";
+  static description = 'Run tsc and then copy the types';
 
   static flags = {
-    help: flags.help({ char: "h" }),
+    help: flags.help({ char: 'h' }),
     target: flags.string({
       multiple: true,
-      char: "t",
+      char: 't',
     }),
   };
 
@@ -22,4 +22,4 @@ export default class TSC extends Command {
   }
 }
 
-export type {} from "@oclif/parser/lib/flags";
+export type {} from '@oclif/parser/lib/flags';

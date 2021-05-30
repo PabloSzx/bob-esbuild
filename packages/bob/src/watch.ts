@@ -1,8 +1,8 @@
-import { error } from "./log/error";
-import { watchRollup, WatchRollupOptions } from "./rollup/watch";
-import { buildTsc } from "./tsc/build";
+import { error } from './log/error';
+import { watchRollup, WatchRollupOptions } from './rollup/watch';
+import { buildTsc } from './tsc/build';
 
-import type { TSCOptions } from "./tsc/types";
+import type { TSCOptions } from './tsc/types';
 
 export interface WatchOptions {
   rollup?: WatchRollupOptions;
@@ -27,4 +27,4 @@ export function startWatch(options: WatchOptions = {}) {
   });
 }
 
-export type {} from "rollup";
+export type {} from 'rollup';

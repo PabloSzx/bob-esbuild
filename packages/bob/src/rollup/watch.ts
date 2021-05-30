@@ -1,12 +1,12 @@
-import { command } from "execa";
-import { watch as rollupWatch } from "rollup";
-import kill from "tree-kill";
+import { command } from 'execa';
+import { watch as rollupWatch } from 'rollup';
+import kill from 'tree-kill';
 
-import { ConfigOptions, getRollupConfig } from "../config/rollup";
-import { debug } from "../log/debug";
-import { error } from "../log/error";
+import { ConfigOptions, getRollupConfig } from '../config/rollupConfig';
+import { debug } from '../log/debug';
+import { error } from '../log/error';
 
-import type { ChildProcess } from "child_process";
+import type { ChildProcess } from 'child_process';
 
 export interface WatchRollupOptions {
   config?: ConfigOptions;
@@ -46,17 +46,17 @@ export async function watchRollup(options: WatchRollupOptions = {}) {
     }
   }
 
-  process.on("SIGINT", cleanUp);
-  process.on("SIGHUP", cleanUp);
-  process.on("SIGQUIT", cleanUp);
-  process.on("SIGTERM", cleanUp);
-  process.on("uncaughtException", cleanUp);
-  process.on("exit", cleanUp);
+  process.on('SIGINT', cleanUp);
+  process.on('SIGHUP', cleanUp);
+  process.on('SIGQUIT', cleanUp);
+  process.on('SIGTERM', cleanUp);
+  process.on('uncaughtException', cleanUp);
+  process.on('exit', cleanUp);
 
   let pendingKillPromise: Promise<void>;
 
   function killPromise(pid: number) {
-    return (pendingKillPromise = new Promise((resolve) => {
+    return (pendingKillPromise = new Promise(resolve => {
       kill(pid, () => {
         resolve();
       });
@@ -65,11 +65,11 @@ export async function watchRollup(options: WatchRollupOptions = {}) {
 
   let buildsDone = 0;
 
-  const cwd = (options.config?.cwd || process.cwd()).replace(/\\/g, "/");
+  const cwd = (options.config?.cwd || process.cwd()).replace(/\\/g, '/');
 
-  watcher.on("event", (event) => {
+  watcher.on('event', event => {
     switch (event.code) {
-      case "BUNDLE_START": {
+      case 'BUNDLE_START': {
         if (onSuccessProcess) {
           killPromise(onSuccessProcess.pid);
           onSuccessProcess = null;
@@ -82,7 +82,7 @@ export async function watchRollup(options: WatchRollupOptions = {}) {
         debug(`Starting build for ${cwd}`);
         break;
       }
-      case "BUNDLE_END": {
+      case 'BUNDLE_END': {
         const { result } = event;
 
         write(result)
@@ -96,7 +96,7 @@ export async function watchRollup(options: WatchRollupOptions = {}) {
             if (options.onSuccessCommand) {
               debug(`$ ${options.onSuccessCommand}`);
               onSuccessProcess = command(options.onSuccessCommand, {
-                stdio: "inherit",
+                stdio: 'inherit',
                 shell: true,
               });
             }
@@ -110,7 +110,7 @@ export async function watchRollup(options: WatchRollupOptions = {}) {
 
         break;
       }
-      case "START": {
+      case 'START': {
         debug(`JS watcher for ${cwd} started`);
         break;
       }

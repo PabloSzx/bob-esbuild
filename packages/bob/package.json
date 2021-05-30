@@ -20,9 +20,8 @@
     "lib"
   ],
   "scripts": {
-    "build:types": "node -r esbuild-register build-types.cjs",
     "dev": "bob-esbuild watch",
-    "prepare": "tsup && pnpm build:types",
+    "prepare": "node -r esbuild-register self-build.ts",
     "postpublish": "gh-release --repo PabloSzx/bob-esbuild"
   },
   "dependencies": {
@@ -52,22 +51,9 @@
     "@types/rimraf": "^3.0.0",
     "changesets-github-release": "^0.0.1",
     "esbuild-register": "^2.5.0",
-    "tsup": "^4.11.1",
     "typescript": "^4.3.2"
   },
   "peerDependencies": {
     "typescript": "^4.3.2"
-  },
-  "tsup": {
-    "entryPoints": [
-      "src/**/*.ts"
-    ],
-    "outDir": "lib",
-    "clean": true,
-    "format": [
-      "cjs",
-      "esm"
-    ],
-    "target": "es2019"
   }
 }

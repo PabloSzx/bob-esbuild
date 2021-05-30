@@ -1,19 +1,19 @@
-import path from "path";
-import fs from "fs";
-import { rollup, Plugin as RollupPlugin } from "rollup";
-import mockfs from "mock-fs";
+import path from 'path';
+import fs from 'fs';
+import { rollup, Plugin as RollupPlugin } from 'rollup';
+import mockfs from 'mock-fs';
 
-import { bobEsbuildPlugin, Options } from "../src";
+import { bobEsbuildPlugin, Options } from '../src';
 
 const readFs = (folderName: string, files: Record<string, string>) => {
   mockfs.restore();
-  const tmpDir = path.join(__dirname, ".temp", `esbuild/${folderName}`);
-  Object.keys(files).forEach((file) => {
+  const tmpDir = path.join(__dirname, '.temp', `esbuild/${folderName}`);
+  Object.keys(files).forEach(file => {
     const absolute = path.join(tmpDir, file);
     fs.mkdirSync(path.dirname(absolute), { recursive: true });
     const fileContent = files[file];
     if (!fileContent) return;
-    fs.writeFileSync(absolute, fileContent, "utf8");
+    fs.writeFileSync(absolute, fileContent, 'utf8');
   });
   return tmpDir;
 };
@@ -21,7 +21,7 @@ const readFs = (folderName: string, files: Record<string, string>) => {
 const build = async (
   options?: Options,
   {
-    input = "./fixture/index.js",
+    input = './fixture/index.js',
     sourcemap = false,
     rollupPlugins = [],
   }: {
@@ -34,18 +34,18 @@ const build = async (
     input,
     plugins: [bobEsbuildPlugin(options), ...rollupPlugins],
   });
-  const { output } = await build.generate({ format: "esm", sourcemap });
+  const { output } = await build.generate({ format: 'esm', sourcemap });
   return output;
 };
 
 beforeAll(() => {
   mockfs({
-    "./fixture/index.js": `
+    './fixture/index.js': `
       import Foo from './foo'
 
       console.log(Foo)
     `,
-    "./fixture/foo.tsx": `
+    './fixture/foo.tsx': `
       export default class Foo {
         render() {
           return <div className="hehe">hello there!!!</div>
@@ -59,7 +59,7 @@ afterAll(() => {
   mockfs.restore();
 });
 
-test("simple", async () => {
+test('simple', async () => {
   const output = await build();
   expect(output[0].code).toMatchInlineSnapshot(`
     "class Foo {
@@ -75,7 +75,7 @@ test("simple", async () => {
   `);
 });
 
-test("minify", async () => {
+test('minify', async () => {
   const output = await build({ minify: true });
   expect(output[0].code).toMatchInlineSnapshot(`
     "class Foo{render(){return React.createElement(\\"div\\",{className:\\"hehe\\"},\\"hello there!!!\\")}}console.log(Foo);
@@ -83,9 +83,9 @@ test("minify", async () => {
   `);
 });
 
-test("minify whitespace only", async () => {
+test('minify whitespace only', async () => {
   mockfs({
-    "./fixture/index.js": `
+    './fixture/index.js': `
       console.log(1 === 1);
     `,
   });
@@ -96,9 +96,9 @@ test("minify whitespace only", async () => {
   `);
 });
 
-test("minify syntax only", async () => {
+test('minify syntax only', async () => {
   mockfs({
-    "./fixture/index.js": `
+    './fixture/index.js': `
       console.log(1 === 1);
     `,
   });
@@ -109,14 +109,14 @@ test("minify syntax only", async () => {
   `);
 });
 
-test("load index.(x)", async () => {
+test('load index.(x)', async () => {
   mockfs({
-    "./fixture/index.js": `
+    './fixture/index.js': `
       import Foo from './foo'
 
       console.log(Foo)
     `,
-    "./fixture/foo/index.tsx": `
+    './fixture/foo/index.tsx': `
       export default class Foo {
         render() {
           return <div className="hehe">hello there!!!</div>
@@ -140,14 +140,14 @@ test("load index.(x)", async () => {
   `);
 });
 
-test("load json", async () => {
+test('load json', async () => {
   mockfs({
-    "./fixture/index.js": `
+    './fixture/index.js': `
       import * as foo from './foo'
 
       console.log(foo)
     `,
-    "./fixture/foo.json": `
+    './fixture/foo.json': `
       {
         "foo": true
       }
@@ -156,7 +156,7 @@ test("load json", async () => {
 
   const output = await build({
     loaders: {
-      ".json": "json",
+      '.json': 'json',
     },
   });
   // Following code is expected
@@ -176,12 +176,12 @@ test("load json", async () => {
   `);
 });
 
-test("use custom jsxFactory (h) from tsconfig", async () => {
+test('use custom jsxFactory (h) from tsconfig', async () => {
   mockfs({
-    "./fixture/index.jsx": `
+    './fixture/index.jsx': `
       export const foo = <div>foo</div>
     `,
-    "./fixture/tsconfig.json": `
+    './fixture/tsconfig.json': `
       {
         "compilerOptions": {
           "jsxFactory": "h"
@@ -190,7 +190,7 @@ test("use custom jsxFactory (h) from tsconfig", async () => {
     `,
   });
 
-  const output = await build({}, { input: "./fixture/index.jsx" });
+  const output = await build({}, { input: './fixture/index.jsx' });
   expect(output[0].code).toMatchInlineSnapshot(`
     "const foo = /* @__PURE__ */ h(\\"div\\", null, \\"foo\\");
 
@@ -199,19 +199,19 @@ test("use custom jsxFactory (h) from tsconfig", async () => {
   `);
 });
 
-test("use custom tsconfig.json", async () => {
+test('use custom tsconfig.json', async () => {
   mockfs({
-    "./fixture/index.jsx": `
+    './fixture/index.jsx': `
       export const foo = <div>foo</div>
     `,
-    "./fixture/tsconfig.json": `
+    './fixture/tsconfig.json': `
       {
         "compilerOptions": {
           "jsxFactory": "h"
         }
       }
     `,
-    "./fixture/tsconfig.build.json": `
+    './fixture/tsconfig.build.json': `
       {
         "compilerOptions": {
           "jsxFactory": "custom"
@@ -220,10 +220,7 @@ test("use custom tsconfig.json", async () => {
     `,
   });
 
-  const output = await build(
-    { tsconfig: "tsconfig.build.json" },
-    { input: "./fixture/index.jsx" }
-  );
+  const output = await build({ tsconfig: 'tsconfig.build.json' }, { input: './fixture/index.jsx' });
   expect(output[0].code).toMatchInlineSnapshot(`
     "const foo = /* @__PURE__ */ custom(\\"div\\", null, \\"foo\\");
 
@@ -232,19 +229,19 @@ test("use custom tsconfig.json", async () => {
   `);
 });
 
-describe("bundle", () => {
-  test("simple", async () => {
-    const dir = readFs("bundle-simple", {
-      "./fixture/bar.ts": `export const bar = 'bar'`,
-      "./fixture/Foo.jsx": `
+describe('bundle', () => {
+  test('simple', async () => {
+    const dir = readFs('bundle-simple', {
+      './fixture/bar.ts': `export const bar = 'bar'`,
+      './fixture/Foo.jsx': `
        import {bar} from 'bar'
         export const Foo = <div>foo {bar}</div>
       `,
-      "./fixture/entry-a.jsx": `
+      './fixture/entry-a.jsx': `
       import {Foo} from './Foo'
       export const A = () => <Foo>A</Foo>
       `,
-      "./fixture/entry-b.jsx": `
+      './fixture/entry-b.jsx': `
       import {Foo} from './Foo'
       export const B = () => <Foo>B</Foo>
       `,
@@ -252,26 +249,23 @@ describe("bundle", () => {
     const output = await build(
       { experimentalBundling: true },
       {
-        input: [
-          path.join(dir, "./fixture/entry-a.jsx"),
-          path.join(dir, "./fixture/entry-b.jsx"),
-        ],
+        input: [path.join(dir, './fixture/entry-a.jsx'), path.join(dir, './fixture/entry-b.jsx')],
         rollupPlugins: [
           {
-            name: "alias",
+            name: 'alias',
             resolveId(source, importer) {
-              if (!(source === "bar" && importer)) return;
+              if (!(source === 'bar' && importer)) return;
 
-              return path.join(path.dirname(importer), "bar.ts");
+              return path.join(path.dirname(importer), 'bar.ts');
             },
           },
         ],
       }
     );
     expect(
-      output.map((o) => {
+      output.map(o => {
         return {
-          code: o.type === "chunk" ? o.code : o.source,
+          code: o.type === 'chunk' ? o.code : o.source,
           path: o.fileName,
         };
       })

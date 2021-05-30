@@ -1,33 +1,30 @@
-import { startWatch } from "bob-esbuild/lib/watch";
+import { startWatch } from 'bob-esbuild/lib/watch';
 
-import { Command, flags } from "@oclif/command";
+import { Command, flags } from '@oclif/command';
 
 export default class Watch extends Command {
-  static description =
-    "Watch using rollup+esbuild, all these flags override the bob-esbuild.config";
+  static description = 'Watch using rollup+esbuild, all these flags override the bob-esbuild.config';
 
   static flags = {
-    help: flags.help({ char: "h" }),
+    help: flags.help({ char: 'h' }),
     cwd: flags.string({
-      description: "Change target current directory",
+      description: 'Change target current directory',
     }),
     input: flags.string({
-      char: "i",
-      description:
-        "Input pattern files, if not specified, it reads '**/*.ts'. Repeat this flag to specify multiple patterns",
+      char: 'i',
+      description: "Input pattern files, if not specified, it reads '**/*.ts'. Repeat this flag to specify multiple patterns",
       multiple: true,
     }),
     bundle: flags.boolean({
-      description: "Enable bundling every entry point (With no support for code-splitting yet)",
+      description: 'Enable bundling every entry point (With no support for code-splitting yet)',
       allowNo: true,
     }),
     clean: flags.boolean({
-      description:
-        "Clean the output files before writing the new build, by default it's set as 'true' by the global config",
+      description: "Clean the output files before writing the new build, by default it's set as 'true' by the global config",
       allowNo: true,
     }),
     onSuccess: flags.string({
-      description: "Execute script after successful JS build",
+      description: 'Execute script after successful JS build',
     }),
   };
 
@@ -51,4 +48,4 @@ export default class Watch extends Command {
   }
 }
 
-export type {} from "@oclif/parser/lib/flags";
+export type {} from '@oclif/parser/lib/flags';

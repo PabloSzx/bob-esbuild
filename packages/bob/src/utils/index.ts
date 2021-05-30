@@ -1,1 +1,1 @@
-export * from "./importFromString";
+export * from './importFromString';

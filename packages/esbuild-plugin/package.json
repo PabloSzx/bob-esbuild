@@ -10,7 +10,7 @@
     "lib"
   ],
   "scripts": {
-    "prepare": "tsup",
+    "prepare": "node -r esbuild-register self-build.ts",
     "test": "jest",
     "postpublish": "gh-release --repo PabloSzx/bob-esbuild"
   },
@@ -29,23 +29,10 @@
     "jest": "^27.0.3",
     "mock-fs": "^5.0.0",
     "rollup": "^2.50.4",
-    "ts-jest": "^27.0.1",
-    "tsup": "^4.11.1"
+    "ts-jest": "^27.0.1"
   },
   "peerDependencies": {
     "@types/node": "^15.6.1",
     "rollup": "^2.50.3"
-  },
-  "tsup": {
-    "entryPoints": [
-      "src/**/*.ts"
-    ],
-    "outDir": "lib",
-    "clean": true,
-    "format": [
-      "cjs",
-      "esm"
-    ],
-    "target": "es2019"
   }
 }

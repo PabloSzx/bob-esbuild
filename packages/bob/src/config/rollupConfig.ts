@@ -1,14 +1,14 @@
-import { bobEsbuildPlugin } from "bob-esbuild-plugin";
-import globby from "globby";
-import path from "path";
-import del from "rollup-plugin-delete";
-import externals from "rollup-plugin-node-externals";
+import { bobEsbuildPlugin } from 'bob-esbuild-plugin';
+import globby from 'globby';
+import path from 'path';
+import del from 'rollup-plugin-delete';
+import externals from 'rollup-plugin-node-externals';
 
-import { debug } from "../log/debug";
-import { globalConfig } from "./cosmiconfig";
+import { debug } from '../log/debug';
+import { globalConfig } from './globalCosmiconfig';
 
-import type { RollupBuild } from "rollup";
-import type { OutputOptions, RollupOptions, Plugin } from "rollup";
+import type { RollupBuild } from 'rollup';
+import type { OutputOptions, RollupOptions, Plugin } from 'rollup';
 
 export interface ConfigOptions {
   /**
@@ -40,16 +40,15 @@ export async function getRollupConfig(options: ConfigOptions = {}) {
 
   const clean = options.clean ?? globalOptions.clean;
 
-  const inputFiles = options.inputFiles ||
-    globalOptions.inputFiles || ["src/**/*.ts"];
+  const inputFiles = options.inputFiles || globalOptions.inputFiles || ['src/**/*.ts'];
 
-  if (!inputFiles.length) throw Error("No input files to check!");
+  if (!inputFiles.length) throw Error('No input files to check!');
 
   const input = (
     await Promise.all(
-      inputFiles.map((pattern) => {
-        const glob = path.join(cwd, pattern).replace(/\\/g, "/");
-        debug("Checking glob pattern: " + glob);
+      inputFiles.map(pattern => {
+        const glob = path.join(cwd, pattern).replace(/\\/g, '/');
+        debug('Checking glob pattern: ' + glob);
         return globby(glob);
       })
     )
@@ -57,40 +56,42 @@ export async function getRollupConfig(options: ConfigOptions = {}) {
     .flat()
     .filter((file, index, self) => self.indexOf(file) === index);
 
-  if (!input.length) throw Error("No input files found!");
+  if (!input.length) throw Error('No input files found!');
 
-  debug("Building", input.join(" | "));
+  debug('Building', input.join(' | '));
 
   const experimentalBundling = options.bundle ?? globalOptions.bundle ?? false;
 
   const outputOptions: OutputOptions[] = [
     {
-      dir: path.resolve(cwd, "lib"),
-      format: "cjs",
+      dir: path.resolve(cwd, 'lib'),
+      format: 'cjs',
       preserveModules: true,
-      exports: "auto",
+      exports: 'auto',
       sourcemap: true,
+      preferConst: true,
       ...globalOptions.outputOptions,
     },
     {
-      dir: path.resolve(cwd, "lib"),
-      format: "es",
-      entryFileNames: "[name].mjs",
+      dir: path.resolve(cwd, 'lib'),
+      format: 'es',
+      entryFileNames: '[name].mjs',
       preserveModules: true,
       sourcemap: true,
+      preferConst: true,
       ...globalOptions.outputOptions,
     },
   ];
 
   const plugins: Plugin[] = [
     bobEsbuildPlugin({
-      target: "es2019",
+      target: 'es2019',
       sourceMap: true,
       experimentalBundling,
       ...globalOptions.esbuildPluginOptions,
     }),
     externals({
-      packagePath: path.resolve(cwd, "package.json"),
+      packagePath: path.resolve(cwd, 'package.json'),
       deps: true,
       ...globalOptions.externalOptions,
     }),
@@ -100,7 +101,7 @@ export async function getRollupConfig(options: ConfigOptions = {}) {
   if (clean) {
     plugins.push(
       del({
-        targets: ["lib/**/*.js", "lib/**/*.mjs", "lib/**/*.map"],
+        targets: ['lib/**/*.js', 'lib/**/*.mjs', 'lib/**/*.map'],
         cwd,
       })
     );
@@ -112,7 +113,7 @@ export async function getRollupConfig(options: ConfigOptions = {}) {
   };
 
   async function write(bundle: RollupBuild) {
-    await Promise.all(outputOptions.map((output) => bundle.write(output)));
+    await Promise.all(outputOptions.map(output => bundle.write(output)));
   }
 
   return { config: rollupConfig, outputOptions, write };
