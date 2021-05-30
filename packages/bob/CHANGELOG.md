@@ -1,5 +1,11 @@
 # bob-esbuild
 
+## 0.1.14
+
+### Patch Changes
+
+- 4ba5263: rewrite package.json for publish & allow custom dir
+
 ## 0.1.13
 
 ### Patch Changes
