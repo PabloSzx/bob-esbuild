@@ -11,7 +11,7 @@ export async function getHash(): Promise<{
   shouldBuild?: boolean;
 }> {
   const {
-    config: { rootDir, distDir },
+    config: { rootDir, distDir, tsc: { hash } = {} },
   } = await globalConfig;
   const { outDir } = await resolvedTsconfig;
 
@@ -20,14 +20,15 @@ export async function getHash(): Promise<{
   const [currentHash, jsonHash] = await Promise.all([
     hashElement(rootDir, {
       files: {
-        exclude: ['*.d.ts'],
-        include: ['*.ts', '*.json'],
+        exclude: hash?.files?.exclude || ['*.d.ts'],
+        include: hash?.files?.include || ['*.ts', '*.tsx', '*.json'],
       },
       folders: {
-        exclude: [
+        exclude: hash?.folders?.exclude || [
+          outDir,
+          distDir,
           'node_modules',
           'lib',
-          distDir,
           'temp',
           'dist',
           '.git',
@@ -38,7 +39,6 @@ export async function getHash(): Promise<{
           '.changeset',
           '.husky',
           '.bob',
-          outDir,
         ],
       },
     }),
