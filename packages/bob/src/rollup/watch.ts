@@ -16,12 +16,12 @@ export interface WatchRollupOptions {
 }
 
 export async function watchRollup(options: WatchRollupOptions = {}) {
-  const { config, outputOptions, write } = await getRollupConfig(options.config);
+  const { inputOptions, outputOptions, write } = await getRollupConfig(options.config);
 
   let startTime = Date.now();
 
   const watcher = rollupWatch({
-    ...config,
+    ...inputOptions,
     output: outputOptions,
 
     watch: {

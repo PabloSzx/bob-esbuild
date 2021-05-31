@@ -105,11 +105,11 @@ declare module 'rollup' {
   }
 }
 
-export const generatePackageJson = (distDir: string): Plugin => {
+export const generatePackageJson = (packageJsonPromise: Promise<Record<string, any>>, distDir: string): Plugin => {
   return {
     name: 'GeneratePackageJson',
     async buildStart() {
-      const packageJson = await readPackageJson();
+      const packageJson = await packageJsonPromise;
 
       validatePackageJson(packageJson, distDir);
 

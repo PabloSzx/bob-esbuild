@@ -7,9 +7,11 @@ import externals from 'rollup-plugin-node-externals';
 import { debug } from '../log/debug';
 import { generatePackageJson } from './packageJson';
 import { globalConfig } from './cosmiconfig';
+import { copyToDist } from './copyToDist';
+import { GetPackageBuildConfig } from './packageBuildConfig';
 
 import type { RollupBuild } from 'rollup';
-import type { OutputOptions, RollupOptions, Plugin } from 'rollup';
+import type { OutputOptions, InputOptions, Plugin } from 'rollup';
 
 export interface ConfigOptions {
   /**
@@ -35,9 +37,11 @@ export interface ConfigOptions {
 }
 
 export async function getRollupConfig(options: ConfigOptions = {}) {
-  const { config: globalOptions } = await globalConfig;
-
   const cwd = options.cwd || process.cwd();
+
+  const buildConfigPromise = GetPackageBuildConfig(cwd);
+
+  const { config: globalOptions } = await globalConfig;
 
   const clean = options.clean ?? globalOptions.clean;
 
@@ -92,7 +96,15 @@ export async function getRollupConfig(options: ConfigOptions = {}) {
       deps: true,
       ...globalOptions.externalOptions,
     }),
-    generatePackageJson(distDir),
+    generatePackageJson(
+      buildConfigPromise.then(v => v.pkg),
+      distDir
+    ),
+    copyToDist({
+      cwd,
+      distDir,
+      files: buildConfigPromise.then(({ buildConfig: { copy } }) => ['README.md', 'LICENSE', ...(copy || [])]),
+    }),
     ...(globalOptions.plugins || []),
   ];
 
@@ -115,15 +127,15 @@ export async function getRollupConfig(options: ConfigOptions = {}) {
       })
     );
   }
-  const rollupConfig: RollupOptions = {
+  const inputOptions: InputOptions = {
     input,
     plugins,
-    ...globalOptions.rollupOptions,
+    ...globalOptions.inputOptions,
   };
 
   async function write(bundle: RollupBuild) {
     await Promise.all(outputOptions.map(output => bundle.write(output)));
   }
 
-  return { config: rollupConfig, outputOptions, write };
+  return { inputOptions, outputOptions, write };
 }
