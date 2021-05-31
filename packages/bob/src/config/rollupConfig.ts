@@ -87,12 +87,6 @@ export async function getRollupConfig(options: ConfigOptions = {}) {
   ];
 
   const plugins: Plugin[] = [
-    bobEsbuildPlugin({
-      target: 'es2019',
-      sourceMap: true,
-      experimentalBundling,
-      ...globalOptions.esbuildPluginOptions,
-    }),
     externals({
       packagePath: path.resolve(cwd, 'package.json'),
       deps: true,
@@ -101,6 +95,17 @@ export async function getRollupConfig(options: ConfigOptions = {}) {
     generatePackageJson(distDir),
     ...(globalOptions.plugins || []),
   ];
+
+  if (globalOptions.esbuildPluginOptions !== false) {
+    plugins.push(
+      bobEsbuildPlugin({
+        target: 'es2019',
+        sourceMap: true,
+        experimentalBundling,
+        ...globalOptions.esbuildPluginOptions,
+      })
+    );
+  }
 
   if (clean) {
     plugins.push(

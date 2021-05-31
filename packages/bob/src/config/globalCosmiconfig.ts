@@ -32,7 +32,12 @@ export interface BobConfig extends Pick<ConfigOptions, 'clean' | 'inputFiles' | 
 
   outputOptions?: Omit<OutputOptions, 'format'>;
 
-  esbuildPluginOptions?: EsbuildPluginOptions;
+  /**
+   * Custom esbuild plugin options
+   *
+   * Set as `false` to not include esbuild plugin
+   */
+  esbuildPluginOptions?: EsbuildPluginOptions | false;
 
   externalOptions?: ExternalsOptions;
   /**
