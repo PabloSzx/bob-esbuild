@@ -2,7 +2,7 @@ import { command } from 'execa';
 import { watch as rollupWatch } from 'rollup';
 import kill from 'tree-kill';
 
-import { ConfigOptions, getRollupConfig } from '../config/rollupConfig';
+import { ConfigOptions, getRollupConfig } from '../config/rollup';
 import { debug } from '../log/debug';
 import { error } from '../log/error';
 

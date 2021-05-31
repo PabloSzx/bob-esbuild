@@ -3,8 +3,8 @@ import { existsSync, mkdir } from 'fs';
 import fsExtra from 'fs-extra';
 import { resolve } from 'path';
 
-import { globalConfig } from '../config/globalCosmiconfig';
-import { resolvedTsconfig } from '../config/resolveTsconfig';
+import { globalConfig } from '../config/cosmiconfig';
+import { resolvedTsconfig } from '../config/tsconfig';
 import { error } from '../log/error';
 
 export async function getHash(): Promise<{

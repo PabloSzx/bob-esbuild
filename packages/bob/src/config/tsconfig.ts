@@ -2,7 +2,7 @@ import assert from 'assert';
 import { load } from 'tsconfig';
 
 import { error } from '../log/error';
-import { globalConfig } from './globalCosmiconfig';
+import { globalConfig } from './cosmiconfig';
 
 export const resolvedTsconfig = (async () => {
   const {

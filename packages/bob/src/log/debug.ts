@@ -1,4 +1,4 @@
-import { globalConfig } from '../config/globalCosmiconfig';
+import { globalConfig } from '../config/cosmiconfig';
 import { makeLabel } from './label';
 
 export async function debug(...message: any[]) {

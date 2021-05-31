@@ -1,6 +1,6 @@
 import { rollup } from 'rollup';
 
-import { ConfigOptions, getRollupConfig } from '../config/rollupConfig';
+import { ConfigOptions, getRollupConfig } from '../config/rollup';
 import { debug } from '../log/debug';
 
 export async function buildRollup(options?: ConfigOptions) {

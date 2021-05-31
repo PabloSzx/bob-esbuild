@@ -4,8 +4,8 @@ import { copy, pathExists } from 'fs-extra';
 import globby from 'globby';
 import { parse, resolve } from 'path';
 
-import { resolvedTsconfig } from '../config/resolveTsconfig';
-import { globalConfig } from '../config/globalCosmiconfig';
+import { resolvedTsconfig } from '../config/tsconfig';
+import { globalConfig } from '../config/cosmiconfig';
 import { debug } from '../log/debug';
 import { error } from '../log/error';
 import { getHash } from './hash';

@@ -6,7 +6,7 @@ import externals from 'rollup-plugin-node-externals';
 
 import { debug } from '../log/debug';
 import { generatePackageJson } from './packageJson';
-import { globalConfig } from './globalCosmiconfig';
+import { globalConfig } from './cosmiconfig';
 
 import type { RollupBuild } from 'rollup';
 import type { OutputOptions, RollupOptions, Plugin } from 'rollup';
