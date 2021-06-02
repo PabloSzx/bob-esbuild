@@ -1,5 +1,12 @@
 # bob-esbuild
 
+## 0.1.19
+
+### Patch Changes
+
+- a47e85c: fix gen package json with empty dir folder
+- 63bcf77: allow package without main module
+
 ## 0.1.18
 
 ### Patch Changes
