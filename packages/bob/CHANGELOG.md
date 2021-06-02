@@ -1,5 +1,13 @@
 # bob-esbuild
 
+## 0.1.18
+
+### Patch Changes
+
+- 26f57cb: pnpm with publishConfig.directory
+- Updated dependencies [26f57cb]
+  - bob-esbuild-plugin@0.1.18
+
 ## 0.1.17
 
 ### Patch Changes

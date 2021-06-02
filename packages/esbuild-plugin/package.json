@@ -1,6 +1,6 @@
 {
   "name": "bob-esbuild-plugin",
-  "version": "0.1.17",
+  "version": "0.1.18",
   "description": "bob-esbuild main plugin, based on https://github.com/egoist/rollup-plugin-esbuild",
   "license": "MIT",
   "author": "PabloSzx <pablosaez1995@gmail.com>",
