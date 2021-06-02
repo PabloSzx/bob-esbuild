@@ -5,14 +5,14 @@ import del from 'rollup-plugin-delete';
 import externals from 'rollup-plugin-node-externals';
 
 import { debug } from '../log/debug';
-import { generatePackageJson } from './packageJson';
-import { globalConfig } from './cosmiconfig';
 import { copyToDist } from './copyToDist';
+import { globalConfig } from './cosmiconfig';
 import { GetPackageBuildConfig } from './packageBuildConfig';
+import { generatePackageJson } from './packageJson';
+import { rollupBin } from './rollupBin';
 
 import type { RollupBuild } from 'rollup';
 import type { OutputOptions, InputOptions, Plugin } from 'rollup';
-
 export interface ConfigOptions {
   /**
    * @default process.cwd()
@@ -90,21 +90,23 @@ export async function getRollupConfig(options: ConfigOptions = {}) {
     },
   ];
 
+  const buildConfig = await buildConfigPromise;
+
+  if (buildConfig.copy?.length) debug(`Copying ${buildConfig?.copy?.join(' | ')}`);
+
   const plugins: Plugin[] = [
     externals({
       packagePath: path.resolve(cwd, 'package.json'),
       deps: true,
       ...globalOptions.externalOptions,
     }),
-    generatePackageJson(
-      buildConfigPromise.then(v => v.pkg),
-      distDir
-    ),
+    generatePackageJson(buildConfig.pkg, distDir),
     copyToDist({
       cwd,
       distDir,
-      files: buildConfigPromise.then(({ buildConfig: { copy } }) => ['README.md', 'LICENSE', ...(copy || [])]),
+      files: ['README.md', 'LICENSE', ...(buildConfig.copy || [])],
     }),
+    rollupBin(buildConfig, cwd),
     ...(globalOptions.plugins || []),
   ];
 

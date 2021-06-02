@@ -14,12 +14,12 @@ declare module 'rollup' {
 
 export interface CopyFilesOptions {
   distDir: string;
-  files: Promise<string[]>;
+  files: string[];
   cwd?: string;
 }
 
 async function copyFilesToDist({ cwd = process.cwd(), distDir, files }: CopyFilesOptions) {
-  const allFiles = await globby(await files, { cwd });
+  const allFiles = await globby(files, { cwd });
 
   await Promise.all(
     allFiles.map(async file => {

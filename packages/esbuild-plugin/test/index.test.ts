@@ -3,7 +3,7 @@ import fs from 'fs';
 import { rollup, Plugin as RollupPlugin } from 'rollup';
 import mockfs from 'mock-fs';
 
-import { bobEsbuildPlugin, Options } from '../src';
+import { bobEsbuildPlugin, EsbuildPluginOptions } from '../src';
 
 const readFs = (folderName: string, files: Record<string, string>) => {
   mockfs.restore();
@@ -19,7 +19,7 @@ const readFs = (folderName: string, files: Record<string, string>) => {
 };
 
 const build = async (
-  options?: Options,
+  options?: EsbuildPluginOptions,
   {
     input = './fixture/index.js',
     sourcemap = false,

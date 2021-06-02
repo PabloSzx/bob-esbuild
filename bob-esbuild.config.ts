@@ -5,6 +5,6 @@ export const config: import('bob-esbuild').BobConfig = {
   distDir: 'lib',
   verbose: true,
   outputOptions: {
-    sourcemap: 'inline',
+    sourcemap: true,
   },
 };

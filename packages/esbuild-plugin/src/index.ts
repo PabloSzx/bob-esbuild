@@ -14,10 +14,10 @@ const defaultLoaders: { [ext: string]: Loader } = {
   '.tsx': 'tsx',
 };
 
-export type Options = {
+export type EsbuildPluginOptions = {
   include?: FilterPattern;
   exclude?: FilterPattern;
-  sourceMap?: boolean;
+  sourceMap?: boolean | 'inline' | 'external' | 'both';
   minify?: boolean;
   minifyWhitespace?: boolean;
   minifyIdentifiers?: boolean;
@@ -53,7 +53,7 @@ const warn = async (pluginContext: PluginContext, messages: Message[]) => {
   }
 };
 
-export const bobEsbuildPlugin = (options: Options = {}): Plugin => {
+export const bobEsbuildPlugin = (options: EsbuildPluginOptions = {}): Plugin => {
   let target: string | string[];
 
   const loaders = {
@@ -145,7 +145,7 @@ export const bobEsbuildPlugin = (options: Options = {}): Plugin => {
         jsxFactory: options.jsxFactory || defaultOptions.jsxFactory,
         jsxFragment: options.jsxFragment || defaultOptions.jsxFragment,
         define: options.define,
-        sourcemap: options.sourceMap !== false,
+        sourcemap: options.sourceMap,
         sourcefile: id,
       });
 
@@ -168,7 +168,7 @@ export const bobEsbuildPlugin = (options: Options = {}): Plugin => {
           minifyIdentifiers: options.minifyIdentifiers,
           minifySyntax: options.minifySyntax,
           target,
-          sourcemap: options.sourceMap !== false,
+          sourcemap: options.sourceMap,
         });
         await warn(this, result.warnings);
         if (result.code) {

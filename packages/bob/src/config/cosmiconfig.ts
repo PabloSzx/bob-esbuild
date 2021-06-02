@@ -9,7 +9,7 @@ import { importFromString } from '../utils/importFromString';
 import type { Plugin, InputOptions, OutputOptions } from 'rollup';
 import type { ConfigOptions } from './rollup';
 import type { TSCOptions } from '../tsc/types';
-import type { Options as EsbuildPluginOptions } from 'bob-esbuild-plugin';
+import type { EsbuildPluginOptions } from 'bob-esbuild-plugin';
 import type { ExternalsOptions } from 'rollup-plugin-node-externals';
 
 export type PickRequired<T, K extends keyof T> = T & Required<Pick<T, K>>;

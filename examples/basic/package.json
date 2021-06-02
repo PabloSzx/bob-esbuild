@@ -4,6 +4,16 @@
   "private": true,
   "license": "MIT",
   "author": "PabloSzx <pablosaez1995@gmail.com>",
+  "bin": {
+    "TestASD": "lib/bin/other.js"
+  },
+  "buildConfig": {
+    "bin": {
+      "TestASD": {
+        "input": "src/other.ts"
+      }
+    }
+  },
   "exports": {
     ".": {
       "require": "./lib/index.js",

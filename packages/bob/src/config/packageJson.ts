@@ -50,7 +50,7 @@ function rewritePackageJson(pkg: Record<string, any>, distDir: string) {
     },
   };
 
-  if (!!false && pkg.bin) {
+  if (pkg.bin) {
     newPkg.bin = {};
 
     for (const alias in pkg.bin) {
@@ -105,12 +105,10 @@ declare module 'rollup' {
   }
 }
 
-export const generatePackageJson = (packageJsonPromise: Promise<Record<string, any>>, distDir: string): Plugin => {
+export const generatePackageJson = (packageJson: Record<string, any>, distDir: string): Plugin => {
   return {
     name: 'GeneratePackageJson',
     async buildStart() {
-      const packageJson = await packageJsonPromise;
-
       validatePackageJson(packageJson, distDir);
 
       this[GenPackageJson] = writePackageJson(packageJson, distDir);
