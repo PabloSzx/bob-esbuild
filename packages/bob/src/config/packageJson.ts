@@ -32,12 +32,14 @@ function rewritePackageJson(pkg: Record<string, any>, distDir: string) {
     }
   }
 
-  newPkg.main = 'index.js';
-  newPkg.module = 'index.mjs';
-  newPkg.types = 'index.d.ts';
-  newPkg.typescript = {
-    definition: 'index.d.ts',
-  };
+  if (pkg.main) {
+    newPkg.main = 'index.js';
+    newPkg.module = 'index.mjs';
+    newPkg.types = 'index.d.ts';
+    newPkg.typescript = {
+      definition: 'index.d.ts',
+    };
+  }
 
   newPkg.exports = {
     '.': {
@@ -72,23 +74,33 @@ export function validatePackageJson(pkg: Record<string, unknown>, distDir: strin
     }
   }
 
-  expect('main', `${distDir}/index.js`);
-  expect('module', `${distDir}/index.mjs`);
-  if (get(pkg, 'types')) {
-    expect('types', `${distDir}/index.d.ts`);
-  } else {
-    expect('typings', `${distDir}/index.d.ts`);
-  }
-  if (get(pkg, 'typescript.definition')) {
-    expect('typescript.definition', `${distDir}/index.d.ts`);
+  if (pkg.main) {
+    expect('main', `${distDir}/index.js`);
+    expect('module', `${distDir}/index.mjs`);
+    if (get(pkg, 'types')) {
+      expect('types', `${distDir}/index.d.ts`);
+    } else {
+      expect('typings', `${distDir}/index.d.ts`);
+    }
+
+    if (get(pkg, 'typescript.definition')) {
+      expect('typescript.definition', `${distDir}/index.d.ts`);
+    }
   }
 
   if (get(pkg, 'publishConfig')) {
     expect('publishConfig.directory', distDir);
   }
 
-  expect(['exports', '.', 'require'], `./${distDir}/index.js`);
-  expect(['exports', '.', 'import'], `./${distDir}/index.mjs`);
+  if (get(pkg, ['exports', '.'])) {
+    expect(['exports', '.', 'require'], `./${distDir}/index.js`);
+    expect(['exports', '.', 'import'], `./${distDir}/index.mjs`);
+  }
+
+  if (get(pkg, ['exports', './*'])) {
+    expect(['exports', './*', 'require'], `./${distDir}/*.js`);
+    expect(['exports', './*', 'import'], `./${distDir}/*.mjs`);
+  }
 }
 
 export async function writePackageJson(pkg: Record<string, any>, distDir: string) {
