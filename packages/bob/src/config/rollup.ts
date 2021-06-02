@@ -100,7 +100,7 @@ export async function getRollupConfig(options: ConfigOptions = {}) {
       deps: true,
       ...globalOptions.externalOptions,
     }),
-    generatePackageJson(buildConfig.pkg, distDir),
+    generatePackageJson({ packageJson: buildConfig.pkg, distDir, cwd }),
     copyToDist({
       cwd,
       distDir,

@@ -1,5 +1,5 @@
 import get from 'lodash.get';
-import { readJSON, writeJSON } from 'fs-extra';
+import { readJSON, writeJSON, ensureDir } from 'fs-extra';
 import { resolve } from 'path';
 
 import type { Plugin } from 'rollup';
@@ -103,8 +103,10 @@ export function validatePackageJson(pkg: Record<string, unknown>, distDir: strin
   }
 }
 
-export async function writePackageJson(pkg: Record<string, any>, distDir: string) {
-  await writeJSON(resolve(process.cwd(), distDir, 'package.json'), rewritePackageJson(pkg, distDir), {
+export async function writePackageJson({ packageJson, distDir, cwd = process.cwd() }: GeneratePackageJsonOptions) {
+  const distDirPath = resolve(cwd, distDir);
+  await ensureDir(distDirPath);
+  await writeJSON(resolve(distDirPath, 'package.json'), rewritePackageJson(packageJson, distDir), {
     spaces: 2,
   });
 }
@@ -117,13 +119,19 @@ declare module 'rollup' {
   }
 }
 
-export const generatePackageJson = (packageJson: Record<string, any>, distDir: string): Plugin => {
+export interface GeneratePackageJsonOptions {
+  packageJson: Record<string, unknown>;
+  distDir: string;
+  cwd?: string;
+}
+
+export const generatePackageJson = (options: GeneratePackageJsonOptions): Plugin => {
   return {
     name: 'GeneratePackageJson',
     async buildStart() {
-      validatePackageJson(packageJson, distDir);
+      validatePackageJson(options.packageJson, options.distDir);
 
-      this[GenPackageJson] = writePackageJson(packageJson, distDir);
+      this[GenPackageJson] = writePackageJson(options);
     },
     async buildEnd() {
       await this[GenPackageJson];
