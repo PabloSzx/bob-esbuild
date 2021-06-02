@@ -36,6 +36,10 @@
     "@types/node": "^15.6.1",
     "rollup": "^2.50.3"
   },
+  "publishConfig": {
+    "access": "public",
+    "directory": "lib"
+  },
   "tsup": {
     "entryPoints": [
       "src/**/*.ts"

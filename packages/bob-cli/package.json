@@ -52,15 +52,15 @@
   "engines": {
     "node": ">=12.0.0"
   },
+  "publishConfig": {
+    "access": "public",
+    "directory": "lib"
+  },
   "oclif": {
     "commands": "./lib/commands",
     "bin": "bob",
     "plugins": [
       "@oclif/plugin-help"
     ]
-  },
-  "publishConfig": {
-    "directory": "lib",
-    "access": "public"
   }
 }
