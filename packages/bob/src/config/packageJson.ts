@@ -2,11 +2,14 @@ import { ensureDir, readJSON, writeJSON } from 'fs-extra';
 import get from 'lodash.get';
 import { resolve } from 'path';
 
+// This function even if it's pnpm specific, it doesn't conflict with other package
+// managers, since if a dependency doesn't use the workspace protocol, it does nothing
+import makePublishManifest from '@pnpm/exportable-manifest';
+
 import { debug } from '../log/debug';
 
 import type { Plugin } from 'rollup';
 import type { PackageBuildConfig } from './packageBuildConfig';
-
 export interface PackageJSON extends Record<string, unknown> {
   bin?: Record<string, string>;
   publishConfig?: {
@@ -118,9 +121,13 @@ export function validatePackageJson(pkg: PackageJSON, distDir: string) {
 export async function writePackageJson({ packageJson, distDir, cwd = process.cwd() }: GeneratePackageJsonOptions) {
   const distDirPath = resolve(cwd, distDir);
   await ensureDir(distDirPath);
-  await writeJSON(resolve(distDirPath, 'package.json'), rewritePackageJson(packageJson, distDir), {
-    spaces: 2,
-  });
+  await writeJSON(
+    resolve(distDirPath, 'package.json'),
+    await makePublishManifest(cwd, rewritePackageJson(packageJson, distDir)),
+    {
+      spaces: 2,
+    }
+  );
 }
 
 const GenPackageJson = Symbol();
