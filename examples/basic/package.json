@@ -4,16 +4,6 @@
   "private": true,
   "license": "MIT",
   "author": "PabloSzx <pablosaez1995@gmail.com>",
-  "bin": {
-    "TestASD": "lib/bin/other.js"
-  },
-  "buildConfig": {
-    "bin": {
-      "TestASD": {
-        "input": "src/other.ts"
-      }
-    }
-  },
   "exports": {
     ".": {
       "require": "./lib/index.js",
@@ -27,6 +17,12 @@
   "main": "lib/index.js",
   "module": "lib/index.mjs",
   "types": "lib/index.d.ts",
+  "bin": {
+    "TestASD": "lib/bin/other.js"
+  },
+  "files": [
+    "lib"
+  ],
   "scripts": {
     "dev": "bob-esbuild watch",
     "prepare": "bob-esbuild build && node lib/index.js"
@@ -34,5 +30,12 @@
   "dependencies": {
     "bob-esbuild-cli": "workspace:^0.1.14",
     "shared": "workspace:^1.0.0"
+  },
+  "buildConfig": {
+    "bin": {
+      "TestASD": {
+        "input": "src/other.ts"
+      }
+    }
   }
 }

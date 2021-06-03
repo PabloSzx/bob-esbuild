@@ -1,15 +1,27 @@
+import { ensureDir, readJSON, writeJSON } from 'fs-extra';
 import get from 'lodash.get';
-import { readJSON, writeJSON, ensureDir } from 'fs-extra';
 import { resolve } from 'path';
 
-import type { Plugin } from 'rollup';
+import { debug } from '../log/debug';
 
-export function readPackageJson(): Promise<Record<string, any>> {
+import type { Plugin } from 'rollup';
+import type { PackageBuildConfig } from './packageBuildConfig';
+
+export interface PackageJSON extends Record<string, unknown> {
+  bin?: Record<string, string>;
+  publishConfig?: {
+    directory?: string;
+  };
+  files?: string[];
+  buildConfig?: PackageBuildConfig;
+}
+
+export function readPackageJson(): Promise<PackageJSON> {
   return readJSON(resolve(process.cwd(), 'package.json'));
 }
 
-function rewritePackageJson(pkg: Record<string, any>, distDir: string) {
-  const newPkg: Record<string, any> = {};
+function rewritePackageJson(pkg: PackageJSON, distDir: string) {
+  const newPkg: PackageJSON = {};
   const fields = [
     'name',
     'version',
@@ -55,15 +67,15 @@ function rewritePackageJson(pkg: Record<string, any>, distDir: string) {
   if (pkg.bin) {
     newPkg.bin = {};
 
-    for (const alias in pkg.bin) {
-      newPkg.bin[alias] = pkg.bin[alias].replace(`${distDir}/`, '');
+    for (const [alias, binPath] of Object.entries(pkg.bin)) {
+      newPkg.bin[alias] = binPath.replace(`${distDir}/`, '');
     }
   }
 
   return newPkg;
 }
 
-export function validatePackageJson(pkg: Record<string, unknown>, distDir: string) {
+export function validatePackageJson(pkg: PackageJSON, distDir: string) {
   function expect(key: string | string[], expected: string) {
     const received = get(pkg, key);
 
@@ -120,7 +132,7 @@ declare module 'rollup' {
 }
 
 export interface GeneratePackageJsonOptions {
-  packageJson: Record<string, unknown>;
+  packageJson: PackageJSON;
   distDir: string;
   cwd?: string;
 }
@@ -129,6 +141,22 @@ export const generatePackageJson = (options: GeneratePackageJsonOptions): Plugin
   return {
     name: 'GeneratePackageJson',
     async buildStart() {
+      if (!options.packageJson.publishConfig?.directory) {
+        if (
+          !Array.isArray(options.packageJson.files) ||
+          !options.packageJson.files.some(v => v === options.distDir || v === '/' + options.distDir)
+        )
+          throw Error(
+            `No valid 'files' property in ${resolve(
+              options.cwd || process.cwd(),
+              'package.json'
+            )} without using "publishConfig.directory"`
+          );
+
+        debug(`Skipping package.json rewrite in publish subdirectory: ${resolve(options.cwd || process.cwd())}`);
+        return;
+      }
+
       validatePackageJson(options.packageJson, options.distDir);
 
       this[GenPackageJson] = writePackageJson(options);

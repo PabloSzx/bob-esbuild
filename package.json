@@ -27,14 +27,11 @@
     "typescript": "^4.3.2"
   },
   "engines": {
-    "pnpm": ">=6.7.0"
+    "pnpm": ">=6.7.1"
   },
   "pnpm": {
     "overrides": {
       "esbuild": "^0.12.5"
     }
-  },
-  "dependencies": {
-    "pnpm": "6.7.0"
   }
 }

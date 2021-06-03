@@ -17,6 +17,9 @@
   "main": "lib/index.js",
   "module": "lib/index.mjs",
   "types": "lib/index.d.ts",
+  "files": [
+    "lib"
+  ],
   "scripts": {
     "dev": "bob-esbuild watch",
     "prepare": "bob-esbuild build"

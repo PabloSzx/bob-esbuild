@@ -2,6 +2,7 @@ import { readJSON } from 'fs-extra';
 import { resolve } from 'path';
 
 import type { OutputOptions } from 'rollup';
+import type { PackageJSON } from './packageJson';
 
 export interface PackageBuildConfig {
   copy?: string[];
@@ -15,11 +16,11 @@ export interface PackageBuildConfig {
       sourcemap?: OutputOptions['sourcemap'];
     }
   >;
-  pkg: Record<string, unknown>;
+  pkg: PackageJSON;
 }
 
 export async function GetPackageBuildConfig(cwd: string = process.cwd()): Promise<PackageBuildConfig> {
-  const pkg: Record<string, unknown> & { buildConfig?: PackageBuildConfig } = await readJSON(resolve(cwd, 'package.json'));
+  const pkg: PackageJSON = await readJSON(resolve(cwd, 'package.json'));
 
   const buildConfig: PackageBuildConfig = {
     pkg,
