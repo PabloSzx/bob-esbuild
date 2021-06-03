@@ -1,5 +1,11 @@
 # bob-esbuild
 
+## 0.1.20
+
+### Patch Changes
+
+- 312fa02: skip package.json rewrite in subdir while validating files property
+
 ## 0.1.19
 
 ### Patch Changes
