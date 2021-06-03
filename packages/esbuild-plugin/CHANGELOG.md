@@ -1,5 +1,11 @@
 # bob-esbuild-plugin
 
+## 0.1.21
+
+### Patch Changes
+
+- c9d38ba: fix package.json rewrite w/ workspace protocol & sync packages
+
 ## 0.1.18
 
 ### Patch Changes
