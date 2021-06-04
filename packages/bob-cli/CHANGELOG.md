@@ -1,5 +1,13 @@
 # bob-esbuild-cli
 
+## 0.1.22
+
+### Patch Changes
+
+- fe24982: allow skip tsc build && default clean false on watch
+- Updated dependencies [fe24982]
+  - bob-esbuild@0.1.22
+
 ## 0.1.21
 
 ### Patch Changes

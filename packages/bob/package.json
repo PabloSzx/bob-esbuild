@@ -1,6 +1,6 @@
 {
   "name": "bob-esbuild",
-  "version": "0.1.21",
+  "version": "0.1.22",
   "license": "MIT",
   "author": "PabloSzx <pablosaez1995@gmail.com>",
   "exports": {
