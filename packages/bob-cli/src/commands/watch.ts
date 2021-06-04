@@ -20,8 +20,10 @@ export default class Watch extends Command {
       allowNo: true,
     }),
     clean: flags.boolean({
-      description: "Clean the output files before writing the new build, by default it's set as 'true' by the global config",
+      description:
+        "DEFAULT=false. Clean the output files before writing the new build, by default it's set as 'true' by the global config",
       allowNo: true,
+      default: false,
     }),
     onSuccess: flags.string({
       description: 'Execute script after successful JS build',

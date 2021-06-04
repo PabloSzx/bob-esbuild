@@ -23,11 +23,14 @@ export default class Build extends Command {
       description: "Clean the output files before writing the new build, by default it's set as 'true' by the global config",
       allowNo: true,
     }),
+    skipTsc: flags.boolean({
+      description: 'Skip TSC build',
+    }),
   };
 
   async run() {
     const {
-      flags: { cwd, input: inputFiles, bundle, clean },
+      flags: { cwd, input: inputFiles, bundle, clean, skipTsc },
     } = this.parse(Build);
 
     await startBuild({
@@ -37,7 +40,7 @@ export default class Build extends Command {
         bundle,
         clean,
       },
-      tsc: {},
+      tsc: skipTsc ? false : {},
     });
   }
 }
