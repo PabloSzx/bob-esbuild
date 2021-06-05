@@ -1,4 +1,4 @@
-import { ensureDir, readJSON, writeJSON } from 'fs-extra';
+import { ensureDir, writeJSON } from 'fs-extra';
 import get from 'lodash.get';
 import { resolve } from 'path';
 
@@ -17,13 +17,10 @@ export interface PackageJSON extends Record<string, unknown> {
   };
   files?: string[];
   buildConfig?: PackageBuildConfig;
+  exports?: Record<string, { require: string; import: string } | undefined>;
 }
 
-export function readPackageJson(): Promise<PackageJSON> {
-  return readJSON(resolve(process.cwd(), 'package.json'));
-}
-
-function rewritePackageJson(pkg: PackageJSON, distDir: string) {
+function rewritePackageJson(pkg: PackageJSON, distDir: string, cwd: string) {
   const newPkg: PackageJSON = {};
   const fields = [
     'name',
@@ -56,16 +53,23 @@ function rewritePackageJson(pkg: PackageJSON, distDir: string) {
     };
   }
 
-  newPkg.exports = {
-    '.': {
-      require: './index.js',
-      import: './index.mjs',
-    },
-    './*': {
+  if (pkg.exports?.['./*']) {
+    (newPkg.exports ||= {})['./*'] = {
       require: './*.js',
       import: './*.mjs',
-    },
-  };
+    };
+  }
+
+  if (pkg.exports?.['.']) {
+    (newPkg.exports ||= {})['.'] = {
+      require: './index.js',
+      import: './index.mjs',
+    };
+  }
+
+  if (!newPkg.exports) {
+    debug(`No "." or "./*" exports field specified in ${resolve(cwd, distDir, 'package.json')}!`);
+  }
 
   if (pkg.bin) {
     newPkg.bin = {};
@@ -123,7 +127,7 @@ export async function writePackageJson({ packageJson, distDir, cwd = process.cwd
   await ensureDir(distDirPath);
   await writeJSON(
     resolve(distDirPath, 'package.json'),
-    await makePublishManifest(cwd, rewritePackageJson(packageJson, distDir)),
+    await makePublishManifest(cwd, rewritePackageJson(packageJson, distDir, cwd)),
     {
       spaces: 2,
     }
