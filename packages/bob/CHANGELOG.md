@@ -1,5 +1,11 @@
 # bob-esbuild
 
+## 0.1.24
+
+### Patch Changes
+
+- 3272150: add warn logging
+
 ## 0.1.23
 
 ### Patch Changes
