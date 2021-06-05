@@ -33,6 +33,13 @@ export interface BobConfig extends Pick<ConfigOptions, 'clean' | 'inputFiles' | 
   outputOptions?: Omit<OutputOptions, 'format'>;
 
   /**
+   * Skip automatic TSC build, make sure to manually call `bob-esbuild tsc`
+   *
+   * @default false
+   */
+  skipAutoTSCBuild?: boolean;
+
+  /**
    * Custom esbuild plugin options
    *
    * Set as `false` to not include esbuild plugin

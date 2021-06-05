@@ -1,3 +1,4 @@
+import { globalConfig } from './config';
 import { buildRollup } from './rollup/build';
 import { buildTsc } from './tsc/build';
 
@@ -10,5 +11,7 @@ export interface BuildOptions {
 }
 
 export async function startBuild(options: BuildOptions = {}) {
-  await Promise.all([buildRollup(options.rollup), options.tsc !== false ? buildTsc(options.tsc) : null]);
+  const skipTsc = options.tsc !== false ? (await globalConfig).config.skipAutoTSCBuild : true;
+
+  await Promise.all([buildRollup(options.rollup), skipTsc ? null : buildTsc({ ...options.tsc })]);
 }
