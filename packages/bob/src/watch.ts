@@ -6,7 +6,7 @@ import type { TSCOptions } from './tsc/types';
 
 export interface WatchOptions {
   rollup?: WatchRollupOptions;
-  tsc?: TSCOptions;
+  tsc?: TSCOptions | false;
 }
 
 export function startWatch(options: WatchOptions = {}) {
@@ -14,13 +14,13 @@ export function startWatch(options: WatchOptions = {}) {
     ...options.rollup,
     onSuccessCallback(builds) {
       // Only for the first build we wait until it ends
-      if (builds === 0) {
+      if (options.tsc !== false && builds === 0) {
         buildTsc(options.tsc).catch(error);
       }
     },
     onStartCallback(builds) {
       // For subsequent builds we start building types on start
-      if (builds > 0) {
+      if (options.tsc !== false && builds > 0) {
         buildTsc(options.tsc).catch(error);
       }
     },
