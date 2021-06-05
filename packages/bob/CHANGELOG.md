@@ -1,5 +1,14 @@
 # bob-esbuild
 
+## 0.1.23
+
+### Patch Changes
+
+- 1556971: allow skipTsc in watch mode
+- 0aabb50: add skipAutoTSCBuild config
+- b4ee29a: allow only build cjs/esm
+- d3806f2: rewrite package.json exports only if specified
+
 ## 0.1.22
 
 ### Patch Changes
