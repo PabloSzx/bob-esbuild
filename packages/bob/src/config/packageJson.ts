@@ -6,8 +6,7 @@ import { resolve } from 'path';
 // managers, since if a dependency doesn't use the workspace protocol, it does nothing
 import makePublishManifest from '@pnpm/exportable-manifest';
 
-import { debug } from '../log/debug';
-
+import { warn } from '../log/warn';
 import type { Plugin } from 'rollup';
 import type { PackageBuildConfig } from './packageBuildConfig';
 export interface PackageJSON extends Record<string, unknown> {
@@ -68,7 +67,7 @@ function rewritePackageJson(pkg: PackageJSON, distDir: string, cwd: string) {
   }
 
   if (!newPkg.exports) {
-    debug(`No "." or "./*" exports field specified in ${resolve(cwd, distDir, 'package.json')}!`);
+    warn(`No "." or "./*" exports field specified in ${resolve(cwd, distDir, 'package.json')}!`);
   }
 
   if (pkg.bin) {
@@ -164,7 +163,7 @@ export const generatePackageJson = (options: GeneratePackageJsonOptions): Plugin
             )} without using "publishConfig.directory"`
           );
 
-        debug(`Skipping package.json rewrite in publish subdirectory: ${resolve(options.cwd || process.cwd())}`);
+        warn(`Skipping package.json rewrite in publish subdirectory: ${resolve(options.cwd || process.cwd())}`);
         return;
       }
 
