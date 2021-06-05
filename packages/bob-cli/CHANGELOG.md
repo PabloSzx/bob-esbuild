@@ -1,5 +1,17 @@
 # bob-esbuild-cli
 
+## 0.1.23
+
+### Patch Changes
+
+- 1556971: allow skipTsc in watch mode
+- b4ee29a: allow only build cjs/esm
+- Updated dependencies [1556971]
+- Updated dependencies [0aabb50]
+- Updated dependencies [b4ee29a]
+- Updated dependencies [d3806f2]
+  - bob-esbuild@0.1.23
+
 ## 0.1.22
 
 ### Patch Changes
