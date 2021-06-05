@@ -26,11 +26,19 @@ export default class Build extends Command {
     skipTsc: flags.boolean({
       description: 'Skip TSC build',
     }),
+    onlyCJS: flags.boolean({
+      description: 'Only build for CJS',
+      exclusive: ['onlyESM'],
+    }),
+    onlyESM: flags.boolean({
+      description: 'Only build for ESM',
+      exclusive: ['onlyCJS'],
+    }),
   };
 
   async run() {
     const {
-      flags: { cwd, input: inputFiles, bundle, clean, skipTsc },
+      flags: { cwd, input: inputFiles, bundle, clean, skipTsc, onlyCJS, onlyESM },
     } = this.parse(Build);
 
     await startBuild({
@@ -39,6 +47,8 @@ export default class Build extends Command {
         inputFiles,
         bundle,
         clean,
+        onlyCJS,
+        onlyESM,
       },
       tsc: skipTsc ? false : {},
     });

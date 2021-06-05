@@ -28,11 +28,19 @@ export default class Watch extends Command {
     onSuccess: flags.string({
       description: 'Execute script after successful JS build',
     }),
+    onlyCJS: flags.boolean({
+      description: 'Only build for CJS',
+      exclusive: ['onlyESM'],
+    }),
+    onlyESM: flags.boolean({
+      description: 'Only build for ESM',
+      exclusive: ['onlyCJS'],
+    }),
   };
 
   async run() {
     const {
-      flags: { cwd, input: inputFiles, bundle, clean, onSuccess },
+      flags: { cwd, input: inputFiles, bundle, clean, onSuccess, onlyCJS, onlyESM },
     } = this.parse(Watch);
 
     await startWatch({
@@ -42,6 +50,8 @@ export default class Watch extends Command {
           inputFiles,
           bundle,
           clean,
+          onlyCJS,
+          onlyESM,
         },
         onSuccessCommand: onSuccess,
       },

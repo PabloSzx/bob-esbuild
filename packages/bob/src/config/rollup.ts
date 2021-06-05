@@ -34,6 +34,18 @@ export interface ConfigOptions {
    * @default false
    */
   bundle?: boolean;
+
+  /**
+   * Only build CJS
+   * @default false
+   */
+  onlyCJS?: boolean;
+
+  /**
+   * Only build ESM
+   * @default false
+   */
+  onlyESM?: boolean;
 }
 
 export async function getRollupConfig(options: ConfigOptions = {}) {
@@ -69,26 +81,29 @@ export async function getRollupConfig(options: ConfigOptions = {}) {
 
   const experimentalBundling = options.bundle ?? globalOptions.bundle ?? false;
 
-  const outputOptions: OutputOptions[] = [
-    {
-      dir: path.resolve(cwd, distDir),
-      format: 'cjs',
-      preserveModules: true,
-      exports: 'auto',
-      sourcemap: true,
-      preferConst: true,
-      ...globalOptions.outputOptions,
-    },
-    {
-      dir: path.resolve(cwd, distDir),
-      format: 'es',
-      entryFileNames: '[name].mjs',
-      preserveModules: true,
-      sourcemap: true,
-      preferConst: true,
-      ...globalOptions.outputOptions,
-    },
-  ];
+  if (options.onlyESM && options.onlyCJS) throw Error('You can only restrict to either one of CJS or ESM');
+
+  const cjsOpts: OutputOptions = {
+    dir: path.resolve(cwd, distDir),
+    format: 'cjs',
+    preserveModules: true,
+    exports: 'auto',
+    sourcemap: true,
+    preferConst: true,
+    ...globalOptions.outputOptions,
+  };
+
+  const esmOpts: OutputOptions = {
+    dir: path.resolve(cwd, distDir),
+    format: 'es',
+    entryFileNames: '[name].mjs',
+    preserveModules: true,
+    sourcemap: true,
+    preferConst: true,
+    ...globalOptions.outputOptions,
+  };
+
+  const outputOptions: OutputOptions[] = options.onlyCJS ? [cjsOpts] : options.onlyESM ? [esmOpts] : [cjsOpts, esmOpts];
 
   const buildConfig = await buildConfigPromise;
 

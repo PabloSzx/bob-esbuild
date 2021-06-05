@@ -14,7 +14,7 @@ import type { ExternalsOptions } from 'rollup-plugin-node-externals';
 
 export type PickRequired<T, K extends keyof T> = T & Required<Pick<T, K>>;
 
-export interface BobConfig extends Pick<ConfigOptions, 'clean' | 'inputFiles' | 'bundle'> {
+export interface BobConfig extends Pick<ConfigOptions, 'clean' | 'inputFiles' | 'bundle' | 'onlyCJS' | 'onlyESM'> {
   tsc?: TSCOptions;
   /**
    * It defaults to bob-esbuild.config directory
