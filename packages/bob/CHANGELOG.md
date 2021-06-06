@@ -1,5 +1,11 @@
 # bob-esbuild
 
+## 0.1.25
+
+### Patch Changes
+
+- b96c19b: (tsc) support custom tsconfig path
+
 ## 0.1.24
 
 ### Patch Changes
