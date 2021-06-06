@@ -1,5 +1,5 @@
 import { hashElement } from 'folder-hash';
-import { existsSync, mkdir } from 'fs';
+import { existsSync, mkdir, rmSync } from 'fs';
 import fsExtra from 'fs-extra';
 import { resolve } from 'path';
 
@@ -7,9 +7,7 @@ import { globalConfig } from '../config/cosmiconfig';
 import { resolvedTsconfig } from '../config/tsconfig';
 import { error } from '../log/error';
 
-export async function getHash(): Promise<{
-  shouldBuild?: boolean;
-}> {
+export async function getHash() {
   const {
     config: { rootDir, distDir, tsc: { hash } = {} },
   } = await globalConfig;
@@ -50,6 +48,14 @@ export async function getHash(): Promise<{
       : null,
   ]);
 
+  const cleanHash = () => {
+    try {
+      rmSync(typesHashJSON);
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
   if (jsonHash?.hash !== currentHash.hash) {
     mkdir(resolve(rootDir, outDir), () => {
       fsExtra
@@ -61,9 +67,11 @@ export async function getHash(): Promise<{
 
     return {
       shouldBuild: true,
+      cleanHash,
     };
   }
   return {
     shouldBuild: false,
+    cleanHash,
   };
 }

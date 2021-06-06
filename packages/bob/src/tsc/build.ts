@@ -34,7 +34,7 @@ export async function buildTsc(options: TSCOptions = {}) {
     cwd: rootDirCwd,
   });
 
-  const shouldBuild = (await hashPromise).shouldBuild;
+  const { shouldBuild, cleanHash } = await hashPromise;
 
   if (shouldBuild) {
     debug('Building types for: ' + targetDirs.join(' | '));
@@ -43,6 +43,10 @@ export async function buildTsc(options: TSCOptions = {}) {
     await command(tscCommand + (tsconfig ? ` -p ${tsconfig}` : ''), {
       cwd: rootDirCwd,
       stdio: 'inherit',
+    }).catch(err => {
+      cleanHash();
+
+      throw err;
     });
   }
 
