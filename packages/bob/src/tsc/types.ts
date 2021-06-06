@@ -42,4 +42,12 @@ export interface TSCOptions {
       exclude?: string[];
     };
   };
+
+  /**
+   * Specify tsconfig location.
+   * By default it looks for the default `tsconfig.json` besides the bob.config.ts
+   *
+   * IT HAS TO BE AN ABSOLUTE PATH
+   */
+  tsconfig?: string;
 }

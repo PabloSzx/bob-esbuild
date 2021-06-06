@@ -39,7 +39,8 @@ export async function buildTsc(options: TSCOptions = {}) {
   if (shouldBuild) {
     debug('Building types for: ' + targetDirs.join(' | '));
 
-    await command(tscCommand, {
+    const tsconfig = globalTsc.tsconfig;
+    await command(tscCommand + (tsconfig ? ` -p ${tsconfig}` : ''), {
       cwd: rootDirCwd,
       stdio: 'inherit',
     });
