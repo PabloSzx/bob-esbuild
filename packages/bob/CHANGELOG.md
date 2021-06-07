@@ -1,5 +1,12 @@
 # bob-esbuild
 
+## 0.1.26
+
+### Patch Changes
+
+- 7afb215: remove hash on tsc error
+- a0aaffa: add support for "buildConfig.input"
+
 ## 0.1.25
 
 ### Patch Changes
