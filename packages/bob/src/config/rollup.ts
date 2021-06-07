@@ -57,7 +57,7 @@ export async function getRollupConfig(options: ConfigOptions = {}) {
 
   const clean = options.clean ?? globalOptions.clean;
 
-  const inputFiles = options.inputFiles || globalOptions.inputFiles || ['src/**/*.{ts,tsx}'];
+  const inputFiles = options.inputFiles || (await buildConfigPromise).input || globalOptions.inputFiles || ['src/**/*.{ts,tsx}'];
 
   if (!inputFiles.length) throw Error('No input files to check!');
 
