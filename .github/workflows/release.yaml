@@ -37,7 +37,7 @@ jobs:
         run: npm i pnpm@^6.7.0 -g
 
       - name: Install Dependencies
-        run: pnpm i --frozen-lockfile
+        run: pnpm i
 
       - name: Create Release Pull Request or Publish to npm
         id: changesets

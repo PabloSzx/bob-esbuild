@@ -30,4 +30,4 @@ jobs:
         run: npm i pnpm@^6.7.0 -g
 
       - name: Install Dependencies & prepare
-        run: pnpm i --frozen-lockfile
+        run: pnpm i
