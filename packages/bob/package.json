@@ -43,7 +43,7 @@
     "rollup": "^2.50.4",
     "rollup-plugin-delete": "^2.0.0",
     "rollup-plugin-node-externals": "^2.2.0",
-    "sucrase": "^3.18.1",
+    "sucrase": "^3.18.2",
     "tree-kill": "^1.2.2",
     "tsconfig": "^7.0.0"
   },
