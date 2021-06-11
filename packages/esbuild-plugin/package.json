@@ -38,13 +38,13 @@
     "esbuild-register": "^2.5.0",
     "jest": "^27.0.4",
     "mock-fs": "^5.0.0",
-    "rollup": "^2.51.1",
+    "rollup": "^2.51.2",
     "ts-jest": "^27.0.3",
     "tsup": "^4.11.2"
   },
   "peerDependencies": {
     "@types/node": "^15.6.1",
-    "rollup": "^2.51.1"
+    "rollup": "^2.51.2"
   },
   "tsup": {
     "entryPoints": [
