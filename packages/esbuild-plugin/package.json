@@ -2,6 +2,11 @@
   "name": "bob-esbuild-plugin",
   "version": "0.1.21",
   "description": "bob-esbuild main plugin, based on https://github.com/egoist/rollup-plugin-esbuild",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/PabloSzx/bob-esbuild",
+    "directory": "packages/esbuild-plugin"
+  },
   "license": "MIT",
   "author": "PabloSzx <pablosaez1995@gmail.com>",
   "exports": {
@@ -21,7 +26,7 @@
   ],
   "scripts": {
     "prepare": "tsup && pnpm -w types",
-    "postpublish": "gh-release --repo PabloSzx/bob-esbuild",
+    "postpublish": "gh-release",
     "test": "jest"
   },
   "dependencies": {

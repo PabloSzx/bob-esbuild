@@ -1,6 +1,11 @@
 {
   "name": "bob-esbuild",
   "version": "0.1.26",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/PabloSzx/bob-esbuild",
+    "directory": "packages/bob"
+  },
   "license": "MIT",
   "author": "PabloSzx <pablosaez1995@gmail.com>",
   "exports": {
@@ -23,7 +28,7 @@
     "build:types": "node -r esbuild-register build-types.ts",
     "dev": "bob-esbuild watch",
     "prepare": "node -r esbuild-register self-build.ts",
-    "postpublish": "gh-release --repo PabloSzx/bob-esbuild"
+    "postpublish": "gh-release"
   },
   "dependencies": {
     "@pnpm/exportable-manifest": "^2.1.4",
