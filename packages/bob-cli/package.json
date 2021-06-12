@@ -3,7 +3,11 @@
   "version": "0.1.26",
   "homepage": "https://github.com/PabloSzx/bob-esbuild",
   "bugs": "https://github.com/PabloSzx/bob-esbuild/issues",
-  "repository": "https://github.com/PabloSzx/bob-esbuild",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/PabloSzx/bob-esbuild",
+    "directory": "packages/bob-cli"
+  },
   "license": "MIT",
   "author": "PabloSzx <pablosaez1995@gmail.com>",
   "exports": {
@@ -29,7 +33,7 @@
   "scripts": {
     "dev": "bob-esbuild watch",
     "prepare": "node -r esbuild-register self-build.ts",
-    "postpublish": "gh-release --repo PabloSzx/bob-esbuild"
+    "postpublish": "gh-release"
   },
   "dependencies": {
     "@oclif/command": "^1.8.0",
@@ -42,7 +46,7 @@
   "devDependencies": {
     "@oclif/dev-cli": "^1.26.0",
     "@types/node": "^15.6.1",
-    "changesets-github-release": "^0.0.1",
+    "changesets-github-release": "^0.0.2",
     "esbuild-register": "^2.5.0",
     "globby": "^11.0.3",
     "rimraf": "^3.0.2",
