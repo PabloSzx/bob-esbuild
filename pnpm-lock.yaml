@@ -60,7 +60,7 @@ importers:
       lodash.get: ^4.4.2
       oclif: ^1.18.0
       rimraf: ^3.0.2
-      rollup: ^2.51.2
+      rollup: ^2.52.0
       rollup-plugin-delete: ^2.0.0
       rollup-plugin-node-externals: ^2.2.0
       sucrase: ^3.18.2
@@ -82,7 +82,7 @@ importers:
       lodash.get: 4.4.2
       oclif: 1.18.0
       rimraf: 3.0.2
-      rollup: 2.51.2
+      rollup: 2.52.0
       rollup-plugin-delete: 2.0.0
       rollup-plugin-node-externals: 2.2.0_builtin-modules@3.2.0
       sucrase: 3.18.2
@@ -144,11 +144,11 @@ importers:
       joycon: ^3.0.1
       jsonc-parser: ^3.0.0
       mock-fs: ^5.0.0
-      rollup: ^2.51.2
+      rollup: ^2.52.0
       ts-jest: ^27.0.3
       tsup: ^4.11.2
     dependencies:
-      '@rollup/pluginutils': 4.1.0_rollup@2.51.2
+      '@rollup/pluginutils': 4.1.0_rollup@2.52.0
       esbuild: 0.12.5
       joycon: 3.0.1
       jsonc-parser: 3.0.0
@@ -160,7 +160,7 @@ importers:
       esbuild-register: 2.6.0
       jest: 27.0.4
       mock-fs: 5.0.0
-      rollup: 2.51.2
+      rollup: 2.52.0
       ts-jest: 27.0.3_jest@27.0.4
       tsup: 4.11.2
 
@@ -1256,7 +1256,7 @@ packages:
       write-yaml-file: 4.2.0
     dev: false
 
-  /@rollup/pluginutils/4.1.0_rollup@2.51.2:
+  /@rollup/pluginutils/4.1.0_rollup@2.52.0:
     resolution: {integrity: sha512-TrBhfJkFxA+ER+ew2U2/fHbebhLT/l/2pRk0hfj9KusXUuRXd2v0R58AfaZK9VXDQ4TogOSEmICVrQAA3zFnHQ==}
     engines: {node: '>= 8.0.0'}
     peerDependencies:
@@ -1264,7 +1264,7 @@ packages:
     dependencies:
       estree-walker: 2.0.2
       picomatch: 2.3.0
-      rollup: 2.51.2
+      rollup: 2.52.0
     dev: false
 
   /@sinonjs/commons/1.8.3:
@@ -6146,8 +6146,8 @@ packages:
       fsevents: 2.3.2
     dev: true
 
-  /rollup/2.51.2:
-    resolution: {integrity: sha512-ReV2eGEadA7hmXSzjxdDKs10neqH2QURf2RxJ6ayAlq93ugy6qIvXMmbc5cWMGCDh1h5T4thuWO1e2VNbMq8FA==}
+  /rollup/2.52.0:
+    resolution: {integrity: sha512-lSkBDGsVoXjqaBf7dsHwxBJz+p+hJEP72P+LOitA0yVs+Nzxj76FidkZE2thrmhjwGqLYiJo39opi7mAfaQ/Vg==}
     engines: {node: '>=10.0.0'}
     hasBin: true
     optionalDependencies:
