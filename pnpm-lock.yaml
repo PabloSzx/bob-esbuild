@@ -48,15 +48,15 @@ importers:
       bob-esbuild-plugin: workspace:0.1.21
       builtin-modules: ^3.2.0
       chalk: ^4.1.1
-      changesets-github-release: ^0.0.2
+      changesets-github-release: ^0.0.3
       cosmiconfig: ^7.0.0
       date-fns: ^2.22.1
       esbuild: ^0.12.5
-      esbuild-register: ^2.5.0
+      esbuild-register: ^2.6.0
       execa: ^5.1.1
       folder-hash: ^4.0.1
       fs-extra: ^10.0.0
-      globby: ^11.0.3
+      globby: ^11.0.4
       lodash.get: ^4.4.2
       oclif: ^1.18.0
       rimraf: ^3.0.2
@@ -78,7 +78,7 @@ importers:
       execa: 5.1.1
       folder-hash: 4.0.1
       fs-extra: 10.0.0
-      globby: 11.0.3
+      globby: 11.0.4
       lodash.get: 4.4.2
       oclif: 1.18.0
       rimraf: 3.0.2
@@ -94,8 +94,8 @@ importers:
       '@types/lodash.get': 4.4.6
       '@types/node': 15.6.1
       '@types/rimraf': 3.0.0
-      changesets-github-release: 0.0.2
-      esbuild-register: 2.5.0
+      changesets-github-release: 0.0.3
+      esbuild-register: 2.6.0
       typescript: 4.3.2
 
   packages/bob-cli:
@@ -108,9 +108,9 @@ importers:
       '@oclif/plugin-help': ^3.2.2
       '@types/node': ^15.6.1
       bob-esbuild: workspace:0.1.26
-      changesets-github-release: ^0.0.2
-      esbuild-register: ^2.5.0
-      globby: ^11.0.3
+      changesets-github-release: ^0.0.3
+      esbuild-register: ^2.6.0
+      globby: ^11.0.4
       rimraf: ^3.0.2
       ts-node: ^10.0.0
       typescript: ^4.3.2
@@ -124,9 +124,9 @@ importers:
     devDependencies:
       '@oclif/dev-cli': 1.26.0
       '@types/node': 15.6.1
-      changesets-github-release: 0.0.2
-      esbuild-register: 2.5.0
-      globby: 11.0.3
+      changesets-github-release: 0.0.3
+      esbuild-register: 2.6.0
+      globby: 11.0.4
       rimraf: 3.0.2
       ts-node: 10.0.0_b89ec6c4eb73802631cbe54606dd8cdb
       typescript: 4.3.2
@@ -137,9 +137,9 @@ importers:
       '@types/jest': ^26.0.23
       '@types/mock-fs': ^4.13.0
       '@types/node': ^15.6.1
-      changesets-github-release: ^0.0.2
+      changesets-github-release: ^0.0.3
       esbuild: ^0.12.5
-      esbuild-register: ^2.5.0
+      esbuild-register: ^2.6.0
       jest: ^27.0.4
       joycon: ^3.0.1
       jsonc-parser: ^3.0.0
@@ -156,8 +156,8 @@ importers:
       '@types/jest': 26.0.23
       '@types/mock-fs': 4.13.0
       '@types/node': 15.6.1
-      changesets-github-release: 0.0.2
-      esbuild-register: 2.5.0
+      changesets-github-release: 0.0.3
+      esbuild-register: 2.6.0
       jest: 27.0.4
       mock-fs: 5.0.0
       rollup: 2.51.2
@@ -2044,8 +2044,8 @@ packages:
       ansi-styles: 4.3.0
       supports-color: 7.2.0
 
-  /changesets-github-release/0.0.2:
-    resolution: {integrity: sha512-qMCJjrRzqf9wdeGFf5gF843taksRk441M6e4HIZvMXMbXd5cx55PUmTW2cYqPtVx5jdFasVEKHtgDAC4iwS+Ug==}
+  /changesets-github-release/0.0.3:
+    resolution: {integrity: sha512-72TfuA4aN3IL+kSEcSYKkvJA/6zswV+7sAj8eMrV/4x2sh/Ujxhr+zlhw/7dZsQgGLAKmRJwhmDhYe1iCj3x4w==}
     hasBin: true
     dependencies:
       '@babel/runtime': 7.14.0
@@ -2827,8 +2827,8 @@ packages:
       string-template: 0.2.1
     dev: false
 
-  /esbuild-register/2.5.0:
-    resolution: {integrity: sha512-5a8W3rH7IQbIPR9pPXJFkC3+CRMtm/OSpBz3hkWUUU63oPZ3NU6dVDGfaIjKnRizCTIRoGjNE6KEDt5p1sLwEw==}
+  /esbuild-register/2.6.0:
+    resolution: {integrity: sha512-2u4AtnCXP5nivtIxZryiZOUcEQkOzFS7UhAqibUEmaTAThJ48gDLYTBF/Fsz+5r0hbV1jrFE6PQvPDUrKZNt/Q==}
     dependencies:
       esbuild: 0.12.5
       jsonc-parser: 3.0.0
@@ -3434,6 +3434,17 @@ packages:
 
   /globby/11.0.3:
     resolution: {integrity: sha512-ffdmosjA807y7+lA1NM0jELARVmYul/715xiILEjo3hBLPTcirgQNnXECn5g3mtR8TOLCVbkfua1Hpen25/Xcg==}
+    engines: {node: '>=10'}
+    dependencies:
+      array-union: 2.1.0
+      dir-glob: 3.0.1
+      fast-glob: 3.2.5
+      ignore: 5.1.8
+      merge2: 1.4.1
+      slash: 3.0.0
+
+  /globby/11.0.4:
+    resolution: {integrity: sha512-9O4MVG9ioZJ08ffbcyVYyLOJLk5JQ688pJ4eMGLpdWLHq/Wr1D9BlriLQyL0E+jbkuePVZXYFj47QM/v093wHg==}
     engines: {node: '>=10'}
     dependencies:
       array-union: 2.1.0
