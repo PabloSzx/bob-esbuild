@@ -13,7 +13,7 @@ importers:
       prettier: ^2.3.1
       pretty-quick: ^3.1.1
       rimraf: ^3.0.2
-      typescript: ^4.3.3
+      typescript: ^4.3.4
     devDependencies:
       '@changesets/cli': 2.16.0
       esbuild: 0.12.5
@@ -21,7 +21,7 @@ importers:
       prettier: 2.3.1
       pretty-quick: 3.1.1_prettier@2.3.1
       rimraf: 3.0.2
-      typescript: 4.3.3
+      typescript: 4.3.4
 
   examples/basic:
     specifiers:
@@ -66,7 +66,7 @@ importers:
       sucrase: ^3.18.2
       tree-kill: ^1.2.2
       tsconfig: ^7.0.0
-      typescript: ^4.3.3
+      typescript: ^4.3.4
     dependencies:
       '@pnpm/exportable-manifest': 2.1.4
       bob-esbuild-plugin: link:../esbuild-plugin
@@ -96,7 +96,7 @@ importers:
       '@types/rimraf': 3.0.0
       changesets-github-release: 0.0.3
       esbuild-register: 2.6.0
-      typescript: 4.3.3
+      typescript: 4.3.4
 
   packages/bob-cli:
     specifiers:
@@ -113,7 +113,7 @@ importers:
       globby: ^11.0.4
       rimraf: ^3.0.2
       ts-node: ^10.0.0
-      typescript: ^4.3.3
+      typescript: ^4.3.4
     dependencies:
       '@oclif/command': 1.8.0
       '@oclif/config': 1.17.0
@@ -128,8 +128,8 @@ importers:
       esbuild-register: 2.6.0
       globby: 11.0.4
       rimraf: 3.0.2
-      ts-node: 10.0.0_d2365daebf1e98ab5a123d1973a053fd
-      typescript: 4.3.3
+      ts-node: 10.0.0_e4d56f7a6d3eb80356ddd3f508ab6d3e
+      typescript: 4.3.4
 
   packages/esbuild-plugin:
     specifiers:
@@ -6876,7 +6876,7 @@ packages:
       yargs-parser: 20.2.7
     dev: true
 
-  /ts-node/10.0.0_d2365daebf1e98ab5a123d1973a053fd:
+  /ts-node/10.0.0_e4d56f7a6d3eb80356ddd3f508ab6d3e:
     resolution: {integrity: sha512-ROWeOIUvfFbPZkoDis0L/55Fk+6gFQNZwwKPLinacRl6tsxstTF1DbAcLKkovwnpKMVvOMHP1TIbnwXwtLg1gg==}
     engines: {node: '>=12.0.0'}
     hasBin: true
@@ -6901,7 +6901,7 @@ packages:
       diff: 4.0.2
       make-error: 1.3.6
       source-map-support: 0.5.19
-      typescript: 4.3.3
+      typescript: 4.3.4
       yn: 3.1.1
     dev: true
 
@@ -6999,8 +6999,8 @@ packages:
     dependencies:
       is-typedarray: 1.0.0
 
-  /typescript/4.3.3:
-    resolution: {integrity: sha512-rUvLW0WtF7PF2b9yenwWUi9Da9euvDRhmH7BLyBG4DCFfOJ850LGNknmRpp8Z8kXNUPObdZQEfKOiHtXuQHHKA==}
+  /typescript/4.3.4:
+    resolution: {integrity: sha512-uauPG7XZn9F/mo+7MrsRjyvbxFpzemRjKEZXS4AK83oP2KKOJPvb+9cO/gmnv8arWZvhnjVOXz7B49m1l0e9Ew==}
     engines: {node: '>=4.2.0'}
     hasBin: true
     dev: true
