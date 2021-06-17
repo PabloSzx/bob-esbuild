@@ -38,7 +38,7 @@
   "devDependencies": {
     "@types/jest": "^26.0.23",
     "@types/mock-fs": "^4.13.0",
-    "@types/node": "^15.6.1",
+    "@types/node": "^15.12.2",
     "changesets-github-release": "^0.0.3",
     "esbuild-register": "^2.6.0",
     "jest": "^27.0.4",

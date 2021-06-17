@@ -37,7 +37,7 @@ export async function watchRollup(options: WatchRollupOptions = {}) {
 
   function cleanUp() {
     try {
-      if (onSuccessProcess) killPromise(onSuccessProcess.pid);
+      if (onSuccessProcess?.pid) killPromise(onSuccessProcess.pid);
 
       watcher.close();
     } catch (err) {
@@ -70,7 +70,7 @@ export async function watchRollup(options: WatchRollupOptions = {}) {
   watcher.on('event', event => {
     switch (event.code) {
       case 'BUNDLE_START': {
-        if (onSuccessProcess) {
+        if (onSuccessProcess?.pid) {
           killPromise(onSuccessProcess.pid);
           onSuccessProcess = null;
         }
