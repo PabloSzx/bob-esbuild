@@ -1,11 +1,10 @@
 import { hashElement } from 'folder-hash';
-import { existsSync, mkdir, rmSync } from 'fs';
+import { existsSync, rmSync } from 'fs';
 import fsExtra from 'fs-extra';
 import { resolve } from 'path';
 
 import { globalConfig } from '../config/cosmiconfig';
 import { resolvedTsconfig } from '../config/tsconfig';
-import { error } from '../log/error';
 
 export async function getHash() {
   const {
@@ -51,19 +50,20 @@ export async function getHash() {
   const cleanHash = () => {
     try {
       rmSync(typesHashJSON);
-    } catch (err) {
-      console.error(err);
-    }
+    } catch (err) {}
   };
 
   if (jsonHash?.hash !== currentHash.hash) {
-    mkdir(resolve(rootDir, outDir), () => {
-      fsExtra
-        .writeJSON(typesHashJSON, {
-          hash: currentHash.hash,
-        })
-        .catch(error);
-    });
+    fsExtra.mkdirp(resolve(rootDir, outDir)).then(
+      () => {
+        fsExtra
+          .writeJSON(typesHashJSON, {
+            hash: currentHash.hash,
+          })
+          .catch(() => null);
+      },
+      () => null
+    );
 
     return {
       shouldBuild: true,
