@@ -1,5 +1,11 @@
 # bob-esbuild
 
+## 0.1.27
+
+### Patch Changes
+
+- dd3dd9d: fix concurrent tsc hash write log errors
+
 ## 0.1.26
 
 ### Patch Changes

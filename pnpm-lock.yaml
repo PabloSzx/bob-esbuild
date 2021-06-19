@@ -107,7 +107,7 @@ importers:
       '@oclif/parser': ^3.8.5
       '@oclif/plugin-help': ^3.2.2
       '@types/node': ^15.12.2
-      bob-esbuild: workspace:0.1.26
+      bob-esbuild: workspace:0.1.27
       changesets-github-release: ^0.0.3
       esbuild-register: ^2.6.0
       globby: ^11.0.4
