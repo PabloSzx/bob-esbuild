@@ -28,7 +28,7 @@
     "prepare": "bob-esbuild build && node lib/index.js"
   },
   "dependencies": {
-    "bob-esbuild-cli": "workspace:^0.1.14",
+    "bob-esbuild-cli": "workspace:^0.1.27",
     "shared": "workspace:^1.0.0"
   },
   "buildConfig": {

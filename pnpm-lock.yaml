@@ -1,7 +1,7 @@
 lockfileVersion: 5.3
 
 overrides:
-  esbuild: ^0.12.5
+  esbuild: ^0.12.9
 
 importers:
 
@@ -1168,8 +1168,8 @@ packages:
       universal-user-agent: 6.0.0
     dev: true
 
-  /@octokit/openapi-types/7.3.2:
-    resolution: {integrity: sha512-oJhK/yhl9Gt430OrZOzAl2wJqR0No9445vmZ9Ey8GjUZUpwuu/vmEFP0TDhDXdpGDoxD6/EIFHJEcY8nHXpDTA==}
+  /@octokit/openapi-types/7.3.3:
+    resolution: {integrity: sha512-/tpvcWCjYUHtvdc/t/bX6pxaOoeYPhfPCyvUaSWP29YkRcdZmlhRaMsXudZhvXm8GBPBxmCOsf1Ye/FpkszOHw==}
     dev: true
 
   /@octokit/plugin-paginate-rest/2.13.5_@octokit+core@3.5.1:
@@ -1230,7 +1230,7 @@ packages:
   /@octokit/types/6.16.4:
     resolution: {integrity: sha512-UxhWCdSzloULfUyamfOg4dJxV9B+XjgrIZscI0VCbp4eNrjmorGEw+4qdwcpTsu6DIrm9tQsFQS2pK5QkqQ04A==}
     dependencies:
-      '@octokit/openapi-types': 7.3.2
+      '@octokit/openapi-types': 7.3.3
     dev: true
 
   /@pnpm/error/2.0.0:
