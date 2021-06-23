@@ -39,7 +39,7 @@ importers:
 
   packages/bob:
     specifiers:
-      '@pnpm/exportable-manifest': ^2.1.4
+      '@pnpm/exportable-manifest': ^2.1.5
       '@types/folder-hash': ^4.0.0
       '@types/fs-extra': ^9.0.11
       '@types/lodash.get': ^4.4.6
@@ -68,7 +68,7 @@ importers:
       tsconfig: ^7.0.0
       typescript: ^4.3.4
     dependencies:
-      '@pnpm/exportable-manifest': 2.1.4
+      '@pnpm/exportable-manifest': 2.1.5
       bob-esbuild-plugin: link:../esbuild-plugin
       builtin-modules: 3.2.0
       chalk: 4.1.1
@@ -161,8 +161,8 @@ importers:
       jest: 27.0.4
       mock-fs: 5.0.0
       rollup: 2.52.1
-      ts-jest: 27.0.3_jest@27.0.4
-      tsup: 4.11.2
+      ts-jest: 27.0.3_jest@27.0.4+typescript@4.3.4
+      tsup: 4.11.2_typescript@4.3.4
 
 packages:
 
@@ -1238,13 +1238,13 @@ packages:
     engines: {node: '>=12.17'}
     dev: false
 
-  /@pnpm/exportable-manifest/2.1.4:
-    resolution: {integrity: sha512-Us3vUJLalhlGe+rg1OaHHqHjjOA/hhYwhp8Ip0TTuFPYMat4YV8/b77wDp1KwKXu0gOCn5pBgv6XY2awccoIow==}
+  /@pnpm/exportable-manifest/2.1.5:
+    resolution: {integrity: sha512-ePXZPVZcFI0RQaoZN+NKFqMnqLxk+QJ0G56uBt46maG2ub/6/8Kl99arkDa7CKDVHfyPxYWPGZNrT/pYUzrgPg==}
     engines: {node: '>=12.17'}
     dependencies:
       '@pnpm/error': 2.0.0
-      '@pnpm/read-project-manifest': 2.0.3
-      '@pnpm/types': 7.2.0
+      '@pnpm/read-project-manifest': 2.0.4
+      '@pnpm/types': 7.3.0
       ramda: 0.27.1
     dev: false
 
@@ -1255,14 +1255,14 @@ packages:
       graceful-fs: 4.2.6
     dev: false
 
-  /@pnpm/read-project-manifest/2.0.3:
-    resolution: {integrity: sha512-r3Gz4Gmqf9ujrulQzA1e1pMhpzfdWAElgsuvT6OqoANijL4J4UIjE47Eq3WW4nTmfewxS6RFlgcyk2eYWrK1rA==}
+  /@pnpm/read-project-manifest/2.0.4:
+    resolution: {integrity: sha512-4yZmdlPKXqXoEuiyUVgXRYv8WNvz8vJ8h8T1X87Ox8Vfnjl8n/4Z3ZF7u3szU+LGF45rHu8CUknzlqchttD6HA==}
     engines: {node: '>=12.17'}
     dependencies:
       '@pnpm/error': 2.0.0
       '@pnpm/graceful-fs': 1.0.0
-      '@pnpm/types': 7.2.0
-      '@pnpm/write-project-manifest': 2.0.2
+      '@pnpm/types': 7.3.0
+      '@pnpm/write-project-manifest': 2.0.3
       detect-indent: 6.1.0
       fast-deep-equal: 3.1.3
       is-windows: 1.0.2
@@ -1273,16 +1273,16 @@ packages:
       strip-bom: 4.0.0
     dev: false
 
-  /@pnpm/types/7.2.0:
-    resolution: {integrity: sha512-+2qKtCG5QhpXNw72Y74tkNrxxoyQmDBZcgI1/xDprQrKhZBByMXaQWPxeCmS8BP8xE20BEh7hLlm3tgZNChvwA==}
+  /@pnpm/types/7.3.0:
+    resolution: {integrity: sha512-CQEG7RGrHQ5fo9ZtJsEKW5lxIjyiO0tQQNoWGNBLkIts665CnSIh1OAN/irlraV/v1mmg7LHDDDX3FbelEqXGw==}
     engines: {node: '>=12.17'}
     dev: false
 
-  /@pnpm/write-project-manifest/2.0.2:
-    resolution: {integrity: sha512-bFyDtxa1BZOrYJWEz3KMPqKkY1/oVkw5V15hAyut38z6yk5MQO2T4y28nGFfJaptGcmElDwsBhrhtsBCg4M7Qg==}
+  /@pnpm/write-project-manifest/2.0.3:
+    resolution: {integrity: sha512-m01lDBH3MckdFZzm20j2cYR0XzhrWLxSBPuVYvw0tiQxCn5xNs0+GA4f4xK2knLCjCb0W4cS3nejsCgPkZwy+Q==}
     engines: {node: '>=12.17'}
     dependencies:
-      '@pnpm/types': 7.2.0
+      '@pnpm/types': 7.3.0
       json5: 2.2.0
       write-file-atomic: 3.0.3
       write-yaml-file: 4.2.0
@@ -6854,7 +6854,7 @@ packages:
   /ts-interface-checker/0.1.13:
     resolution: {integrity: sha512-Y/arvbn+rrz3JCKl9C4kVNfTfSm2/mEp5FSz5EsZSANGPSlQrpRI5M4PKF+mJnE52jOO90PnPSc3Ur3bTQw0gA==}
 
-  /ts-jest/27.0.3_jest@27.0.4:
+  /ts-jest/27.0.3_jest@27.0.4+typescript@4.3.4:
     resolution: {integrity: sha512-U5rdMjnYam9Ucw+h0QvtNDbc5+88nxt7tbIvqaZUhFrfG4+SkWhMXjejCLVGcpILTPuV+H3W/GZDZrnZFpPeXw==}
     engines: {node: ^10.13.0 || ^12.13.0 || ^14.15.0 || >=15.0.0}
     hasBin: true
@@ -6872,6 +6872,7 @@ packages:
       make-error: 1.3.6
       mkdirp: 1.0.4
       semver: 7.3.5
+      typescript: 4.3.4
       yargs-parser: 20.2.7
     dev: true
 
@@ -6919,7 +6920,7 @@ packages:
   /tslib/2.3.0:
     resolution: {integrity: sha512-N82ooyxVNm6h1riLCoyS9e3fuJ3AMG2zIZs2Gd1ATcSFjSA23Q0fzjjZeh0jbJvWVDZ0cJT8yaNNaaXHzueNjg==}
 
-  /tsup/4.11.2:
+  /tsup/4.11.2_typescript@4.3.4:
     resolution: {integrity: sha512-cp+gy0TGzFm/3PkPNeiZ2Fvi4MKI8jj6Xq6gVpSQ+Og+6GPqfws2K4zYo11OJoccuk2LnlJIJt8xwnoYCVGpSA==}
     hasBin: true
     peerDependencies:
@@ -6941,6 +6942,7 @@ packages:
       rollup: 2.52.1
       sucrase: 3.18.2
       tree-kill: 1.2.2
+      typescript: 4.3.4
     transitivePeerDependencies:
       - supports-color
       - ts-node
