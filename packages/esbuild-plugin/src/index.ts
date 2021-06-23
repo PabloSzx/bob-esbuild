@@ -105,7 +105,7 @@ export const bobEsbuildPlugin = (options: EsbuildPluginOptions = {}): Plugin => 
     },
 
     options(options) {
-      plugins = options.plugins || [];
+      plugins = options.plugins?.filter((v): v is Plugin => !!v && typeof v === 'object') || [];
       return null;
     },
 
