@@ -45,7 +45,7 @@
     "lodash.get": "^4.4.2",
     "oclif": "^1.18.0",
     "rimraf": "^3.0.2",
-    "rollup": "^2.52.2",
+    "rollup": "^2.52.3",
     "rollup-plugin-delete": "^2.0.0",
     "rollup-plugin-node-externals": "^2.2.0",
     "sucrase": "^3.19.0",
