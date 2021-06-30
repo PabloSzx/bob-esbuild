@@ -41,7 +41,7 @@
     "@types/node": "^15.12.4",
     "changesets-github-release": "^0.0.3",
     "esbuild-register": "^2.6.0",
-    "jest": "^27.0.5",
+    "jest": "^27.0.6",
     "mock-fs": "^5.0.0",
     "rollup": "^2.52.4",
     "ts-jest": "^27.0.3",
