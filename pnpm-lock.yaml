@@ -58,7 +58,7 @@ importers:
       fs-extra: ^10.0.0
       globby: ^11.0.4
       lodash.get: ^4.4.2
-      oclif: ^1.18.0
+      oclif: ^1.18.1
       rimraf: ^3.0.2
       rollup: ^2.52.6
       rollup-plugin-delete: ^2.0.0
@@ -80,7 +80,7 @@ importers:
       fs-extra: 10.0.0
       globby: 11.0.4
       lodash.get: 4.4.2
-      oclif: 1.18.0
+      oclif: 1.18.1
       rimraf: 3.0.2
       rollup: 2.52.6
       rollup-plugin-delete: 2.0.0
@@ -5390,8 +5390,8 @@ packages:
       isobject: 3.0.1
     dev: false
 
-  /oclif/1.18.0:
-    resolution: {integrity: sha512-GLnwhESkPqM2cElRSZ9KwoUJ9OPiQEFaUM8xbBQDcygapuYcTIpcCj6hCsDhnLzSJj2DDgqDjmQlNeT29LUr0g==}
+  /oclif/1.18.1:
+    resolution: {integrity: sha512-bX9lwpEBHcWhUldHOCstS08JOo69lQfS3qCeimJRGdXKflewarwEWZiWG2vTJi30KuwT0YyObCAJO7Ux1XI9ew==}
     engines: {node: '>=8.0.0'}
     hasBin: true
     dependencies:

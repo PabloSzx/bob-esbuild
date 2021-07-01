@@ -43,7 +43,7 @@
     "fs-extra": "^10.0.0",
     "globby": "^11.0.4",
     "lodash.get": "^4.4.2",
-    "oclif": "^1.18.0",
+    "oclif": "^1.18.1",
     "rimraf": "^3.0.2",
     "rollup": "^2.52.6",
     "rollup-plugin-delete": "^2.0.0",
