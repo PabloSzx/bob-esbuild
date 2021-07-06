@@ -45,7 +45,7 @@
   },
   "devDependencies": {
     "@oclif/dev-cli": "^1.26.0",
-    "@types/node": "^15.12.5",
+    "@types/node": "^16.0.0",
     "changesets-github-release": "^0.0.3",
     "esbuild-register": "^2.6.0",
     "globby": "^11.0.4",
