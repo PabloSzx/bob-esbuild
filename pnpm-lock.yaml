@@ -9,7 +9,7 @@ importers:
     specifiers:
       '@changesets/cli': ^2.16.0
       esbuild: ^0.12.13
-      husky: ^7.0.0
+      husky: ^7.0.1
       prettier: ^2.3.2
       pretty-quick: ^3.1.1
       rimraf: ^3.0.2
@@ -17,7 +17,7 @@ importers:
     devDependencies:
       '@changesets/cli': 2.16.0
       esbuild: 0.12.13
-      husky: 7.0.0
+      husky: 7.0.1
       prettier: 2.3.2
       pretty-quick: 3.1.1_prettier@2.3.2
       rimraf: 3.0.2
@@ -3697,8 +3697,8 @@ packages:
     resolution: {integrity: sha512-B4FFZ6q/T2jhhksgkbEW3HBvWIfDW85snkQgawt07S7J5QXTk6BkNV+0yAeZrM5QpMAdYlocGoljn0sJ/WQkFw==}
     engines: {node: '>=10.17.0'}
 
-  /husky/7.0.0:
-    resolution: {integrity: sha512-xK7lO0EtSzfFPiw+oQncQVy/XqV7UVVjxBByc+Iv5iK3yhW9boDoWgvZy3OGo48QKg/hUtZkzz0hi2HXa0kn7w==}
+  /husky/7.0.1:
+    resolution: {integrity: sha512-gceRaITVZ+cJH9sNHqx5tFwbzlLCVxtVZcusME8JYQ8Edy5mpGDOqD8QBCdMhpyo9a+JXddnujQ4rpY2Ff9SJA==}
     engines: {node: '>=12'}
     hasBin: true
     dev: true

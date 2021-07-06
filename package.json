@@ -20,7 +20,7 @@
   "devDependencies": {
     "@changesets/cli": "^2.16.0",
     "esbuild": "^0.12.13",
-    "husky": "^7.0.0",
+    "husky": "^7.0.1",
     "prettier": "^2.3.2",
     "pretty-quick": "^3.1.1",
     "rimraf": "^3.0.2",
