@@ -37,19 +37,19 @@
   },
   "devDependencies": {
     "@types/jest": "^26.0.24",
-    "@types/mock-fs": "^4.13.0",
+    "@types/mock-fs": "^4.13.1",
     "@types/node": "^16.0.0",
     "changesets-github-release": "^0.0.3",
     "esbuild-register": "^2.6.0",
     "jest": "^27.0.6",
     "mock-fs": "^5.0.0",
-    "rollup": "^2.52.7",
+    "rollup": "^2.52.8",
     "ts-jest": "^27.0.3",
     "tsup": "^4.12.5"
   },
   "peerDependencies": {
     "@types/node": "^15.6.1",
-    "rollup": "^2.52.4"
+    "rollup": "^2.52.8"
   },
   "tsup": {
     "entryPoints": [
