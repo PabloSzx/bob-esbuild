@@ -135,7 +135,7 @@ importers:
     specifiers:
       '@rollup/pluginutils': ^4.1.0
       '@types/jest': ^26.0.24
-      '@types/mock-fs': ^4.13.0
+      '@types/mock-fs': ^4.13.1
       '@types/node': ^16.0.0
       changesets-github-release: ^0.0.3
       esbuild: ^0.12.15
@@ -154,7 +154,7 @@ importers:
       jsonc-parser: 3.0.0
     devDependencies:
       '@types/jest': 26.0.24
-      '@types/mock-fs': 4.13.0
+      '@types/mock-fs': 4.13.1
       '@types/node': 16.0.0
       changesets-github-release: 0.0.3
       esbuild-register: 2.6.0
@@ -1423,8 +1423,8 @@ packages:
     resolution: {integrity: sha512-fZQQafSREFyuZcdWFAExYjBiCL7AUCdgsk80iO0q4yihYYdcIiH28CcuPTGFgLOCC8RlW49GSQxdHwZP+I7CNg==}
     dev: true
 
-  /@types/mock-fs/4.13.0:
-    resolution: {integrity: sha512-FUqxhURwqFtFBCuUj3uQMp7rPSQs//b3O9XecAVxhqS9y4/W8SIJEZFq2mmpnFVZBXwR/2OyPLE97CpyYiB8Mw==}
+  /@types/mock-fs/4.13.1:
+    resolution: {integrity: sha512-m6nFAJ3lBSnqbvDZioawRvpLXSaPyn52Srf7OfzjubYbYX8MTUdIgDxQl0wEapm4m/pNYSd9TXocpQ0TvZFlYA==}
     dependencies:
       '@types/node': 16.0.0
     dev: true
