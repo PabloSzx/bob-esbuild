@@ -40,7 +40,7 @@ importers:
   packages/bob:
     specifiers:
       '@pnpm/exportable-manifest': ^2.1.5
-      '@types/folder-hash': ^4.0.0
+      '@types/folder-hash': ^4.0.1
       '@types/fs-extra': ^9.0.12
       '@types/lodash.get': ^4.4.6
       '@types/node': ^16.0.0
@@ -89,7 +89,7 @@ importers:
       tree-kill: 1.2.2
       tsconfig: 7.0.0
     devDependencies:
-      '@types/folder-hash': 4.0.0
+      '@types/folder-hash': 4.0.1
       '@types/fs-extra': 9.0.12
       '@types/lodash.get': 4.4.6
       '@types/node': 16.0.0
@@ -1361,8 +1361,8 @@ packages:
       '@babel/types': 7.14.5
     dev: true
 
-  /@types/folder-hash/4.0.0:
-    resolution: {integrity: sha512-y9hSfZVRC5oIodlNGBLrwASy5EudEasqyrnKhp9LU3oUmJvEkzzEMp5sq9P9z+dWIUt9PcDEQnFi/NFfw70gTw==}
+  /@types/folder-hash/4.0.1:
+    resolution: {integrity: sha512-HrIikWNP/7ubX+XB1awPxA+zTI8T3NXgb4g3BQnT4iAWbeZThsaAm+sg+xqO+eK6kPlpOLS6o29FaaWqb2THbA==}
     dev: true
 
   /@types/fs-extra/9.0.12:
