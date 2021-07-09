@@ -2,12 +2,14 @@ lockfileVersion: 5.3
 
 overrides:
   esbuild: ^0.12.15
+  '@types/node': ^16.3.0
 
 importers:
 
   .:
     specifiers:
       '@changesets/cli': ^2.16.0
+      '@types/node': ^16.3.0
       esbuild: ^0.12.15
       husky: ^7.0.1
       prettier: ^2.3.2
@@ -16,6 +18,7 @@ importers:
       typescript: ^4.3.5
     devDependencies:
       '@changesets/cli': 2.16.0
+      '@types/node': 16.3.0
       esbuild: 0.12.15
       husky: 7.0.1
       prettier: 2.3.2
@@ -40,11 +43,11 @@ importers:
   packages/bob:
     specifiers:
       '@pnpm/exportable-manifest': ^2.1.5
-      '@types/folder-hash': ^4.0.0
+      '@types/folder-hash': ^4.0.1
       '@types/fs-extra': ^9.0.12
       '@types/lodash.get': ^4.4.6
-      '@types/node': ^16.0.0
-      '@types/rimraf': ^3.0.0
+      '@types/node': ^16.3.0
+      '@types/rimraf': ^3.0.1
       bob-esbuild-plugin: workspace:0.1.21
       builtin-modules: ^3.2.0
       chalk: ^4.1.1
@@ -60,7 +63,7 @@ importers:
       lodash.get: ^4.4.2
       oclif: ^1.18.1
       rimraf: ^3.0.2
-      rollup: ^2.52.8
+      rollup: ^2.53.0
       rollup-plugin-delete: ^2.0.0
       rollup-plugin-node-externals: ^2.2.0
       sucrase: ^3.20.0
@@ -82,18 +85,18 @@ importers:
       lodash.get: 4.4.2
       oclif: 1.18.1
       rimraf: 3.0.2
-      rollup: 2.52.8
+      rollup: 2.53.0
       rollup-plugin-delete: 2.0.0
       rollup-plugin-node-externals: 2.2.0_builtin-modules@3.2.0
       sucrase: 3.20.0
       tree-kill: 1.2.2
       tsconfig: 7.0.0
     devDependencies:
-      '@types/folder-hash': 4.0.0
+      '@types/folder-hash': 4.0.1
       '@types/fs-extra': 9.0.12
       '@types/lodash.get': 4.4.6
-      '@types/node': 16.0.0
-      '@types/rimraf': 3.0.0
+      '@types/node': 16.3.0
+      '@types/rimraf': 3.0.1
       changesets-github-release: 0.0.3
       esbuild-register: 2.6.0
       typescript: 4.3.5
@@ -103,10 +106,10 @@ importers:
       '@oclif/command': ^1.8.0
       '@oclif/config': ^1.17.0
       '@oclif/dev-cli': ^1.26.0
-      '@oclif/errors': ^1.3.4
+      '@oclif/errors': ^1.3.5
       '@oclif/parser': ^3.8.5
       '@oclif/plugin-help': ^3.2.2
-      '@types/node': ^16.0.0
+      '@types/node': ^16.3.0
       bob-esbuild: workspace:0.1.27
       changesets-github-release: ^0.0.3
       esbuild-register: ^2.6.0
@@ -117,18 +120,18 @@ importers:
     dependencies:
       '@oclif/command': 1.8.0
       '@oclif/config': 1.17.0
-      '@oclif/errors': 1.3.4
+      '@oclif/errors': 1.3.5
       '@oclif/parser': 3.8.5
       '@oclif/plugin-help': 3.2.2
       bob-esbuild: link:../bob
     devDependencies:
       '@oclif/dev-cli': 1.26.0
-      '@types/node': 16.0.0
+      '@types/node': 16.3.0
       changesets-github-release: 0.0.3
       esbuild-register: 2.6.0
       globby: 11.0.4
       rimraf: 3.0.2
-      ts-node: 10.0.0_488376d43314e2606bceb2872a37d0ef
+      ts-node: 10.0.0_1059216209fc0c6e1d3e427ca3e1553a
       typescript: 4.3.5
 
   packages/esbuild-plugin:
@@ -136,7 +139,7 @@ importers:
       '@rollup/pluginutils': ^4.1.0
       '@types/jest': ^26.0.24
       '@types/mock-fs': ^4.13.1
-      '@types/node': ^16.0.0
+      '@types/node': ^16.3.0
       changesets-github-release: ^0.0.3
       esbuild: ^0.12.15
       esbuild-register: ^2.6.0
@@ -144,23 +147,23 @@ importers:
       joycon: ^3.0.1
       jsonc-parser: ^3.0.0
       mock-fs: ^5.0.0
-      rollup: ^2.52.8
+      rollup: ^2.53.0
       ts-jest: ^27.0.3
       tsup: ^4.12.5
     dependencies:
-      '@rollup/pluginutils': 4.1.0_rollup@2.52.8
+      '@rollup/pluginutils': 4.1.0_rollup@2.53.0
       esbuild: 0.12.15
       joycon: 3.0.1
       jsonc-parser: 3.0.0
     devDependencies:
       '@types/jest': 26.0.24
       '@types/mock-fs': 4.13.1
-      '@types/node': 16.0.0
+      '@types/node': 16.3.0
       changesets-github-release: 0.0.3
       esbuild-register: 2.6.0
       jest: 27.0.6
       mock-fs: 5.0.0
-      rollup: 2.52.8
+      rollup: 2.53.0
       ts-jest: 27.0.3_jest@27.0.6+typescript@4.3.5
       tsup: 4.12.5_typescript@4.3.5
 
@@ -702,7 +705,7 @@ packages:
     engines: {node: ^10.13.0 || ^12.13.0 || ^14.15.0 || >=15.0.0}
     dependencies:
       '@jest/types': 27.0.6
-      '@types/node': 16.0.0
+      '@types/node': 16.3.0
       chalk: 4.1.1
       jest-message-util: 27.0.6
       jest-util: 27.0.6
@@ -723,7 +726,7 @@ packages:
       '@jest/test-result': 27.0.6
       '@jest/transform': 27.0.6
       '@jest/types': 27.0.6
-      '@types/node': 16.0.0
+      '@types/node': 16.3.0
       ansi-escapes: 4.3.2
       chalk: 4.1.1
       emittery: 0.8.1
@@ -761,7 +764,7 @@ packages:
     dependencies:
       '@jest/fake-timers': 27.0.6
       '@jest/types': 27.0.6
-      '@types/node': 16.0.0
+      '@types/node': 16.3.0
       jest-mock: 27.0.6
     dev: true
 
@@ -771,7 +774,7 @@ packages:
     dependencies:
       '@jest/types': 27.0.6
       '@sinonjs/fake-timers': 7.1.2
-      '@types/node': 16.0.0
+      '@types/node': 16.3.0
       jest-message-util: 27.0.6
       jest-mock: 27.0.6
       jest-util: 27.0.6
@@ -883,7 +886,7 @@ packages:
     dependencies:
       '@types/istanbul-lib-coverage': 2.0.3
       '@types/istanbul-reports': 3.0.1
-      '@types/node': 16.0.0
+      '@types/node': 16.3.0
       '@types/yargs': 15.0.14
       chalk: 4.1.1
     dev: true
@@ -894,7 +897,7 @@ packages:
     dependencies:
       '@types/istanbul-lib-coverage': 2.0.3
       '@types/istanbul-reports': 3.0.1
-      '@types/node': 16.0.0
+      '@types/node': 16.3.0
       '@types/yargs': 16.0.4
       chalk: 4.1.1
     dev: true
@@ -903,7 +906,7 @@ packages:
     resolution: {integrity: sha512-mki5uBvhHzO8kYYix/WRy2WX8S3B5wdVSc9D6KcU5lQNglP2yt58/VfLuAK49glRXChosY8ap2oJ1qgma3GUVA==}
     dependencies:
       '@babel/runtime': 7.14.6
-      '@types/node': 12.20.15
+      '@types/node': 16.3.0
       find-up: 4.1.0
       fs-extra: 8.1.0
     dev: true
@@ -942,8 +945,8 @@ packages:
     resolution: {integrity: sha512-RkhPPp2zrqDAQA/2jNhnztcPAlv64XdhIp7a7454A5ovI7Bukxgt7MX7udwAu3zg1DcpPU0rz3VV1SeaqvY4+A==}
     engines: {node: '>= 8'}
 
-  /@nodelib/fs.walk/1.2.7:
-    resolution: {integrity: sha512-BTIhocbPBSrRmHxOAJFtR18oLhxTtAFDAvL8hY1S3iU8k+E60W/YFs4jrixGzQjMpF4qPXxIQHcjVD9dz1C2QA==}
+  /@nodelib/fs.walk/1.2.8:
+    resolution: {integrity: sha512-oGB+UxlgWcgQkgwo8GcEGwemoTFt3FIO9ababBmaGwXIoBKZ+GTy0pP185beGg7Llih/NSHSV2XAs1lnznocSg==}
     engines: {node: '>= 8'}
     dependencies:
       '@nodelib/fs.scandir': 2.1.5
@@ -965,7 +968,7 @@ packages:
     engines: {node: '>=8.0.0'}
     dependencies:
       '@oclif/config': 1.17.0
-      '@oclif/errors': 1.3.4
+      '@oclif/errors': 1.3.5
       '@oclif/parser': 3.8.5
       '@oclif/plugin-help': 3.2.2
       debug: 4.3.2
@@ -978,7 +981,7 @@ packages:
     engines: {node: '>=8.0.0'}
     dependencies:
       '@oclif/config': 1.17.0_supports-color@8.1.1
-      '@oclif/errors': 1.3.4
+      '@oclif/errors': 1.3.5
       '@oclif/parser': 3.8.5
       '@oclif/plugin-help': 3.2.2_supports-color@8.1.1
       debug: 4.3.2_supports-color@8.1.1
@@ -990,7 +993,7 @@ packages:
     resolution: {integrity: sha512-Lmfuf6ubjQ4ifC/9bz1fSCHc6F6E653oyaRXxg+lgT4+bYf9bk+nqrUpAbrXyABkCqgIBiFr3J4zR/kiFdE1PA==}
     engines: {node: '>=8.0.0'}
     dependencies:
-      '@oclif/errors': 1.3.4
+      '@oclif/errors': 1.3.5
       '@oclif/parser': 3.8.5
       debug: 4.3.2
       globby: 11.0.4
@@ -1003,7 +1006,7 @@ packages:
     resolution: {integrity: sha512-Lmfuf6ubjQ4ifC/9bz1fSCHc6F6E653oyaRXxg+lgT4+bYf9bk+nqrUpAbrXyABkCqgIBiFr3J4zR/kiFdE1PA==}
     engines: {node: '>=8.0.0'}
     dependencies:
-      '@oclif/errors': 1.3.4
+      '@oclif/errors': 1.3.5
       '@oclif/parser': 3.8.5
       debug: 4.3.2_supports-color@8.1.1
       globby: 11.0.4
@@ -1019,9 +1022,9 @@ packages:
     dependencies:
       '@oclif/command': 1.8.0
       '@oclif/config': 1.17.0
-      '@oclif/errors': 1.3.4
+      '@oclif/errors': 1.3.5
       '@oclif/plugin-help': 3.2.2
-      cli-ux: 5.6.2
+      cli-ux: 5.6.3
       debug: 4.3.2
       find-yarn-workspace-root: 2.0.0
       fs-extra: 8.1.0
@@ -1034,8 +1037,8 @@ packages:
       - supports-color
     dev: true
 
-  /@oclif/errors/1.3.4:
-    resolution: {integrity: sha512-pJKXyEqwdfRTUdM8n5FIHiQQHg5ETM0Wlso8bF9GodczO40mF5Z3HufnYWJE7z8sGKxOeJCdbAVZbS8Y+d5GCw==}
+  /@oclif/errors/1.3.5:
+    resolution: {integrity: sha512-OivucXPH/eLLlOT7FkCMoZXiaVYf8I/w1eTAM1+gKzfhALwWTusxEx7wBmW0uzvkSg/9ovWLycPaBgJbM3LOCQ==}
     engines: {node: '>=8.0.0'}
     dependencies:
       clean-stack: 3.0.1
@@ -1061,7 +1064,7 @@ packages:
     resolution: {integrity: sha512-yojzeEfmSxjjkAvMRj0KzspXlMjCfBzNRPkWw8ZwOSoNWoJn+OCS/m/S+yfV6BvAM4u2lTzX9Y5rCbrFIgkJLg==}
     engines: {node: '>=8.0.0'}
     dependencies:
-      '@oclif/errors': 1.3.4
+      '@oclif/errors': 1.3.5
       '@oclif/linewrap': 1.0.0
       chalk: 2.4.2
       tslib: 1.14.1
@@ -1072,7 +1075,7 @@ packages:
     dependencies:
       '@oclif/command': 1.8.0
       '@oclif/config': 1.17.0
-      '@oclif/errors': 1.3.4
+      '@oclif/errors': 1.3.5
       chalk: 4.1.1
       indent-string: 4.0.0
       lodash.template: 4.5.0
@@ -1089,7 +1092,7 @@ packages:
     dependencies:
       '@oclif/command': 1.8.0_supports-color@8.1.1
       '@oclif/config': 1.17.0_supports-color@8.1.1
-      '@oclif/errors': 1.3.4
+      '@oclif/errors': 1.3.5
       chalk: 4.1.1
       indent-string: 4.0.0
       lodash.template: 4.5.0
@@ -1119,7 +1122,7 @@ packages:
     dependencies:
       '@oclif/command': 1.8.0
       '@oclif/config': 1.17.0
-      '@oclif/errors': 1.3.4
+      '@oclif/errors': 1.3.5
       chalk: 2.4.2
       debug: 4.3.2
       fs-extra: 7.0.1
@@ -1288,7 +1291,7 @@ packages:
       write-yaml-file: 4.2.0
     dev: false
 
-  /@rollup/pluginutils/4.1.0_rollup@2.52.8:
+  /@rollup/pluginutils/4.1.0_rollup@2.53.0:
     resolution: {integrity: sha512-TrBhfJkFxA+ER+ew2U2/fHbebhLT/l/2pRk0hfj9KusXUuRXd2v0R58AfaZK9VXDQ4TogOSEmICVrQAA3zFnHQ==}
     engines: {node: '>= 8.0.0'}
     peerDependencies:
@@ -1296,7 +1299,7 @@ packages:
     dependencies:
       estree-walker: 2.0.2
       picomatch: 2.3.0
-      rollup: 2.52.8
+      rollup: 2.53.0
     dev: false
 
   /@sinonjs/commons/1.8.3:
@@ -1339,7 +1342,7 @@ packages:
       '@babel/types': 7.14.5
       '@types/babel__generator': 7.6.3
       '@types/babel__template': 7.4.1
-      '@types/babel__traverse': 7.14.1
+      '@types/babel__traverse': 7.14.2
     dev: true
 
   /@types/babel__generator/7.6.3:
@@ -1355,32 +1358,32 @@ packages:
       '@babel/types': 7.14.5
     dev: true
 
-  /@types/babel__traverse/7.14.1:
-    resolution: {integrity: sha512-DomsDK/nX3XXHs6jlQ8/YYE6jZAuhmoGAFfcYi1h1jbBNGS7Efdx74FKLTO3HCCyLqQyLlNbql87xqa7C3M/FQ==}
+  /@types/babel__traverse/7.14.2:
+    resolution: {integrity: sha512-K2waXdXBi2302XUdcHcR1jCeU0LL4TD9HRs/gk0N2Xvrht+G/BfJa4QObBQZfhMdxiCpV3COl5Nfq4uKTeTnJA==}
     dependencies:
       '@babel/types': 7.14.5
     dev: true
 
-  /@types/folder-hash/4.0.0:
-    resolution: {integrity: sha512-y9hSfZVRC5oIodlNGBLrwASy5EudEasqyrnKhp9LU3oUmJvEkzzEMp5sq9P9z+dWIUt9PcDEQnFi/NFfw70gTw==}
+  /@types/folder-hash/4.0.1:
+    resolution: {integrity: sha512-HrIikWNP/7ubX+XB1awPxA+zTI8T3NXgb4g3BQnT4iAWbeZThsaAm+sg+xqO+eK6kPlpOLS6o29FaaWqb2THbA==}
     dev: true
 
   /@types/fs-extra/9.0.12:
     resolution: {integrity: sha512-I+bsBr67CurCGnSenZZ7v94gd3tc3+Aj2taxMT4yu4ABLuOgOjeFxX3dokG24ztSRg5tnT00sL8BszO7gSMoIw==}
     dependencies:
-      '@types/node': 16.0.0
+      '@types/node': 16.3.0
     dev: true
 
   /@types/glob/7.1.4:
     resolution: {integrity: sha512-w+LsMxKyYQm347Otw+IfBXOv9UWVjpHpCDdbBMt8Kz/xbvCYNjP+0qPh91Km3iKfSRLBB0P7fAMf0KHrPu+MyA==}
     dependencies:
       '@types/minimatch': 3.0.5
-      '@types/node': 16.0.0
+      '@types/node': 16.3.0
 
   /@types/graceful-fs/4.1.5:
     resolution: {integrity: sha512-anKkLmZZ+xm4p8JWBf4hElkM4XR+EZeA2M9BAkkTldmcyDY4mbdIJnRghDJH3Ov5ooY7/UAoENtmdMSkaAd7Cw==}
     dependencies:
-      '@types/node': 16.0.0
+      '@types/node': 16.3.0
     dev: true
 
   /@types/istanbul-lib-coverage/2.0.3:
@@ -1426,32 +1429,28 @@ packages:
   /@types/mock-fs/4.13.1:
     resolution: {integrity: sha512-m6nFAJ3lBSnqbvDZioawRvpLXSaPyn52Srf7OfzjubYbYX8MTUdIgDxQl0wEapm4m/pNYSd9TXocpQ0TvZFlYA==}
     dependencies:
-      '@types/node': 16.0.0
+      '@types/node': 16.3.0
     dev: true
 
-  /@types/node/12.20.15:
-    resolution: {integrity: sha512-F6S4Chv4JicJmyrwlDkxUdGNSplsQdGwp1A0AJloEVDirWdZOAiRHhovDlsFkKUrquUXhz1imJhXHsf59auyAg==}
-    dev: true
+  /@types/node/16.3.0:
+    resolution: {integrity: sha512-OydMCocGMGqw/1BnWbhtK+AtwyWTOigtrQlRe57OQmTNcI3HKlVI5FGlh+c4mSqInMPLynFrTlYjfajPu9O/eQ==}
 
-  /@types/node/16.0.0:
-    resolution: {integrity: sha512-TmCW5HoZ2o2/z2EYi109jLqIaPIi9y/lc2LmDCWzuCi35bcaQ+OtUh6nwBiFK7SOu25FAU5+YKdqFZUwtqGSdg==}
-
-  /@types/normalize-package-data/2.4.0:
-    resolution: {integrity: sha512-f5j5b/Gf71L+dbqxIpQ4Z2WlmI/mPJ0fOkGGmFgtb6sAu97EPczzbS3/tJKxmcYDj55OX6ssqwDAWOHIYDRDGA==}
+  /@types/normalize-package-data/2.4.1:
+    resolution: {integrity: sha512-Gj7cI7z+98M282Tqmp2K5EIsoouUEzbBJhQQzDE3jSIRk6r9gsz0oUokqIUR4u1R3dMHo0pDHM7sNOHyhulypw==}
 
   /@types/parse-json/4.0.0:
     resolution: {integrity: sha512-//oorEZjL6sbPcKUaCdIGlIUeH26mgzimjBB77G6XRgnDl/L5wOnpyBGRe/Mmf5CVW3PwEBE1NjiMZ/ssFh4wA==}
     dev: false
 
-  /@types/prettier/2.3.1:
-    resolution: {integrity: sha512-NVkb4p4YjI8E3O6+1m8I+8JlMpFZwfSbPGdaw0wXuyPRTEz0SLKwBUWNSO7Maoi8tQMPC8JLZNWkrcKPI7/sLA==}
+  /@types/prettier/2.3.2:
+    resolution: {integrity: sha512-eI5Yrz3Qv4KPUa/nSIAi0h+qX0XyewOliug5F2QAtuRg6Kjg6jfmxe1GIwoIRhZspD1A0RP8ANrPwvEXXtRFog==}
     dev: true
 
-  /@types/rimraf/3.0.0:
-    resolution: {integrity: sha512-7WhJ0MdpFgYQPXlF4Dx+DhgvlPCfz/x5mHaeDQAKhcenvQP1KCpLQ18JklAqeGMYSAT2PxLpzd0g2/HE7fj7hQ==}
+  /@types/rimraf/3.0.1:
+    resolution: {integrity: sha512-CAoSlbco40aKZ0CkelBF2g3JeN6aioRaTVnqSX5pWsn/WApm6IDxI4e4tD9D0dY/meCkyyleP1IQDVN13F4maA==}
     dependencies:
       '@types/glob': 7.1.4
-      '@types/node': 16.0.0
+      '@types/node': 16.3.0
     dev: true
 
   /@types/semver/6.2.3:
@@ -1769,7 +1768,7 @@ packages:
       '@babel/template': 7.14.5
       '@babel/types': 7.14.5
       '@types/babel__core': 7.1.15
-      '@types/babel__traverse': 7.14.1
+      '@types/babel__traverse': 7.14.2
     dev: true
 
   /babel-preset-current-node-syntax/1.0.1_@babel+core@7.14.6:
@@ -1915,7 +1914,7 @@ packages:
     dependencies:
       caniuse-lite: 1.0.30001243
       colorette: 1.2.2
-      electron-to-chromium: 1.3.769
+      electron-to-chromium: 1.3.771
       escalade: 3.1.1
       node-releases: 1.1.73
     dev: true
@@ -2179,7 +2178,7 @@ packages:
     resolution: {integrity: sha512-/1owvF0SZ5Gn54cgrikJ0QskgTzeg30HGjkmjFoaHDJzAqFpuX1DBpFR8aLvsE1J5s9MgeYRENQK4BFwOag5VA==}
     engines: {node: '>=8.0.0'}
     dependencies:
-      '@oclif/errors': 1.3.4
+      '@oclif/errors': 1.3.5
       '@oclif/linewrap': 1.0.0
       '@oclif/screen': 1.0.4
       ansi-escapes: 3.2.0
@@ -2202,12 +2201,12 @@ packages:
       tslib: 1.14.1
     dev: false
 
-  /cli-ux/5.6.2:
-    resolution: {integrity: sha512-CuiamOCfPaOTjbuAQXdFsfZLQmO6XSmCDxulq4y8pIets1hZ3eaysHppPKGdrcdgLugUGUap5+bXd3IukJASBA==}
+  /cli-ux/5.6.3:
+    resolution: {integrity: sha512-/oDU4v8BiDjX2OKcSunGH0iGDiEtj2rZaGyqNuv9IT4CgcSMyVWAMfn0+rEHaOc4n9ka78B0wo1+N1QX89f7mw==}
     engines: {node: '>=8.0.0'}
     dependencies:
       '@oclif/command': 1.8.0_supports-color@8.1.1
-      '@oclif/errors': 1.3.4
+      '@oclif/errors': 1.3.5
       '@oclif/linewrap': 1.0.0
       '@oclif/screen': 1.0.4
       ansi-escapes: 4.3.2
@@ -2818,8 +2817,8 @@ packages:
       jake: 10.8.2
     dev: false
 
-  /electron-to-chromium/1.3.769:
-    resolution: {integrity: sha512-B+3hW8D76/uoTPSobWI3D/CFn2S4jPn88dVJ+BkD88Lz6LijQpL+hfdzIFJGTQK4KdE0XwmNbjUQFH1OQVwKdQ==}
+  /electron-to-chromium/1.3.771:
+    resolution: {integrity: sha512-zHMomTqkpnAD9W5rhXE1aiU3ogGFrqWzdvM4C6222SREiqsWQb2w0S7P2Ii44qCaGimmAP1z+OydllM438uJyA==}
     dev: true
 
   /emittery/0.8.1:
@@ -3087,12 +3086,12 @@ packages:
       micromatch: 3.1.10
     dev: false
 
-  /fast-glob/3.2.6:
-    resolution: {integrity: sha512-GnLuqj/pvQ7pX8/L4J84nijv6sAnlwvSDpMkJi9i7nPmPxGtRPkBSStfvDW5l6nMdX9VWe+pkKWFTgD+vF2QSQ==}
+  /fast-glob/3.2.7:
+    resolution: {integrity: sha512-rYGMRwip6lUMvYD3BTScMwT1HtAs2d71SMv66Vrxs0IekGZEjhM0pcMfjQPnknBt2zeCwQMEupiN02ZP4DiT1Q==}
     engines: {node: '>=8'}
     dependencies:
       '@nodelib/fs.stat': 2.0.5
-      '@nodelib/fs.walk': 1.2.7
+      '@nodelib/fs.walk': 1.2.8
       glob-parent: 5.1.2
       merge2: 1.4.1
       micromatch: 4.0.4
@@ -3443,7 +3442,7 @@ packages:
       '@types/glob': 7.1.4
       array-union: 2.1.0
       dir-glob: 3.0.1
-      fast-glob: 3.2.6
+      fast-glob: 3.2.7
       glob: 7.1.7
       ignore: 5.1.8
       merge2: 1.4.1
@@ -3455,7 +3454,7 @@ packages:
     dependencies:
       array-union: 2.1.0
       dir-glob: 3.0.1
-      fast-glob: 3.2.6
+      fast-glob: 3.2.7
       ignore: 5.1.8
       merge2: 1.4.1
       slash: 3.0.0
@@ -4186,7 +4185,7 @@ packages:
       '@jest/environment': 27.0.6
       '@jest/test-result': 27.0.6
       '@jest/types': 27.0.6
-      '@types/node': 16.0.0
+      '@types/node': 16.3.0
       chalk: 4.1.1
       co: 4.6.0
       dedent: 0.7.0
@@ -4318,7 +4317,7 @@ packages:
       '@jest/environment': 27.0.6
       '@jest/fake-timers': 27.0.6
       '@jest/types': 27.0.6
-      '@types/node': 16.0.0
+      '@types/node': 16.3.0
       jest-mock: 27.0.6
       jest-util: 27.0.6
       jsdom: 16.6.0
@@ -4336,7 +4335,7 @@ packages:
       '@jest/environment': 27.0.6
       '@jest/fake-timers': 27.0.6
       '@jest/types': 27.0.6
-      '@types/node': 16.0.0
+      '@types/node': 16.3.0
       jest-mock: 27.0.6
       jest-util: 27.0.6
     dev: true
@@ -4357,7 +4356,7 @@ packages:
     dependencies:
       '@jest/types': 27.0.6
       '@types/graceful-fs': 4.1.5
-      '@types/node': 16.0.0
+      '@types/node': 16.3.0
       anymatch: 3.1.2
       fb-watchman: 2.0.1
       graceful-fs: 4.2.6
@@ -4380,7 +4379,7 @@ packages:
       '@jest/source-map': 27.0.6
       '@jest/test-result': 27.0.6
       '@jest/types': 27.0.6
-      '@types/node': 16.0.0
+      '@types/node': 16.3.0
       chalk: 4.1.1
       co: 4.6.0
       expect: 27.0.6
@@ -4435,7 +4434,7 @@ packages:
     engines: {node: ^10.13.0 || ^12.13.0 || ^14.15.0 || >=15.0.0}
     dependencies:
       '@jest/types': 27.0.6
-      '@types/node': 16.0.0
+      '@types/node': 16.3.0
     dev: true
 
   /jest-pnp-resolver/1.2.2_jest-resolve@27.0.6:
@@ -4490,7 +4489,7 @@ packages:
       '@jest/test-result': 27.0.6
       '@jest/transform': 27.0.6
       '@jest/types': 27.0.6
-      '@types/node': 16.0.0
+      '@types/node': 16.3.0
       chalk: 4.1.1
       emittery: 0.8.1
       exit: 0.1.2
@@ -4552,7 +4551,7 @@ packages:
     resolution: {integrity: sha512-PtGdVK9EGC7dsaziskfqaAPib6wTViY3G8E5wz9tLVPhHyiDNTZn/xjZ4khAw+09QkoOVpn7vF5nPSN6dtBexA==}
     engines: {node: ^10.13.0 || ^12.13.0 || ^14.15.0 || >=15.0.0}
     dependencies:
-      '@types/node': 16.0.0
+      '@types/node': 16.3.0
       graceful-fs: 4.2.6
     dev: true
 
@@ -4568,8 +4567,8 @@ packages:
       '@babel/types': 7.14.5
       '@jest/transform': 27.0.6
       '@jest/types': 27.0.6
-      '@types/babel__traverse': 7.14.1
-      '@types/prettier': 2.3.1
+      '@types/babel__traverse': 7.14.2
+      '@types/prettier': 2.3.2
       babel-preset-current-node-syntax: 1.0.1_@babel+core@7.14.6
       chalk: 4.1.1
       expect: 27.0.6
@@ -4593,7 +4592,7 @@ packages:
     engines: {node: ^10.13.0 || ^12.13.0 || ^14.15.0 || >=15.0.0}
     dependencies:
       '@jest/types': 27.0.6
-      '@types/node': 16.0.0
+      '@types/node': 16.3.0
       chalk: 4.1.1
       graceful-fs: 4.2.6
       is-ci: 3.0.0
@@ -4618,7 +4617,7 @@ packages:
     dependencies:
       '@jest/test-result': 27.0.6
       '@jest/types': 27.0.6
-      '@types/node': 16.0.0
+      '@types/node': 16.3.0
       ansi-escapes: 4.3.2
       chalk: 4.1.1
       jest-util: 27.0.6
@@ -4629,7 +4628,7 @@ packages:
     resolution: {integrity: sha512-qupxcj/dRuA3xHPMUd40gr2EaAurFbkwzOh7wfPaeE9id7hyjURRQoqNfHifHK3XjJU6YJJUQKILGUnwGPEOCA==}
     engines: {node: '>= 10.13.0'}
     dependencies:
-      '@types/node': 16.0.0
+      '@types/node': 16.3.0
       merge-stream: 2.0.0
       supports-color: 8.1.1
     dev: true
@@ -5397,12 +5396,12 @@ packages:
     dependencies:
       '@oclif/command': 1.8.0
       '@oclif/config': 1.17.0
-      '@oclif/errors': 1.3.4
+      '@oclif/errors': 1.3.5
       '@oclif/fixpack': 2.3.0
       '@oclif/plugin-help': 3.2.2
       '@oclif/plugin-not-found': 1.2.4
       '@oclif/plugin-warn-if-update-available': 1.7.0
-      cli-ux: 5.6.2
+      cli-ux: 5.6.3
       debug: 4.3.2
       find-yarn-workspace-root: 2.0.0
       fs-extra: 8.1.0
@@ -5953,7 +5952,7 @@ packages:
     resolution: {integrity: sha512-Ug69mNOpfvKDAc2Q8DRpMjjzdtrnv9HcSMX+4VsZxD1aZ6ZzrIE7rlzXBtWTyhULSMKg076AW6WR5iZpD0JiOg==}
     engines: {node: '>=8'}
     dependencies:
-      '@types/normalize-package-data': 2.4.0
+      '@types/normalize-package-data': 2.4.1
       normalize-package-data: 2.5.0
       parse-json: 5.2.0
       type-fest: 0.6.0
@@ -6159,8 +6158,8 @@ packages:
       find-up: 4.1.0
     dev: false
 
-  /rollup/2.52.8:
-    resolution: {integrity: sha512-IjAB0C6KK5/lvqzJWAzsvOik+jV5Bt907QdkQ/gDP4j+R9KYNI1tjqdxiPitGPVrWC21Mf/ucXgowUjN/VemaQ==}
+  /rollup/2.53.0:
+    resolution: {integrity: sha512-spgrY78Toh+m0+zaOoeaayJKuzFuWy6o1PdFIBMVwRcuxT0xCOX9A5rChyKe+2ruL4lePKWUMImS4mMW1QAkmQ==}
     engines: {node: '>=10.0.0'}
     hasBin: true
     optionalDependencies:
@@ -6875,7 +6874,7 @@ packages:
       yargs-parser: 20.2.9
     dev: true
 
-  /ts-node/10.0.0_488376d43314e2606bceb2872a37d0ef:
+  /ts-node/10.0.0_1059216209fc0c6e1d3e427ca3e1553a:
     resolution: {integrity: sha512-ROWeOIUvfFbPZkoDis0L/55Fk+6gFQNZwwKPLinacRl6tsxstTF1DbAcLKkovwnpKMVvOMHP1TIbnwXwtLg1gg==}
     engines: {node: '>=12.0.0'}
     hasBin: true
@@ -6894,7 +6893,7 @@ packages:
       '@tsconfig/node12': 1.0.9
       '@tsconfig/node14': 1.0.1
       '@tsconfig/node16': 1.0.1
-      '@types/node': 16.0.0
+      '@types/node': 16.3.0
       arg: 4.1.3
       create-require: 1.1.1
       diff: 4.0.2
@@ -6938,7 +6937,7 @@ packages:
       joycon: 3.0.1
       postcss-load-config: 3.1.0
       resolve-from: 5.0.0
-      rollup: 2.52.8
+      rollup: 2.53.0
       sucrase: 3.20.0
       tree-kill: 1.2.2
       typescript: 4.3.5

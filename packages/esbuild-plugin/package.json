@@ -38,12 +38,12 @@
   "devDependencies": {
     "@types/jest": "^26.0.24",
     "@types/mock-fs": "^4.13.1",
-    "@types/node": "^16.0.0",
+    "@types/node": "^16.3.0",
     "changesets-github-release": "^0.0.3",
     "esbuild-register": "^2.6.0",
     "jest": "^27.0.6",
     "mock-fs": "^5.0.0",
-    "rollup": "^2.52.8",
+    "rollup": "^2.53.0",
     "ts-jest": "^27.0.3",
     "tsup": "^4.12.5"
   },
