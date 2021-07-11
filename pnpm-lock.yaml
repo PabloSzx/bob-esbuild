@@ -63,7 +63,7 @@ importers:
       lodash.get: ^4.4.2
       oclif: ^1.18.1
       rimraf: ^3.0.2
-      rollup: ^2.53.0
+      rollup: ^2.53.1
       rollup-plugin-delete: ^2.0.0
       rollup-plugin-node-externals: ^2.2.0
       sucrase: ^3.20.0
@@ -85,7 +85,7 @@ importers:
       lodash.get: 4.4.2
       oclif: 1.18.1
       rimraf: 3.0.2
-      rollup: 2.53.0
+      rollup: 2.53.1
       rollup-plugin-delete: 2.0.0
       rollup-plugin-node-externals: 2.2.0_builtin-modules@3.2.0
       sucrase: 3.20.0
@@ -147,11 +147,11 @@ importers:
       joycon: ^3.0.1
       jsonc-parser: ^3.0.0
       mock-fs: ^5.0.0
-      rollup: ^2.53.0
+      rollup: ^2.53.1
       ts-jest: ^27.0.3
       tsup: ^4.12.5
     dependencies:
-      '@rollup/pluginutils': 4.1.0_rollup@2.53.0
+      '@rollup/pluginutils': 4.1.0_rollup@2.53.1
       esbuild: 0.12.15
       joycon: 3.0.1
       jsonc-parser: 3.0.0
@@ -163,7 +163,7 @@ importers:
       esbuild-register: 2.6.0
       jest: 27.0.6
       mock-fs: 5.0.0
-      rollup: 2.53.0
+      rollup: 2.53.1
       ts-jest: 27.0.3_jest@27.0.6+typescript@4.3.5
       tsup: 4.12.5_typescript@4.3.5
 
@@ -1291,7 +1291,7 @@ packages:
       write-yaml-file: 4.2.0
     dev: false
 
-  /@rollup/pluginutils/4.1.0_rollup@2.53.0:
+  /@rollup/pluginutils/4.1.0_rollup@2.53.1:
     resolution: {integrity: sha512-TrBhfJkFxA+ER+ew2U2/fHbebhLT/l/2pRk0hfj9KusXUuRXd2v0R58AfaZK9VXDQ4TogOSEmICVrQAA3zFnHQ==}
     engines: {node: '>= 8.0.0'}
     peerDependencies:
@@ -1299,7 +1299,7 @@ packages:
     dependencies:
       estree-walker: 2.0.2
       picomatch: 2.3.0
-      rollup: 2.53.0
+      rollup: 2.53.1
     dev: false
 
   /@sinonjs/commons/1.8.3:
@@ -6160,6 +6160,14 @@ packages:
 
   /rollup/2.53.0:
     resolution: {integrity: sha512-spgrY78Toh+m0+zaOoeaayJKuzFuWy6o1PdFIBMVwRcuxT0xCOX9A5rChyKe+2ruL4lePKWUMImS4mMW1QAkmQ==}
+    engines: {node: '>=10.0.0'}
+    hasBin: true
+    optionalDependencies:
+      fsevents: 2.3.2
+    dev: true
+
+  /rollup/2.53.1:
+    resolution: {integrity: sha512-yiTCvcYXZEulNWNlEONOQVlhXA/hgxjelFSjNcrwAAIfYx/xqjSHwqg/cCaWOyFRKr+IQBaXwt723m8tCaIUiw==}
     engines: {node: '>=10.0.0'}
     hasBin: true
     optionalDependencies:
