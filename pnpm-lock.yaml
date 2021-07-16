@@ -136,7 +136,7 @@ importers:
 
   packages/esbuild-plugin:
     specifiers:
-      '@rollup/pluginutils': ^4.1.0
+      '@rollup/pluginutils': ^4.1.1
       '@types/jest': ^26.0.24
       '@types/mock-fs': ^4.13.1
       '@types/node': ^16.3.0
@@ -151,7 +151,7 @@ importers:
       ts-jest: ^27.0.3
       tsup: ^4.12.5
     dependencies:
-      '@rollup/pluginutils': 4.1.0_rollup@2.53.1
+      '@rollup/pluginutils': 4.1.1
       esbuild: 0.12.15
       joycon: 3.0.1
       jsonc-parser: 3.0.0
@@ -1291,15 +1291,12 @@ packages:
       write-yaml-file: 4.2.0
     dev: false
 
-  /@rollup/pluginutils/4.1.0_rollup@2.53.1:
-    resolution: {integrity: sha512-TrBhfJkFxA+ER+ew2U2/fHbebhLT/l/2pRk0hfj9KusXUuRXd2v0R58AfaZK9VXDQ4TogOSEmICVrQAA3zFnHQ==}
+  /@rollup/pluginutils/4.1.1:
+    resolution: {integrity: sha512-clDjivHqWGXi7u+0d2r2sBi4Ie6VLEAzWMIkvJLnDmxoOhBYOTfzGbOQBA32THHm11/LiJbd01tJUpJsbshSWQ==}
     engines: {node: '>= 8.0.0'}
-    peerDependencies:
-      rollup: ^1.20.0||^2.0.0
     dependencies:
       estree-walker: 2.0.2
       picomatch: 2.3.0
-      rollup: 2.53.1
     dev: false
 
   /@sinonjs/commons/1.8.3:
