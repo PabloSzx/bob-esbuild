@@ -36,7 +36,7 @@
     "builtin-modules": "^3.2.0",
     "chalk": "^4.1.1",
     "cosmiconfig": "^7.0.0",
-    "date-fns": "^2.22.1",
+    "date-fns": "^2.23.0",
     "esbuild": "^0.12.15",
     "execa": "^5.1.1",
     "folder-hash": "^4.0.1",
