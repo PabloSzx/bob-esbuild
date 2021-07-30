@@ -50,7 +50,7 @@ importers:
       '@types/rimraf': ^3.0.1
       bob-esbuild-plugin: workspace:0.1.21
       builtin-modules: ^3.2.0
-      chalk: ^4.1.1
+      chalk: ^4.1.2
       changesets-github-release: ^0.0.3
       cosmiconfig: ^7.0.0
       date-fns: ^2.23.0
@@ -74,7 +74,7 @@ importers:
       '@pnpm/exportable-manifest': 2.1.5
       bob-esbuild-plugin: link:../esbuild-plugin
       builtin-modules: 3.2.0
-      chalk: 4.1.1
+      chalk: 4.1.2
       cosmiconfig: 7.0.0
       date-fns: 2.23.0
       esbuild: 0.12.17
@@ -2072,6 +2072,14 @@ packages:
     dependencies:
       ansi-styles: 4.3.0
       supports-color: 7.2.0
+
+  /chalk/4.1.2:
+    resolution: {integrity: sha512-oKnbhFyRIXpUuez8iBMmyEa4nbj4IOQyuhc/wy9kY7/WVPcwIO9VA668Pu8RkO7+0G76SLROeyw9CpQ061i4mA==}
+    engines: {node: '>=10'}
+    dependencies:
+      ansi-styles: 4.3.0
+      supports-color: 7.2.0
+    dev: false
 
   /changesets-github-release/0.0.3:
     resolution: {integrity: sha512-72TfuA4aN3IL+kSEcSYKkvJA/6zswV+7sAj8eMrV/4x2sh/Ujxhr+zlhw/7dZsQgGLAKmRJwhmDhYe1iCj3x4w==}
