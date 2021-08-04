@@ -28,7 +28,7 @@ importers:
 
   examples/basic:
     specifiers:
-      bob-esbuild-cli: workspace:^0.1.27
+      bob-esbuild-cli: workspace:^0.2.0
       shared: workspace:^1.0.0
     dependencies:
       bob-esbuild-cli: link:../../packages/bob-cli
@@ -36,7 +36,7 @@ importers:
 
   examples/shared:
     specifiers:
-      bob-esbuild-cli: workspace:^0.1.27
+      bob-esbuild-cli: workspace:^0.2.0
     dependencies:
       bob-esbuild-cli: link:../../packages/bob-cli
 
@@ -48,7 +48,7 @@ importers:
       '@types/lodash.get': ^4.4.6
       '@types/node': ^16.4.10
       '@types/rimraf': ^3.0.1
-      bob-esbuild-plugin: workspace:0.1.21
+      bob-esbuild-plugin: workspace:0.2.0
       builtin-modules: ^3.2.0
       chalk: ^4.1.2
       changesets-github-release: ^0.0.3
@@ -102,7 +102,7 @@ importers:
   packages/bob-cli:
     specifiers:
       '@types/node': ^16.4.10
-      bob-esbuild: workspace:0.1.27
+      bob-esbuild: workspace:0.2.0
       changesets-github-release: ^0.0.3
       commander: ^8.1.0
       esbuild-register: ^2.6.0

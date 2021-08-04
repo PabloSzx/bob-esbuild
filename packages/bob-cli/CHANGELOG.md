@@ -1,5 +1,17 @@
 # bob-esbuild-cli
 
+## 0.2.0
+
+### Minor Changes
+
+- 1d3375e: change ocliff to commander
+- 1d3375e: update deps
+
+### Patch Changes
+
+- Updated dependencies [1d3375e]
+  - bob-esbuild@0.2.0
+
 ## 0.1.27
 
 ### Patch Changes

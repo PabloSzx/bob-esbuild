@@ -1,5 +1,17 @@
 # bob-esbuild
 
+## 0.2.0
+
+### Minor Changes
+
+- 1d3375e: update deps
+
+### Patch Changes
+
+- Updated dependencies [7dadf1b]
+- Updated dependencies [1d3375e]
+  - bob-esbuild-plugin@0.2.0
+
 ## 0.1.27
 
 ### Patch Changes
