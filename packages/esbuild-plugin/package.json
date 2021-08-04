@@ -45,7 +45,7 @@
     "mock-fs": "^5.0.0",
     "rollup": "^2.55.1",
     "ts-jest": "^27.0.4",
-    "tsup": "^4.13.0"
+    "tsup": "^4.13.1"
   },
   "peerDependencies": {
     "@types/node": "*",

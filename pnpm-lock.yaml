@@ -129,7 +129,7 @@ importers:
       mock-fs: ^5.0.0
       rollup: ^2.55.1
       ts-jest: ^27.0.4
-      tsup: ^4.13.0
+      tsup: ^4.13.1
     dependencies:
       '@rollup/pluginutils': 4.1.1
       esbuild: 0.12.17
@@ -145,7 +145,7 @@ importers:
       mock-fs: 5.0.0
       rollup: 2.55.1
       ts-jest: 27.0.4_52cc4273aa16028085013af47e479e10
-      tsup: 4.13.0_typescript@4.3.5
+      tsup: 4.13.1_typescript@4.3.5
 
 packages:
 
@@ -4408,8 +4408,8 @@ packages:
       strip-json-comments: 2.0.1
     dev: false
 
-  /tsup/4.13.0_typescript@4.3.5:
-    resolution: {integrity: sha512-23RyXa04el2tA8b+y53ExZuFplEAHmNX/eK6nNs5drlZRlrmWMmK0EvJWft5ajw2r49NL9ypeuNIGGz+CLTykg==}
+  /tsup/4.13.1_typescript@4.3.5:
+    resolution: {integrity: sha512-OSJjTe8Kj+mm0gagg6Ory5vNm2NkQ11IfaDMjgGA3DDco0c2G5kObLkqmRDTmvFqw24mF2knfDMnq7vEuD5+7w==}
     hasBin: true
     peerDependencies:
       typescript: ^4.2.3
