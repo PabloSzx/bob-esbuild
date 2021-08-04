@@ -1,5 +1,5 @@
 import { hashElement } from 'folder-hash';
-import { existsSync, rmSync } from 'fs';
+import { existsSync, unlinkSync } from 'fs';
 import fsExtra from 'fs-extra';
 import { resolve } from 'path';
 
@@ -49,7 +49,7 @@ export async function getHash() {
 
   const cleanHash = () => {
     try {
-      rmSync(typesHashJSON);
+      unlinkSync(typesHashJSON);
     } catch (err) {}
   };
 
