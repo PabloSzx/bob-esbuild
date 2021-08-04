@@ -1,5 +1,12 @@
 # bob-esbuild
 
+## 0.2.1
+
+### Patch Changes
+
+- 8f52656: rmSync -> unlinkSync
+- 91772d6: rollback globby to v11
+
 ## 0.2.0
 
 ### Minor Changes

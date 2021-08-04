@@ -28,7 +28,7 @@ importers:
 
   examples/basic:
     specifiers:
-      bob-esbuild-cli: workspace:^0.2.0
+      bob-esbuild-cli: workspace:^0.2.1
       shared: workspace:^1.0.0
     dependencies:
       bob-esbuild-cli: link:../../packages/bob-cli
@@ -36,7 +36,7 @@ importers:
 
   examples/shared:
     specifiers:
-      bob-esbuild-cli: workspace:^0.2.0
+      bob-esbuild-cli: workspace:^0.2.1
     dependencies:
       bob-esbuild-cli: link:../../packages/bob-cli
 
@@ -101,7 +101,7 @@ importers:
 
   packages/bob-cli:
     specifiers:
-      bob-esbuild: workspace:0.2.0
+      bob-esbuild: workspace:0.2.1
       changesets-github-release: ^0.0.3
       commander: ^8.1.0
       esbuild-register: ^2.6.0

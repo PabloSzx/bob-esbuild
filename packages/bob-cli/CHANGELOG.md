@@ -1,5 +1,14 @@
 # bob-esbuild-cli
 
+## 0.2.1
+
+### Patch Changes
+
+- 91772d6: rollback globby to v11
+- Updated dependencies [8f52656]
+- Updated dependencies [91772d6]
+  - bob-esbuild@0.2.1
+
 ## 0.2.0
 
 ### Minor Changes
