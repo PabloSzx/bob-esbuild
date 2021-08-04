@@ -1,5 +1,15 @@
 # bob-esbuild-plugin
 
+## 0.2.0
+
+### Minor Changes
+
+- 1d3375e: update deps
+
+### Patch Changes
+
+- 7dadf1b: filter plugins following rollup types change
+
 ## 0.1.21
 
 ### Patch Changes
