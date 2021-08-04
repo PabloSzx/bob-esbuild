@@ -28,7 +28,7 @@ export async function buildTsc(options: TSCOptions = {}) {
 
   assert(dirs.length, 'tsc dirs not specified!');
 
-  const { globby } = await import('globby');
+  const { default: globby } = await import('globby');
 
   const targetDirs = await globby(dirs, {
     expandDirectories: false,

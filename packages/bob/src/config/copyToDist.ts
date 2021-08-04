@@ -21,7 +21,7 @@ export interface CopyFilesOptions {
 }
 
 async function copyFilesToDist({ cwd = process.cwd(), distDir, files }: CopyFilesOptions) {
-  const { globby } = await import('globby');
+  const { default: globby } = await import('globby');
 
   const allFiles = await globby(files, { cwd });
 

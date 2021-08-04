@@ -63,7 +63,7 @@ export async function getRollupConfig(options: ConfigOptions = {}) {
 
   const distDir = globalOptions.distDir;
 
-  const { globby } = await import('globby');
+  const { default: globby } = await import('globby');
 
   const input = (
     await Promise.all(
