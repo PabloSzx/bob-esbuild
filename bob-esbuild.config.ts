@@ -5,6 +5,17 @@ export const config: import('bob-esbuild').BobConfig = {
   distDir: 'lib',
   verbose: true,
   outputOptions: {
-    sourcemap: true,
+    sourcemap: false,
   },
+  plugins: [
+    {
+      name: 'keep-dynamic-import',
+      renderDynamicImport() {
+        return {
+          left: 'import(',
+          right: ')',
+        };
+      },
+    },
+  ],
 };

@@ -1,5 +1,4 @@
 import { bobEsbuildPlugin } from 'bob-esbuild-plugin';
-import globby from 'globby';
 import path from 'path';
 import del from 'rollup-plugin-delete';
 import externals from 'rollup-plugin-node-externals';
@@ -13,6 +12,7 @@ import { rollupBin } from './rollupBin';
 
 import type { RollupBuild } from 'rollup';
 import type { OutputOptions, InputOptions, Plugin } from 'rollup';
+
 export interface ConfigOptions {
   /**
    * @default process.cwd()
@@ -62,6 +62,8 @@ export async function getRollupConfig(options: ConfigOptions = {}) {
   if (!inputFiles.length) throw Error('No input files to check!');
 
   const distDir = globalOptions.distDir;
+
+  const { globby } = await import('globby');
 
   const input = (
     await Promise.all(

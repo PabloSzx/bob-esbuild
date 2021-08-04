@@ -1,5 +1,15 @@
-import { run } from '@oclif/command';
-import flush from '@oclif/command/flush';
-import handle from '@oclif/errors/handle';
+import { program } from 'commander';
 
-run().then(flush, handle);
+import { BuildCommand, TSCCommand, WatchCommand } from './commands';
+
+program.addCommand(BuildCommand).addCommand(TSCCommand).addCommand(WatchCommand);
+
+program
+  .parseAsync(process.argv)
+  .then(() => {
+    process.exit(0);
+  })
+  .catch(err => {
+    console.error(err);
+    process.exit(1);
+  });

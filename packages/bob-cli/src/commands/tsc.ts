@@ -1,25 +1,12 @@
 import { buildTsc } from 'bob-esbuild';
 
-import { Command, flags } from '@oclif/command';
+import { Command } from 'commander';
 
-export default class TSC extends Command {
-  static description = 'Run tsc and then copy the types';
-
-  static flags = {
-    help: flags.help({ char: 'h' }),
-    target: flags.string({
-      multiple: true,
-      char: 't',
-    }),
-  };
-
-  async run() {
-    const { flags } = this.parse(TSC);
-
+export const TSCCommand = new Command('tsc')
+  .description('Run tsc and then copy the types')
+  .option('-t --target <...dirs>')
+  .action(async ({ target }) => {
     await buildTsc({
-      dirs: flags.target,
+      dirs: target,
     });
-  }
-}
-
-export type {} from '@oclif/parser/lib/flags';
+  });

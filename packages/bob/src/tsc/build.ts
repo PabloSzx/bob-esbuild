@@ -1,7 +1,6 @@
 import assert from 'assert';
 import { command } from 'execa';
-import { copy, pathExists } from 'fs-extra';
-import globby from 'globby';
+import fsExtra from 'fs-extra';
 import { parse, resolve } from 'path';
 
 import { resolvedTsconfig } from '../config/tsconfig';
@@ -9,6 +8,8 @@ import { globalConfig } from '../config/cosmiconfig';
 import { debug } from '../log/debug';
 import { error } from '../log/error';
 import { getHash } from './hash';
+
+const { copy, pathExists } = fsExtra;
 
 import type { TSCOptions } from './types';
 
@@ -26,6 +27,8 @@ export async function buildTsc(options: TSCOptions = {}) {
   const tscCommand = options.tscBuildCommand || globalTsc.tscBuildCommand || 'tsc --emitDeclarationOnly';
 
   assert(dirs.length, 'tsc dirs not specified!');
+
+  const { globby } = await import('globby');
 
   const targetDirs = await globby(dirs, {
     expandDirectories: false,

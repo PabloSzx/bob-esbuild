@@ -1,46 +1,17 @@
 import { startBuild } from 'bob-esbuild/build';
 
-import { Command, flags } from '@oclif/command';
+import { Command } from 'commander';
 
-export default class Build extends Command {
-  static description = 'Build using rollup+esbuild, all these flags override the bob-esbuild.config';
-
-  static flags = {
-    help: flags.help({ char: 'h' }),
-    cwd: flags.string({
-      description: 'Change target current directory',
-    }),
-    input: flags.string({
-      char: 'i',
-      description: "Input pattern files, if not specified, it reads '**/*.ts'. Repeat this flag to specify multiple patterns",
-      multiple: true,
-    }),
-    bundle: flags.boolean({
-      description: 'Enable bundling every entry point (With no support for code-splitting yet)',
-      allowNo: true,
-    }),
-    clean: flags.boolean({
-      description: "Clean the output files before writing the new build, by default it's set as 'true' by the global config",
-      allowNo: true,
-    }),
-    skipTsc: flags.boolean({
-      description: 'Skip TSC build',
-    }),
-    onlyCJS: flags.boolean({
-      description: 'Only build for CJS',
-      exclusive: ['onlyESM'],
-    }),
-    onlyESM: flags.boolean({
-      description: 'Only build for ESM',
-      exclusive: ['onlyCJS'],
-    }),
-  };
-
-  async run() {
-    const {
-      flags: { cwd, input: inputFiles, bundle, clean, skipTsc, onlyCJS, onlyESM },
-    } = this.parse(Build);
-
+export const BuildCommand = new Command('build')
+  .description('Build using rollup+esbuild, all these flags override the bob-esbuild.config')
+  .option('--cwd <dir>', 'Change target current directory')
+  .option('-i --input <file...>', "Input pattern files, if not specified, it reads '**/*.ts'")
+  .option('--bundle', 'Enable bundling every entry point (With no support for code-splitting)')
+  .option('--clean', "Clean the output files before writing the new build, by default it's set as 'true' by the global config")
+  .option('--skipTsc', 'Skip TSC build')
+  .option('--onlyCJS', 'Only build for CJS')
+  .option('--onlyESM', 'Only build for ESM')
+  .action(async ({ cwd, inputFiles, bundle, clean, onlyCJS, onlyESM, skipTsc }) => {
     await startBuild({
       rollup: {
         cwd,
@@ -52,7 +23,4 @@ export default class Build extends Command {
       },
       tsc: skipTsc ? false : {},
     });
-  }
-}
-
-export type {} from '@oclif/parser/lib/flags';
+  });

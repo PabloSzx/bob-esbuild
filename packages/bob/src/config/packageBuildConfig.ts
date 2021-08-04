@@ -1,8 +1,10 @@
-import { readJSON } from 'fs-extra';
+import fsExtra from 'fs-extra';
 import { resolve } from 'path';
 
 import type { OutputOptions } from 'rollup';
 import type { PackageJSON } from './packageJson';
+
+const { readJSON } = fsExtra;
 
 export interface PackageBuildConfig {
   input?: string[];

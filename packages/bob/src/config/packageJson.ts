@@ -1,14 +1,20 @@
-import { ensureDir, writeJSON } from 'fs-extra';
+import fsExtra from 'fs-extra';
 import get from 'lodash.get';
 import { resolve } from 'path';
 
 // This function even if it's pnpm specific, it doesn't conflict with other package
 // managers, since if a dependency doesn't use the workspace protocol, it does nothing
-import makePublishManifest from '@pnpm/exportable-manifest';
+import makePublishManifestPkg from '@pnpm/exportable-manifest';
 
 import { warn } from '../log/warn';
+import { getDefault } from '../utils/getDefault';
+
 import type { Plugin } from 'rollup';
 import type { PackageBuildConfig } from './packageBuildConfig';
+
+const makePublishManifest = getDefault(makePublishManifestPkg);
+
+const { ensureDir, writeJSON } = fsExtra;
 export interface PackageJSON extends Record<string, unknown> {
   bin?: Record<string, string>;
   publishConfig?: {
