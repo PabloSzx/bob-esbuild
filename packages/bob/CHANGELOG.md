@@ -1,5 +1,13 @@
 # bob-esbuild
 
+## 0.2.3
+
+### Patch Changes
+
+- 8e3f251: sourcemap disabled by default
+- Updated dependencies [8e3f251]
+  - bob-esbuild-plugin@0.2.3
+
 ## 0.2.2
 
 ### Patch Changes
