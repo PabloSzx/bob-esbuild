@@ -52,13 +52,9 @@ export const rollupBin = (buildConfig: PackageBuildConfig, cwd: string = process
               throw Error(`Location on bin ${alias} could not be found!`);
             }
 
-            if (!pkgBin.startsWith(`${distDir}/bin/`)) {
-              throw Error(`Bin location for ${alias} expected to start with "${distDir}/bin/", but it found ${pkgBin}`);
-            }
-
             const bundle = await rollup(inputOptions);
 
-            const binOutputFile = resolve(cwd, pkgBin);
+            const binOutputFile = resolve(cwd, distDir, pkgBin);
             await bundle.write({
               banner: `#!/usr/bin/env node`,
               preferConst: true,

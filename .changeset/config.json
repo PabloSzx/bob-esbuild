@@ -6,5 +6,5 @@
   "access": "public",
   "baseBranch": "main",
   "updateInternalDependencies": "patch",
-  "ignore": ["shared", "basic"]
+  "ignore": ["shared", "basic", "other"]
 }

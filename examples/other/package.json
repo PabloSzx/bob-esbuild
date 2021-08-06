@@ -1,0 +1,9 @@
+{
+  "name": "other",
+  "scripts": {
+    "test": "test_cli --help"
+  },
+  "dependencies": {
+    "basic": "workspace:*"
+  }
+}

@@ -34,6 +34,12 @@ importers:
       bob-esbuild-cli: link:../../packages/bob-cli
       shared: link:../shared
 
+  examples/other:
+    specifiers:
+      basic: workspace:*
+    dependencies:
+      basic: link:../basic
+
   examples/shared:
     specifiers:
       bob-esbuild-cli: workspace:^0.2.1

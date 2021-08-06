@@ -18,7 +18,7 @@
   "module": "lib/index.mjs",
   "types": "lib/index.d.ts",
   "bin": {
-    "TestASD": "lib/bin/other.js"
+    "test_cli": "bin/index.js"
   },
   "files": [
     "lib"
@@ -33,9 +33,12 @@
   },
   "buildConfig": {
     "bin": {
-      "TestASD": {
+      "test_cli": {
         "input": "src/other.ts"
       }
     }
+  },
+  "publishConfig": {
+    "directory": "lib"
   }
 }
