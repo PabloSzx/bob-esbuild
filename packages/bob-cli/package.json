@@ -1,6 +1,6 @@
 {
   "name": "bob-esbuild-cli",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "homepage": "https://github.com/PabloSzx/bob-esbuild",
   "bugs": "https://github.com/PabloSzx/bob-esbuild/issues",
   "repository": {
@@ -36,11 +36,11 @@
     "postpublish": "gh-release"
   },
   "dependencies": {
-    "bob-esbuild": "workspace:0.2.1",
+    "bob-esbuild": "workspace:0.2.2",
     "commander": "^8.1.0"
   },
   "devDependencies": {
-    "bob-esbuild": "workspace:0.2.1",
+    "bob-esbuild": "workspace:0.2.2",
     "changesets-github-release": "^0.0.3",
     "esbuild-register": "^2.6.0",
     "typescript": "^4.3.5"

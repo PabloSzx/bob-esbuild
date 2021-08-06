@@ -1,5 +1,13 @@
 # bob-esbuild-cli
 
+## 0.2.2
+
+### Patch Changes
+
+- 5a92561: fix bin build
+- Updated dependencies [5a92561]
+  - bob-esbuild@0.2.2
+
 ## 0.2.1
 
 ### Patch Changes
