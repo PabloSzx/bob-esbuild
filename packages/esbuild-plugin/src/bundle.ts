@@ -45,7 +45,7 @@ export const bundle = async (
     target,
     bundle: true,
     write: false,
-    sourcemap: true,
+    sourcemap: false,
     outdir: 'dist',
     platform: 'node',
     plugins: [

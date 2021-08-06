@@ -90,7 +90,7 @@ export async function getRollupConfig(options: ConfigOptions = {}) {
     format: 'cjs',
     preserveModules: true,
     exports: 'auto',
-    sourcemap: true,
+    sourcemap: false,
     preferConst: true,
     ...globalOptions.outputOptions,
   };
@@ -100,7 +100,7 @@ export async function getRollupConfig(options: ConfigOptions = {}) {
     format: 'es',
     entryFileNames: '[name].mjs',
     preserveModules: true,
-    sourcemap: true,
+    sourcemap: false,
     preferConst: true,
     ...globalOptions.outputOptions,
   };
@@ -131,7 +131,7 @@ export async function getRollupConfig(options: ConfigOptions = {}) {
     plugins.push(
       bobEsbuildPlugin({
         target: 'es2019',
-        sourceMap: true,
+        sourceMap: false,
         experimentalBundling,
         ...globalOptions.esbuildPluginOptions,
       })

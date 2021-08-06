@@ -39,7 +39,7 @@ export const rollupBin = (buildConfig: PackageBuildConfig, cwd: string = process
                 }),
                 bobEsbuildPlugin({
                   target: 'es2019',
-                  sourceMap: true,
+                  sourceMap: false,
                   experimentalBundling: true,
                   ...esbuildPluginOptions,
                 }),
@@ -58,7 +58,7 @@ export const rollupBin = (buildConfig: PackageBuildConfig, cwd: string = process
             await bundle.write({
               banner: `#!/usr/bin/env node`,
               preferConst: true,
-              sourcemap: options.sourcemap ?? 'inline',
+              sourcemap: false,
               file: binOutputFile,
               format: 'cjs',
             });
