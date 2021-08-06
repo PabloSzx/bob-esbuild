@@ -1,5 +1,11 @@
 # bob-esbuild
 
+## 0.2.2
+
+### Patch Changes
+
+- 5a92561: fix bin build
+
 ## 0.2.1
 
 ### Patch Changes
