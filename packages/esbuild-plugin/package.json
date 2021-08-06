@@ -49,7 +49,7 @@
   },
   "peerDependencies": {
     "@types/node": "*",
-    "rollup": "^2.55.1"
+    "rollup": "*"
   },
   "tsup": {
     "entryPoints": [
