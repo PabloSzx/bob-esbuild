@@ -1,6 +1,6 @@
 {
   "name": "bob-esbuild",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "repository": {
     "type": "git",
     "url": "https://github.com/PabloSzx/bob-esbuild",
@@ -32,7 +32,7 @@
   },
   "dependencies": {
     "@pnpm/exportable-manifest": "^2.1.6",
-    "bob-esbuild-plugin": "workspace:0.2.0",
+    "bob-esbuild-plugin": "workspace:0.2.3",
     "builtin-modules": "^3.2.0",
     "chalk": "^4.1.2",
     "cosmiconfig": "^7.0.0",
