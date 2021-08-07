@@ -1,5 +1,11 @@
 # bob-esbuild-plugin
 
+## 0.2.4
+
+### Patch Changes
+
+- 582b21f: fix bundle target
+
 ## 0.2.3
 
 ### Patch Changes
