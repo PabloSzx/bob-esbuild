@@ -1,5 +1,13 @@
 # bob-esbuild-cli
 
+## 0.2.4
+
+### Patch Changes
+
+- 582b21f: fix bundle target
+- Updated dependencies [582b21f]
+  - bob-esbuild@0.2.4
+
 ## 0.2.3
 
 ### Patch Changes
