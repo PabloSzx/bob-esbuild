@@ -71,7 +71,7 @@ importers:
       rollup: ^2.56.0
       rollup-plugin-delete: ^2.0.0
       rollup-plugin-node-externals: ^2.2.0
-      sucrase: ^3.20.0
+      sucrase: ^3.20.1
       tree-kill: ^1.2.2
       tsconfig: ^7.0.0
       typescript: ^4.3.5
@@ -92,7 +92,7 @@ importers:
       rollup: 2.56.0
       rollup-plugin-delete: 2.0.0
       rollup-plugin-node-externals: 2.2.0_builtin-modules@3.2.0
-      sucrase: 3.20.0
+      sucrase: 3.20.1
       tree-kill: 1.2.2
       tsconfig: 7.0.0
     devDependencies:
@@ -4246,6 +4246,20 @@ packages:
       mz: 2.7.0
       pirates: 4.0.1
       ts-interface-checker: 0.1.13
+    dev: true
+
+  /sucrase/3.20.1:
+    resolution: {integrity: sha512-BIG59HaJOxNct9Va6KvT5yzBA/rcMGetzvZyTx0ZdCcspIbpJTPS64zuAfYlJuOj+3WaI5JOdA+F0bJQQi8ZiQ==}
+    engines: {node: '>=8'}
+    hasBin: true
+    dependencies:
+      commander: 4.1.1
+      glob: 7.1.6
+      lines-and-columns: 1.1.6
+      mz: 2.7.0
+      pirates: 4.0.1
+      ts-interface-checker: 0.1.13
+    dev: false
 
   /supports-color/5.5.0:
     resolution: {integrity: sha512-QjVjwdXIt408MIiAqCX4oUKsgU2EqAGzs2Ppkm4aQYbjm+ZEWEcW4SfFNTr4uMNZma0ey4f5lgLrkB0aX0QMow==}
