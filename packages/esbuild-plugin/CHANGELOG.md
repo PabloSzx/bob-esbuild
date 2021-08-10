@@ -1,5 +1,11 @@
 # bob-esbuild-plugin
 
+## 1.0.0
+
+### Major Changes
+
+- b8df666: set bob-esbuild as peer dependency
+
 ## 0.2.4
 
 ### Patch Changes
