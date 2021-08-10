@@ -1,4 +1,3 @@
-import assert from 'assert';
 import { command } from 'execa';
 import fsExtra from 'fs-extra';
 import { parse, resolve } from 'path';
@@ -18,15 +17,13 @@ export async function buildTsc(options: TSCOptions = {}) {
     config: { tsc: globalTsc = {}, rootDir: rootDirCwd, distDir },
   } = await globalConfig;
 
+  const dirs = [...(options.dirs || []), ...(globalTsc.dirs || [])];
+
   const startTime = Date.now();
 
   const hashPromise = getHash();
 
-  const dirs = [...(options.dirs || []), ...(globalTsc.dirs || [])];
-
   const tscCommand = options.tscBuildCommand || globalTsc.tscBuildCommand || 'tsc --emitDeclarationOnly';
-
-  assert(dirs.length, 'tsc dirs not specified!');
 
   const { default: globby } = await import('globby');
 
@@ -40,7 +37,7 @@ export async function buildTsc(options: TSCOptions = {}) {
   const { shouldBuild, cleanHash } = await hashPromise;
 
   if (shouldBuild) {
-    debug('Building types for: ' + targetDirs.join(' | '));
+    debug(!targetDirs.length ? 'No target directories for built types!' : 'Building types for: ' + targetDirs.join(' | '));
 
     const tsconfig = globalTsc.tsconfig;
     await command(tscCommand + (tsconfig ? ` -p ${tsconfig}` : ''), {

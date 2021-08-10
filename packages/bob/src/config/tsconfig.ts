@@ -11,7 +11,7 @@ export const resolvedTsconfig = (async () => {
 
   const { config, path } = await load(configRootDir);
 
-  if (!path) throw Error('tsconfig could not be found!');
+  if (!path) throw Error('tsconfig could not be found at the root!');
 
   const compilerOptions = config?.compilerOptions;
 
