@@ -31,19 +31,19 @@
   },
   "dependencies": {
     "@rollup/pluginutils": "^4.1.1",
-    "esbuild": "^0.12.18",
+    "esbuild": "^0.12.19",
     "joycon": "^3.0.1",
     "jsonc-parser": "^3.0.0"
   },
   "devDependencies": {
-    "@types/jest": "^26.0.24",
+    "@types/jest": "^27.0.0",
     "@types/mock-fs": "^4.13.1",
     "@types/node": "^16.4.13",
     "changesets-github-release": "^0.0.3",
     "esbuild-register": "^2.6.0",
     "jest": "^27.0.6",
     "mock-fs": "^5.0.0",
-    "rollup": "^2.56.0",
+    "rollup": "^2.56.2",
     "ts-jest": "^27.0.4",
     "tsup": "^4.13.1"
   },
