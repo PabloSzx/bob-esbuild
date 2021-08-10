@@ -12,7 +12,13 @@
     "./*": {
       "require": "./lib/*.js",
       "import": "./lib/*.mjs"
-    }
+    },
+    "./other": "./lib/other.js",
+    "./other_other": {
+      "require": "./lib/other.js",
+      "import": "./lib/other.mjs"
+    },
+    "./package.json": "./package.json"
   },
   "main": "lib/index.js",
   "module": "lib/index.mjs",

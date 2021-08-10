@@ -22,7 +22,7 @@ export interface PackageJSON extends Record<string, unknown> {
   };
   files?: string[];
   buildConfig?: PackageBuildConfig;
-  exports?: Record<string, { require: string; import: string } | undefined>;
+  exports?: Record<string, { require: string; import: string } | string | undefined>;
 }
 
 function rewritePackageJson(pkg: PackageJSON, distDir: string, cwd: string) {
@@ -43,6 +43,10 @@ function rewritePackageJson(pkg: PackageJSON, distDir: string, cwd: string) {
     'engines',
   ];
 
+  if (pkg.exports) {
+    newPkg.exports = { ...pkg.exports };
+  }
+
   for (const field of fields) {
     if (pkg[field] != null) {
       newPkg[field] = pkg[field];
@@ -56,6 +60,25 @@ function rewritePackageJson(pkg: PackageJSON, distDir: string, cwd: string) {
     newPkg.typescript = {
       definition: 'index.d.ts',
     };
+  }
+
+  if (newPkg.exports) {
+    for (const [key, value] of Object.entries(newPkg.exports)) {
+      if (!value) continue;
+
+      let newValue = value;
+
+      if (typeof newValue === 'string') {
+        newValue = newValue.replace(`${distDir}/`, '');
+      } else {
+        newValue = {
+          require: newValue.require.replace(`${distDir}/`, ''),
+          import: newValue.import.replace(`${distDir}/`, ''),
+        };
+      }
+
+      newPkg.exports[key.replace(`${distDir}/`, '')] = newValue;
+    }
   }
 
   if (pkg.exports?.['./*']) {
