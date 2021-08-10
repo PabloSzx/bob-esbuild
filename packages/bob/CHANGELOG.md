@@ -1,5 +1,21 @@
 # bob-esbuild
 
+## 1.0.0
+
+### Major Changes
+
+- b8df666: set bob-esbuild as peer dependency
+
+### Minor Changes
+
+- b989382: allow no tsc target directories
+
+### Patch Changes
+
+- 46b9292: keep custom package.json exports with dist translated
+- Updated dependencies [b8df666]
+  - bob-esbuild-plugin@1.0.0
+
 ## 0.2.4
 
 ### Patch Changes

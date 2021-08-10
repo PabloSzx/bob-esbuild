@@ -1,5 +1,18 @@
 # bob-esbuild-cli
 
+## 1.0.0
+
+### Major Changes
+
+- b8df666: set bob-esbuild as peer dependency
+
+### Patch Changes
+
+- Updated dependencies [b8df666]
+- Updated dependencies [46b9292]
+- Updated dependencies [b989382]
+  - bob-esbuild@1.0.0
+
 ## 0.2.4
 
 ### Patch Changes
