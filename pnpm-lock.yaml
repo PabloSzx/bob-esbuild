@@ -68,7 +68,7 @@ importers:
       globby: ^11.0.4
       lodash.get: ^4.4.2
       rimraf: ^3.0.2
-      rollup: ^2.56.0
+      rollup: ^2.56.2
       rollup-plugin-delete: ^2.0.0
       rollup-plugin-node-externals: ^2.2.0
       sucrase: ^3.20.0
@@ -89,7 +89,7 @@ importers:
       globby: 11.0.4
       lodash.get: 4.4.2
       rimraf: 3.0.2
-      rollup: 2.56.0
+      rollup: 2.56.2
       rollup-plugin-delete: 2.0.0
       rollup-plugin-node-externals: 2.2.0_builtin-modules@3.2.0
       sucrase: 3.20.0
@@ -133,7 +133,7 @@ importers:
       joycon: ^3.0.1
       jsonc-parser: ^3.0.0
       mock-fs: ^5.0.0
-      rollup: ^2.56.0
+      rollup: ^2.56.2
       ts-jest: ^27.0.4
       tsup: ^4.13.1
     dependencies:
@@ -149,7 +149,7 @@ importers:
       esbuild-register: 2.6.0
       jest: 27.0.6
       mock-fs: 5.0.0
-      rollup: 2.56.0
+      rollup: 2.56.2
       ts-jest: 27.0.4_52cc4273aa16028085013af47e479e10
       tsup: 4.13.1_typescript@4.3.5
 
@@ -3990,6 +3990,14 @@ packages:
 
   /rollup/2.56.0:
     resolution: {integrity: sha512-weEafgbjbHCnrtJPNyCrhYnjP62AkF04P0BcV/1mofy1+gytWln4VVB1OK462cq2EAyWzRDpTMheSP/o+quoiA==}
+    engines: {node: '>=10.0.0'}
+    hasBin: true
+    optionalDependencies:
+      fsevents: 2.3.2
+    dev: true
+
+  /rollup/2.56.2:
+    resolution: {integrity: sha512-s8H00ZsRi29M2/lGdm1u8DJpJ9ML8SUOpVVBd33XNeEeL3NVaTiUcSBHzBdF3eAyR0l7VSpsuoVUGrRHq7aPwQ==}
     engines: {node: '>=10.0.0'}
     hasBin: true
     optionalDependencies:
