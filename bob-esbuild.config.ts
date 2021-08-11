@@ -7,15 +7,5 @@ export const config: import('bob-esbuild').BobConfig = {
   outputOptions: {
     sourcemap: false,
   },
-  plugins: [
-    {
-      name: 'keep-dynamic-import',
-      renderDynamicImport() {
-        return {
-          left: 'import(',
-          right: ')',
-        };
-      },
-    },
-  ],
+  keepDynamicImport: true,
 };

@@ -63,7 +63,9 @@ export async function getRollupConfig(options: ConfigOptions = {}) {
 
   const distDir = globalOptions.distDir;
 
-  const { default: globby } = await import('globby');
+  const globbyPkg = await import('globby');
+
+  const globby = globbyPkg.default || (globbyPkg as any).globby;
 
   const input = (
     await Promise.all(
@@ -126,6 +128,34 @@ export async function getRollupConfig(options: ConfigOptions = {}) {
     rollupBin(buildConfig, cwd),
     ...(globalOptions.plugins || []),
   ];
+
+  const keepDynamicImport = globalOptions.keepDynamicImport;
+
+  if (keepDynamicImport) {
+    if (Array.isArray(keepDynamicImport)) {
+      plugins.push({
+        name: 'keep-dynamic-import',
+        renderDynamicImport({ targetModuleId }) {
+          if (!targetModuleId || !keepDynamicImport.includes(targetModuleId)) return null;
+
+          return {
+            left: 'import(',
+            right: ')',
+          };
+        },
+      });
+    } else {
+      plugins.push({
+        name: 'keep-dynamic-import',
+        renderDynamicImport() {
+          return {
+            left: 'import(',
+            right: ')',
+          };
+        },
+      });
+    }
+  }
 
   if (globalOptions.esbuildPluginOptions !== false) {
     plugins.push(

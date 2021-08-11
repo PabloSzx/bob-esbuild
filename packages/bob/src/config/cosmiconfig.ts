@@ -33,6 +33,20 @@ export interface BobConfig extends Pick<ConfigOptions, 'clean' | 'inputFiles' | 
   outputOptions?: Omit<OutputOptions, 'format'>;
 
   /**
+   * If dynamic imports `await import("foo")` should be kept as `import`
+   * and NOT be transpiled as `await Promise.resolve(require("foo"))`
+   *
+   * This is specially useful when is needed to import an `ES Module` from `CommonJS`,
+   * for example, when an external package has `"type": "module"`.
+   *
+   * If an array of strings is specified, the dynamic imports are only kept
+   * for those specified modules
+   *
+   * @default false
+   */
+  keepDynamicImport?: boolean | string[];
+
+  /**
    * Skip automatic TSC build, make sure to manually call `bob-esbuild tsc`
    *
    * @default false
@@ -85,6 +99,7 @@ export const globalConfig: Promise<CosmiConfigResult> & {
     config.rootDir = config.rootDir || dirname(filepath).replace(/\\/g, '/');
     config.clean = config.clean ?? true;
     config.distDir = config.distDir || 'dist';
+    config.keepDynamicImport ??= false;
 
     const data = {
       filepath,
