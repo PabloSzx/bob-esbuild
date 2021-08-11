@@ -1,5 +1,11 @@
 # bob-esbuild
 
+## 1.1.0
+
+### Minor Changes
+
+- b43bb3a: add "keepDynamicImport" config to allow importing ESM from CommonJS
+
 ## 1.0.0
 
 ### Major Changes
