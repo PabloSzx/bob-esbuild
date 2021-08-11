@@ -19,7 +19,7 @@ WatchCommand.option('--cwd <dir>', 'Change target current directory')
   .option('--onlyESM', 'Only build for ESM')
   .option('--onSuccess <cmd>', 'Execute script after successful JS build')
   .action(async ({ cwd, input: inputFiles, bundle, clean, onSuccess, onlyCJS, onlyESM, skipTsc }) => {
-    await startWatch({
+    const { watcher } = await startWatch({
       rollup: {
         config: {
           cwd,
@@ -32,5 +32,11 @@ WatchCommand.option('--cwd <dir>', 'Change target current directory')
         onSuccessCommand: onSuccess,
       },
       tsc: skipTsc ? false : {},
+    });
+
+    return new Promise<void>(resolve => {
+      watcher.on('close', () => {
+        resolve();
+      });
     });
   });
