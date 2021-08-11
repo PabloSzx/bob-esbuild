@@ -1,3 +1,3 @@
-export * from "./build";
-export * from "./tsc";
-export * from "./watch";
+export * from './build';
+export * from './tsc';
+export * from './watch';
