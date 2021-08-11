@@ -1,5 +1,11 @@
 # bob-esbuild-cli
 
+## 1.0.1
+
+### Patch Changes
+
+- 195ba2f: fix watch command
+
 ## 1.0.0
 
 ### Major Changes
