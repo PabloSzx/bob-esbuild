@@ -61,7 +61,7 @@ importers:
       cosmiconfig: ^7.0.0
       date-fns: ^2.23.0
       esbuild: ^0.12.19
-      esbuild-register: ^2.6.0
+      esbuild-register: ^3.0.0
       execa: ^5.1.1
       folder-hash: ^4.0.1
       fs-extra: ^10.0.0
@@ -102,7 +102,7 @@ importers:
       '@types/node': 16.4.13
       '@types/rimraf': 3.0.1
       changesets-github-release: 0.0.3
-      esbuild-register: 2.6.0
+      esbuild-register: 3.0.0_esbuild@0.12.19
       typescript: 4.3.5
 
   packages/bob-cli:
@@ -110,14 +110,14 @@ importers:
       bob-esbuild: workspace:^1.0.0
       changesets-github-release: ^0.0.3
       commander: ^8.1.0
-      esbuild-register: ^2.6.0
+      esbuild-register: ^3.0.0
       typescript: ^4.3.5
     dependencies:
       commander: 8.1.0
     devDependencies:
       bob-esbuild: link:../bob
       changesets-github-release: 0.0.3
-      esbuild-register: 2.6.0
+      esbuild-register: 3.0.0_esbuild@0.12.19
       typescript: 4.3.5
 
   packages/esbuild-plugin:
@@ -128,7 +128,7 @@ importers:
       '@types/node': ^16.4.13
       changesets-github-release: ^0.0.3
       esbuild: ^0.12.19
-      esbuild-register: ^2.6.0
+      esbuild-register: ^3.0.0
       jest: ^27.0.6
       joycon: ^3.0.1
       jsonc-parser: ^3.0.0
@@ -146,7 +146,7 @@ importers:
       '@types/mock-fs': 4.13.1
       '@types/node': 16.4.13
       changesets-github-release: 0.0.3
-      esbuild-register: 2.6.0
+      esbuild-register: 3.0.0_esbuild@0.12.19
       jest: 27.0.6
       mock-fs: 5.0.0
       rollup: 2.56.2
@@ -2012,8 +2012,10 @@ packages:
     dependencies:
       is-arrayish: 0.2.1
 
-  /esbuild-register/2.6.0:
-    resolution: {integrity: sha512-2u4AtnCXP5nivtIxZryiZOUcEQkOzFS7UhAqibUEmaTAThJ48gDLYTBF/Fsz+5r0hbV1jrFE6PQvPDUrKZNt/Q==}
+  /esbuild-register/3.0.0_esbuild@0.12.19:
+    resolution: {integrity: sha512-No7U3ZUd6gPrrC6gqdb3XFcf2lNqzn8nvQXcgcyOl8szMVuN6YUvOplnmakxWyogI9d8SiJMl0uzBzJck+Aoxw==}
+    peerDependencies:
+      esbuild: '>=0.12 <1'
     dependencies:
       esbuild: 0.12.19
       jsonc-parser: 3.0.0

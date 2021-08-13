@@ -40,7 +40,7 @@
     "@types/mock-fs": "^4.13.1",
     "@types/node": "^16.4.13",
     "changesets-github-release": "^0.0.3",
-    "esbuild-register": "^2.6.0",
+    "esbuild-register": "^3.0.0",
     "jest": "^27.0.6",
     "mock-fs": "^5.0.0",
     "rollup": "^2.56.2",
