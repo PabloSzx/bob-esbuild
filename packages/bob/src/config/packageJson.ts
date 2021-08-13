@@ -43,6 +43,15 @@ function rewritePackageJson(pkg: PackageJSON, distDir: string, cwd: string) {
     'engines',
   ];
 
+  if (pkg.main) {
+    newPkg.main = 'index.js';
+    newPkg.module = 'index.mjs';
+    newPkg.types = 'index.d.ts';
+    newPkg.typescript = {
+      definition: 'index.d.ts',
+    };
+  }
+
   if (pkg.exports) {
     newPkg.exports = { ...pkg.exports };
   }
@@ -51,15 +60,6 @@ function rewritePackageJson(pkg: PackageJSON, distDir: string, cwd: string) {
     if (pkg[field] != null) {
       newPkg[field] = pkg[field];
     }
-  }
-
-  if (pkg.main) {
-    newPkg.main = 'index.js';
-    newPkg.module = 'index.mjs';
-    newPkg.types = 'index.d.ts';
-    newPkg.typescript = {
-      definition: 'index.d.ts',
-    };
   }
 
   if (newPkg.exports) {
