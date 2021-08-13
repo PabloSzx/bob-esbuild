@@ -8,6 +8,9 @@ import { C } from './innerShared';
  */
 export const A = C * 1;
 
+import('shared/package.json').then(({ default: { name, version } }) => console.log('esm', { name, version }));
+Promise.resolve(require('shared/package.json')).then(({ name, version }) => console.log('cjs', { name, version }));
+
 console.log(Foo);
 
 console.log(Bar);

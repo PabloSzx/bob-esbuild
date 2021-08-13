@@ -31,7 +31,7 @@
   ],
   "scripts": {
     "dev": "bob-esbuild watch",
-    "prepare": "bob-esbuild build && node lib/index.js"
+    "prepare": "bob-esbuild build && node --experimental-json-modules lib/index.js"
   },
   "dependencies": {
     "bob-esbuild-cli": "workspace:^1.0.1",

@@ -24,7 +24,8 @@
       "bob-esbuild-plugin": ["packages/esbuild-plugin/src/index.ts"]
     },
     "baseUrl": ".",
-    "importsNotUsedAsValues": "error"
+    "importsNotUsedAsValues": "error",
+    "resolveJsonModule": true
   },
   "include": ["**/types.d.ts", "**/src/**/*.ts", "**/test/**/*.ts", "bob-esbuild.config.ts"]
 }

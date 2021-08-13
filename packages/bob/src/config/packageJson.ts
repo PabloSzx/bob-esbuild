@@ -54,6 +54,8 @@ function rewritePackageJson(pkg: PackageJSON, distDir: string, cwd: string) {
 
   if (pkg.exports) {
     newPkg.exports = { ...pkg.exports };
+
+    newPkg.exports['./package.json'] = './package.json';
   }
 
   for (const field of fields) {

@@ -12,7 +12,8 @@
     "./*": {
       "require": "./lib/*.js",
       "import": "./lib/*.mjs"
-    }
+    },
+    "./package.json": "./package.json"
   },
   "main": "lib/index.js",
   "module": "lib/index.mjs",
