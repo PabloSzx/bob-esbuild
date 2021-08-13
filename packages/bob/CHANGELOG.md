@@ -1,5 +1,11 @@
 # bob-esbuild
 
+## 1.2.2
+
+### Patch Changes
+
+- 753cb22: add "package.json" to exports
+
 ## 1.2.1
 
 ### Patch Changes
