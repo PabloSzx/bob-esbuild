@@ -1,5 +1,11 @@
 # bob-esbuild
 
+## 1.2.1
+
+### Patch Changes
+
+- 2a11cf2: gen package.json exports after name/main
+
 ## 1.2.0
 
 ### Minor Changes
