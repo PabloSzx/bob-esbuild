@@ -1,5 +1,12 @@
 # bob-esbuild
 
+## 1.2.0
+
+### Minor Changes
+
+- 01ee72c: improve generate package.json logic
+- 6ecf937: add "singleBuild" config for non-monorepo usage
+
 ## 1.1.0
 
 ### Minor Changes
