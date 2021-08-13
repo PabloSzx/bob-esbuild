@@ -28,6 +28,13 @@ export interface BobConfig extends Pick<ConfigOptions, 'clean' | 'inputFiles' | 
 
   plugins?: Plugin[];
 
+  /**
+   * Disable monorepo features and validations
+   *
+   * @default false
+   */
+  singleBuild?: boolean;
+
   inputOptions?: InputOptions;
 
   outputOptions?: Omit<OutputOptions, 'format'>;
@@ -100,6 +107,7 @@ export const globalConfig: Promise<CosmiConfigResult> & {
     config.clean = config.clean ?? true;
     config.distDir = config.distDir || 'dist';
     config.keepDynamicImport ??= false;
+    config.singleBuild ??= false;
 
     const data = {
       filepath,

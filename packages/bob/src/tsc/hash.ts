@@ -6,11 +6,22 @@ import { resolve } from 'path';
 import { globalConfig } from '../config/cosmiconfig';
 import { resolvedTsconfig } from '../config/tsconfig';
 
-export async function getHash() {
+export async function getHash(): Promise<{
+  shouldBuild: boolean;
+  cleanHash: () => void;
+}> {
   const {
-    config: { rootDir, distDir, tsc: { hash } = {} },
+    config: { rootDir, distDir, tsc: { hash } = {}, singleBuild },
   } = await globalConfig;
   const { outDir } = await resolvedTsconfig;
+
+  // For single build, always build typescript
+  if (singleBuild) {
+    return {
+      cleanHash() {},
+      shouldBuild: true,
+    };
+  }
 
   const typesHashJSON = resolve(rootDir, outDir, 'types-hash.json');
 
@@ -21,7 +32,7 @@ export async function getHash() {
         include: hash?.files?.include || ['*.ts', '*.tsx', '*.json'],
       },
       folders: {
-        exclude: hash?.folders?.exclude || [
+        exclude: [
           outDir,
           distDir,
           'node_modules',
@@ -36,6 +47,7 @@ export async function getHash() {
           '.changeset',
           '.husky',
           '.bob',
+          ...(hash?.folders?.exclude || []),
         ],
       },
     }),
