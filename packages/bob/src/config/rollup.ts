@@ -113,21 +113,41 @@ export async function getRollupConfig(options: ConfigOptions = {}) {
 
   if (buildConfig.copy?.length) debug(`Copying ${buildConfig?.copy?.join(' | ')}`);
 
+  const genPackageJson = generatePackageJson({ packageJson: buildConfig.pkg, distDir, cwd });
+
   const plugins: Plugin[] = [
     externals({
       packagePath: path.resolve(cwd, 'package.json'),
       deps: true,
       ...globalOptions.externalOptions,
     }),
-    generatePackageJson({ packageJson: buildConfig.pkg, distDir, cwd }),
-    copyToDist({
-      cwd,
-      distDir,
-      files: ['README.md', 'LICENSE', ...(buildConfig.copy || [])],
-    }),
     rollupBin(buildConfig, cwd),
     ...(globalOptions.plugins || []),
   ];
+
+  if (genPackageJson) {
+    plugins.push(genPackageJson);
+  }
+
+  const copyDistFiles = buildConfig.copy || [];
+
+  if (genPackageJson) {
+    plugins.push(
+      copyToDist({
+        cwd,
+        distDir,
+        files: ['README.md', 'LICENSE', ...copyDistFiles],
+      })
+    );
+  } else if (copyDistFiles.length) {
+    plugins.push(
+      copyToDist({
+        cwd,
+        distDir,
+        files: copyDistFiles,
+      })
+    );
+  }
 
   const keepDynamicImport = globalOptions.keepDynamicImport;
 

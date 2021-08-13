@@ -176,26 +176,28 @@ export interface GeneratePackageJsonOptions {
   cwd?: string;
 }
 
-export const generatePackageJson = (options: GeneratePackageJsonOptions): Plugin => {
+export const generatePackageJson = (options: GeneratePackageJsonOptions): Plugin | null => {
+  if (!options.packageJson.publishConfig?.directory) {
+    if (
+      !Array.isArray(options.packageJson.files) ||
+      !options.packageJson.files.some(v => v === options.distDir || v === '/' + options.distDir)
+    )
+      throw Error(
+        `No valid 'files' property in ${resolve(
+          options.cwd || process.cwd(),
+          'package.json'
+        )} without using "publishConfig.directory"`
+      );
+
+    validatePackageJson(options.packageJson, options.distDir);
+
+    warn(`Skipping package.json rewrite in publish subdirectory: ${resolve(options.cwd || process.cwd())}`);
+    return null;
+  }
+
   return {
     name: 'GeneratePackageJson',
     async buildStart() {
-      if (!options.packageJson.publishConfig?.directory) {
-        if (
-          !Array.isArray(options.packageJson.files) ||
-          !options.packageJson.files.some(v => v === options.distDir || v === '/' + options.distDir)
-        )
-          throw Error(
-            `No valid 'files' property in ${resolve(
-              options.cwd || process.cwd(),
-              'package.json'
-            )} without using "publishConfig.directory"`
-          );
-
-        warn(`Skipping package.json rewrite in publish subdirectory: ${resolve(options.cwd || process.cwd())}`);
-        return;
-      }
-
       validatePackageJson(options.packageJson, options.distDir);
 
       this[GenPackageJson] = writePackageJson(options);
