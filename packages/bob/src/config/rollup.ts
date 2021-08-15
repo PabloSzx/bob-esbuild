@@ -87,8 +87,10 @@ export async function getRollupConfig(options: ConfigOptions = {}) {
 
   if (options.onlyESM && options.onlyCJS) throw Error('You can only restrict to either one of CJS or ESM');
 
+  const absoluteDistDir = path.resolve(cwd, distDir);
+
   const cjsOpts: OutputOptions = {
-    dir: path.resolve(cwd, distDir),
+    dir: absoluteDistDir,
     format: 'cjs',
     preserveModules: true,
     exports: 'auto',
@@ -98,7 +100,7 @@ export async function getRollupConfig(options: ConfigOptions = {}) {
   };
 
   const esmOpts: OutputOptions = {
-    dir: path.resolve(cwd, distDir),
+    dir: absoluteDistDir,
     format: 'es',
     entryFileNames: '[name].mjs',
     preserveModules: true,
@@ -111,7 +113,7 @@ export async function getRollupConfig(options: ConfigOptions = {}) {
 
   const buildConfig = await buildConfigPromise;
 
-  if (buildConfig.copy?.length) debug(`Copying ${buildConfig?.copy?.join(' | ')}`);
+  if (buildConfig.copy?.length) debug(`Copying ${buildConfig.copy.join(' | ')} to ${absoluteDistDir}`);
 
   const genPackageJson = generatePackageJson({ packageJson: buildConfig.pkg, distDir, cwd });
 
