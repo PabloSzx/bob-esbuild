@@ -30,7 +30,7 @@ async function copyFilesToDist({ cwd = process.cwd(), distDir, files }: CopyFile
       const sourcePath = join(cwd, file);
 
       if (await pathExists(sourcePath)) {
-        const destPath = join(cwd, distDir, file);
+        const destPath = join(cwd, distDir, file.replace(/\.\.\//g, ''));
         await mkdirp(dirname(destPath));
 
         await copyFile(sourcePath, destPath);
