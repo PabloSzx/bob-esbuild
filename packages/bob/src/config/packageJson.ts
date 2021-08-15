@@ -43,6 +43,12 @@ function rewritePackageJson(pkg: PackageJSON, distDir: string, cwd: string) {
     'engines',
   ];
 
+  for (const field of fields) {
+    if (pkg[field] != null) {
+      newPkg[field] = pkg[field];
+    }
+  }
+
   if (pkg.main) {
     newPkg.main = 'index.js';
     newPkg.module = 'index.mjs';
@@ -56,12 +62,6 @@ function rewritePackageJson(pkg: PackageJSON, distDir: string, cwd: string) {
     newPkg.exports = { ...pkg.exports };
 
     newPkg.exports['./package.json'] = './package.json';
-  }
-
-  for (const field of fields) {
-    if (pkg[field] != null) {
-      newPkg[field] = pkg[field];
-    }
   }
 
   if (newPkg.exports) {
