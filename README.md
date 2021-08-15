@@ -1,5 +1,7 @@
 # bob-esbuild
 
+Check my latest blog post [What does it take to support Node.js ESM?](https://the-guild.dev/blog/support-nodejs-esm)
+
 Is recommended to be used with [pnpm](https://pnpm.io/), but it's not a requirement and it should to work with any package manager.
 
 This library is primarily focused into monorepo projects, and all the instructions are going to be focused on that usage.
@@ -64,6 +66,8 @@ Then in your root monorepo a recommended build script would be something like th
 And it will pre-build the types, and call the "prepack" script in every package in your monorepo.
 
 ## ESM Support
+
+Check my latest blog post [What does it take to support Node.js ESM?](https://the-guild.dev/blog/support-nodejs-esm)
 
 This library is focused on giving first-class support for Node.js ESM, and for that reason, it always builds a `.js` file for CommonJS, alongside a `.mjs` file for ESM.
 
