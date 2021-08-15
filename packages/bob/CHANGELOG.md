@@ -1,5 +1,12 @@
 # bob-esbuild
 
+## 1.2.3
+
+### Patch Changes
+
+- 20d5f3a: core package.json fields first in rewrite
+- 59350b2: allow copy to dist from parent dirs
+
 ## 1.2.2
 
 ### Patch Changes
