@@ -8,7 +8,7 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-latest]
-        node_version: [12, 14, 16]
+        node_version: [12, 14]
     steps:
       - name: Checkout Repo
         uses: actions/checkout@master
