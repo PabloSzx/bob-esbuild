@@ -34,7 +34,7 @@ jobs:
         run: npm i pnpm@^6.7.0 -g
 
       - name: Install Dependencies & prepare
-        run: pnpm i
+        run: timeout 3m pnpm i
 
       - name: Tests
-        run: pnpm test
+        run: timeout 3m pnpm test
