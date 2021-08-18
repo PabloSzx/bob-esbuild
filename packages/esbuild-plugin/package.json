@@ -40,11 +40,11 @@
     "@types/mock-fs": "^4.13.1",
     "@types/node": "^16.6.1",
     "changesets-github-release": "^0.0.3",
+    "es-jest": "^1.2.0",
     "esbuild-register": "^3.0.0",
     "jest": "^27.0.6",
     "mock-fs": "^5.0.0",
     "rollup": "^2.56.2",
-    "ts-jest": "^27.0.5",
     "tsup": "^4.14.0"
   },
   "peerDependencies": {

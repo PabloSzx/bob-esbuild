@@ -35,3 +35,6 @@ jobs:
 
       - name: Install Dependencies & prepare
         run: pnpm i
+
+      - name: Tests
+        run: pnpm test
