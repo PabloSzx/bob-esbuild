@@ -31,7 +31,7 @@
   },
   "dependencies": {
     "@rollup/pluginutils": "^4.1.1",
-    "esbuild": "^0.12.20",
+    "esbuild": "^0.12.22",
     "joycon": "^3.0.1",
     "jsonc-parser": "^3.0.0"
   },
