@@ -58,7 +58,7 @@ importers:
       builtin-modules: ^3.2.0
       chalk: ^4.1.2
       changesets-github-release: ^0.0.3
-      cosmiconfig: ^7.0.0
+      cosmiconfig: ^7.0.1
       date-fns: ^2.23.0
       esbuild: ^0.12.20
       esbuild-register: ^3.0.0
@@ -80,7 +80,7 @@ importers:
       bob-esbuild-plugin: link:../esbuild-plugin
       builtin-modules: 3.2.0
       chalk: 4.1.2
-      cosmiconfig: 7.0.0
+      cosmiconfig: 7.0.1
       date-fns: 2.23.0
       esbuild: 0.12.20
       execa: 5.1.1
@@ -1772,8 +1772,8 @@ packages:
     requiresBuild: true
     dev: true
 
-  /cosmiconfig/7.0.0:
-    resolution: {integrity: sha512-pondGvTuVYDk++upghXJabWzL6Kxu6f26ljFw64Swq9v6sQPUL3EUlVDV56diOjpCayKihL6hVe8exIACU4XcA==}
+  /cosmiconfig/7.0.1:
+    resolution: {integrity: sha512-a1YWNUV2HwGimB7dU2s1wUMurNKjpx60HxBB6xUM8Re+2s1g1IIfJvFR0/iCF+XHdE0GMTKTuLR32UQff4TEyQ==}
     engines: {node: '>=10'}
     dependencies:
       '@types/parse-json': 4.0.0

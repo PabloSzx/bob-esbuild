@@ -35,7 +35,7 @@
     "bob-esbuild-plugin": "workspace:1.0.0",
     "builtin-modules": "^3.2.0",
     "chalk": "^4.1.2",
-    "cosmiconfig": "^7.0.0",
+    "cosmiconfig": "^7.0.1",
     "date-fns": "^2.23.0",
     "esbuild": "^0.12.20",
     "execa": "^5.1.1",
