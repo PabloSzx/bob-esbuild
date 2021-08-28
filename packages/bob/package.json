@@ -57,7 +57,7 @@
     "@types/lodash.get": "^4.4.6",
     "@types/node": "^16.7.4",
     "@types/rimraf": "^3.0.2",
-    "changesets-github-release": "^0.0.3",
+    "changesets-github-release": "^0.0.4",
     "esbuild-register": "^3.0.0",
     "typescript": "^4.4.2"
   },

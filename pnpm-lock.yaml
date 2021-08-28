@@ -57,7 +57,7 @@ importers:
       bob-esbuild-plugin: workspace:1.0.0
       builtin-modules: ^3.2.0
       chalk: ^4.1.2
-      changesets-github-release: ^0.0.3
+      changesets-github-release: ^0.0.4
       cosmiconfig: ^7.0.1
       date-fns: ^2.23.0
       esbuild: ^0.12.24
@@ -101,14 +101,14 @@ importers:
       '@types/lodash.get': 4.4.6
       '@types/node': 16.7.4
       '@types/rimraf': 3.0.2
-      changesets-github-release: 0.0.3
+      changesets-github-release: 0.0.4
       esbuild-register: 3.0.0_esbuild@0.12.24
       typescript: 4.4.2
 
   packages/bob-cli:
     specifiers:
       bob-esbuild: workspace:^1.2.3
-      changesets-github-release: ^0.0.3
+      changesets-github-release: ^0.0.4
       commander: ^8.1.0
       esbuild-register: ^3.0.0
       typescript: ^4.4.2
@@ -116,7 +116,7 @@ importers:
       commander: 8.1.0
     devDependencies:
       bob-esbuild: link:../bob
-      changesets-github-release: 0.0.3
+      changesets-github-release: 0.0.4
       esbuild-register: 3.0.0_esbuild@0.12.24
       typescript: 4.4.2
 
@@ -126,7 +126,7 @@ importers:
       '@types/jest': ^27.0.1
       '@types/mock-fs': ^4.13.1
       '@types/node': ^16.7.4
-      changesets-github-release: ^0.0.3
+      changesets-github-release: ^0.0.4
       es-jest: ^1.3.0
       esbuild: ^0.12.24
       esbuild-register: ^3.0.0
@@ -145,7 +145,7 @@ importers:
       '@types/jest': 27.0.1
       '@types/mock-fs': 4.13.1
       '@types/node': 16.7.4
-      changesets-github-release: 0.0.3
+      changesets-github-release: 0.0.4
       es-jest: 1.3.0
       esbuild-register: 3.0.0_esbuild@0.12.24
       jest: 27.1.0
@@ -1612,8 +1612,8 @@ packages:
       ansi-styles: 4.3.0
       supports-color: 7.2.0
 
-  /changesets-github-release/0.0.3:
-    resolution: {integrity: sha512-72TfuA4aN3IL+kSEcSYKkvJA/6zswV+7sAj8eMrV/4x2sh/Ujxhr+zlhw/7dZsQgGLAKmRJwhmDhYe1iCj3x4w==}
+  /changesets-github-release/0.0.4:
+    resolution: {integrity: sha512-wddC8bZRK1JE2m33SA1sME2Jlw+mDd85nq7Ggl7IeMfXZPzHoLvR01ePxnzrb6/ALuYIEzOm7kcV8v6kV6e29g==}
     hasBin: true
     dependencies:
       '@babel/runtime': 7.15.3
