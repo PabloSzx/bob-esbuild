@@ -1,8 +1,10 @@
 # bob-ts
 
-Transpile your **TypeScript** projects quickly using **esbuild** + **rollup**, made to accelerate and simplify the TypeScript development with watcher and first class support for JavaScript testing frameworks.
+![npm](https://img.shields.io/npm/v/bob-ts)
 
-> This library doesn't handle type definitions, but you can add them simply doing `tsc --declaration --emitDeclarationOnly`
+Transpile your **TypeScript** projects quickly using **esbuild** + **rollup**, made to accelerate and simplify the TypeScript development with file watcher and first-class support for JavaScript testing frameworks.
+
+> This library doesn't handle type definitions, but you can add them simply by doing `tsc --declaration --emitDeclarationOnly`
 
 ## Install
 
@@ -75,7 +77,11 @@ Options:
 
 ### Usage with Testing
 
-The primary reason that for the default input being `"."` is because this library has primary support for being used for JavaScript test frameworks like [Mocha](https://mochajs.org/) and [Node-Tap](https://node-tap.org/), and having all the tests files inside an specific test directory, for example, `test`, and simply executing the transpiled version of your tests with all the sourcemaps, being a better and faster alternative than `ts-node/register`, specially for **ESM support**, which `ts-node` struggles with.
+The main reason for the default input being `"."` is because this library has first-class support for being used for JavaScript test frameworks like [Mocha](https://mochajs.org/) and [Node-Tap](https://node-tap.org/).
+
+You can have all the tests files inside a specific test directory, for example, `test`, and use the transpiled version of your code with all the required source maps.
+
+In the end, a better and faster alternative than `ts-node/register`, and the solution for **ESM support** with TypeScript, where `ts-node` struggles a lot.
 
 > Example structure
 
