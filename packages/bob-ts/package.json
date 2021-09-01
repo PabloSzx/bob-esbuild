@@ -1,6 +1,6 @@
 {
   "name": "bob-ts",
-  "version": "0.0.1",
+  "version": "0.0.4",
   "homepage": "https://github.com/PabloSzx/bob-esbuild",
   "bugs": "https://github.com/PabloSzx/bob-esbuild/issues",
   "repository": {
@@ -31,7 +31,8 @@
   "module": "lib/index.mjs",
   "types": "lib/index.d.ts",
   "scripts": {
-    "prepare": "bob-esbuild build"
+    "prepare": "bob-esbuild build",
+    "dev": "bob-esbuild watch"
   },
   "dependencies": {
     "bob-esbuild-plugin": "workspace:^1.0.0",

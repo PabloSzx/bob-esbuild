@@ -2,6 +2,7 @@ import { bobEsbuildPlugin } from 'bob-esbuild-plugin';
 import { resolve } from 'path';
 import { InputOptions, OutputOptions, rollup } from 'rollup';
 import del from 'rollup-plugin-delete';
+import { packageJsonPromise } from './packageJson';
 
 export async function buildCode({
   entryPoints,
@@ -28,7 +29,9 @@ export async function buildCode({
       {
         name: 'External Node Modules',
         resolveId(source, importer) {
-          return importer && /[/^\.{0,2}\//]/.test(source) ? false : null;
+          if (!importer || source.startsWith('./') || source.startsWith('/') || source.startsWith('../')) return null;
+
+          return false;
         },
       },
       {
@@ -51,12 +54,18 @@ export async function buildCode({
   };
   const build = await rollup(inputOptions);
 
+  const isTypeModule = (await packageJsonPromise).type === 'module';
+
+  const cjsEntryFileNames = isTypeModule ? '[name].cjs' : undefined;
+  const esmEntryFileNames = isTypeModule ? undefined : '[name].mjs';
+
   const outputOptions: OutputOptions[] =
     format === 'both'
       ? [
           {
             format: 'cjs',
             dir,
+            entryFileNames: cjsEntryFileNames,
             exports: 'auto',
             sourcemap: true,
             preferConst: true,
@@ -64,7 +73,7 @@ export async function buildCode({
           {
             format: 'esm',
             dir,
-            entryFileNames: '[name].mjs',
+            entryFileNames: esmEntryFileNames,
             exports: 'auto',
             sourcemap: true,
             preferConst: true,
@@ -74,6 +83,7 @@ export async function buildCode({
           {
             format,
             dir,
+            entryFileNames: format === 'esm' ? esmEntryFileNames : cjsEntryFileNames,
             preserveModules: true,
             exports: 'auto',
             sourcemap: true,
