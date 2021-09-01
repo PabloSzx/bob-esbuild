@@ -1,6 +1,14 @@
 # bob-esbuild
 
+## bob-ts
+
+Check the new library [bob-ts](/packages/bob-ts/README.md) made to accelerate and simplify the TypeScript development with watcher and first class support for JavaScript testing frameworks.
+
+## Blog Post
+
 Check my latest blog post [What does it take to support Node.js ESM?](https://the-guild.dev/blog/support-nodejs-esm)
+
+## Notes
 
 Is recommended to be used with [pnpm](https://pnpm.io/), but it's not a requirement and it should to work with any package manager.
 

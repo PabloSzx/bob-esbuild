@@ -20,11 +20,14 @@ export const getRollupConfig = async ({ entryPoints, format, outDir, clean }: Ro
   const target: string = 'es2019';
 
   const input = (
-    await globby(entryPoints, {
-      absolute: true,
-      ignore: ['**/node_modules'],
-    })
-  ).filter(v => v.endsWith('.ts') && !v.endsWith('.d.ts'));
+    await globby(
+      entryPoints.map(v => v.replace(/\\/g, '/')),
+      {
+        absolute: true,
+        ignore: ['**/node_modules'],
+      }
+    )
+  ).filter(v => v.endsWith('.tsx') || (v.endsWith('.ts') && !v.endsWith('.d.ts')));
 
   const inputOptions: InputOptions = {
     input,
