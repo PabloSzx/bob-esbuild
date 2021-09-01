@@ -10,7 +10,7 @@ export interface RollupConfig {
   entryPoints: string[];
   format: 'cjs' | 'esm' | 'interop';
   outDir: string;
-  clean: boolean | undefined;
+  clean: boolean;
   target: string;
 }
 

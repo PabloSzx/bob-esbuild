@@ -7,7 +7,7 @@ program
   .option('-i, --input <patterns...>', 'Input patterns', '.')
   .option('-f, --format <format>', "Format, it can be 'cjs', 'esm' or 'interop'", 'esm')
   .option('--cwd <dir>', 'Custom target directory', process.cwd())
-  .option('--no-clean', 'No clean output dir (default: true)', true)
+  .option('--no-clean', "Don't clean output dir (default: true)", true)
   .option('-t, --target <target>', 'Javascript runtime target', 'node' + process.versions.node);
 
 program

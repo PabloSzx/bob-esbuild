@@ -6,7 +6,7 @@ program
   .option('-d, --dir <directory>', 'Custom output dir', 'dist')
   .option('-i, --input <patterns...>', 'Input patterns', '.')
   .option('-f, --format <format>', "Format, it can be 'cjs', 'esm' or 'interop'", 'esm')
-  .option('--no-clean', 'No clean output dir (default: true)', true)
+  .option('--clean', 'Clean output dir (default: false)', false)
   .option('--cwd <dir>', 'Custom target directory', process.cwd())
   .option('-c, --command <cmd>', 'Execute script after successful JS build')
   .option('-t, --target <target>', 'Javascript runtime target', 'node' + process.versions.node);
