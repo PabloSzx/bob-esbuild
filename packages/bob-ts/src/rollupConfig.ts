@@ -3,6 +3,7 @@ import { resolve } from 'path';
 import type { InputOptions, OutputOptions } from 'rollup';
 import del from 'rollup-plugin-delete';
 import { cleanEmptyFoldersRecursively } from './clean';
+import { existsSync } from 'fs';
 import { getPackageJson } from './packageJson';
 
 export interface RollupConfig {
@@ -61,7 +62,7 @@ export const getRollupConfig = async ({ entryPoints, format, outDir, clean }: Ro
             async buildEnd() {
               if (deleted) return;
               deleted = true;
-              await cleanEmptyFoldersRecursively(dir);
+              if (existsSync(dir)) await cleanEmptyFoldersRecursively(dir);
             },
           };
         })(),
