@@ -127,15 +127,19 @@ importers:
       bob-esbuild-plugin: workspace:^1.0.0
       commander: ^8.1.0
       esbuild: ^0.12.24
+      execa: ^5.1.1
       globby: ^12.0.2
       rollup: ^2.56.3
       rollup-plugin-delete: ^2.0.0
+      tree-kill: ^1.2.2
     dependencies:
       bob-esbuild-plugin: link:../esbuild-plugin
       commander: 8.1.0
+      execa: 5.1.1
       globby: 12.0.2
       rollup: 2.56.3
       rollup-plugin-delete: 2.0.0
+      tree-kill: 1.2.2
     devDependencies:
       '@types/node': 16.7.4
       bob-esbuild-cli: link:../bob-cli

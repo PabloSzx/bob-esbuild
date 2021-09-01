@@ -1,21 +1,18 @@
 import { bobEsbuildPlugin } from 'bob-esbuild-plugin';
 import { resolve } from 'path';
-import { InputOptions, OutputOptions, rollup } from 'rollup';
+import type { InputOptions, OutputOptions } from 'rollup';
 import del from 'rollup-plugin-delete';
 import { cleanEmptyFoldersRecursively } from './clean';
 import { packageJsonPromise } from './packageJson';
 
-export async function buildCode({
-  entryPoints,
-  format,
-  outDir,
-  clean,
-}: {
+export interface RollupConfig {
   entryPoints: string[];
-  format: 'cjs' | 'esm' | 'both';
+  format: 'cjs' | 'esm' | 'interop';
   outDir: string;
   clean?: boolean;
-}) {
+}
+
+export const getRollupConfig = async ({ entryPoints, format, outDir, clean }: RollupConfig) => {
   const dir = resolve(outDir);
 
   const { globby } = await import('globby');
@@ -70,7 +67,6 @@ export async function buildCode({
         })(),
     ],
   };
-  const build = await rollup(inputOptions);
 
   const isTypeModule = (await packageJsonPromise).type === 'module';
 
@@ -78,7 +74,7 @@ export async function buildCode({
   const esmEntryFileNames = isTypeModule ? undefined : '[name].mjs';
 
   const outputOptions: OutputOptions[] =
-    format === 'both'
+    format === 'interop'
       ? [
           {
             format: 'cjs',
@@ -111,9 +107,8 @@ export async function buildCode({
           },
         ];
 
-  await Promise.all(
-    outputOptions.map(output => {
-      return build.write(output);
-    })
-  );
-}
+  return {
+    inputOptions,
+    outputOptions,
+  };
+};
