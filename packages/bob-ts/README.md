@@ -60,7 +60,7 @@ Options:
   -i, --input <patterns...>  Input patterns (default: ".")
   -f, --format <format>      Format, it can be 'cjs', 'esm' or 'interop' (default: "esm")
   --no-clean                 No clean output dir (default: true)
-  --cwd <dir>                Custom target directory (default: "/home/pablosz/learner-model-gql/gateway")
+  --cwd <dir>                Custom target directory (default: "__current_directory__")
   -c, --command <cmd>        Execute script after successful JS build
   -h, --help                 display help for command
 ```
