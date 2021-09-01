@@ -75,7 +75,7 @@ Options:
 }
 ```
 
-### Usage with Testing
+## Usage with Testing
 
 The main reason for the default input being `"."` is because this library has first-class support for being used for JavaScript test frameworks like [Mocha](https://mochajs.org/) and [Node-Tap](https://node-tap.org/).
 
@@ -93,7 +93,7 @@ test/
 package.json
 ```
 
-## Mocha
+### Mocha
 
 ```sh
 pnpm add -D mocha nyc @istanbuljs/esm-loader-hook
@@ -107,7 +107,7 @@ yarn add -D mocha nyc @istanbuljs/esm-loader-hook
 npm install -D mocha nyc @istanbuljs/esm-loader-hook
 ```
 
-### ESM
+#### ESM
 
 ```json
 {
@@ -125,7 +125,7 @@ npm install -D mocha nyc @istanbuljs/esm-loader-hook
 }
 ```
 
-### CJS
+#### CJS
 
 ```json
 {
@@ -141,7 +141,7 @@ npm install -D mocha nyc @istanbuljs/esm-loader-hook
 }
 ```
 
-## Node Tap
+### Node Tap
 
 ```sh
 pnpm add -D tap @istanbuljs/esm-loader-hook
@@ -155,7 +155,7 @@ yarn add -D tap @istanbuljs/esm-loader-hook
 npm install -D tap @istanbuljs/esm-loader-hook
 ```
 
-### ESM
+#### ESM
 
 > Assumming that your tests are inside a `test` directory
 
@@ -173,7 +173,7 @@ npm install -D tap @istanbuljs/esm-loader-hook
 }
 ```
 
-### CJS
+#### CJS
 
 ```json
 {
