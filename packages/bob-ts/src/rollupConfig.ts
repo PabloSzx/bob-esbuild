@@ -3,7 +3,7 @@ import { resolve } from 'path';
 import type { InputOptions, OutputOptions } from 'rollup';
 import del from 'rollup-plugin-delete';
 import { cleanEmptyFoldersRecursively } from './clean';
-import { packageJsonPromise } from './packageJson';
+import { getPackageJson } from './packageJson';
 
 export interface RollupConfig {
   entryPoints: string[];
@@ -68,7 +68,7 @@ export const getRollupConfig = async ({ entryPoints, format, outDir, clean }: Ro
     ],
   };
 
-  const isTypeModule = (await packageJsonPromise).type === 'module';
+  const isTypeModule = (await getPackageJson()).type === 'module';
 
   const cjsEntryFileNames = isTypeModule ? '[name].cjs' : undefined;
   const esmEntryFileNames = isTypeModule ? undefined : '[name].mjs';

@@ -1,12 +1,9 @@
 import { promises } from 'fs';
 
-export const packageJsonPromise = (async () => {
+export const getPackageJson = async () => {
   const packageJsonString = await promises.readFile('./package.json', { encoding: 'utf-8' });
 
   return JSON.parse(packageJsonString) as {
     type?: string;
   };
-})().catch(err => {
-  console.error(err);
-  process.exit(1);
-});
+};
