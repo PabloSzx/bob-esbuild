@@ -105,7 +105,7 @@ export async function watchRollup(options: WatchRollupOptions) {
         break;
       }
       case 'START': {
-        console.log(`JS watcher for ${cwd} started`);
+        console.log(`Watcher for ${cwd} started`);
         break;
       }
     }
