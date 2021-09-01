@@ -62,7 +62,7 @@ Options:
   -d, --dir <directory>      Custom output dir (default: "dist")
   -i, --input <patterns...>  Input patterns (default: ".")
   -f, --format <format>      Format, it can be 'cjs', 'esm' or 'interop' (default: "esm")
-  --no-clean                 No clean output dir (default: true)
+  --clean                    Clean output dir (default: false)
   --cwd <dir>                Custom target directory (default: "X")
   -c, --command <cmd>        Execute script after successful JS build
   -t, --target <target>      Javascript runtime target (default: "nodeX")
