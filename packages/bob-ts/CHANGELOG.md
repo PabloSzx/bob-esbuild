@@ -1,5 +1,11 @@
 # bob-ts
 
+## 1.0.3
+
+### Patch Changes
+
+- 0d2db1b: no clean output folder on watch mode by default
+
 ## 1.0.2
 
 ### Patch Changes
