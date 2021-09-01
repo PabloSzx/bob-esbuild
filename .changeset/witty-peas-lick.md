@@ -1,5 +1,0 @@
----
-'bob-ts': major
----
-
-Release 🎉
