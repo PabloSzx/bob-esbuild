@@ -10,14 +10,14 @@ export interface RollupConfig {
   entryPoints: string[];
   format: 'cjs' | 'esm' | 'interop';
   outDir: string;
-  clean?: boolean;
+  clean: boolean | undefined;
+  target: string;
 }
 
-export const getRollupConfig = async ({ entryPoints, format, outDir, clean }: RollupConfig) => {
+export const getRollupConfig = async ({ entryPoints, format, outDir, clean, target }: RollupConfig) => {
   const dir = resolve(outDir);
 
   const { globby } = await import('globby');
-  const target: string = 'es2019';
 
   const input = (
     await globby(
@@ -51,6 +51,7 @@ export const getRollupConfig = async ({ entryPoints, format, outDir, clean }: Ro
       },
       bobEsbuildPlugin({
         target,
+        sourceMap: true,
       }),
       clean &&
         del({

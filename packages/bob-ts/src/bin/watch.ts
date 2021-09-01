@@ -8,18 +8,20 @@ program
   .option('-f, --format <format>', "Format, it can be 'cjs', 'esm' or 'interop'", 'esm')
   .option('--no-clean', 'No clean output dir (default: true)', true)
   .option('--cwd <dir>', 'Custom target directory', process.cwd())
-  .option('-c, --command <cmd>', 'Execute script after successful JS build');
+  .option('-c, --command <cmd>', 'Execute script after successful JS build')
+  .option('-t, --target <target>', 'Javascript runtime target', 'node' + process.versions.node);
 
 program
   .parseAsync()
   .then(async () => {
-    const { dir, input, format, clean, command, cwd } = program.opts<{
+    const { dir, input, format, clean, command, cwd, target } = program.opts<{
       dir: string;
       input: string[];
       format: 'cjs' | 'esm' | 'interop';
       clean: boolean;
       command?: string;
       cwd: string;
+      target: string;
     }>();
 
     process.chdir(resolve(cwd));
@@ -33,6 +35,7 @@ program
       format,
       outDir: dir,
       clean,
+      target,
     });
 
     const { watcher } = await watchRollup({

@@ -37,9 +37,10 @@ Options:
   -d, --dir <directory>      Custom output dir (default: "dist")
   -i, --input <patterns...>  Input patterns (default: ".")
   -f, --format <format>      Format, it can be 'cjs', 'esm' or 'interop' (default: "esm")
-  --cwd <dir>                Custom target directory (default: "__current_directory__")
+  --cwd <dir>                Custom target directory (default: "X")
   --no-clean                 No clean output dir (default: true)
-  -h, --help                 display help for **command**
+  -t, --target <target>      Javascript runtime target (default: "nodeX")
+  -h, --help                 display help for command
 ```
 
 > This will transpile all your `src` folder, and its structure will be kept **as is** in the `dist` folder
@@ -62,8 +63,9 @@ Options:
   -i, --input <patterns...>  Input patterns (default: ".")
   -f, --format <format>      Format, it can be 'cjs', 'esm' or 'interop' (default: "esm")
   --no-clean                 No clean output dir (default: true)
-  --cwd <dir>                Custom target directory (default: "__current_directory__")
+  --cwd <dir>                Custom target directory (default: "X")
   -c, --command <cmd>        Execute script after successful JS build
+  -t, --target <target>      Javascript runtime target (default: "nodeX")
   -h, --help                 display help for command
 ```
 
