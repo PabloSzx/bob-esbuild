@@ -2,6 +2,7 @@ import { bobEsbuildPlugin } from 'bob-esbuild-plugin';
 import { resolve } from 'path';
 import { InputOptions, OutputOptions, rollup } from 'rollup';
 import del from 'rollup-plugin-delete';
+import { cleanEmptyFoldersRecursively } from './clean';
 import { packageJsonPromise } from './packageJson';
 
 export async function buildCode({
@@ -19,12 +20,16 @@ export async function buildCode({
 
   const { globby } = await import('globby');
   const target: string = 'es2019';
+
+  const input = (
+    await globby(entryPoints, {
+      absolute: true,
+      ignore: ['**/node_modules'],
+    })
+  ).filter(v => v.endsWith('.ts') && !v.endsWith('.d.ts'));
+
   const inputOptions: InputOptions = {
-    input: (
-      await globby(entryPoints, {
-        absolute: true,
-      })
-    ).filter(v => v.endsWith('.ts')),
+    input,
     plugins: [
       {
         name: 'External Node Modules',
@@ -48,8 +53,21 @@ export async function buildCode({
       }),
       clean &&
         del({
-          targets: [`${dir}/**/*.js`, `${dir}/**/*.mjs`, `${dir}/**/*.map`],
+          targets: [`${dir}/**/*.js`, `${dir}/**/*.mjs`, `${dir}/**/*.cjs`, `${dir}/**/*.map`],
         }),
+      clean &&
+        (() => {
+          let deleted = false;
+
+          return {
+            name: 'Clean Empty Directories',
+            async buildEnd() {
+              if (deleted) return;
+              deleted = true;
+              await cleanEmptyFoldersRecursively(dir);
+            },
+          };
+        })(),
     ],
   };
   const build = await rollup(inputOptions);
@@ -66,6 +84,7 @@ export async function buildCode({
             format: 'cjs',
             dir,
             entryFileNames: cjsEntryFileNames,
+            preserveModules: true,
             exports: 'auto',
             sourcemap: true,
             preferConst: true,
@@ -74,6 +93,7 @@ export async function buildCode({
             format: 'esm',
             dir,
             entryFileNames: esmEntryFileNames,
+            preserveModules: true,
             exports: 'auto',
             sourcemap: true,
             preferConst: true,
