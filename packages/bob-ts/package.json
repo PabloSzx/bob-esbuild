@@ -1,0 +1,52 @@
+{
+  "name": "bob-ts",
+  "version": "0.0.1",
+  "homepage": "https://github.com/PabloSzx/bob-esbuild",
+  "bugs": "https://github.com/PabloSzx/bob-esbuild/issues",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/PabloSzx/bob-esbuild",
+    "directory": "packages/bob-ts"
+  },
+  "license": "MIT",
+  "author": "PabloSzx <pablosaez1995@gmail.com>",
+  "bin": {
+    "bob-ts": "./bin/bob-ts.mjs"
+  },
+  "exports": {
+    ".": {
+      "require": "./lib/index.js",
+      "import": "./lib/index.mjs"
+    },
+    "./*": {
+      "require": "./lib/*.js",
+      "import": "./lib/*.mjs"
+    }
+  },
+  "files": [
+    "/bin",
+    "/lib"
+  ],
+  "main": "lib/index.js",
+  "module": "lib/index.mjs",
+  "types": "lib/index.d.ts",
+  "scripts": {
+    "prepare": "bob-esbuild build"
+  },
+  "dependencies": {
+    "bob-esbuild-plugin": "workspace:^1.0.0",
+    "commander": "^8.1.0",
+    "globby": "^12.0.2",
+    "rollup": "^2.56.3",
+    "rollup-plugin-delete": "^2.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^16.7.4",
+    "bob-esbuild-cli": "workspace:^1.0.1",
+    "esbuild": "^0.12.24"
+  },
+  "peerDependencies": {
+    "@types/node": "*",
+    "esbuild": "*"
+  }
+}
