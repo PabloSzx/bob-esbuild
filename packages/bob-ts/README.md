@@ -98,15 +98,15 @@ package.json
 ### Mocha
 
 ```sh
-pnpm add -D mocha nyc @istanbuljs/esm-loader-hook
+pnpm add -D mocha c8
 ```
 
 ```sh
-yarn add -D mocha nyc @istanbuljs/esm-loader-hook
+yarn add -D mocha c8
 ```
 
 ```sh
-npm install -D mocha nyc @istanbuljs/esm-loader-hook
+npm install -D mocha c8
 ```
 
 #### ESM
@@ -116,13 +116,11 @@ npm install -D mocha nyc @istanbuljs/esm-loader-hook
   "scripts": {
     "dev": "bob-ts-watch -c \"node/dist/src/index.mjs\"",
     "start": "bob-ts && node/dist/src/index.mjs",
-    "test": "bob-ts && nyc mocha dist/test",
-    "test:watch": "bob-ts-watch -c \"nyc mocha dist/test\""
+    "test": "bob-ts && c8 mocha dist/test",
+    "test:watch": "bob-ts-watch -c \"c8 mocha dist/test\""
   },
   "mocha": {
-    "enable-source-maps": true,
-    "no-warnings": true,
-    "experimental-loader": "@istanbuljs/esm-loader-hook"
+    "enable-source-maps": true
   }
 }
 ```
@@ -134,8 +132,8 @@ npm install -D mocha nyc @istanbuljs/esm-loader-hook
   "scripts": {
     "dev": "bob-ts-watch -f cjs -c \"node dist/src/index.js\"",
     "start": "bob-ts -f cjs && node dist/src/index.js",
-    "test": "bob-ts -f cjs && nyc mocha dist/test",
-    "test:watch": "bob-ts-watch -f cjs -c \"nyc mocha dist/test\""
+    "test": "bob-ts -f cjs && c8 mocha dist/test",
+    "test:watch": "bob-ts-watch -f cjs -c \"c8 mocha dist/test\""
   },
   "mocha": {
     "enable-source-maps": true
@@ -159,7 +157,7 @@ npm install -D tap @istanbuljs/esm-loader-hook
 
 #### ESM
 
-> Assumming that your tests are inside a `test` directory
+> Assuming that your tests are inside a `test` directory
 
 ```json
 {
