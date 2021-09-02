@@ -1,5 +1,12 @@
 # bob-ts
 
+## 1.0.4
+
+### Patch Changes
+
+- 930ed29: Recommend c8 instead of nyc for mocha
+- 5affb52: Fix issue with esbuild target node12 with ESM dynamic imports
+
 ## 1.0.3
 
 ### Patch Changes
