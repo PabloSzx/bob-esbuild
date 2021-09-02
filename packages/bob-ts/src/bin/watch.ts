@@ -1,6 +1,7 @@
 import assert from 'assert';
 import { program } from 'commander';
 import { resolve } from 'path';
+import { getDefaultNodeTargetVersion } from '../defaults';
 
 program
   .option('-d, --dir <directory>', 'Custom output dir', 'dist')
@@ -9,7 +10,7 @@ program
   .option('--clean', 'Clean output dir', false)
   .option('--cwd <dir>', 'Custom target directory', process.cwd())
   .option('-c, --command <cmd>', 'Execute script after successful JS build')
-  .option('-t, --target <target>', 'Javascript runtime target', 'node' + process.versions.node);
+  .option('-t, --target <target>', 'Javascript runtime target', getDefaultNodeTargetVersion());
 
 program
   .parseAsync()

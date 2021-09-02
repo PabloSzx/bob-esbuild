@@ -1,6 +1,7 @@
 import assert from 'assert';
 import { program } from 'commander';
 import { resolve } from 'path';
+import { getDefaultNodeTargetVersion } from '../defaults';
 
 program
   .option('-d, --dir <directory>', 'Custom output dir', 'dist')
@@ -8,7 +9,7 @@ program
   .option('-f, --format <format>', "Format, it can be 'cjs', 'esm' or 'interop'", 'esm')
   .option('--cwd <dir>', 'Custom target directory', process.cwd())
   .option('--no-clean', "Don't clean output dir (default: true)", true)
-  .option('-t, --target <target>', 'Javascript runtime target', 'node' + process.versions.node);
+  .option('-t, --target <target>', 'Javascript runtime target', getDefaultNodeTargetVersion());
 
 program
   .parseAsync()
