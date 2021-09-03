@@ -10,11 +10,11 @@
   "author": "PabloSzx <pablosaez1995@gmail.com>",
   "scripts": {
     "changeset": "changeset",
-    "ci:release": "pnpm -r publish --access public --no-git-checks",
-    "ci:version": "changeset version && pnpm i --no-frozen-lockfile --lockfile-only --ignore-scripts",
+    "ci:release": "pnpm pretty:all && pnpm -r publish --access public --no-git-checks",
+    "ci:version": "pnpm pretty:all && changeset version && pnpm i --no-frozen-lockfile --lockfile-only --ignore-scripts",
     "dev": "pnpm dev -r --no-sort",
     "prepare": "husky install && pnpm types",
-    "pretty:all": "prettier -w \"**/*.{ts,tsx,js,cjs.mjs}\"",
+    "pretty:all": "prettier -w \"**/*.{ts,tsx,js,cjs,mjs}\"",
     "test": "pnpm test -r",
     "types": "pnpm --filter bob-esbuild build:types"
   },
