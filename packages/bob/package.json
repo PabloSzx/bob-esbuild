@@ -26,7 +26,7 @@
   ],
   "scripts": {
     "build:types": "node -r esbuild-register build-types.ts",
-    "dev": "bob-esbuild watch",
+    "dev": "node -r esbuild-register self-watch.ts",
     "prepare": "node -r esbuild-register self-build.ts",
     "postpublish": "gh-release"
   },

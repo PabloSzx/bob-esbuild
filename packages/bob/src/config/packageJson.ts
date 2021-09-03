@@ -11,22 +11,33 @@ import { getDefault } from '../utils/getDefault';
 
 import type { Plugin } from 'rollup';
 import type { PackageBuildConfig } from './packageBuildConfig';
+import { rewriteExports } from './rewrite-exports';
 
 const makePublishManifest = getDefault(makePublishManifestPkg);
 
 const { ensureDir, writeJSON } = fsExtra;
 export interface PackageJSON extends Record<string, unknown> {
+  name?: string;
+  type?: string;
+  main?: string;
+  module?: string;
+  types?: string;
   bin?: Record<string, string>;
   publishConfig?: {
     directory?: string;
   };
   files?: string[];
   buildConfig?: PackageBuildConfig;
-  exports?: Record<string, { require: string; import: string } | string | undefined>;
+  exports?: Record<string, string | { require?: string; import?: string }>;
 }
 
 function rewritePackageJson(pkg: PackageJSON, distDir: string, cwd: string) {
   const newPkg: PackageJSON = {};
+
+  function withoutDistDir(str?: string) {
+    return str?.replace(`${distDir}/`, '');
+  }
+
   const fields = [
     'name',
     'version',
@@ -49,55 +60,13 @@ function rewritePackageJson(pkg: PackageJSON, distDir: string, cwd: string) {
     }
   }
 
-  if (pkg.main) {
-    newPkg.main = 'index.js';
-    newPkg.module = 'index.mjs';
-    newPkg.types = 'index.d.ts';
-    newPkg.typescript = {
-      definition: 'index.d.ts',
-    };
-  }
+  newPkg.main = withoutDistDir(pkg.main);
+  newPkg.module = withoutDistDir(pkg.module);
+  newPkg.types = withoutDistDir(pkg.types) || 'index.d.ts';
 
   if (pkg.exports) {
-    newPkg.exports = { ...pkg.exports };
-
-    newPkg.exports['./package.json'] = './package.json';
-  }
-
-  if (newPkg.exports) {
-    for (const [key, value] of Object.entries(newPkg.exports)) {
-      if (!value) continue;
-
-      let newValue = value;
-
-      if (typeof newValue === 'string') {
-        newValue = newValue.replace(`${distDir}/`, '');
-      } else {
-        newValue = {
-          require: newValue.require.replace(`${distDir}/`, ''),
-          import: newValue.import.replace(`${distDir}/`, ''),
-        };
-      }
-
-      newPkg.exports[key.replace(`${distDir}/`, '')] = newValue;
-    }
-  }
-
-  if (pkg.exports?.['./*']) {
-    (newPkg.exports ||= {})['./*'] = {
-      require: './*.js',
-      import: './*.mjs',
-    };
-  }
-
-  if (pkg.exports?.['.']) {
-    (newPkg.exports ||= {})['.'] = {
-      require: './index.js',
-      import: './index.mjs',
-    };
-  }
-
-  if (!newPkg.exports) {
+    newPkg.exports = rewriteExports(pkg.exports, withoutDistDir);
+  } else {
     warn(`No "." or "./*" exports field specified in ${resolve(cwd, distDir, 'package.json')}!`);
   }
 
