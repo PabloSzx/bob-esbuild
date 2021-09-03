@@ -1,5 +1,11 @@
 # bob-ts
 
+## 1.0.5
+
+### Patch Changes
+
+- bb39a4b: fix crlf bin
+
 ## 1.0.4
 
 ### Patch Changes
