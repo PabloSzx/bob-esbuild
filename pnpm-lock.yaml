@@ -109,11 +109,11 @@ importers:
     specifiers:
       bob-esbuild: workspace:^1.2.3
       changesets-github-release: ^0.0.4
-      commander: ^8.1.0
+      commander: ^8.2.0
       esbuild-register: ^3.0.0
       typescript: ^4.4.2
     dependencies:
-      commander: 8.1.0
+      commander: 8.2.0
     devDependencies:
       bob-esbuild: link:../bob
       changesets-github-release: 0.0.4
@@ -126,7 +126,7 @@ importers:
       bob-esbuild-cli: workspace:^1.0.1
       bob-esbuild-plugin: workspace:^1.0.0
       changesets-github-release: ^0.0.4
-      commander: ^8.1.0
+      commander: ^8.2.0
       esbuild: '>=0.12.24'
       execa: ^5.1.1
       globby: ^12.0.2
@@ -135,7 +135,7 @@ importers:
       tree-kill: ^1.2.2
     dependencies:
       bob-esbuild-plugin: link:../esbuild-plugin
-      commander: 8.1.0
+      commander: 8.2.0
       execa: 5.1.1
       globby: 12.0.2
       rollup: 2.56.3
@@ -1784,8 +1784,8 @@ packages:
     engines: {node: '>= 10'}
     dev: true
 
-  /commander/8.1.0:
-    resolution: {integrity: sha512-mf45ldcuHSYShkplHHGKWb4TrmwQadxOn7v4WuhDJy0ZVoY5JFajaRDKD0PNe5qXzBX0rhovjTnP6Kz9LETcuA==}
+  /commander/8.2.0:
+    resolution: {integrity: sha512-LLKxDvHeL91/8MIyTAD5BFMNtoIwztGPMiM/7Bl8rIPmHCZXRxmSWr91h57dpOpnQ6jIUqEWdXE/uBYMfiVZDA==}
     engines: {node: '>= 12'}
     dev: false
 
