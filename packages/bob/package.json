@@ -59,7 +59,7 @@
     "@types/rimraf": "^3.0.2",
     "changesets-github-release": "^0.0.4",
     "esbuild-register": "^3.0.0",
-    "typescript": "^4.4.2"
+    "typescript": "^4.4.3"
   },
   "peerDependencies": {
     "typescript": "*"

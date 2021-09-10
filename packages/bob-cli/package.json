@@ -42,7 +42,7 @@
     "bob-esbuild": "workspace:^1.2.3",
     "changesets-github-release": "^0.0.4",
     "esbuild-register": "^3.0.0",
-    "typescript": "^4.4.2"
+    "typescript": "^4.4.3"
   },
   "engines": {
     "node": ">=12.0.0"
