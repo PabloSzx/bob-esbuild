@@ -15,7 +15,7 @@ importers:
       prettier: ^2.4.0
       pretty-quick: ^3.1.1
       rimraf: ^3.0.2
-      typescript: ^4.4.2
+      typescript: ^4.4.3
     devDependencies:
       '@changesets/cli': 2.17.0
       '@types/node': 16.9.0
@@ -24,7 +24,7 @@ importers:
       prettier: 2.4.0
       pretty-quick: 3.1.1_prettier@2.4.0
       rimraf: 3.0.2
-      typescript: 4.4.2
+      typescript: 4.4.3
 
   examples/basic:
     specifiers:
@@ -74,7 +74,7 @@ importers:
       sucrase: ^3.20.1
       tree-kill: ^1.2.2
       tsconfig: ^7.0.0
-      typescript: ^4.4.2
+      typescript: ^4.4.3
     dependencies:
       '@pnpm/exportable-manifest': 2.1.6
       bob-esbuild-plugin: link:../esbuild-plugin
@@ -103,7 +103,7 @@ importers:
       '@types/rimraf': 3.0.2
       changesets-github-release: 0.0.4
       esbuild-register: 3.0.0_esbuild@0.12.26
-      typescript: 4.4.2
+      typescript: 4.4.3
 
   packages/bob-cli:
     specifiers:
@@ -111,14 +111,14 @@ importers:
       changesets-github-release: ^0.0.4
       commander: ^8.2.0
       esbuild-register: ^3.0.0
-      typescript: ^4.4.2
+      typescript: ^4.4.3
     dependencies:
       commander: 8.2.0
     devDependencies:
       bob-esbuild: link:../bob
       changesets-github-release: 0.0.4
       esbuild-register: 3.0.0_esbuild@0.12.26
-      typescript: 4.4.2
+      typescript: 4.4.3
 
   packages/bob-ts:
     specifiers:
@@ -178,7 +178,7 @@ importers:
       jest: 27.1.1
       mock-fs: 5.0.0
       rollup: 2.56.3
-      tsup: 4.14.0_typescript@4.4.2
+      tsup: 4.14.0_typescript@4.4.3
 
 packages:
 
@@ -4377,7 +4377,7 @@ packages:
       strip-json-comments: 2.0.1
     dev: false
 
-  /tsup/4.14.0_typescript@4.4.2:
+  /tsup/4.14.0_typescript@4.4.3:
     resolution: {integrity: sha512-77rWdzhikTP9mQ34XMRzK83tw++LF6f4ox/HNERlgesB7g6g5VQ1iJlueG9O0P9HAZGVKavUwyoZv0+322p6rg==}
     hasBin: true
     peerDependencies:
@@ -4399,7 +4399,7 @@ packages:
       rollup: 2.56.3
       sucrase: 3.20.1
       tree-kill: 1.2.2
-      typescript: 4.4.2
+      typescript: 4.4.3
     transitivePeerDependencies:
       - supports-color
       - ts-node
@@ -4455,8 +4455,8 @@ packages:
     dependencies:
       is-typedarray: 1.0.0
 
-  /typescript/4.4.2:
-    resolution: {integrity: sha512-gzP+t5W4hdy4c+68bfcv0t400HVJMMd2+H9B7gae1nQlBzCqvrXX+6GL/b3GAgyTH966pzrZ70/fRjwAtZksSQ==}
+  /typescript/4.4.3:
+    resolution: {integrity: sha512-4xfscpisVgqqDfPaJo5vkd+Qd/ItkoagnHpufr+i2QCHBsNYp+G7UAoyFl8aPtx879u38wPV65rZ8qbGZijalA==}
     engines: {node: '>=4.2.0'}
     hasBin: true
     dev: true
