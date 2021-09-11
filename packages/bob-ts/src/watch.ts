@@ -61,6 +61,8 @@ export async function watchRollup(options: WatchRollupOptions) {
 
   let buildsDone = 0;
 
+  let lastStart = Date.now();
+
   watcher.on('event', event => {
     switch (event.code) {
       case 'BUNDLE_START': {
@@ -71,7 +73,7 @@ export async function watchRollup(options: WatchRollupOptions) {
 
         options.onStartCallback?.(buildsDone);
 
-        console.log(`Starting build for ${cwd}`);
+        lastStart = Date.now();
         break;
       }
       case 'BUNDLE_END': {
@@ -83,6 +85,8 @@ export async function watchRollup(options: WatchRollupOptions) {
           })
         )
           .then(async () => {
+            console.log(`[${new Date().toLocaleString()}] Build success for ${cwd} in ${Date.now() - lastStart}ms`);
+
             options.onSuccessCallback?.(buildsDone);
 
             if (pendingKillPromise) await pendingKillPromise;
@@ -104,8 +108,11 @@ export async function watchRollup(options: WatchRollupOptions) {
 
         break;
       }
+      case 'ERROR': {
+        console.error(event.error.message ? `\n[${new Date().toLocaleString()}] [ERROR]: ${event.error.message}\n` : event.error);
+        break;
+      }
       case 'START': {
-        console.log(`Watcher for ${cwd} started`);
         break;
       }
     }
