@@ -1,5 +1,11 @@
 # bob-esbuild
 
+## 1.3.0
+
+### Minor Changes
+
+- 698d845: Improve package.json exports rewrite
+
 ## 1.2.3
 
 ### Patch Changes
