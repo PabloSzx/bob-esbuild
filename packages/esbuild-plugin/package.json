@@ -31,7 +31,7 @@
   },
   "dependencies": {
     "@rollup/pluginutils": "^4.1.1",
-    "esbuild": "^0.12.27",
+    "esbuild": "^0.12.28",
     "joycon": "^3.0.1",
     "jsonc-parser": "^3.0.0"
   },
@@ -45,7 +45,7 @@
     "jest": "^27.2.0",
     "mock-fs": "^5.0.0",
     "rollup": "^2.56.3",
-    "tsup": "^4.14.0"
+    "tsup": "^5.0.0"
   },
   "peerDependencies": {
     "@types/node": "*",
