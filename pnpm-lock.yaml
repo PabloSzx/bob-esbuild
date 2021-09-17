@@ -59,7 +59,7 @@ importers:
       chalk: ^4.1.2
       changesets-github-release: ^0.0.4
       cosmiconfig: ^7.0.1
-      date-fns: ^2.23.0
+      date-fns: ^2.24.0
       esbuild: '>=0.12.24'
       esbuild-register: ^3.0.0
       execa: ^5.1.1
@@ -81,7 +81,7 @@ importers:
       builtin-modules: 3.2.0
       chalk: 4.1.2
       cosmiconfig: 7.0.1
-      date-fns: 2.23.0
+      date-fns: 2.24.0
       esbuild: 0.12.28
       execa: 5.1.1
       folder-hash: 4.0.1
@@ -1877,8 +1877,8 @@ packages:
       whatwg-url: 8.7.0
     dev: true
 
-  /date-fns/2.23.0:
-    resolution: {integrity: sha512-5ycpauovVyAk0kXNZz6ZoB9AYMZB4DObse7P3BPWmyEjXNORTI8EJ6X0uaSAq4sCHzM1uajzrkr6HnsLQpxGXA==}
+  /date-fns/2.24.0:
+    resolution: {integrity: sha512-6ujwvwgPID6zbI0o7UbURi2vlLDR9uP26+tW6Lg+Ji3w7dd0i3DOcjcClLjLPranT60SSEFBwdSyYwn/ZkPIuw==}
     engines: {node: '>=0.11'}
     dev: false
 
