@@ -1,5 +1,11 @@
 # bob-ts
 
+## 1.1.0
+
+### Minor Changes
+
+- 8ace193: Allow multiple concurrent commands on "bob-ts-watch" & change watching build delay from 1000 to 500 ms
+
 ## 1.0.6
 
 ### Patch Changes
