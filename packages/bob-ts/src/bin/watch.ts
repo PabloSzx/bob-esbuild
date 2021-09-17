@@ -1,15 +1,17 @@
-import assert from 'assert';
-import { program } from 'commander';
+import { Option, program } from 'commander';
 import { resolve } from 'path';
 import { getDefaultNodeTargetVersion } from '../defaults';
 
 program
   .option('-d, --dir <directory>', 'Custom output dir', 'dist')
   .option('-i, --input <patterns...>', 'Input patterns', '.')
-  .option('-f, --format <format>', "Format, it can be 'cjs', 'esm' or 'interop'", 'esm')
+  .addOption(new Option('-f, --format <format>', 'Output format').default('esm').choices(['cjs', 'esm', 'interop']))
   .option('--clean', 'Clean output dir', false)
   .option('--cwd <dir>', 'Custom target directory', process.cwd())
-  .option('-c, --command <cmd>', 'Execute script after successful JS build')
+  .option(
+    '-c, --command <commands...>',
+    'Execute scripts after successful JS build, You can specify more than a single command to be executed concurrently'
+  )
   .option('-t, --target <target>', 'Javascript runtime target', getDefaultNodeTargetVersion());
 
 program
@@ -20,14 +22,12 @@ program
       input: string[];
       format: 'cjs' | 'esm' | 'interop';
       clean: boolean;
-      command?: string;
+      command?: string[];
       cwd: string;
       target: string;
     }>();
 
     process.chdir(resolve(cwd));
-
-    assert(['cjs', 'esm', 'interop'].includes(format), "Format has to be 'cjs', 'esm' or 'interop'");
 
     const [{ getRollupConfig }, { watchRollup }] = await Promise.all([import('../rollupConfig'), import('../watch')]);
 
@@ -42,7 +42,7 @@ program
     const { watcher } = await watchRollup({
       input: inputOptions,
       output: outputOptions,
-      onSuccessCommand: command,
+      onSuccessCommands: command,
     });
 
     return new Promise<void>(resolve => {

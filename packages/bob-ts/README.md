@@ -55,19 +55,19 @@ Options:
 
 ### Development / Watch Mode
 
-```
+````
 Usage: bob-ts-watch [options]
 
 Options:
-  -d, --dir <directory>      Custom output dir (default: "dist")
-  -i, --input <patterns...>  Input patterns (default: ".")
-  -f, --format <format>      Format, it can be 'cjs', 'esm' or 'interop' (default: "esm")
-  --clean                    Clean output dir (default: false)
-  --cwd <dir>                Custom target directory (default: "X")
-  -c, --command <cmd>        Execute script after successful JS build
-  -t, --target <target>      Javascript runtime target (default: "nodeX")
-  -h, --help                 display help for command
-```
+  -d, --dir <directory>        Custom output dir (default: "dist")
+  -i, --input <patterns...>    Input patterns (default: ".")
+  -f, --format <format>        Output format (choices: "cjs", "esm", "interop", default: "esm")
+  --clean                      Clean output dir (default: false)
+  --cwd <dir>                  Custom target directory (default: "___")
+  -c, --command <commands...>  Execute scripts after successful JS build, You can specify more than a single command
+                               to be executed concurrently
+  -t, --target <target>        Javascript runtime target (default: "_YOUR_CURRENT_NODE_VERSION_")
+  -h, --help                   display help for command```
 
 ```json
 {
@@ -75,7 +75,7 @@ Options:
     "dev": "bob-ts-watch -i src -c \"node dist/index.mjs\""
   }
 }
-```
+````
 
 ## Usage with Testing
 

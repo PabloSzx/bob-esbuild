@@ -6,7 +6,7 @@ import kill from 'tree-kill';
 export interface WatchRollupOptions {
   input: InputOptions;
   output: OutputOptions[];
-  onSuccessCommand?: string;
+  onSuccessCommands?: string[];
   onSuccessCallback?: (builds: number) => void;
   onStartCallback?: (builds: number) => void;
 }
@@ -22,18 +22,20 @@ export async function watchRollup(options: WatchRollupOptions) {
 
     watch: {
       skipWrite: true,
-      buildDelay: 1000,
+      buildDelay: 500,
       chokidar: {
         ignoreInitial: false,
       },
     },
   });
 
-  let onSuccessProcess: ChildProcess | null = null;
+  const onSuccessProcesses: ChildProcess[] = [];
 
   function cleanUp() {
     try {
-      if (onSuccessProcess?.pid) killPromise(onSuccessProcess.pid);
+      for (const onSuccessProcess of onSuccessProcesses) {
+        if (onSuccessProcess?.pid) killPromise(onSuccessProcess.pid);
+      }
 
       watcher.close();
     } catch (err) {
@@ -49,14 +51,17 @@ export async function watchRollup(options: WatchRollupOptions) {
   process.on('uncaughtException', cleanUp);
   process.on('exit', cleanUp);
 
-  let pendingKillPromise: Promise<void>;
+  const pendingKillPromises = new Set<Promise<void>>();
 
   function killPromise(pid: number) {
-    return (pendingKillPromise = new Promise(resolve => {
+    const pendingKillPromise = new Promise<void>(resolve => {
       kill(pid, () => {
         resolve();
+        pendingKillPromises.delete(pendingKillPromise);
       });
-    }));
+    });
+
+    pendingKillPromises.add(pendingKillPromise);
   }
 
   let buildsDone = 0;
@@ -66,9 +71,13 @@ export async function watchRollup(options: WatchRollupOptions) {
   watcher.on('event', event => {
     switch (event.code) {
       case 'BUNDLE_START': {
-        if (onSuccessProcess?.pid) {
-          killPromise(onSuccessProcess.pid);
-          onSuccessProcess = null;
+        {
+          while (onSuccessProcesses.length) {
+            const onSuccessProcess = onSuccessProcesses.shift();
+            if (onSuccessProcess?.pid != null) {
+              killPromise(onSuccessProcess.pid);
+            }
+          }
         }
 
         options.onStartCallback?.(buildsDone);
@@ -79,32 +88,39 @@ export async function watchRollup(options: WatchRollupOptions) {
       case 'BUNDLE_END': {
         const { result } = event;
 
-        Promise.all(
-          outputOptions.map(output => {
-            return result.write(output);
-          })
-        )
-          .then(async () => {
+        (async () => {
+          try {
+            await Promise.all(
+              outputOptions.map(output => {
+                return result.write(output);
+              })
+            );
+
             console.log(`[${new Date().toLocaleString()}] Build success for ${cwd} in ${Date.now() - lastStart}ms`);
 
             options.onSuccessCallback?.(buildsDone);
 
-            if (pendingKillPromise) await pendingKillPromise;
+            pendingKillPromises.size && (await Promise.all(pendingKillPromises));
 
-            if (options.onSuccessCommand) {
-              console.log(`$ ${options.onSuccessCommand}`);
-              onSuccessProcess = command(options.onSuccessCommand, {
-                stdio: 'inherit',
-                shell: true,
-              });
+            if (options.onSuccessCommands) {
+              for (const onSuccessCommand of options.onSuccessCommands) {
+                console.log(`$ ${onSuccessCommand}`);
+                onSuccessProcesses.push(
+                  command(onSuccessCommand, {
+                    stdio: 'inherit',
+                    shell: true,
+                  })
+                );
+              }
             }
-          })
-          .catch(console.error)
-          .finally(() => {
-            result.close();
+          } catch (err) {
+            console.error(err);
+          } finally {
+            result.close().catch(console.error);
 
             ++buildsDone;
-          });
+          }
+        })();
 
         break;
       }
