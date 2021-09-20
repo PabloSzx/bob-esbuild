@@ -55,7 +55,7 @@ Options:
 
 ### Development / Watch Mode
 
-````
+```
 Usage: bob-ts-watch [options]
 
 Options:
@@ -69,13 +69,16 @@ Options:
   -t, --target <target>        Javascript runtime target (default: "_YOUR_CURRENT_NODE_VERSION_")
   -h, --help                   display help for command```
 
+
+```
+
 ```json
 {
   "scripts": {
     "dev": "bob-ts-watch -i src -c \"node dist/index.mjs\""
   }
 }
-````
+```
 
 ## Usage with Testing
 
