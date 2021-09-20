@@ -67,9 +67,7 @@ Options:
   -c, --command <commands...>  Execute scripts after successful JS build, You can specify more than a single command
                                to be executed concurrently
   -t, --target <target>        Javascript runtime target (default: "_YOUR_CURRENT_NODE_VERSION_")
-  -h, --help                   display help for command```
-
-
+  -h, --help                   display help for command
 ```
 
 ```json
