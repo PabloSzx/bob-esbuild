@@ -50,7 +50,7 @@ importers:
     specifiers:
       '@pnpm/exportable-manifest': ^2.1.6
       '@types/folder-hash': ^4.0.1
-      '@types/fs-extra': ^9.0.12
+      '@types/fs-extra': ^9.0.13
       '@types/lodash.get': ^4.4.6
       '@types/node': '>=16.7.4'
       '@types/rimraf': ^3.0.2
@@ -97,7 +97,7 @@ importers:
       tsconfig: 7.0.0
     devDependencies:
       '@types/folder-hash': 4.0.1
-      '@types/fs-extra': 9.0.12
+      '@types/fs-extra': 9.0.13
       '@types/lodash.get': 4.4.6
       '@types/node': 16.9.2
       '@types/rimraf': 3.0.2
@@ -1153,8 +1153,8 @@ packages:
     resolution: {integrity: sha512-HrIikWNP/7ubX+XB1awPxA+zTI8T3NXgb4g3BQnT4iAWbeZThsaAm+sg+xqO+eK6kPlpOLS6o29FaaWqb2THbA==}
     dev: true
 
-  /@types/fs-extra/9.0.12:
-    resolution: {integrity: sha512-I+bsBr67CurCGnSenZZ7v94gd3tc3+Aj2taxMT4yu4ABLuOgOjeFxX3dokG24ztSRg5tnT00sL8BszO7gSMoIw==}
+  /@types/fs-extra/9.0.13:
+    resolution: {integrity: sha512-nEnwB++1u5lVDM2UI4c1+5R+FYaKfaAzS4OococimjVm3nQw3TuzH5UNsocrcTBbhnerblyHj4A49qXbIiZdpA==}
     dependencies:
       '@types/node': 16.9.2
     dev: true
