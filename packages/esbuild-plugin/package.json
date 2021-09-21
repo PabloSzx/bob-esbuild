@@ -36,7 +36,7 @@
     "jsonc-parser": "^3.0.0"
   },
   "devDependencies": {
-    "@types/jest": "^27.0.1",
+    "@types/jest": "^27.0.2",
     "@types/mock-fs": "^4.13.1",
     "@types/node": "^16.9.2",
     "changesets-github-release": "^0.0.4",

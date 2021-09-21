@@ -150,7 +150,7 @@ importers:
   packages/esbuild-plugin:
     specifiers:
       '@rollup/pluginutils': ^4.1.1
-      '@types/jest': ^27.0.1
+      '@types/jest': ^27.0.2
       '@types/mock-fs': ^4.13.1
       '@types/node': '>=16.7.4'
       changesets-github-release: ^0.0.4
@@ -169,7 +169,7 @@ importers:
       joycon: 3.0.1
       jsonc-parser: 3.0.0
     devDependencies:
-      '@types/jest': 27.0.1
+      '@types/jest': 27.0.2
       '@types/mock-fs': 4.13.1
       '@types/node': 16.9.2
       changesets-github-release: 0.0.4
@@ -1187,8 +1187,8 @@ packages:
       '@types/istanbul-lib-report': 3.0.0
     dev: true
 
-  /@types/jest/27.0.1:
-    resolution: {integrity: sha512-HTLpVXHrY69556ozYkcq47TtQJXpcWAWfkoqz+ZGz2JnmZhzlRjprCIyFnetSy8gpDWwTTGBcRVv1J1I1vBrHw==}
+  /@types/jest/27.0.2:
+    resolution: {integrity: sha512-4dRxkS/AFX0c5XW6IPMNOydLn2tEhNhJV7DnYK+0bjoJZ+QTmfucBlihX7aoEsh/ocYtkLC73UbnBXBXIxsULA==}
     dependencies:
       jest-diff: 27.2.0
       pretty-format: 27.2.0
