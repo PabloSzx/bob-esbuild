@@ -20,6 +20,7 @@ If you are using it in a monorepo project, you have to install it in your root l
 
 ```sh
 pnpm add bob-esbuild bob-esbuild-cli
+pnpm add -D esbuild
 ```
 
 Then, in every package you want to build with `bob-esbuild`, you can simply install `bob-esbuild-cli`:
