@@ -44,7 +44,7 @@
     "esbuild-register": "^3.0.0",
     "jest": "^27.2.1",
     "mock-fs": "^5.1.0",
-    "rollup": "^2.56.3",
+    "rollup": "^2.57.0",
     "tsup": "^5.1.0"
   },
   "peerDependencies": {
