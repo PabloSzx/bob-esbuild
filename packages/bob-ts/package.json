@@ -1,6 +1,6 @@
 {
   "name": "bob-ts",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "homepage": "https://github.com/PabloSzx/bob-esbuild",
   "bugs": "https://github.com/PabloSzx/bob-esbuild/issues",
   "repository": {
@@ -37,7 +37,7 @@
     "postpublish": "gh-release"
   },
   "dependencies": {
-    "bob-esbuild-plugin": "workspace:^1.0.0",
+    "bob-esbuild-plugin": "workspace:^2.0.0",
     "commander": "^8.2.0",
     "execa": "^5.1.1",
     "globby": "^12.0.2",
@@ -47,7 +47,7 @@
   },
   "devDependencies": {
     "@types/node": "^16.9.6",
-    "bob-esbuild-cli": "workspace:^1.0.1",
+    "bob-esbuild-cli": "workspace:^2.0.0",
     "changesets-github-release": "^0.0.4",
     "esbuild": "^0.13.0"
   },

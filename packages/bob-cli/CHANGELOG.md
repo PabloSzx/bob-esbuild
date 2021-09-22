@@ -1,5 +1,12 @@
 # bob-esbuild-cli
 
+## 2.0.0
+
+### Patch Changes
+
+- Updated dependencies [7678c9a]
+  - bob-esbuild@2.0.0
+
 ## 1.0.1
 
 ### Patch Changes

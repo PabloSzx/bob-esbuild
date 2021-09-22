@@ -1,5 +1,12 @@
 # bob-ts
 
+## 1.1.1
+
+### Patch Changes
+
+- Updated dependencies [7678c9a]
+  - bob-esbuild-plugin@2.0.0
+
 ## 1.1.0
 
 ### Minor Changes
