@@ -26,8 +26,7 @@
   ],
   "scripts": {
     "prepare": "tsup && pnpm -w types",
-    "postpublish": "gh-release",
-    "test": "jest"
+    "postpublish": "gh-release"
   },
   "dependencies": {
     "@rollup/pluginutils": "^4.1.1",
@@ -35,15 +34,10 @@
     "jsonc-parser": "^3.0.0"
   },
   "devDependencies": {
-    "@types/jest": "^27.0.2",
-    "@types/mock-fs": "^4.13.1",
     "@types/node": "^16.9.6",
     "changesets-github-release": "^0.0.4",
-    "es-jest": "^1.3.0",
     "esbuild": "^0.13.0",
     "esbuild-register": "^3.0.0",
-    "jest": "^27.2.1",
-    "mock-fs": "^5.1.0",
     "rollup": "^2.57.0",
     "tsup": "^5.1.0"
   },

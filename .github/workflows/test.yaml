@@ -31,10 +31,7 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-${{ matrix.node_version }}-
       - name: install pnpm
-        run: npm i pnpm@^6.7.0 -g
+        run: npm i pnpm@latest -g
 
       - name: Install Dependencies & prepare
         run: timeout 3m pnpm i
-
-      - name: Tests
-        run: timeout 3m pnpm test
