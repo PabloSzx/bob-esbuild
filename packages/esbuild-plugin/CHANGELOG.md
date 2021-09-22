@@ -1,5 +1,11 @@
 # bob-esbuild-plugin
 
+## 2.0.0
+
+### Major Changes
+
+- 7678c9a: esbuild as peer dependency
+
 ## 1.0.0
 
 ### Major Changes
