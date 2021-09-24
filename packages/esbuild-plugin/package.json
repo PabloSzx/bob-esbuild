@@ -39,7 +39,7 @@
     "esbuild": "^0.13.1",
     "esbuild-register": "^3.0.0",
     "rollup": "^2.57.0",
-    "tsup": "^5.1.0"
+    "tsup": "^5.2.0"
   },
   "peerDependencies": {
     "@types/node": "*",
