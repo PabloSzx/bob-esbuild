@@ -1,5 +1,11 @@
 # bob-ts
 
+## 1.1.2
+
+### Patch Changes
+
+- 057823d: new "--ignore" option to specify specific paths to be ignored on watch mode
+
 ## 1.1.1
 
 ### Patch Changes
