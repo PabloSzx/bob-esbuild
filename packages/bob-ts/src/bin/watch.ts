@@ -12,12 +12,13 @@ program
     '-c, --command <commands...>',
     'Execute scripts after successful JS build, You can specify more than a single command to be executed concurrently'
   )
-  .option('-t, --target <target>', 'Javascript runtime target', getDefaultNodeTargetVersion());
+  .option('-t, --target <target>', 'Javascript runtime target', getDefaultNodeTargetVersion())
+  .option('--ignore <files...>', 'Patterns of files to ignore watching');
 
 program
   .parseAsync()
   .then(async () => {
-    const { dir, input, format, clean, command, cwd, target } = program.opts<{
+    const { dir, input, format, clean, command, cwd, target, ignore } = program.opts<{
       dir: string;
       input: string[];
       format: 'cjs' | 'esm' | 'interop';
@@ -25,6 +26,7 @@ program
       command?: string[];
       cwd: string;
       target: string;
+      ignore: string[];
     }>();
 
     process.chdir(resolve(cwd));
@@ -43,6 +45,7 @@ program
       input: inputOptions,
       output: outputOptions,
       onSuccessCommands: command,
+      ignoreWatch: ignore,
     });
 
     return new Promise<void>(resolve => {

@@ -9,12 +9,13 @@ export interface WatchRollupOptions {
   onSuccessCommands?: string[];
   onSuccessCallback?: (builds: number) => void;
   onStartCallback?: (builds: number) => void;
+  ignoreWatch?: string | string[];
 }
 
 const cwd = process.cwd();
 
 export async function watchRollup(options: WatchRollupOptions) {
-  const { input: inputOptions, output: outputOptions } = options;
+  const { input: inputOptions, output: outputOptions, ignoreWatch } = options;
 
   const watcher = rollupWatch({
     ...inputOptions,
@@ -26,6 +27,7 @@ export async function watchRollup(options: WatchRollupOptions) {
       chokidar: {
         ignoreInitial: false,
       },
+      exclude: ignoreWatch,
     },
   });
 
