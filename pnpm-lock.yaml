@@ -157,7 +157,7 @@ importers:
       joycon: ^3.0.1
       jsonc-parser: ^3.0.0
       rollup: ^2.58.0
-      tsup: ^5.2.1
+      tsup: ^5.3.0
     dependencies:
       '@rollup/pluginutils': 4.1.1
       joycon: 3.0.1
@@ -168,7 +168,7 @@ importers:
       esbuild: 0.13.3
       esbuild-register: 3.0.0_esbuild@0.13.3
       rollup: 2.58.0
-      tsup: 5.2.1_typescript@4.4.3
+      tsup: 5.3.0_typescript@4.4.3
 
 packages:
 
@@ -2374,14 +2374,6 @@ packages:
       find-up: 4.1.0
     dev: false
 
-  /rollup/2.57.0:
-    resolution: {integrity: sha512-bKQIh1rWKofRee6mv8SrF2HdP6pea5QkwBZSMImJysFj39gQuiV8MEPBjXOCpzk3wSYp63M2v2wkWBmFC8O/rg==}
-    engines: {node: '>=10.0.0'}
-    hasBin: true
-    optionalDependencies:
-      fsevents: 2.3.2
-    dev: true
-
   /rollup/2.58.0:
     resolution: {integrity: sha512-NOXpusKnaRpbS7ZVSzcEXqxcLDOagN6iFS8p45RkoiMqPHDLwJm758UF05KlMoCRbLBTZsPOIa887gZJ1AiXvw==}
     engines: {node: '>=10.0.0'}
@@ -2655,8 +2647,8 @@ packages:
       strip-json-comments: 2.0.1
     dev: false
 
-  /tsup/5.2.1_typescript@4.4.3:
-    resolution: {integrity: sha512-eQmRfKoHIiTFg38Dh2MARCx3J0+P+wbwB5iSHcXTwsnVR9csGLpln5qqBjdgyAGV1VTbOmyU37veCi2eA+wuqA==}
+  /tsup/5.3.0_typescript@4.4.3:
+    resolution: {integrity: sha512-/LZTuAj1Lhh7iXBhtWTWjPodtmOkg6HnhdWo+sl4JftJTAJqnxnHerOiFYjPeA5RIhcaFc2w2Sho1rGLJ7rLhw==}
     hasBin: true
     peerDependencies:
       typescript: ^4.2.3
@@ -2674,7 +2666,7 @@ packages:
       joycon: 3.0.1
       postcss-load-config: 3.1.0
       resolve-from: 5.0.0
-      rollup: 2.57.0
+      rollup: 2.58.0
       sucrase: 3.20.1
       tree-kill: 1.2.2
       typescript: 4.4.3
