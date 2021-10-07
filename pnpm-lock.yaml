@@ -157,7 +157,7 @@ importers:
       joycon: ^3.0.1
       jsonc-parser: ^3.0.0
       rollup: ^2.58.0
-      tsup: ^5.3.0
+      tsup: ^5.4.0
     dependencies:
       '@rollup/pluginutils': 4.1.1
       joycon: 3.0.1
@@ -168,7 +168,7 @@ importers:
       esbuild: 0.13.4
       esbuild-register: 3.0.0_esbuild@0.13.4
       rollup: 2.58.0
-      tsup: 5.3.0_typescript@4.4.3
+      tsup: 5.4.0_typescript@4.4.3
 
 packages:
 
@@ -2647,8 +2647,8 @@ packages:
       strip-json-comments: 2.0.1
     dev: false
 
-  /tsup/5.3.0_typescript@4.4.3:
-    resolution: {integrity: sha512-/LZTuAj1Lhh7iXBhtWTWjPodtmOkg6HnhdWo+sl4JftJTAJqnxnHerOiFYjPeA5RIhcaFc2w2Sho1rGLJ7rLhw==}
+  /tsup/5.4.0_typescript@4.4.3:
+    resolution: {integrity: sha512-wm52TUJzDCvF9dJ3TxYtoJg8L7EjSYsOsH+jZhMMXfk1qZn6CdxFStwzMnwhyducdMBXHQNl7wZn+ioIhJoCHA==}
     hasBin: true
     peerDependencies:
       typescript: ^4.2.3
