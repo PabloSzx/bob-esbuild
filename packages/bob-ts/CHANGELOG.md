@@ -1,5 +1,11 @@
 # bob-ts
 
+## 1.1.3
+
+### Patch Changes
+
+- 2fcd68a: improve programmatic usage options
+
 ## 1.1.2
 
 ### Patch Changes
