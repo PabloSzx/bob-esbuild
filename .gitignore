@@ -4,3 +4,4 @@ tmp
 *.log
 /lib-types
 .temp
+*.tsbuildinfo
