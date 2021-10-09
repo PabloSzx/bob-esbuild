@@ -32,7 +32,8 @@
     "bin"
   ],
   "scripts": {
-    "prepack": "tsm build.ts && tsc --declaration --outDir lib"
+    "prepack": "tsm build.ts && tsc --declaration --outDir lib",
+    "postpublish": "gh-release"
   },
   "dependencies": {
     "commander": "^8.2.0",
