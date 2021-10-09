@@ -1,4 +1,4 @@
-import { bobEsbuildPlugin } from 'bob-esbuild-plugin';
+import { bobEsbuildPlugin, EsbuildPluginOptions } from 'bob-esbuild-plugin';
 import { resolve } from 'path';
 import type { InputOptions, OutputOptions } from 'rollup';
 import del from 'rollup-plugin-delete';
@@ -12,9 +12,21 @@ export interface RollupConfig {
   outDir: string;
   clean: boolean;
   target: string;
+  esbuild?: EsbuildPluginOptions;
+  sourcemap?: OutputOptions['sourcemap'] & EsbuildPluginOptions['sourceMap'];
+  rollup?: Partial<OutputOptions>;
 }
 
-export const getRollupConfig = async ({ entryPoints, format, outDir, clean, target }: RollupConfig) => {
+export const getRollupConfig = async ({
+  entryPoints,
+  format,
+  outDir,
+  clean,
+  target,
+  esbuild,
+  sourcemap = true,
+  rollup,
+}: RollupConfig) => {
   const dir = resolve(outDir);
 
   const { globby } = await import('globby');
@@ -51,7 +63,8 @@ export const getRollupConfig = async ({ entryPoints, format, outDir, clean, targ
       },
       bobEsbuildPlugin({
         target,
-        sourceMap: true,
+        sourceMap: sourcemap,
+        ...esbuild,
       }),
       clean &&
         del({
@@ -87,8 +100,9 @@ export const getRollupConfig = async ({ entryPoints, format, outDir, clean, targ
             entryFileNames: cjsEntryFileNames,
             preserveModules: true,
             exports: 'auto',
-            sourcemap: true,
+            sourcemap,
             preferConst: true,
+            ...rollup,
           },
           {
             format: 'esm',
@@ -96,8 +110,9 @@ export const getRollupConfig = async ({ entryPoints, format, outDir, clean, targ
             entryFileNames: esmEntryFileNames,
             preserveModules: true,
             exports: 'auto',
-            sourcemap: true,
+            sourcemap,
             preferConst: true,
+            ...rollup,
           },
         ]
       : [
@@ -107,8 +122,9 @@ export const getRollupConfig = async ({ entryPoints, format, outDir, clean, targ
             entryFileNames: format === 'esm' ? esmEntryFileNames : cjsEntryFileNames,
             preserveModules: true,
             exports: 'auto',
-            sourcemap: true,
+            sourcemap,
             preferConst: true,
+            ...rollup,
           },
         ];
 
