@@ -1,5 +1,7 @@
 # bob-tsm
 
+[![npm](https://img.shields.io/npm/v/bob-tsm)](https://npm.im/bob-tsm)
+
 Package inspired on https://github.com/lukeed/tsm with extra support for watch mode and with extra fixes to follow the new [TypeScript 4.5 extensions](https://devblogs.microsoft.com/typescript/announcing-typescript-4-5-beta/#new-file-extensions) `.mts`=>`ESM` and `.cts`=>`CommonJS`.
 
 ## Install

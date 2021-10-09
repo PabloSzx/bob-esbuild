@@ -1,6 +1,6 @@
 # bob-ts
 
-![npm](https://img.shields.io/npm/v/bob-ts)
+[![npm](https://img.shields.io/npm/v/bob-ts)](https://npm.im/bob-ts)
 
 Transpile your **TypeScript** projects quickly using **esbuild** + **rollup**, made to accelerate and simplify the TypeScript development with file watcher and first-class support for JavaScript testing frameworks.
 

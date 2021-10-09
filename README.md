@@ -1,6 +1,14 @@
 # bob-esbuild
 
+## bob-tsm
+
+[![npm](https://img.shields.io/npm/v/bob-tsm)](https://npm.im/bob-tsm)
+
+Check the package [bob-tsm](/packages/bob-tsm/README.md) inspired on https://github.com/lukeed/tsm with extra support for watch mode and with extra fixes to follow the new [TypeScript 4.5 extensions](https://devblogs.microsoft.com/typescript/announcing-typescript-4-5-beta/#new-file-extensions) `.mts`=>`ESM` and `.cts`=>`CommonJS`.
+
 ## bob-ts
+
+[![npm](https://img.shields.io/npm/v/bob-ts)](https://npm.im/bob-ts)
 
 Check the new library [bob-ts](/packages/bob-ts/README.md) made to accelerate and simplify the TypeScript development with watcher and first class support for JavaScript testing frameworks.
 
