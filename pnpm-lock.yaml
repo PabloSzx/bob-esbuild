@@ -15,6 +15,7 @@ importers:
       prettier: ^2.4.1
       pretty-quick: ^3.1.1
       rimraf: ^3.0.2
+      tsm: ^2.1.0
       typescript: ^4.4.3
     devDependencies:
       '@changesets/cli': 2.17.0
@@ -24,6 +25,7 @@ importers:
       prettier: 2.4.1
       pretty-quick: 3.1.1_prettier@2.4.1
       rimraf: 3.0.2
+      tsm: 2.1.0
       typescript: 4.4.3
 
   examples/basic:
@@ -145,6 +147,19 @@ importers:
       '@types/node': 16.10.2
       bob-esbuild-cli: link:../bob-cli
       changesets-github-release: 0.0.4
+      esbuild: 0.13.4
+
+  packages/bob-tsm:
+    specifiers:
+      chokidar: ^3.5.2
+      commander: ^8.2.0
+      esbuild: '>=0.13.4'
+      tree-kill: ^1.2.2
+    dependencies:
+      commander: 8.2.0
+      tree-kill: 1.2.2
+    devDependencies:
+      chokidar: 3.5.2
       esbuild: 0.13.4
 
   packages/esbuild-plugin:
@@ -2660,6 +2675,14 @@ packages:
       strip-bom: 3.0.0
       strip-json-comments: 2.0.1
     dev: false
+
+  /tsm/2.1.0:
+    resolution: {integrity: sha512-gtcU3BVu8+HO5enLkxKA/rozJ6oRfE8J9hL69BM2Ix17Je9CJTKuzF26Ukm1TS3prsCZsi+YoaJ6pGngO/x84A==}
+    engines: {node: '>=12'}
+    hasBin: true
+    dependencies:
+      esbuild: 0.13.4
+    dev: true
 
   /tsup/5.4.0_typescript@4.4.3:
     resolution: {integrity: sha512-wm52TUJzDCvF9dJ3TxYtoJg8L7EjSYsOsH+jZhMMXfk1qZn6CdxFStwzMnwhyducdMBXHQNl7wZn+ioIhJoCHA==}
