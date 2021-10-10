@@ -1,6 +1,6 @@
 // CREDITS TO lukeed https://github.com/lukeed/tsm
 
-import { fileURLToPath, pathToFileURL, URL } from 'url';
+import { fileURLToPath, URL } from 'url';
 import { existsSync } from 'fs';
 import { defaults, finalize } from './utils';
 
@@ -10,7 +10,7 @@ let config: Config;
 let esbuild: typeof import('esbuild');
 
 let env = defaults('esm');
-let setup = env.file && import(env.file);
+let setup = env.file && import('file:///' + env.file);
 
 type Promisable<T> = Promise<T> | T;
 type Source = string | SharedArrayBuffer | Uint8Array;
@@ -53,7 +53,7 @@ function check(fileurl: string): string | void {
   if (existsSync(tmp)) return fileurl;
 }
 
-const root = pathToFileURL(process.cwd() + '/');
+const root = new URL('file:///' + process.cwd() + '/');
 export const resolve: Resolve = async function (ident, context, fallback) {
   // ignore "prefix:" and non-relative identifiers
   if (/^\w+\:?/.test(ident)) return fallback(ident, context, fallback);
