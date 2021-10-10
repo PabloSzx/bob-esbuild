@@ -1,9 +1,10 @@
 // note: injected @ build
 declare const VERSION: string;
 
+import { ChildProcess, spawn } from 'child_process';
 import { program } from 'commander';
-import { spawn, ChildProcess } from 'child_process';
-import { resolve } from 'path';
+import { join } from 'path';
+import { pathToFileURL } from 'url';
 import { debouncePromise } from './utils';
 
 program
@@ -83,7 +84,7 @@ program
 
         console.log(`$ node ${['--loader=bob-tsm', ...args].join(' ')}`);
         nodeProcesses.push(
-          spawn('node', ['--loader=' + resolve(__dirname, 'loader.mjs'), ...args], {
+          spawn('node', ['--loader=' + pathToFileURL(join(__dirname, 'loader.mjs')).href, ...args], {
             stdio: 'inherit',
           })
         );
@@ -103,7 +104,7 @@ program
 
       execNode();
     } else {
-      spawn('node', ['--loader=' + resolve(__dirname, 'loader.mjs'), ...args], {
+      spawn('node', ['--loader=' + pathToFileURL(join(__dirname, 'loader.mjs')).href, ...args], {
         stdio: 'inherit',
       }).on('exit', process.exit);
     }
