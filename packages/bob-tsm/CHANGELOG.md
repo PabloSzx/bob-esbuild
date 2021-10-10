@@ -1,5 +1,11 @@
 # bob-tsm
 
+## 0.1.1
+
+### Patch Changes
+
+- 817e5a9: Fix windows usage
+
 ## 0.1.0
 
 ### Minor Changes
