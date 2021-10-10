@@ -22,7 +22,8 @@
       "shared": ["examples/shared/src/index.ts"],
       "bob-esbuild": ["packages/bob/src/index.ts"],
       "bob-esbuild/*": ["packages/bob/src/*"],
-      "bob-esbuild-plugin": ["packages/esbuild-plugin/src/index.ts"]
+      "bob-esbuild-plugin": ["packages/esbuild-plugin/src/index.ts"],
+      "bob-watch": ["packages/bob-watch/src/*"]
     },
     "baseUrl": ".",
     "importsNotUsedAsValues": "error",

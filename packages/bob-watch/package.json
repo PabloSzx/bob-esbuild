@@ -1,19 +1,43 @@
 {
   "name": "bob-watch",
   "version": "0.0.1",
+  "license": "MIT",
+  "author": "PabloSzx <pablosaez1995@gmail.com>",
+  "exports": {
+    ".": {
+      "require": "./lib/index.js",
+      "import": "./lib/index.mjs",
+      "types": "./lib/index.d.ts"
+    },
+    "./*": {
+      "require": "./lib/*.js",
+      "import": "./lib/*.mjs",
+      "types": "./lib/*.d.ts"
+    },
+    "./package.json": "./package.json"
+  },
+  "main": "lib/index.js",
+  "module": "lib/index.mjs",
+  "types": "lib/index.d.ts",
   "bin": {
     "bob-watch": "./bin/bob-watch.mjs"
   },
+  "files": [
+    "/lib",
+    "/bin"
+  ],
   "scripts": {
-    "prepack": "tsm build.ts"
+    "prepare": "tsm build.ts && bob-esbuild tsc",
+    "postpublish": "gh-release"
   },
-  "license": "MIT",
-  "author": "PabloSzx <pablosaez1995@gmail.com>",
-  "devDependencies": {
-    "bob-esbuild": "workspace:^2.0.0",
-    "bob-esbuild-cli": "workspace:^2.0.0",
+  "dependencies": {
     "chokidar": "^3.5.2",
     "commander": "^8.2.0",
-    "execa": "^5.1.1"
+    "execa": "^5.1.1",
+    "tree-kill": "^1.2.2"
+  },
+  "devDependencies": {
+    "bob-esbuild": "workspace:^2.0.0",
+    "bob-esbuild-cli": "workspace:^2.0.0"
   }
 }

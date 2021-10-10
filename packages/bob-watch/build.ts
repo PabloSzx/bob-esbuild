@@ -5,7 +5,7 @@ async function main() {
   await buildCode({
     entryPoints: ['./src'],
     clean: true,
-    format: 'cjs',
+    format: 'interop',
     outDir: 'lib',
     target: 'node13.2',
     esbuild: {
