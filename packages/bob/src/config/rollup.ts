@@ -166,6 +166,18 @@ export async function getRollupConfig(options: ConfigOptions = {}) {
           };
         },
       });
+    } else if (typeof keepDynamicImport === 'function') {
+      plugins.push({
+        name: 'keep-dynamic-import',
+        renderDynamicImport({ targetModuleId }) {
+          if (!targetModuleId || !keepDynamicImport(targetModuleId)) return null;
+
+          return {
+            left: 'import(',
+            right: ')',
+          };
+        },
+      });
     } else {
       plugins.push({
         name: 'keep-dynamic-import',

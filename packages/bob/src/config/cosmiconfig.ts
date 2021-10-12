@@ -51,7 +51,7 @@ export interface BobConfig extends Pick<ConfigOptions, 'clean' | 'inputFiles' | 
    *
    * @default false
    */
-  keepDynamicImport?: boolean | string[];
+  keepDynamicImport?: boolean | string[] | ((moduleName: string) => boolean);
 
   /**
    * Skip automatic TSC build, make sure to manually call `bob-esbuild tsc`
