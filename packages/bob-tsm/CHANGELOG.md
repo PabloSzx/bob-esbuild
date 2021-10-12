@@ -1,5 +1,11 @@
 # bob-tsm
 
+## 0.2.1
+
+### Patch Changes
+
+- bf740bd: Fix and test ESM/CJS Interop
+
 ## 0.2.0
 
 ### Minor Changes
