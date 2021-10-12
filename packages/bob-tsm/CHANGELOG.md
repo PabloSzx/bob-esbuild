@@ -1,5 +1,11 @@
 # bob-tsm
 
+## 0.2.0
+
+### Minor Changes
+
+- ffecc6a: add "--cjs" option to use CommonJS instead of ESM for ".ts" files
+
 ## 0.1.2
 
 ### Patch Changes
