@@ -29,11 +29,13 @@ export const defaults = function (format: Format): Defaults {
   let idx = flags.has('--tsmconfig') ? argv.indexOf('--tsmconfig') : -1;
   let file = resolve('.', (!!~idx && argv[++idx]) || 'tsm.js');
 
+  if (process.env.FORCE_CJS) format = 'cjs';
+
   return {
     file: existsSync(file) && file,
     isESM: format === 'esm',
     options: {
-      format: format,
+      format,
       charset: 'utf8',
       sourcemap: 'inline',
       target: 'node' + process.versions.node,

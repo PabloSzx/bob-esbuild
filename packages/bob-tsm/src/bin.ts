@@ -1,10 +1,10 @@
 // note: injected @ build
 declare const VERSION: string;
 
-import { ChildProcess, spawn } from 'child_process';
+import { ChildProcess, spawn, SpawnOptions } from 'child_process';
 import { program } from 'commander';
-import { join } from 'path';
-import { pathToFileURL } from 'url';
+import { dirname, join } from 'path';
+import { fileURLToPath, pathToFileURL } from 'url';
 import { debouncePromise } from './utils';
 
 program
@@ -13,6 +13,10 @@ program
   .option('--watch <patterns...>', 'Enable & specify watch mode')
   .option('--ignore <patterns...>', 'Ignore watch patterns')
   .option('--quiet')
+  .option(
+    '--cjs',
+    'Use CommonJS instead of ESM for ".ts" files. You still can use ".mts" to force ESM in specific typescript files.'
+  )
 
   .allowUnknownOption()
   .argument('[node arguments...]');
@@ -23,9 +27,22 @@ program
     const options = program.opts<{
       watch?: string[];
       ignore?: string[];
+      cjs?: boolean;
     }>();
 
-    const { watch, ignore } = options;
+    const { watch, ignore, cjs } = options;
+
+    const spawnArgs = ['--loader=' + pathToFileURL(join(dirname(fileURLToPath(import.meta.url)), 'loader.mjs')).href, ...args];
+    const spawnOptions: SpawnOptions = {
+      stdio: 'inherit',
+      env: cjs
+        ? {
+            ...process.env,
+            FORCE_CJS: '1',
+          }
+        : undefined,
+    };
+    const spawnNode = () => spawn('node', spawnArgs, spawnOptions);
 
     if (watch) {
       const [chokidar, { default: kill }] = await Promise.all([import('chokidar'), import('tree-kill')]);
@@ -72,6 +89,8 @@ program
 
       const pendingKillPromises = new Set<Promise<void>>();
 
+      const execNodeLog = `$ node ${['--loader=bob-tsm', ...args].join(' ')}`;
+
       async function execNode() {
         while (nodeProcesses.length) {
           const onSuccessProcess = nodeProcesses.shift();
@@ -82,12 +101,8 @@ program
 
         pendingKillPromises.size && (await Promise.all(pendingKillPromises));
 
-        console.log(`$ node ${['--loader=bob-tsm', ...args].join(' ')}`);
-        nodeProcesses.push(
-          spawn('node', ['--loader=' + pathToFileURL(join(__dirname, 'loader.mjs')).href, ...args], {
-            stdio: 'inherit',
-          })
-        );
+        console.log(execNodeLog);
+        nodeProcesses.push(spawnNode());
       }
 
       const debouncedExec = debouncePromise(
@@ -104,9 +119,7 @@ program
 
       execNode();
     } else {
-      spawn('node', ['--loader=' + pathToFileURL(join(__dirname, 'loader.mjs')).href, ...args], {
-        stdio: 'inherit',
-      }).on('exit', process.exit);
+      spawnNode().on('exit', process.exit);
     }
   })
   .catch(err => {

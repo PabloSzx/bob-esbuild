@@ -24,7 +24,7 @@
     "./package.json": "./package.json"
   },
   "bin": {
-    "bob-tsm": "./bin/bob-tsm.cjs"
+    "bob-tsm": "./bin/bob-tsm.mjs"
   },
   "files": [
     "lib",
@@ -32,7 +32,7 @@
     "bin"
   ],
   "scripts": {
-    "prepack": "node -r tsm build.ts && tsc --declaration --outDir lib",
+    "prepack": "node -r tsm build.ts",
     "postpublish": "gh-release"
   },
   "dependencies": {

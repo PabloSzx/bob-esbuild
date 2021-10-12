@@ -20,7 +20,7 @@ npm install -D bob-tsm esbuild
 
 ## Usage
 
-Just as [tsm](https://github.com/lukeed/tsm) all the arguments that are not part of `bob-tsm` are passed directly to the `node` executable.
+Just as [tsm](https://github.com/lukeed/tsm), all the arguments that are not part of `bob-tsm` are passed directly to the `node` executable.
 
 ```
 Usage: bob-tsm [options] [node arguments...]
@@ -28,7 +28,10 @@ Usage: bob-tsm [options] [node arguments...]
 Options:
   -V, --version           output the version number
   --tsmconfig <config>    Configuration file path (default: "tsm.js")
-  --watch <patterns...>   Watch pattern
+  --watch <patterns...>   Enable & specify watch mode
   --ignore <patterns...>  Ignore watch patterns
+  --quiet
+  --cjs                   Use CommonJS instead of ESM for ".ts" files. You still can use ".mts" to force ESM in
+                          specific typescript files.
   -h, --help              display help for command
 ```
