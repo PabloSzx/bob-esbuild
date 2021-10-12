@@ -1,5 +1,11 @@
 # bob-esbuild
 
+## 2.0.1
+
+### Patch Changes
+
+- 9e061f9: allow function in keepDynamicImport config
+
 ## 2.0.0
 
 ### Major Changes
