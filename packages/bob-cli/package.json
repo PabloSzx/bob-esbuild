@@ -32,7 +32,7 @@
   ],
   "scripts": {
     "dev": "bob-esbuild watch",
-    "prepare": "node -r esbuild-register self-build.ts",
+    "prepare": "tsm self-build.ts",
     "postpublish": "gh-release"
   },
   "dependencies": {
@@ -41,7 +41,6 @@
   "devDependencies": {
     "bob-esbuild": "workspace:^2.0.0",
     "changesets-github-release": "^0.0.4",
-    "esbuild-register": "^3.0.0",
     "typescript": "^4.4.3"
   },
   "engines": {

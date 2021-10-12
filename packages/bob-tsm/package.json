@@ -32,8 +32,9 @@
     "bin"
   ],
   "scripts": {
-    "prepack": "node -r tsm build.ts",
-    "postpublish": "gh-release"
+    "prepack": "tsm build.ts",
+    "postpublish": "gh-release",
+    "test": "tsm build.ts && node ./test/test.cjs"
   },
   "dependencies": {
     "commander": "^8.2.0",
@@ -41,7 +42,8 @@
   },
   "devDependencies": {
     "chokidar": "^3.5.2",
-    "esbuild": "^0.13.4"
+    "esbuild": "^0.13.4",
+    "execa": "^5.1.1"
   },
   "peerDependencies": {
     "esbuild": "^0.13.4"

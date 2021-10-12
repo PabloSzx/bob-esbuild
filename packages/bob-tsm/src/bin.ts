@@ -32,7 +32,11 @@ program
 
     const { watch, ignore, cjs } = options;
 
-    const spawnArgs = ['--loader=' + pathToFileURL(join(dirname(fileURLToPath(import.meta.url)), 'loader.mjs')).href, ...args];
+    const spawnArgs = [
+      '--require=' + join(dirname(fileURLToPath(import.meta.url)), 'require.js'),
+      '--loader=' + pathToFileURL(join(dirname(fileURLToPath(import.meta.url)), 'loader.mjs')).href,
+      ...args,
+    ];
     const spawnOptions: SpawnOptions = {
       stdio: 'inherit',
       env: cjs
@@ -89,7 +93,7 @@ program
 
       const pendingKillPromises = new Set<Promise<void>>();
 
-      const execNodeLog = `$ node ${['--loader=bob-tsm', ...args].join(' ')}`;
+      const execNodeLog = `$ node ${['--require=bob-tsm', '--loader=bob-tsm', ...args].join(' ')}`;
 
       async function execNode() {
         while (nodeProcesses.length) {
