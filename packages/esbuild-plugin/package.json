@@ -34,7 +34,7 @@
     "jsonc-parser": "^3.0.0"
   },
   "devDependencies": {
-    "@types/node": "^16.10.2",
+    "@types/node": "^16.10.4",
     "changesets-github-release": "^0.0.4",
     "esbuild": "^0.13.4",
     "rollup": "^2.58.0",
