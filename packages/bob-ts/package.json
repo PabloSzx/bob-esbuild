@@ -49,7 +49,7 @@
     "@types/node": "^16.10.4",
     "bob-esbuild-cli": "workspace:^2.0.0",
     "changesets-github-release": "^0.0.4",
-    "esbuild": "^0.13.4"
+    "esbuild": "^0.13.5"
   },
   "peerDependencies": {
     "@types/node": "*",
