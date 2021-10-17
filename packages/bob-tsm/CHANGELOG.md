@@ -1,5 +1,11 @@
 # bob-tsm
 
+## 0.2.2
+
+### Patch Changes
+
+- 1993fa1: Fix chokidar as dep
+
 ## 0.2.1
 
 ### Patch Changes
