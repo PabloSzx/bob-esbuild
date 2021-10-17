@@ -46,10 +46,10 @@
     "tree-kill": "^1.2.2"
   },
   "devDependencies": {
-    "@types/node": "^16.10.9",
+    "@types/node": "^16.11.1",
     "bob-esbuild-cli": "workspace:^2.0.0",
     "changesets-github-release": "^0.0.4",
-    "esbuild": "^0.13.6"
+    "esbuild": "^0.13.8"
   },
   "peerDependencies": {
     "@types/node": "*",
