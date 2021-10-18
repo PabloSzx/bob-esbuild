@@ -42,10 +42,11 @@
     "tree-kill": "^1.2.2"
   },
   "devDependencies": {
-    "esbuild": "^0.13.4"
+    "esbuild": "^0.13.8",
+    "execa": "^5.1.1"
   },
   "peerDependencies": {
-    "esbuild": "^0.13.8"
+    "esbuild": "*"
   },
   "engines": {
     "node": "^12.20.0 || >=14.13.0"
