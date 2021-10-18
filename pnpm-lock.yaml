@@ -152,15 +152,13 @@ importers:
       chokidar: ^3.5.2
       commander: ^8.2.0
       esbuild: '>=0.13.8'
-      execa: ^5.1.1
       tree-kill: ^1.2.2
     dependencies:
+      chokidar: 3.5.2
       commander: 8.2.0
       tree-kill: 1.2.2
     devDependencies:
-      chokidar: 3.5.2
       esbuild: 0.13.8
-      execa: 5.1.1
 
   packages/bob-watch:
     specifiers:
