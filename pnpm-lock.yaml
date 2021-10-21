@@ -12,7 +12,7 @@ importers:
       '@types/node': '>=16.11.1'
       changesets-github-release: ^0.0.4
       esbuild: '>=0.13.8'
-      husky: ^7.0.2
+      husky: ^7.0.4
       prettier: ^2.4.1
       pretty-quick: ^3.1.1
       rimraf: ^3.0.2
@@ -20,10 +20,10 @@ importers:
       typescript: ^4.4.4
     devDependencies:
       '@changesets/cli': 2.17.0
-      '@types/node': 16.11.1
+      '@types/node': 16.11.2
       changesets-github-release: 0.0.4
       esbuild: 0.13.8
-      husky: 7.0.2
+      husky: 7.0.4
       prettier: 2.4.1
       pretty-quick: 3.1.1_prettier@2.4.1
       rimraf: 3.0.2
@@ -101,7 +101,7 @@ importers:
       '@types/folder-hash': 4.0.1
       '@types/fs-extra': 9.0.13
       '@types/lodash.get': 4.4.6
-      '@types/node': 16.11.1
+      '@types/node': 16.11.2
       '@types/rimraf': 3.0.2
       changesets-github-release: 0.0.4
       esbuild: 0.13.8
@@ -142,7 +142,7 @@ importers:
       rollup-plugin-delete: 2.0.0
       tree-kill: 1.2.2
     devDependencies:
-      '@types/node': 16.11.1
+      '@types/node': 16.11.2
       bob-esbuild-cli: link:../bob-cli
       changesets-github-release: 0.0.4
       esbuild: 0.13.8
@@ -200,7 +200,7 @@ importers:
       joycon: 3.0.1
       jsonc-parser: 3.0.0
     devDependencies:
-      '@types/node': 16.11.1
+      '@types/node': 16.11.2
       changesets-github-release: 0.0.4
       esbuild: 0.13.8
       rollup: 2.58.0
@@ -407,7 +407,7 @@ packages:
     resolution: {integrity: sha512-mki5uBvhHzO8kYYix/WRy2WX8S3B5wdVSc9D6KcU5lQNglP2yt58/VfLuAK49glRXChosY8ap2oJ1qgma3GUVA==}
     dependencies:
       '@babel/runtime': 7.15.4
-      '@types/node': 16.11.1
+      '@types/node': 16.11.2
       find-up: 4.1.0
       fs-extra: 8.1.0
     dev: true
@@ -609,14 +609,14 @@ packages:
   /@types/fs-extra/9.0.13:
     resolution: {integrity: sha512-nEnwB++1u5lVDM2UI4c1+5R+FYaKfaAzS4OococimjVm3nQw3TuzH5UNsocrcTBbhnerblyHj4A49qXbIiZdpA==}
     dependencies:
-      '@types/node': 16.11.1
+      '@types/node': 16.11.2
     dev: true
 
   /@types/glob/7.2.0:
     resolution: {integrity: sha512-ZUxbzKl0IfJILTS6t7ip5fQQM/J3TJYubDm3nMbgubNNYS62eXeUpoLUC8/7fJNiFYHTrGPQn7hspDUzIHX3UA==}
     dependencies:
       '@types/minimatch': 3.0.5
-      '@types/node': 16.11.1
+      '@types/node': 16.11.2
 
   /@types/lodash.get/4.4.6:
     resolution: {integrity: sha512-E6zzjR3GtNig8UJG/yodBeJeIOtgPkMgsLjDU3CbgCAPC++vJ0eCMnJhVpRZb/ENqEFlov1+3K9TKtY4UdWKtQ==}
@@ -635,8 +635,8 @@ packages:
     resolution: {integrity: sha512-jhuKLIRrhvCPLqwPcx6INqmKeiA5EWrsCOPhrlFSrbrmU4ZMPjj5Ul/oLCMDO98XRUIwVm78xICz4EPCektzeQ==}
     dev: true
 
-  /@types/node/16.11.1:
-    resolution: {integrity: sha512-PYGcJHL9mwl1Ek3PLiYgyEKtwTMmkMw4vbiyz/ps3pfdRYLVv+SN7qHVAImrjdAXxgluDEw6Ph4lyv+m9UpRmA==}
+  /@types/node/16.11.2:
+    resolution: {integrity: sha512-w34LtBB0OkDTs19FQHXy4Ig/TOXI4zqvXS2Kk1PAsRKZ0I+nik7LlMYxckW0tSNGtvWmzB+mrCTbuEjuB9DVsw==}
 
   /@types/normalize-package-data/2.4.1:
     resolution: {integrity: sha512-Gj7cI7z+98M282Tqmp2K5EIsoouUEzbBJhQQzDE3jSIRk6r9gsz0oUokqIUR4u1R3dMHo0pDHM7sNOHyhulypw==}
@@ -650,7 +650,7 @@ packages:
     resolution: {integrity: sha512-F3OznnSLAUxFrCEu/L5PY8+ny8DtcFRjx7fZZ9bycvXRi3KPTRS9HOitGZwvPg0juRhXFWIeKX58cnX5YqLohQ==}
     dependencies:
       '@types/glob': 7.2.0
-      '@types/node': 16.11.1
+      '@types/node': 16.11.2
     dev: true
 
   /@types/semver/6.2.3:
@@ -1614,8 +1614,8 @@ packages:
     resolution: {integrity: sha512-B4FFZ6q/T2jhhksgkbEW3HBvWIfDW85snkQgawt07S7J5QXTk6BkNV+0yAeZrM5QpMAdYlocGoljn0sJ/WQkFw==}
     engines: {node: '>=10.17.0'}
 
-  /husky/7.0.2:
-    resolution: {integrity: sha512-8yKEWNX4z2YsofXAMT7KvA1g8p+GxtB1ffV8XtpAEGuXNAbCV5wdNKH+qTpw8SM9fh4aMPDR+yQuKfgnreyZlg==}
+  /husky/7.0.4:
+    resolution: {integrity: sha512-vbaCKN2QLtP/vD4yvs6iz6hBEo6wkSzs8HpRah1Z6aGmF2KW5PdYuAd7uX5a+OyBZHBhd+TFLqgjUgytQr4RvQ==}
     engines: {node: '>=12'}
     hasBin: true
     dev: true
