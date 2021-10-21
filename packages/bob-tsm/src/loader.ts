@@ -1,23 +1,25 @@
 // CREDITS TO lukeed https://github.com/lukeed/tsm
 
+import { existsSync, promises } from 'fs';
+import semverGte from 'semver/functions/gte.js';
 import { fileURLToPath, URL } from 'url';
-import { existsSync } from 'fs';
+import type { Config, Extension, Options } from '../config';
 import { defaults, finalize } from './utils';
 
-import type { Config, Extension, Options } from '../config';
+const HAS_UPDATED_HOOKS = semverGte(process.versions.node, '16.12.0');
 
 let config: Config;
 let esbuild: typeof import('esbuild');
 
-let env = defaults('esm');
-let setup = env.file && import('file:///' + env.file);
+const env = defaults('esm');
+const setup = env.file && import('file:///' + env.file);
 
 type Promisable<T> = Promise<T> | T;
 type Source = string | SharedArrayBuffer | Uint8Array;
 type Format = 'builtin' | 'commonjs' | 'json' | 'module' | 'wasm';
 
 type Resolve = (
-  ident: string,
+  specifier: string,
   context: {
     conditions: string[];
     parentURL?: string;
@@ -33,8 +35,8 @@ type Transform = (
   fallback: Transform
 ) => Promisable<{ source: Source }>;
 
-export type Load = (
-  uri: string,
+type Load = (
+  url: string,
   context: { format: Format | null | undefined },
   defaultLoad: Load
 ) => Promise<{ format: Format; source: Source }>;
@@ -60,13 +62,13 @@ function check(fileurl: string): string | void {
 }
 
 const root = new URL('file:///' + process.cwd() + '/');
-export const resolve: Resolve = async function (ident, context, fallback) {
+export const resolve: Resolve = async function (specifier, context, defaultResolve) {
   // ignore "prefix:" and non-relative identifiers
-  if (/^\w+\:?/.test(ident)) return fallback(ident, context, fallback);
+  if (/^\w+\:?/.test(specifier)) return defaultResolve(specifier, context, defaultResolve);
 
   let match: RegExpExecArray | null;
   let idx: number, ext: Extension, path: string | void;
-  let output = new URL(ident, context.parentURL || root);
+  let output = new URL(specifier, context.parentURL || root);
 
   // source ident includes extension
   if ((match = EXTN.exec(output.href))) {
@@ -90,7 +92,7 @@ export const resolve: Resolve = async function (ident, context, fallback) {
         return { url: path };
       }
       // return original, let it error
-      return fallback(ident, context, fallback);
+      return defaultResolve(specifier, context, defaultResolve);
     }
   }
 
@@ -101,26 +103,53 @@ export const resolve: Resolve = async function (ident, context, fallback) {
     if (path) return { url: path };
   }
 
-  return fallback(ident, context, fallback);
+  return defaultResolve(specifier, context, defaultResolve);
 };
 
-export const getFormat: Inspect = async function (uri, context, fallback) {
-  let options = await toOptions(uri);
-  if (options == null) return fallback(uri, context, fallback);
-  return { format: options.format === 'cjs' ? 'commonjs' : 'module' };
-};
+export const getFormat: Inspect | undefined = HAS_UPDATED_HOOKS
+  ? undefined
+  : async function (uri, context, fallback) {
+      let options = await toOptions(uri);
+      if (options == null) return fallback(uri, context, fallback);
+      return { format: options.format === 'cjs' ? 'commonjs' : 'module' };
+    };
 
-export const transformSource: Transform = async function (source, context, xform) {
-  let options = await toOptions(context.url);
-  if (options == null) return xform(source, context, xform);
+export const load: Load = async function (url, context, defaultLoad) {
+  let options = await toOptions(url);
 
-  // TODO: decode SAB/U8 correctly
+  if (options == null) return defaultLoad(url, context, defaultLoad);
+
+  const format = options.format === 'cjs' ? 'commonjs' : 'module';
+
+  const rawSource = await promises.readFile(new URL(url));
+
   esbuild = esbuild || (await import('esbuild'));
-  let result = await esbuild.transform(source.toString(), {
+
+  const { code: source } = await esbuild.transform(rawSource.toString(), {
     ...options,
-    sourcefile: context.url,
-    format: context.format === 'module' ? 'esm' : 'cjs',
+    sourcefile: url,
+    format: format === 'module' ? 'esm' : 'cjs',
   });
 
-  return { source: result.code };
+  return {
+    format,
+    source,
+  };
 };
+
+export const transformSource: Transform | undefined = HAS_UPDATED_HOOKS
+  ? undefined
+  : async function (source, context, xform) {
+      let options = await toOptions(context.url);
+      if (options == null) return xform(source, context, xform);
+
+      // TODO: decode SAB/U8 correctly
+      esbuild = esbuild || (await import('esbuild'));
+      let result = await esbuild.transform(source.toString(), {
+        ...options,
+        sourcefile: context.url,
+        format: context.format === 'module' ? 'esm' : 'cjs',
+      });
+
+      return { source: result.code };
+    };

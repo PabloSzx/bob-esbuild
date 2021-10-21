@@ -32,7 +32,7 @@
   ],
   "scripts": {
     "dev": "bob-esbuild watch",
-    "prepare": "tsm self-build.ts",
+    "prepare": "node -r tsm self-build.ts",
     "postpublish": "gh-release"
   },
   "dependencies": {

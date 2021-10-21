@@ -34,7 +34,7 @@
     "/bin"
   ],
   "scripts": {
-    "prepare": "tsm build.ts && bob-esbuild tsc",
+    "prepare": "node -r tsm build.ts && bob-esbuild tsc",
     "postpublish": "gh-release"
   },
   "dependencies": {

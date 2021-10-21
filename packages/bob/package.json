@@ -25,9 +25,9 @@
     "lib"
   ],
   "scripts": {
-    "build:types": "tsm build-types.ts",
-    "dev": "tsm self-watch.ts",
-    "prepare": "tsm self-build.ts",
+    "build:types": "node -r tsm build-types.ts",
+    "dev": "node -r tsm self-watch.ts",
+    "prepare": "node -r tsm self-build.ts",
     "postpublish": "gh-release"
   },
   "dependencies": {

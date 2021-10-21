@@ -9,7 +9,7 @@
   "license": "MIT",
   "author": "PabloSzx <pablosaez1995@gmail.com>",
   "scripts": {
-    "clean": "pnpm dlx rimraf \"**/{node_modules,dist,lib,lib-types}\"",
+    "clean": "pnpm dlx rimraf \"**/{node_modules,dist,lib,lib-types}\" pnpm-lock.yaml && pnpm i",
     "changeset": "changeset",
     "ci:release": "pnpm pretty:all && pnpm -r publish --access public --no-git-checks",
     "ci:version": "pnpm pretty:all && changeset version && pnpm i --no-frozen-lockfile --lockfile-only --ignore-scripts",
