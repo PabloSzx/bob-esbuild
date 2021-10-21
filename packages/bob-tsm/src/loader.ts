@@ -23,7 +23,7 @@ type Resolve = (
     parentURL?: string;
   },
   fallback: Resolve
-) => Promisable<{ url: string }>;
+) => Promisable<{ url: string; format?: Format | null }>;
 
 type Inspect = (url: string, context: object, fallback: Inspect) => Promisable<{ format: Format }>;
 
@@ -33,7 +33,13 @@ type Transform = (
   fallback: Transform
 ) => Promisable<{ source: Source }>;
 
-async function load(): Promise<Config> {
+export type Load = (
+  uri: string,
+  context: { format: Format | null | undefined },
+  defaultLoad: Load
+) => Promise<{ format: Format; source: Source }>;
+
+async function getConfig(): Promise<Config> {
   let mod = await setup;
   mod = (mod && mod.default) || mod;
   return finalize(env, mod);
@@ -43,7 +49,7 @@ const EXTN = /\.\w+(?=\?|$)/;
 const isTS = /\.[mc]?tsx?(?=\?|$)/;
 const isJS = /\.([mc])?js$/;
 async function toOptions(uri: string): Promise<Options | void> {
-  config = config || (await load());
+  config = config || (await getConfig());
   let [extn] = EXTN.exec(uri) || [];
   return config[extn as `.${string}`];
 }
@@ -88,7 +94,7 @@ export const resolve: Resolve = async function (ident, context, fallback) {
     }
   }
 
-  config = config || (await load());
+  config = config || (await getConfig());
 
   for (ext in config) {
     path = check(output.href + ext);
