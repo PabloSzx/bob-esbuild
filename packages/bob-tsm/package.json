@@ -32,7 +32,7 @@
     "bin"
   ],
   "scripts": {
-    "prepack": "node -r tsm build.ts",
+    "prepare": "node -r tsm build.ts",
     "postpublish": "gh-release",
     "test": "node -r tsm build.ts && node ./test/test.cjs",
     "playground": "bob-watch --watch=src -c \"pnpm prepack && node bin/bob-tsm.mjs build.ts\""
