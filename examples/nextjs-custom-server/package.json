@@ -1,6 +1,7 @@
 {
   "name": "nextjs-custom-server",
   "version": "1.0.0",
+  "private": true,
   "license": "MIT",
   "scripts": {
     "build": "next build",
