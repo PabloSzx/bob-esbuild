@@ -40,7 +40,7 @@
   },
   "dependencies": {
     "chokidar": "^3.5.2",
-    "commander": "^8.2.0",
+    "commander": "^8.3.0",
     "semver": "^7.3.5",
     "tree-kill": "^1.2.2"
   },

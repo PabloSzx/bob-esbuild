@@ -132,10 +132,10 @@ importers:
     specifiers:
       bob-esbuild: workspace:^2.0.1
       changesets-github-release: ^0.0.4
-      commander: ^8.2.0
+      commander: ^8.3.0
       typescript: ^4.4.4
     dependencies:
-      commander: 8.2.0
+      commander: 8.3.0
     devDependencies:
       bob-esbuild: link:../bob
       changesets-github-release: 0.0.4
@@ -147,7 +147,7 @@ importers:
       bob-esbuild-cli: workspace:^2.0.0
       bob-esbuild-plugin: workspace:^2.0.0
       changesets-github-release: ^0.0.4
-      commander: ^8.2.0
+      commander: ^8.3.0
       esbuild: '>=0.13.8'
       execa: ^5.1.1
       globby: ^12.0.2
@@ -156,7 +156,7 @@ importers:
       tree-kill: ^1.2.2
     dependencies:
       bob-esbuild-plugin: link:../esbuild-plugin
-      commander: 8.2.0
+      commander: 8.3.0
       execa: 5.1.1
       globby: 12.0.2
       rollup: 2.58.0
@@ -173,14 +173,14 @@ importers:
       '@types/semver': ^7.3.9
       bob-watch: workspace:^0.1.0
       chokidar: ^3.5.2
-      commander: ^8.2.0
+      commander: ^8.3.0
       esbuild: '>=0.13.8'
       execa: ^5.1.1
       semver: ^7.3.5
       tree-kill: ^1.2.2
     dependencies:
       chokidar: 3.5.2
-      commander: 8.2.0
+      commander: 8.3.0
       semver: 7.3.5
       tree-kill: 1.2.2
     devDependencies:
@@ -194,12 +194,12 @@ importers:
       bob-esbuild: workspace:^2.0.1
       bob-esbuild-cli: workspace:^2.0.0
       chokidar: ^3.5.2
-      commander: ^8.2.0
+      commander: ^8.3.0
       execa: ^5.1.1
       tree-kill: ^1.2.2
     dependencies:
       chokidar: 3.5.2
-      commander: 8.2.0
+      commander: 8.3.0
       execa: 5.1.1
       tree-kill: 1.2.2
     devDependencies:
@@ -1357,8 +1357,8 @@ packages:
     engines: {node: '>= 10'}
     dev: true
 
-  /commander/8.2.0:
-    resolution: {integrity: sha512-LLKxDvHeL91/8MIyTAD5BFMNtoIwztGPMiM/7Bl8rIPmHCZXRxmSWr91h57dpOpnQ6jIUqEWdXE/uBYMfiVZDA==}
+  /commander/8.3.0:
+    resolution: {integrity: sha512-OkTL9umf+He2DZkUq8f8J9of7yL6RJKI24dVITBmNfZBmri9zYZQrKkuXiKhyfPSu8tUhnVBB1iKXevvnlR4Ww==}
     engines: {node: '>= 12'}
     dev: false
 
