@@ -1,5 +1,13 @@
 # bob-ts
 
+## 1.1.4
+
+### Patch Changes
+
+- a720d68: swallow clean fs errors
+- Updated dependencies [19b48c5]
+  - bob-esbuild-plugin@2.1.0
+
 ## 1.1.3
 
 ### Patch Changes

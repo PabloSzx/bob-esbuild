@@ -1,5 +1,16 @@
 # bob-esbuild
 
+## 2.1.0
+
+### Minor Changes
+
+- 19b48c5: Improve tsconfig resolution using [tsconfck](https://github.com/dominikg/tsconfck)
+
+### Patch Changes
+
+- Updated dependencies [19b48c5]
+  - bob-esbuild-plugin@2.1.0
+
 ## 2.0.1
 
 ### Patch Changes
