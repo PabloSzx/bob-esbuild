@@ -2,7 +2,8 @@
 declare const VERSION: string;
 
 import { ChildProcess, spawn, SpawnOptions } from 'child_process';
-import { program } from 'commander';
+import { Option, program } from 'commander';
+import { existsSync } from 'fs';
 import { dirname, join } from 'path';
 import { fileURLToPath, pathToFileURL } from 'url';
 import { debouncePromise } from './utils';
@@ -12,12 +13,17 @@ program
   .option('--tsmconfig <config>', 'Configuration file path', 'tsm.js')
   .option('--watch <patterns...>', 'Enable & specify watch mode')
   .option('--ignore <patterns...>', 'Ignore watch patterns')
-  .option('--quiet')
+  .addOption(
+    new Option(
+      '--node-env,--node_env <NODE_ENV>',
+      'Automatically add the specified option as NODE_ENV environment variable, "prod" is an alias for "production" and "dev" is an alias for "development"'
+    ).choices(['production', 'prod', 'development', 'dev', 'test'])
+  )
+  .option('-q, --quiet')
   .option(
     '--cjs',
     'Use CommonJS instead of ESM for ".ts" files. You still can use ".mts" to force ESM in specific typescript files.'
   )
-
   .allowUnknownOption()
   .argument('[node arguments...]');
 
@@ -28,23 +34,51 @@ program
       watch?: string[];
       ignore?: string[];
       cjs?: boolean;
+      tsmconfig?: string;
+      node_env: 'production' | 'prod' | 'development' | 'dev' | 'test';
+      quiet?: boolean;
     }>();
 
-    const { watch, ignore, cjs } = options;
+    const { watch, ignore, cjs, node_env, quiet, tsmconfig } = options;
+
+    const binDirname = dirname(fileURLToPath(import.meta.url));
 
     const spawnArgs = [
-      '--require=' + join(dirname(fileURLToPath(import.meta.url)), 'require.js'),
-      '--loader=' + pathToFileURL(join(dirname(fileURLToPath(import.meta.url)), 'loader.mjs')).href,
-      ...args,
+      '--require=' + join(binDirname, 'require.js'),
+      '--loader=' + pathToFileURL(join(binDirname, 'loader.mjs')).href,
+      '--enable-source-maps',
     ];
+
+    if (tsmconfig && existsSync(tsmconfig)) {
+      spawnArgs.push('--tsmconfig', tsmconfig);
+    }
+
+    if (quiet) {
+      spawnArgs.push('--quiet');
+    }
+
+    spawnArgs.push(...args);
+
+    let execNodeLog = `$ node ${['--require=bob-tsm', '--loader=bob-tsm', ...spawnArgs.slice(2)].join(' ')}`;
+
+    let spawnEnv: NodeJS.ProcessEnv | undefined;
+
+    if (cjs) {
+      Object.assign((spawnEnv ||= { ...process.env }), { FORCE_CJS: '1' });
+    }
+
+    if (node_env) {
+      const NODE_ENV = node_env === 'prod' ? 'production' : node_env === 'dev' ? 'development' : node_env;
+      Object.assign((spawnEnv ||= { ...process.env }), {
+        NODE_ENV,
+      });
+
+      execNodeLog = execNodeLog.replace('$ node', `$ NODE_ENV=${NODE_ENV} node`);
+    }
+
     const spawnOptions: SpawnOptions = {
       stdio: 'inherit',
-      env: cjs
-        ? {
-            ...process.env,
-            FORCE_CJS: '1',
-          }
-        : undefined,
+      env: spawnEnv,
     };
     const spawnNode = () => spawn('node', spawnArgs, spawnOptions);
 
@@ -93,8 +127,6 @@ program
 
       const pendingKillPromises = new Set<Promise<void>>();
 
-      const execNodeLog = `$ node ${['--require=bob-tsm', '--loader=bob-tsm', ...args].join(' ')}`;
-
       async function execNode() {
         while (nodeProcesses.length) {
           const onSuccessProcess = nodeProcesses.shift();
@@ -105,7 +137,7 @@ program
 
         pendingKillPromises.size && (await Promise.all(pendingKillPromises));
 
-        console.log(execNodeLog);
+        if (!quiet) console.log(execNodeLog);
         nodeProcesses.push(spawnNode());
       }
 
@@ -117,7 +149,8 @@ program
         console.error
       );
 
-      watcher.on('change', () => {
+      watcher.on('change', path => {
+        if (!quiet) console.log(`[bob-tsm] ${path} changed.`);
         debouncedExec();
       });
 

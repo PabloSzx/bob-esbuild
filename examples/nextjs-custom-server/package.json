@@ -4,7 +4,7 @@
   "license": "MIT",
   "scripts": {
     "build": "next build",
-    "dev": "bob-tsm --watch src node_modules -- src/server.ts",
+    "dev": "bob-tsm --watch src node_modules --node-env=dev src/server.ts",
     "start": "cross-env NODE_ENV=production bob-tsm src/server.ts"
   },
   "dependencies": {
