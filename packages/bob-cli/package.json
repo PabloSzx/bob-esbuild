@@ -31,7 +31,7 @@
     "/lib"
   ],
   "scripts": {
-    "dev": "bob-esbuild watch",
+    "dev": "node bin/run.mjs watch",
     "prepare": "node -r tsm self-build.ts",
     "postpublish": "gh-release"
   },

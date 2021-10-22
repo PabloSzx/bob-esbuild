@@ -1,0 +1,22 @@
+{
+  "name": "nextjs-custom-server",
+  "version": "1.0.0",
+  "license": "MIT",
+  "scripts": {
+    "build": "next build",
+    "dev": "bob-tsm --watch src node_modules -- src/server.ts",
+    "start": "cross-env NODE_ENV=production bob-tsm src/server.ts"
+  },
+  "dependencies": {
+    "bob-tsm": "workspace:^0.2.3",
+    "next": "^11.1.2",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
+  },
+  "devDependencies": {
+    "@types/node": "^16.11.1",
+    "@types/react": "^17.0.31",
+    "cross-env": "^7.0.3",
+    "typescript": "^4.4.4"
+  }
+}
