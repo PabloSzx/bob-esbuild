@@ -33,6 +33,7 @@
   ],
   "scripts": {
     "prepare": "node -r tsm build.ts",
+    "dev": "bob-watch --watch=src -c \"pnpm prepare\"",
     "postpublish": "gh-release",
     "test": "node -r tsm build.ts && node ./test/test.cjs",
     "playground": "bob-watch --watch=src -c \"pnpm prepack && node bin/bob-tsm.mjs build.ts\""

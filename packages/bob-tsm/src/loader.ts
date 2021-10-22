@@ -6,6 +6,12 @@ import { fileURLToPath, URL } from 'url';
 import type { Config, Extension, Options } from '../config';
 import { defaults, finalize } from './utils';
 
+if (!process.env.KEEP_LOADER_ARGV) {
+  const loaderArgIndex = process.execArgv.findIndex(v => v.startsWith('--loader'));
+
+  if (loaderArgIndex !== -1) process.execArgv.splice(loaderArgIndex, 1);
+}
+
 const HAS_UPDATED_HOOKS = semverGte(process.versions.node, '16.12.0');
 
 let config: Config;
