@@ -20,7 +20,7 @@ importers:
       typescript: ^4.4.4
     devDependencies:
       '@changesets/cli': 2.17.0
-      '@types/node': 16.11.2
+      '@types/node': 16.11.3
       changesets-github-release: 0.0.4
       esbuild: 0.13.8
       husky: 7.0.4
@@ -54,7 +54,7 @@ importers:
       react: 17.0.2
       react-dom: 17.0.2_react@17.0.2
     devDependencies:
-      '@types/node': 16.11.2
+      '@types/node': 16.11.3
       '@types/react': 17.0.31
       cross-env: 7.0.3
       typescript: 4.4.4
@@ -97,7 +97,7 @@ importers:
       rollup-plugin-node-externals: ^2.2.0
       sucrase: ^3.20.3
       tree-kill: ^1.2.2
-      tsconfig: ^7.0.0
+      tsconfck: ^1.1.0
       typescript: ^4.4.4
     dependencies:
       '@pnpm/exportable-manifest': 2.1.6
@@ -117,12 +117,12 @@ importers:
       rollup-plugin-node-externals: 2.2.0_builtin-modules@3.2.0
       sucrase: 3.20.3
       tree-kill: 1.2.2
-      tsconfig: 7.0.0
+      tsconfck: 1.1.0_typescript@4.4.4
     devDependencies:
       '@types/folder-hash': 4.0.1
       '@types/fs-extra': 9.0.13
       '@types/lodash.get': 4.4.6
-      '@types/node': 16.11.2
+      '@types/node': 16.11.3
       '@types/rimraf': 3.0.2
       changesets-github-release: 0.0.4
       esbuild: 0.13.8
@@ -163,7 +163,7 @@ importers:
       rollup-plugin-delete: 2.0.0
       tree-kill: 1.2.2
     devDependencies:
-      '@types/node': 16.11.2
+      '@types/node': 16.11.3
       bob-esbuild-cli: link:../bob-cli
       changesets-github-release: 0.0.4
       esbuild: 0.13.8
@@ -212,20 +212,18 @@ importers:
       '@types/node': '>=16.11.1'
       changesets-github-release: ^0.0.4
       esbuild: '>=0.13.8'
-      joycon: ^3.0.1
-      jsonc-parser: ^3.0.0
       rollup: ^2.58.0
-      tsup: ^5.4.2
+      tsconfck: ^1.1.0
+      tsup: ^5.4.3
     dependencies:
       '@rollup/pluginutils': 4.1.1
-      joycon: 3.0.1
-      jsonc-parser: 3.0.0
+      tsconfck: 1.1.0_typescript@4.4.4
     devDependencies:
-      '@types/node': 16.11.2
+      '@types/node': 16.11.3
       changesets-github-release: 0.0.4
       esbuild: 0.13.8
       rollup: 2.58.0
-      tsup: 5.4.2_typescript@4.4.4
+      tsup: 5.4.3_typescript@4.4.4
 
 packages:
 
@@ -480,7 +478,7 @@ packages:
     resolution: {integrity: sha512-mki5uBvhHzO8kYYix/WRy2WX8S3B5wdVSc9D6KcU5lQNglP2yt58/VfLuAK49glRXChosY8ap2oJ1qgma3GUVA==}
     dependencies:
       '@babel/runtime': 7.15.4
-      '@types/node': 16.11.2
+      '@types/node': 16.11.3
       find-up: 4.1.0
       fs-extra: 8.1.0
     dev: true
@@ -769,14 +767,14 @@ packages:
   /@types/fs-extra/9.0.13:
     resolution: {integrity: sha512-nEnwB++1u5lVDM2UI4c1+5R+FYaKfaAzS4OococimjVm3nQw3TuzH5UNsocrcTBbhnerblyHj4A49qXbIiZdpA==}
     dependencies:
-      '@types/node': 16.11.2
+      '@types/node': 16.11.3
     dev: true
 
   /@types/glob/7.2.0:
     resolution: {integrity: sha512-ZUxbzKl0IfJILTS6t7ip5fQQM/J3TJYubDm3nMbgubNNYS62eXeUpoLUC8/7fJNiFYHTrGPQn7hspDUzIHX3UA==}
     dependencies:
       '@types/minimatch': 3.0.5
-      '@types/node': 16.11.2
+      '@types/node': 16.11.3
 
   /@types/lodash.get/4.4.6:
     resolution: {integrity: sha512-E6zzjR3GtNig8UJG/yodBeJeIOtgPkMgsLjDU3CbgCAPC++vJ0eCMnJhVpRZb/ENqEFlov1+3K9TKtY4UdWKtQ==}
@@ -795,8 +793,8 @@ packages:
     resolution: {integrity: sha512-jhuKLIRrhvCPLqwPcx6INqmKeiA5EWrsCOPhrlFSrbrmU4ZMPjj5Ul/oLCMDO98XRUIwVm78xICz4EPCektzeQ==}
     dev: true
 
-  /@types/node/16.11.2:
-    resolution: {integrity: sha512-w34LtBB0OkDTs19FQHXy4Ig/TOXI4zqvXS2Kk1PAsRKZ0I+nik7LlMYxckW0tSNGtvWmzB+mrCTbuEjuB9DVsw==}
+  /@types/node/16.11.3:
+    resolution: {integrity: sha512-aIYL9Eemcecs1y77XzFGiSc+FdfN58k4J23UEe6+hynf4Wd9g4DzQPwIKL080vSMuubFqy2hWwOzCtJdc6vFKw==}
 
   /@types/normalize-package-data/2.4.1:
     resolution: {integrity: sha512-Gj7cI7z+98M282Tqmp2K5EIsoouUEzbBJhQQzDE3jSIRk6r9gsz0oUokqIUR4u1R3dMHo0pDHM7sNOHyhulypw==}
@@ -822,7 +820,7 @@ packages:
     resolution: {integrity: sha512-F3OznnSLAUxFrCEu/L5PY8+ny8DtcFRjx7fZZ9bycvXRi3KPTRS9HOitGZwvPg0juRhXFWIeKX58cnX5YqLohQ==}
     dependencies:
       '@types/glob': 7.2.0
-      '@types/node': 16.11.2
+      '@types/node': 16.11.3
     dev: true
 
   /@types/scheduler/0.16.2:
@@ -836,14 +834,6 @@ packages:
   /@types/semver/7.3.9:
     resolution: {integrity: sha512-L/TMpyURfBkf+o/526Zb6kd/tchUP3iBDEPjqjb+U2MAJhVRxxrmr2fwpe08E7QsV7YLcpq0tUaQ9O9x97ZIxQ==}
     dev: true
-
-  /@types/strip-bom/3.0.0:
-    resolution: {integrity: sha1-FKjsOVbC6B7bdSB5CuzyHCkK69I=}
-    dev: false
-
-  /@types/strip-json-comments/0.0.30:
-    resolution: {integrity: sha512-7NQmHra/JILCd1QqpSzl8+mJRc8ZHz3uDm8YV1Ks9IhK0epEiTw8aIErbvH9PI+6XbqhyIQy3462nEsn7UVzjQ==}
-    dev: false
 
   /aggregate-error/3.1.0:
     resolution: {integrity: sha512-4I7Td01quW/RpocfNayFdFVk1qSuoh0E7JrbRJ16nH01HhKFQ88INq9Sd+nd72zqRySlr9BmDA8xlEJ6vJMrYA==}
@@ -2634,7 +2624,7 @@ packages:
     resolution: {integrity: sha512-mk0umAQ5lT+CaOJ+Qp01N6kz48sJG2kr2n1rX0koqKf6FIygQV0qLOdN9SCYID4IVeSigDOcPeGLozdMLYfb5g==}
     engines: {node: ^10.13.0 || ^12.13.0 || ^14.15.0 || >=15.0.0}
     dependencies:
-      '@types/node': 16.11.2
+      '@types/node': 16.11.3
       merge-stream: 2.0.0
       supports-color: 8.1.1
     dev: false
@@ -2642,6 +2632,7 @@ packages:
   /joycon/3.0.1:
     resolution: {integrity: sha512-SJcJNBg32dGgxhPtM0wQqxqV0ax9k/9TaUskGDSJkSFSQOEWWvQ3zzWdGQRIUry2j1zA5+ReH13t0Mf3StuVZA==}
     engines: {node: '>=10'}
+    dev: true
 
   /js-tokens/4.0.0:
     resolution: {integrity: sha512-RdJUflcE3cUzKiMqQgsCu06FPu9UdIJO0beYbPhHN4k6apgJtifcoCtT9bcxOpYBtpD2kCM6Sbzg4CausW/PKQ==}
@@ -2677,10 +2668,6 @@ packages:
     hasBin: true
     dependencies:
       minimist: 1.2.5
-    dev: false
-
-  /jsonc-parser/3.0.0:
-    resolution: {integrity: sha512-fQzRfAbIBnR0IQvftw9FJveWiHp72Fg20giDrHz6TdfB12UH/uue0D3hm57UB5KgAVuniLMCaS8P1IMj9NR7cA==}
     dev: false
 
   /jsonfile/4.0.0:
@@ -3994,6 +3981,7 @@ packages:
   /strip-bom/3.0.0:
     resolution: {integrity: sha1-IzTBjpx1n3vdVv3vfprj1YjmjtM=}
     engines: {node: '>=4'}
+    dev: true
 
   /strip-bom/4.0.0:
     resolution: {integrity: sha512-3xurFv5tEgii33Zi8Jtp55wEIILR9eh34FAW00PZf+JnSsTmV/ioewSgQl97JHvgjoRGwPShsWm+IdrxB35d0w==}
@@ -4015,11 +4003,6 @@ packages:
     dependencies:
       min-indent: 1.0.1
     dev: true
-
-  /strip-json-comments/2.0.1:
-    resolution: {integrity: sha1-PFMZQukIwml8DsNEhYwobHygpgo=}
-    engines: {node: '>=0.10.0'}
-    dev: false
 
   /styled-jsx/4.0.1_react@17.0.2:
     resolution: {integrity: sha512-Gcb49/dRB1k8B4hdK8vhW27Rlb2zujCk1fISrizCcToIs+55B4vmUM0N9Gi4nnVfFZWe55jRdWpAqH1ldAKWvQ==}
@@ -4176,13 +4159,17 @@ packages:
       typescript: 4.4.4
     dev: false
 
-  /tsconfig/7.0.0:
-    resolution: {integrity: sha512-vZXmzPrL+EmC4T/4rVlT2jNVMWCi/O4DIiSj3UHg1OE5kCKbk4mfrXc6dZksLgRM/TZlKnousKH9bbTazUWRRw==}
+  /tsconfck/1.1.0_typescript@4.4.4:
+    resolution: {integrity: sha512-JItig5njxP+enIY+3riBLltgfhzJmCFqJ8afHW3A38PACx+n7bDNKIYU0pyJzKJRZUIFFJ5gB7dQaSn5zjbMug==}
+    engines: {node: ^12.20 || ^14.13.1 || >= 16, pnpm: '>=6.7.0'}
+    hasBin: true
+    peerDependencies:
+      typescript: ^4.3.5
+    peerDependenciesMeta:
+      typescript:
+        optional: true
     dependencies:
-      '@types/strip-bom': 3.0.0
-      '@types/strip-json-comments': 0.0.30
-      strip-bom: 3.0.0
-      strip-json-comments: 2.0.1
+      typescript: 4.4.4
     dev: false
 
   /tsm/2.1.2:
@@ -4193,8 +4180,8 @@ packages:
       esbuild: 0.13.8
     dev: true
 
-  /tsup/5.4.2_typescript@4.4.4:
-    resolution: {integrity: sha512-R6Vxq6lrxvKBc9ZbJShHqARlysCxcEAXss9iyLPbZZDIl3CSftrO2IN0Flgkt6hMt1sTwgsXL3v5Ot3l305W1Q==}
+  /tsup/5.4.3_typescript@4.4.4:
+    resolution: {integrity: sha512-9dviObODm/Y5dcUnKlnMURoxhEzPQJFffK3KIE3AgV4KZjx5462/MtBO0Xi+8BGpmB/KT6NdlP31zqVKf4uE9A==}
     hasBin: true
     peerDependencies:
       typescript: ^4.2.3

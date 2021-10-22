@@ -1,11 +1,10 @@
-import { existsSync, statSync } from 'fs';
-import { extname, resolve, dirname, join } from 'path';
-import { transform, Loader, formatMessages, Message } from 'esbuild';
 import { createFilter, FilterPattern } from '@rollup/pluginutils';
-import { getOptions } from './options';
-import { bundle } from './bundle';
-
+import { formatMessages, Loader, Message, transform } from 'esbuild';
+import { existsSync, statSync } from 'fs';
+import { dirname, extname, join, resolve } from 'path';
 import type { Plugin, PluginContext } from 'rollup';
+import { bundle } from './bundle';
+import { getTypescriptConfig } from './options';
 
 const defaultLoaders: { [ext: string]: Loader } = {
   '.js': 'js',
@@ -112,7 +111,7 @@ export const bobEsbuildPlugin = (options: EsbuildPluginOptions = {}): Plugin => 
     async load(id) {
       if (!options.experimentalBundling) return;
 
-      const defaultOptions = options.tsconfig === false ? {} : await getOptions(dirname(id), options.tsconfig);
+      const defaultOptions = options.tsconfig === false ? {} : await getTypescriptConfig(dirname(id), options.tsconfig);
 
       target = options.target || defaultOptions.target || 'es2019';
 
@@ -139,7 +138,7 @@ export const bobEsbuildPlugin = (options: EsbuildPluginOptions = {}): Plugin => 
         return null;
       }
 
-      const defaultOptions = options.tsconfig === false ? {} : await getOptions(dirname(id), options.tsconfig);
+      const defaultOptions = options.tsconfig === false ? {} : await getTypescriptConfig(dirname(id), options.tsconfig);
 
       target = options.target || defaultOptions.target || 'es2019';
 
