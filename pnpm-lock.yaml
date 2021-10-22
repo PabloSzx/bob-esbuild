@@ -79,7 +79,7 @@ importers:
       '@types/lodash.get': ^4.4.6
       '@types/node': '>=16.11.1'
       '@types/rimraf': ^3.0.2
-      bob-esbuild-plugin: workspace:2.0.0
+      bob-esbuild-plugin: workspace:2.1.0
       builtin-modules: ^3.2.0
       chalk: ^4.1.2
       changesets-github-release: ^0.0.4
@@ -145,7 +145,7 @@ importers:
     specifiers:
       '@types/node': '>=16.11.1'
       bob-esbuild-cli: workspace:^2.0.0
-      bob-esbuild-plugin: workspace:^2.0.0
+      bob-esbuild-plugin: workspace:^2.1.0
       changesets-github-release: ^0.0.4
       commander: ^8.3.0
       esbuild: '>=0.13.8'
