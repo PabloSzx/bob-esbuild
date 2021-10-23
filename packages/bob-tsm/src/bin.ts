@@ -80,7 +80,11 @@ program
       stdio: 'inherit',
       env: spawnEnv,
     };
-    const spawnNode = () => spawn('node', spawnArgs, spawnOptions);
+    const spawnNode = () => {
+      if (!quiet) console.log(execNodeLog);
+
+      return spawn('node', spawnArgs, spawnOptions);
+    };
 
     if (watch) {
       const [chokidar, { default: kill }] = await Promise.all([import('chokidar'), import('tree-kill')]);
@@ -137,7 +141,6 @@ program
 
         pendingKillPromises.size && (await Promise.all(pendingKillPromises));
 
-        if (!quiet) console.log(execNodeLog);
         nodeProcesses.push(spawnNode());
       }
 
