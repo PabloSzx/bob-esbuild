@@ -92,3 +92,11 @@ for (let extn in config) {
 if (config['.js'] == null) {
   require.extensions['.js'] = loader;
 }
+
+const prevEmitWarning = process.emitWarning;
+
+process.emitWarning = ((...args: Parameters<typeof prevEmitWarning>) => {
+  if (typeof args[0] === 'string' && args[0].startsWith('--experimental-loader is an experimental feature')) return;
+
+  prevEmitWarning(...args);
+}) as typeof prevEmitWarning;
