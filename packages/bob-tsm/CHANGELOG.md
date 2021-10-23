@@ -1,5 +1,11 @@
 # bob-tsm
 
+## 0.3.1
+
+### Patch Changes
+
+- b8a7fd7: Silence warning: `"--experimental-loader is an experimental feature"`
+
 ## 0.3.0
 
 ### Minor Changes
