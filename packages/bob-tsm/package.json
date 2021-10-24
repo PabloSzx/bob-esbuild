@@ -47,7 +47,7 @@
   "devDependencies": {
     "@types/semver": "^7.3.9",
     "bob-watch": "workspace:^0.1.0",
-    "esbuild": "^0.13.8",
+    "esbuild": "^0.13.9",
     "execa": "^5.1.1"
   },
   "peerDependencies": {
