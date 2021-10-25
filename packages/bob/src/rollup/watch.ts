@@ -1,12 +1,9 @@
+import type { ChildProcess } from 'child_process';
 import { command } from 'execa';
-import { watch as rollupWatch } from 'rollup';
 import kill from 'tree-kill';
-
 import { ConfigOptions, getRollupConfig } from '../config/rollup';
 import { debug } from '../log/debug';
 import { error } from '../log/error';
-
-import type { ChildProcess } from 'child_process';
 
 export interface WatchRollupOptions {
   config?: ConfigOptions;
@@ -16,6 +13,8 @@ export interface WatchRollupOptions {
 }
 
 export async function watchRollup(options: WatchRollupOptions = {}) {
+  const { watch: rollupWatch } = await import('rollup');
+
   const { inputOptions, outputOptions, write } = await getRollupConfig(options.config);
 
   let startTime = Date.now();

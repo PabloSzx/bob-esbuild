@@ -1,12 +1,10 @@
 import { bobEsbuildPlugin } from 'bob-esbuild-plugin';
 import get from 'lodash.get';
 import { resolve } from 'path';
-import { Plugin, rollup } from 'rollup';
+import type { Plugin } from 'rollup';
 import externals from 'rollup-plugin-node-externals';
-
 import { debug } from '../log/debug';
 import { globalConfig } from './cosmiconfig';
-
 import type { PackageBuildConfig } from './packageBuildConfig';
 
 const RollupBinSym = Symbol();
@@ -25,6 +23,7 @@ export const rollupBin = (buildConfig: PackageBuildConfig, cwd: string = process
         config: { distDir, externalOptions, esbuildPluginOptions },
       } = await globalConfig;
       if (buildConfig.bin) {
+        const { rollup } = await import('rollup');
         this[RollupBinSym] = Promise.all(
           Object.entries(buildConfig.bin).map(async ([alias, options]) => {
             if (typeof options.input !== 'string') throw Error(`buildConfig.${alias} expected to have an input field`);

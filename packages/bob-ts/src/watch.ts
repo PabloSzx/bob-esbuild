@@ -1,6 +1,6 @@
 import type { ChildProcess } from 'child_process';
 import { command } from 'execa';
-import { InputOptions, OutputOptions, watch as rollupWatch } from 'rollup';
+import type { InputOptions, OutputOptions } from 'rollup';
 import kill from 'tree-kill';
 
 export interface WatchRollupOptions {
@@ -15,6 +15,7 @@ export interface WatchRollupOptions {
 const cwd = process.cwd();
 
 export async function watchRollup(options: WatchRollupOptions) {
+  const { watch: rollupWatch } = await import('rollup');
   const { input: inputOptions, output: outputOptions, ignoreWatch } = options;
 
   const watcher = rollupWatch({
