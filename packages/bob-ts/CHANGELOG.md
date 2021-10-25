@@ -1,5 +1,13 @@
 # bob-ts
 
+## 1.1.5
+
+### Patch Changes
+
+- b5eac61: Dynamic rollup import
+
+  closes #159
+
 ## 1.1.4
 
 ### Patch Changes

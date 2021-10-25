@@ -1,5 +1,11 @@
 # bob-tsm
 
+## 0.3.2
+
+### Patch Changes
+
+- 0ea9ec7: Fix node spawn log on non-watch mode
+
 ## 0.3.1
 
 ### Patch Changes

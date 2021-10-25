@@ -1,5 +1,13 @@
 # bob-esbuild
 
+## 2.1.1
+
+### Patch Changes
+
+- b5eac61: Dynamic rollup import
+
+  closes #159
+
 ## 2.1.0
 
 ### Minor Changes
