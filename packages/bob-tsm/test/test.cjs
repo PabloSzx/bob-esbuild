@@ -12,11 +12,12 @@ async function test() {
 
     const lines = stdout.split(/\n|\r\n/g);
 
-    strictEqual(lines.length, 4);
+    strictEqual(lines.length, 5);
     strictEqual(lines[0], '$ node --require=bob-tsm --loader=bob-tsm --enable-source-maps ' + tsFilePath);
-    strictEqual(lines[1], 'CTS CJS');
-    strictEqual(lines[2], 'TS ESM');
-    strictEqual(lines[3], 'MTS ESM');
+    strictEqual(lines[1], 'Hello World!');
+    strictEqual(lines[2], 'CTS CJS');
+    strictEqual(lines[3], 'TS ESM');
+    strictEqual(lines[4], 'MTS ESM');
   }
 
   {
@@ -24,11 +25,12 @@ async function test() {
 
     const lines = stdout.split(/\n|\r\n/g);
 
-    strictEqual(lines.length, 4);
+    strictEqual(lines.length, 5);
     strictEqual(lines[0], '$ node --require=bob-tsm --loader=bob-tsm --enable-source-maps ' + tsFilePath);
-    strictEqual(lines[1], 'CTS CJS');
-    strictEqual(lines[2], 'TS CJS');
-    strictEqual(lines[3], 'MTS ESM');
+    strictEqual(lines[1], 'Hello World!');
+    strictEqual(lines[2], 'CTS CJS');
+    strictEqual(lines[3], 'TS CJS');
+    strictEqual(lines[4], 'MTS ESM');
   }
 }
 
