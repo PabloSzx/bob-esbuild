@@ -1,5 +1,11 @@
 # bob-tsm
 
+## 0.3.3
+
+### Patch Changes
+
+- 518f6ee: Add support for "/index" default resolve
+
 ## 0.3.2
 
 ### Patch Changes
