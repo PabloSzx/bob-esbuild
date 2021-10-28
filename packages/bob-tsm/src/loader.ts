@@ -109,6 +109,13 @@ export const resolve: Resolve = async function (specifier, context, defaultResol
     if (path) return { url: path };
   }
 
+  // Check if + "/index.{ts,tsx,mts,cts}" exists
+  const trailingOutputHref = output.href.endsWith('/') ? output.href : output.href + '/';
+  for (ext in config) {
+    path = check(trailingOutputHref + 'index' + ext);
+    if (path) return { url: path };
+  }
+
   return defaultResolve(specifier, context, defaultResolve);
 };
 

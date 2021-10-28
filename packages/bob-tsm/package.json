@@ -36,7 +36,7 @@
     "dev": "bob-watch --watch=src -c \"pnpm prepare\"",
     "postpublish": "gh-release",
     "test": "node -r tsm build.ts && node ./test/test.cjs",
-    "playground": "bob-watch --watch=src -c \"pnpm prepack && node bin/bob-tsm.mjs build.ts\""
+    "playground": "bob-watch --watch src playground -c \"pnpm prepare && node bin/bob-tsm.mjs playground/index.ts\""
   },
   "dependencies": {
     "chokidar": "^3.5.2",

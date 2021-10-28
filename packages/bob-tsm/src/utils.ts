@@ -53,11 +53,11 @@ export const finalize = function (env: Defaults, custom?: ConfigFile): Config {
   }
 
   let config: Config = {
+    '.ts': { ...base, loader: 'ts' },
     '.mts': { ...base, format: 'esm', loader: 'ts' },
     '.jsx': { ...base, loader: 'jsx' },
     '.tsx': { ...base, loader: 'tsx' },
     '.cts': { ...base, format: 'cjs', loader: 'ts' },
-    '.ts': { ...base, loader: 'ts' },
   };
 
   if (env.isESM) {
