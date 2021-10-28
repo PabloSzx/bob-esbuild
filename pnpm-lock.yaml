@@ -42,7 +42,7 @@ importers:
     specifiers:
       '@types/node': '>=16.11.1'
       '@types/react': ^17.0.33
-      bob-tsm: workspace:^0.3.2
+      bob-tsm: workspace:^0.3.3
       cross-env: ^7.0.3
       next: ^12.0.1
       react: ^17.0.2
