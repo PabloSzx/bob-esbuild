@@ -1,5 +1,11 @@
 # bob-ts
 
+## 1.1.6
+
+### Patch Changes
+
+- 287037b: Allow disable sourcemap from cli
+
 ## 1.1.5
 
 ### Patch Changes
