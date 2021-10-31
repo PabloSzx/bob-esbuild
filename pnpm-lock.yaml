@@ -97,7 +97,7 @@ importers:
       rollup-plugin-node-externals: ^2.2.0
       sucrase: ^3.20.3
       tree-kill: ^1.2.2
-      tsconfck: ^1.1.0
+      tsconfck: ^1.1.1
       typescript: ^4.4.4
     dependencies:
       '@pnpm/exportable-manifest': 2.1.6
@@ -117,7 +117,7 @@ importers:
       rollup-plugin-node-externals: 2.2.0_builtin-modules@3.2.0
       sucrase: 3.20.3
       tree-kill: 1.2.2
-      tsconfck: 1.1.0_typescript@4.4.4
+      tsconfck: 1.1.1_typescript@4.4.4
     devDependencies:
       '@types/folder-hash': 4.0.1
       '@types/fs-extra': 9.0.13
@@ -215,11 +215,11 @@ importers:
       changesets-github-release: ^0.0.4
       esbuild: '>=0.13.10'
       rollup: ^2.58.3
-      tsconfck: ^1.1.0
+      tsconfck: ^1.1.1
       tsup: ^5.5.0
     dependencies:
       '@rollup/pluginutils': 4.1.1
-      tsconfck: 1.1.0_typescript@4.4.4
+      tsconfck: 1.1.1_typescript@4.4.4
     devDependencies:
       '@types/node': 16.11.6
       changesets-github-release: 0.0.4
@@ -4165,8 +4165,8 @@ packages:
   /ts-interface-checker/0.1.13:
     resolution: {integrity: sha512-Y/arvbn+rrz3JCKl9C4kVNfTfSm2/mEp5FSz5EsZSANGPSlQrpRI5M4PKF+mJnE52jOO90PnPSc3Ur3bTQw0gA==}
 
-  /tsconfck/1.1.0_typescript@4.4.4:
-    resolution: {integrity: sha512-JItig5njxP+enIY+3riBLltgfhzJmCFqJ8afHW3A38PACx+n7bDNKIYU0pyJzKJRZUIFFJ5gB7dQaSn5zjbMug==}
+  /tsconfck/1.1.1_typescript@4.4.4:
+    resolution: {integrity: sha512-uEsCWef+3lA9/YqpGt/mdr+nDovhlr+f0zoycYiOyVDDOUb3BjYFA71+Ee3LB/GiZBRDyTfKBK1kGN2iuPPuEA==}
     engines: {node: ^12.20 || ^14.13.1 || >= 16, pnpm: '>=6.7.0'}
     hasBin: true
     peerDependencies:

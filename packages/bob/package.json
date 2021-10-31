@@ -48,7 +48,7 @@
     "rollup-plugin-node-externals": "^2.2.0",
     "sucrase": "^3.20.3",
     "tree-kill": "^1.2.2",
-    "tsconfck": "^1.1.0"
+    "tsconfck": "^1.1.1"
   },
   "devDependencies": {
     "@types/folder-hash": "^4.0.1",
