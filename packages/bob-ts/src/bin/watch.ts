@@ -13,12 +13,13 @@ program
     'Execute scripts after successful JS build, You can specify more than a single command to be executed concurrently'
   )
   .option('-t, --target <target>', 'Javascript runtime target', getDefaultNodeTargetVersion())
-  .option('--ignore <files...>', 'Patterns of files to ignore watching');
+  .option('--ignore <files...>', 'Patterns of files to ignore watching')
+  .option('--no-sourcemap', 'Disable sourcemap generation');
 
 program
   .parseAsync()
   .then(async () => {
-    const { dir, input, format, clean, command, cwd, target, ignore } = program.opts<{
+    const { dir, input, format, clean, command, cwd, target, ignore, sourcemap } = program.opts<{
       dir: string;
       input: string[];
       format: 'cjs' | 'esm' | 'interop';
@@ -27,6 +28,7 @@ program
       cwd: string;
       target: string;
       ignore: string[];
+      sourcemap?: boolean;
     }>();
 
     process.chdir(resolve(cwd));
@@ -39,6 +41,7 @@ program
       outDir: dir,
       clean,
       target,
+      sourcemap,
     });
 
     const { watcher } = await watchRollup({

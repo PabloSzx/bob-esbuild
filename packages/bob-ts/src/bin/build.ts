@@ -9,18 +9,20 @@ program
   .option('-f, --format <format>', "Format, it can be 'cjs', 'esm' or 'interop'", 'esm')
   .option('--cwd <dir>', 'Custom target directory', process.cwd())
   .option('--no-clean', "Don't clean output dir (default: true)", true)
-  .option('-t, --target <target>', 'Javascript runtime target', getDefaultNodeTargetVersion());
+  .option('-t, --target <target>', 'Javascript runtime target', getDefaultNodeTargetVersion())
+  .option('--no-sourcemap', 'Disable sourcemap generation');
 
 program
   .parseAsync()
   .then(async () => {
-    const { dir, input, format, clean, cwd, target } = program.opts<{
+    const { dir, input, format, clean, cwd, target, sourcemap } = program.opts<{
       dir: string;
       input: string[];
       format: 'cjs' | 'esm' | 'interop';
       clean: boolean;
       cwd: string;
       target: string;
+      sourcemap?: boolean;
     }>();
 
     process.chdir(resolve(cwd));
@@ -34,6 +36,7 @@ program
       outDir: dir,
       clean,
       target,
+      sourcemap,
     });
   })
   .catch(err => {
