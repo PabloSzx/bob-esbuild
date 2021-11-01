@@ -31,7 +31,7 @@
     "postpublish": "gh-release"
   },
   "dependencies": {
-    "@pnpm/exportable-manifest": "^2.1.6",
+    "@pnpm/exportable-manifest": "^2.1.7",
     "bob-esbuild-plugin": "workspace:2.1.0",
     "builtin-modules": "^3.2.0",
     "chalk": "^4.1.2",
