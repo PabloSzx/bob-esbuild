@@ -216,7 +216,7 @@ importers:
       esbuild: '>=0.13.12'
       rollup: ^2.59.0
       tsconfck: ^1.1.1
-      tsup: ^5.5.0
+      tsup: ^5.6.0
     dependencies:
       '@rollup/pluginutils': 4.1.1
       tsconfck: 1.1.1_typescript@4.4.4
@@ -225,7 +225,7 @@ importers:
       changesets-github-release: 0.0.4
       esbuild: 0.13.12
       rollup: 2.59.0
-      tsup: 5.5.0_typescript@4.4.4
+      tsup: 5.6.0_typescript@4.4.4
 
 packages:
 
@@ -4157,8 +4157,8 @@ packages:
       esbuild: 0.13.12
     dev: true
 
-  /tsup/5.5.0_typescript@4.4.4:
-    resolution: {integrity: sha512-khx/80b15RxK00UWqWlaizvrwO8kDZFBM0AbORKfjwKxxmzLuu35ceubzLg3wJgZ21E0BCLrCainh4zzJYImoA==}
+  /tsup/5.6.0_typescript@4.4.4:
+    resolution: {integrity: sha512-W4ylYYEZeIcAO2YIhP2fA5vg8dOGhgAbTJJCR5fMlPtDjxflLfbI/LUyix/sYy/5uNch6h12RNMzw8vISzppZg==}
     hasBin: true
     peerDependencies:
       typescript: ^4.2.3
