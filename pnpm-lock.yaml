@@ -95,7 +95,6 @@ importers:
       rollup: ^2.59.0
       rollup-plugin-delete: ^2.0.0
       rollup-plugin-node-externals: ^2.2.0
-      sucrase: ^3.20.3
       tree-kill: ^1.2.2
       tsconfck: ^1.1.1
       typescript: ^4.4.4
@@ -115,7 +114,6 @@ importers:
       rollup: 2.59.0
       rollup-plugin-delete: 2.0.0
       rollup-plugin-node-externals: 2.2.0_builtin-modules@3.2.0
-      sucrase: 3.20.3
       tree-kill: 1.2.2
       tsconfck: 1.1.1_typescript@4.4.4
     devDependencies:
@@ -964,6 +962,7 @@ packages:
 
   /any-promise/1.3.0:
     resolution: {integrity: sha1-q8av7tzqUugJzcA3au0845Y10X8=}
+    dev: true
 
   /anymatch/3.1.2:
     resolution: {integrity: sha512-P43ePfOAIupkguHUycrc4qJ9kz8ZiuOUijaETwX7THt0Y/GNK7v0aa8rY816xWjZ7rJdA5XdMcpVFTKMq+RvWg==}
@@ -1426,6 +1425,7 @@ packages:
   /commander/4.1.1:
     resolution: {integrity: sha512-NOKm8xhkzAjzFx8B2v5OAHT+u5pRQc2UCa2Vq9jYL/31o2wi9mxBA7LIFs3sV5VSC49z6pEhfbMULvShKj26WA==}
     engines: {node: '>= 6'}
+    dev: true
 
   /commander/6.2.1:
     resolution: {integrity: sha512-U7VdrJFnJgo4xjrHpTzu0yrHPGImdsmD95ZlgYSEajAn2JKzDhDTPG9kBTefmObL2w/ngeZnilk+OV9CG3d7UA==}
@@ -2247,6 +2247,7 @@ packages:
       minimatch: 3.0.4
       once: 1.4.0
       path-is-absolute: 1.0.1
+    dev: true
 
   /glob/7.2.0:
     resolution: {integrity: sha512-lmLf6gtyrPq8tTjSmrO94wBeQbFR3HbLHbuyD69wuyQkImp2hWqMGB47OX65FBkPffO641IP9jWa1z4ivqG26Q==}
@@ -3018,6 +3019,7 @@ packages:
       any-promise: 1.3.0
       object-assign: 4.1.1
       thenify-all: 1.6.0
+    dev: true
 
   /nanoid/3.1.30:
     resolution: {integrity: sha512-zJpuPDwOv8D2zq2WRoMe1HsfZthVewpel9CAvTfc/2mBD1uUT/agc5f7GHGWXlYkFvi1mVxe4IjvP2HNrop7nQ==}
@@ -3132,6 +3134,7 @@ packages:
   /node-modules-regexp/1.0.0:
     resolution: {integrity: sha1-jZ2+KJZKSsVxLpExZCEHxx6Q7EA=}
     engines: {node: '>=0.10.0'}
+    dev: true
 
   /node-releases/1.1.77:
     resolution: {integrity: sha512-rB1DUFUNAN4Gn9keO2K1efO35IDK7yKHCdCaIMvFO7yUYmmZYeDjnGKle26G4rwj+LKRQpjyUUvMkPglwGCYNQ==}
@@ -3370,6 +3373,7 @@ packages:
     engines: {node: '>= 6'}
     dependencies:
       node-modules-regexp: 1.0.0
+    dev: true
 
   /pkg-dir/4.2.0:
     resolution: {integrity: sha512-HRDzbaKjC+AOWVXxAU/x54COGeIv9eb+6CkDSQoNTt4XyWoIJvuPsXizxu/Fr23EiekbtZwmh1IcIG/l/a10GQ==}
@@ -4044,6 +4048,7 @@ packages:
       mz: 2.7.0
       pirates: 4.0.1
       ts-interface-checker: 0.1.13
+    dev: true
 
   /supports-color/5.5.0:
     resolution: {integrity: sha512-QjVjwdXIt408MIiAqCX4oUKsgU2EqAGzs2Ppkm4aQYbjm+ZEWEcW4SfFNTr4uMNZma0ey4f5lgLrkB0aX0QMow==}
@@ -4090,11 +4095,13 @@ packages:
     engines: {node: '>=0.8'}
     dependencies:
       thenify: 3.3.1
+    dev: true
 
   /thenify/3.3.1:
     resolution: {integrity: sha512-RVZSIV5IG10Hk3enotrhvz0T9em6cyHBLkH/YAZuKqd8hRkKhSfCGIcP2KUY0EPxndzANBmNllzWPwak+bheSw==}
     dependencies:
       any-promise: 1.3.0
+    dev: true
 
   /timers-browserify/2.0.12:
     resolution: {integrity: sha512-9phl76Cqm6FhSX9Xe1ZUAMLtm1BLkKj2Qd5ApyWkXzsMRaA7dgr81kf4wJmQf/hAvg8EEyJxDo3du/0KlhPiKQ==}
@@ -4147,6 +4154,7 @@ packages:
 
   /ts-interface-checker/0.1.13:
     resolution: {integrity: sha512-Y/arvbn+rrz3JCKl9C4kVNfTfSm2/mEp5FSz5EsZSANGPSlQrpRI5M4PKF+mJnE52jOO90PnPSc3Ur3bTQw0gA==}
+    dev: true
 
   /tsconfck/1.1.1_typescript@4.4.4:
     resolution: {integrity: sha512-uEsCWef+3lA9/YqpGt/mdr+nDovhlr+f0zoycYiOyVDDOUb3BjYFA71+Ee3LB/GiZBRDyTfKBK1kGN2iuPPuEA==}

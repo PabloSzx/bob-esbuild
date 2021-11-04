@@ -12,12 +12,13 @@ import { getDefault } from '../utils/getDefault';
 import type { Plugin } from 'rollup';
 import type { PackageBuildConfig } from './packageBuildConfig';
 import { rewriteExports } from './rewrite-exports';
+import type { ResolvedBobConfig } from './cosmiconfig';
 
 const makePublishManifest = getDefault(makePublishManifestPkg);
 
 const { ensureDir, writeJSON } = fsExtra;
 export interface PackageJSON extends Record<string, unknown> {
-  name?: string;
+  name: string;
   type?: string;
   main?: string;
   module?: string;
@@ -32,7 +33,9 @@ export interface PackageJSON extends Record<string, unknown> {
 }
 
 function rewritePackageJson(pkg: PackageJSON, distDir: string, cwd: string) {
-  const newPkg: PackageJSON = {};
+  const newPkg: PackageJSON = {
+    name: pkg.name,
+  };
 
   function withoutDistDir(str?: string) {
     return str?.replace(`${distDir}/`, '');
@@ -74,7 +77,7 @@ function rewritePackageJson(pkg: PackageJSON, distDir: string, cwd: string) {
     newPkg.bin = {};
 
     for (const [alias, binPath] of Object.entries(pkg.bin)) {
-      newPkg.bin[alias] = binPath.replace(`${distDir}/`, '');
+      newPkg.bin[alias] = withoutDistDir(binPath)!;
     }
   }
 
@@ -82,7 +85,9 @@ function rewritePackageJson(pkg: PackageJSON, distDir: string, cwd: string) {
 }
 
 export function validatePackageJson(pkg: PackageJSON, distDir: string) {
-  function expect(key: string | string[], expected: string) {
+  const typeModule = pkg.type === 'module';
+
+  function expect(key: string | string[], expected: string | undefined) {
     const received = get(pkg, key);
 
     if (!received) throw Error(`"${key}" not specified in "${pkg.name}"`);
@@ -94,7 +99,13 @@ export function validatePackageJson(pkg: PackageJSON, distDir: string) {
 
   if (pkg.main) {
     expect('main', `${distDir}/index.js`);
-    expect('module', `${distDir}/index.mjs`);
+
+    if (typeModule) {
+      expect('module', undefined);
+    } else {
+      expect('module', `${distDir}/index.mjs`);
+    }
+
     if (get(pkg, 'types')) {
       expect('types', `${distDir}/index.d.ts`);
     } else {
@@ -111,13 +122,18 @@ export function validatePackageJson(pkg: PackageJSON, distDir: string) {
   }
 
   if (get(pkg, ['exports', '.'])) {
-    expect(['exports', '.', 'require'], `./${distDir}/index.js`);
-    expect(['exports', '.', 'import'], `./${distDir}/index.mjs`);
+    if (get(pkg, ['exports', '.', 'require']))
+      expect(['exports', '.', 'require'], typeModule ? `./${distDir}/index.cjs` : `./${distDir}/index.js`);
+    if (get(pkg, ['exports', '.', 'import']))
+      expect(['exports', '.', 'import'], typeModule ? `./${distDir}/index.js` : `./${distDir}/index.mjs`);
   }
 
   if (get(pkg, ['exports', './*'])) {
-    expect(['exports', './*', 'require'], `./${distDir}/*.js`);
-    expect(['exports', './*', 'import'], `./${distDir}/*.mjs`);
+    if (get(pkg, ['exports', './*', 'require']))
+      expect(['exports', './*', 'require'], typeModule ? `./${distDir}/*.cjs` : `./${distDir}/*.js`);
+
+    if (get(pkg, ['exports', './*', 'import']))
+      expect(['exports', './*', 'import'], typeModule ? `./${distDir}/*.js` : `./${distDir}/*.mjs`);
   }
 }
 
@@ -137,7 +153,7 @@ const GenPackageJson = Symbol();
 
 declare module 'rollup' {
   interface PluginContext {
-    [GenPackageJson]: Promise<void>;
+    [GenPackageJson]: Promise<PromiseSettledResult<void>>;
   }
 }
 
@@ -147,8 +163,16 @@ export interface GeneratePackageJsonOptions {
   cwd?: string;
 }
 
-export const generatePackageJson = (options: GeneratePackageJsonOptions): Plugin | null => {
+export const generatePackageJson = (options: GeneratePackageJsonOptions, config: ResolvedBobConfig): Plugin | null => {
+  const manualRewrite = config.manualRewritePackageJson?.[options.packageJson.name];
+
   if (!options.packageJson.publishConfig?.directory) {
+    if (manualRewrite) {
+      throw Error(
+        `manualRewritePackageJson can only be specified if publishConfig.directory is not specified for ${options.packageJson.name}`
+      );
+    }
+
     if (
       !Array.isArray(options.packageJson.files) ||
       !options.packageJson.files.some(v => v === options.distDir || v === '/' + options.distDir)
@@ -169,12 +193,16 @@ export const generatePackageJson = (options: GeneratePackageJsonOptions): Plugin
   return {
     name: 'GeneratePackageJson',
     async buildStart() {
-      validatePackageJson(options.packageJson, options.distDir);
+      if (!manualRewrite) validatePackageJson(options.packageJson, options.distDir);
 
-      this[GenPackageJson] = writePackageJson(options);
+      this[GenPackageJson] = Promise.allSettled([
+        writePackageJson(manualRewrite ? { ...options, packageJson: await manualRewrite(options.packageJson) } : options),
+      ]).then(v => v[0]);
     },
     async buildEnd() {
-      await this[GenPackageJson];
+      await this[GenPackageJson].then(v => {
+        if (v.status === 'rejected') throw v.reason;
+      });
     },
   };
 };

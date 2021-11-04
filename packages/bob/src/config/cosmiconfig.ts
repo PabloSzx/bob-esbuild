@@ -1,7 +1,7 @@
 import { cosmiconfig } from 'cosmiconfig';
 import fs from 'fs';
 import { dirname } from 'path';
-import { transform } from 'sucrase';
+import { transform } from 'esbuild';
 
 import { error } from '../log/error';
 import { importFromString } from '../utils/importFromString';
@@ -11,6 +11,7 @@ import type { ConfigOptions } from './rollup';
 import type { TSCOptions } from '../tsc/types';
 import type { EsbuildPluginOptions } from 'bob-esbuild-plugin';
 import type { ExternalsOptions } from 'rollup-plugin-node-externals';
+import type { PackageJSON } from './packageJson';
 
 export type PickRequired<T, K extends keyof T> = T & Required<Pick<T, K>>;
 
@@ -72,6 +73,16 @@ export interface BobConfig extends Pick<ConfigOptions, 'clean' | 'inputFiles' | 
    * Enabled debugging logs
    */
   verbose?: boolean;
+
+  /**
+   * Manually rewrite package json and skip validation
+   */
+  manualRewritePackageJson?: Record<string, (packageJson: PackageJSON) => Promise<PackageJSON> | PackageJSON>;
+
+  /**
+   * Set configurations for specific packages
+   */
+  packageConfigs?: Record<string, Omit<ConfigOptions, 'cwd'>>;
 }
 
 export type ResolvedBobConfig = PickRequired<BobConfig, 'rootDir' | 'clean' | 'distDir'>;
@@ -88,9 +99,11 @@ export const globalConfig: Promise<CosmiConfigResult> & {
   loaders: {
     '.ts': async filepath => {
       const content = await fs.promises.readFile(filepath, 'utf8');
-      const { code } = transform(content, {
-        filePath: filepath,
-        transforms: ['imports', 'typescript'],
+      const { code } = await transform(content, {
+        loader: 'ts',
+        format: 'cjs',
+        sourcemap: 'inline',
+        target: 'node13.2',
       });
       return importFromString(code, filepath)?.config;
     },

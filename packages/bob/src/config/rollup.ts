@@ -29,7 +29,7 @@ export interface ConfigOptions {
    */
   inputFiles?: string[];
   /**
-   * Enable bundling every entry point (no code-splitting available yet)
+   * Enable bundling every entry point (no code-splitting available)
    *
    * @default false
    */
@@ -48,16 +48,16 @@ export interface ConfigOptions {
   onlyESM?: boolean;
 }
 
-export async function getRollupConfig(options: ConfigOptions = {}) {
-  const cwd = options.cwd || process.cwd();
+export async function getRollupConfig(optionsArg: ConfigOptions = {}) {
+  const cwd = optionsArg.cwd || process.cwd();
 
-  const buildConfigPromise = GetPackageBuildConfig(cwd);
+  const [buildConfig, { config: globalOptions }] = await Promise.all([GetPackageBuildConfig(cwd), globalConfig]);
 
-  const { config: globalOptions } = await globalConfig;
+  const options = { ...globalOptions.packageConfigs?.[buildConfig.pkg.name], ...optionsArg };
 
   const clean = options.clean ?? globalOptions.clean;
 
-  const inputFiles = options.inputFiles || (await buildConfigPromise).input || globalOptions.inputFiles || ['src/**/*.{ts,tsx}'];
+  const inputFiles = options.inputFiles || buildConfig.input || globalOptions.inputFiles || ['src/**/*.{ts,tsx}'];
 
   if (!inputFiles.length) throw Error('No input files to check!');
 
@@ -89,9 +89,12 @@ export async function getRollupConfig(options: ConfigOptions = {}) {
 
   const absoluteDistDir = path.resolve(cwd, distDir);
 
+  const typeModule = buildConfig.pkg.type === 'module';
+
   const cjsOpts: OutputOptions = {
     dir: absoluteDistDir,
     format: 'cjs',
+    entryFileNames: typeModule ? '[name].cjs' : '[name].js',
     preserveModules: true,
     exports: 'auto',
     sourcemap: false,
@@ -102,7 +105,7 @@ export async function getRollupConfig(options: ConfigOptions = {}) {
   const esmOpts: OutputOptions = {
     dir: absoluteDistDir,
     format: 'es',
-    entryFileNames: '[name].mjs',
+    entryFileNames: typeModule ? '[name].js' : '[name].mjs',
     preserveModules: true,
     sourcemap: false,
     preferConst: true,
@@ -111,11 +114,9 @@ export async function getRollupConfig(options: ConfigOptions = {}) {
 
   const outputOptions: OutputOptions[] = options.onlyCJS ? [cjsOpts] : options.onlyESM ? [esmOpts] : [cjsOpts, esmOpts];
 
-  const buildConfig = await buildConfigPromise;
-
   if (buildConfig.copy?.length) debug(`Copying ${buildConfig.copy.join(' | ')} to ${absoluteDistDir}`);
 
-  const genPackageJson = generatePackageJson({ packageJson: buildConfig.pkg, distDir, cwd });
+  const genPackageJson = generatePackageJson({ packageJson: buildConfig.pkg, distDir, cwd }, globalOptions);
 
   const plugins: Plugin[] = [
     externals({
