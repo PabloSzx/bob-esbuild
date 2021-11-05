@@ -111,11 +111,14 @@ export const bobEsbuildPlugin = (options: EsbuildPluginOptions = {}): Plugin => 
     async load(id) {
       if (!options.experimentalBundling) return;
 
-      const defaultOptions = options.tsconfig === false ? {} : await getTypescriptConfig(dirname(id), options.tsconfig);
+      const defaultOptions =
+        options.target || options.tsconfig === false ? {} : await getTypescriptConfig(dirname(id), options.tsconfig);
 
       target = options.target || defaultOptions.target || 'es2019';
 
-      const bundled = await bundle(id, this, plugins, loaders, target);
+      const bundled = await bundle(id, this, plugins, loaders, target, {
+        define: options.define,
+      });
 
       if (!bundled.code) return;
 

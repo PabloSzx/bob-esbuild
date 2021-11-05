@@ -1,5 +1,5 @@
 import fs from 'fs';
-import { build, Loader } from 'esbuild';
+import { build, Loader, BuildOptions } from 'esbuild';
 import path from 'path';
 import type { PluginContext, Plugin, LoadResult, TransformResult } from 'rollup';
 
@@ -10,7 +10,8 @@ export const bundle = async (
   loaders: {
     [ext: string]: string;
   },
-  target: string | string[]
+  target: string | string[],
+  buildOptions?: Partial<Pick<BuildOptions, 'define'>>
 ) => {
   const transform = async (inputCode: string, id: string) => {
     let code: string | undefined;
@@ -104,6 +105,7 @@ export const bundle = async (
         },
       },
     ],
+    ...buildOptions,
   });
 
   return {
