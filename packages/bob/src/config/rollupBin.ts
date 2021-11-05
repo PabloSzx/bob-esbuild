@@ -59,7 +59,13 @@ export const rollupBin = (buildConfig: PackageBuildConfig, cwd: string = process
               preferConst: true,
               sourcemap: false,
               file: binOutputFile,
-              format: 'cjs',
+              format: binOutputFile.endsWith('.mjs')
+                ? 'es'
+                : binOutputFile.endsWith('.cjs')
+                ? 'cjs'
+                : buildConfig.pkg.type === 'module'
+                ? 'es'
+                : 'cjs',
             });
 
             debug(`Bin ${alias} built in ${binOutputFile}`);

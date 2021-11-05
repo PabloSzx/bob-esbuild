@@ -1,7 +1,5 @@
 import fsExtra from 'fs-extra';
 import { resolve } from 'path';
-
-import type { OutputOptions } from 'rollup';
 import type { PackageJSON } from './packageJson';
 
 const { readJSON } = fsExtra;
@@ -13,10 +11,6 @@ export interface PackageBuildConfig {
     string,
     {
       input: string;
-      /**
-       * @default "inline"
-       */
-      sourcemap?: OutputOptions['sourcemap'];
     }
   >;
   pkg: PackageJSON;
