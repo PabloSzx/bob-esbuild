@@ -1,5 +1,17 @@
 # bob-esbuild
 
+## 2.2.0
+
+### Minor Changes
+
+- f667154: support "type": "module", flexible package.json validation, improved per-package config, manual package.json rewrite, remove sucrase dep
+
+### Patch Changes
+
+- f27ff9a: Fix bin output ESM or CJS based on extension
+- Updated dependencies [816d97e]
+  - bob-esbuild-plugin@2.2.0
+
 ## 2.1.1
 
 ### Patch Changes

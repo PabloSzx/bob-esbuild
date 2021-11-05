@@ -1,5 +1,11 @@
 # bob-esbuild-plugin
 
+## 2.2.0
+
+### Patch Changes
+
+- 816d97e: Fix pass define option to bundle
+
 ## 2.1.0
 
 ### Minor Changes
