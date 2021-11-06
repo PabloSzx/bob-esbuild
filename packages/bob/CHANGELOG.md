@@ -1,5 +1,20 @@
 # bob-esbuild
 
+## 3.0.0
+
+### Major Changes
+
+- c783b22: Only copy typescript definitions on currently building project
+
+### Patch Changes
+
+- afd2edb: add skipValidate option
+- 0ecbd1c: Fix packageConfigs defaults
+- a695127: Fix circular import
+- b8a13ba: New "useTsconfigPaths" global config that resolves root tsconfig "paths"
+
+  Closes #156
+
 ## 2.2.0
 
 ### Minor Changes

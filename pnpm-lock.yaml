@@ -32,7 +32,7 @@ importers:
 
   examples/basic:
     specifiers:
-      bob-esbuild-cli: workspace:^2.0.0
+      bob-esbuild-cli: workspace:^3.0.0
       shared: workspace:^1.0.0
     dependencies:
       bob-esbuild-cli: link:../../packages/bob-cli
@@ -67,7 +67,7 @@ importers:
 
   examples/shared:
     specifiers:
-      bob-esbuild-cli: workspace:^2.0.0
+      bob-esbuild-cli: workspace:^3.0.0
     dependencies:
       bob-esbuild-cli: link:../../packages/bob-cli
 
@@ -130,7 +130,7 @@ importers:
 
   packages/bob-cli:
     specifiers:
-      bob-esbuild: workspace:^2.1.0
+      bob-esbuild: workspace:^3.0.0
       changesets-github-release: ^0.0.4
       commander: ^8.3.0
       typescript: ^4.4.4
@@ -144,7 +144,7 @@ importers:
   packages/bob-ts:
     specifiers:
       '@types/node': '>=16.11.1'
-      bob-esbuild-cli: workspace:^2.0.0
+      bob-esbuild-cli: workspace:^3.0.0
       bob-esbuild-plugin: workspace:^2.1.0
       changesets-github-release: ^0.0.4
       commander: ^8.3.0
@@ -193,8 +193,8 @@ importers:
 
   packages/bob-watch:
     specifiers:
-      bob-esbuild: workspace:^2.1.0
-      bob-esbuild-cli: workspace:^2.0.0
+      bob-esbuild: workspace:^3.0.0
+      bob-esbuild-cli: workspace:^3.0.0
       chokidar: ^3.5.2
       commander: ^8.3.0
       execa: ^5.1.1
