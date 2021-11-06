@@ -83,6 +83,11 @@ export interface BobConfig extends Pick<ConfigOptions, 'clean' | 'inputFiles' | 
    * Set configurations for specific packages
    */
   packageConfigs?: Record<string, Omit<ConfigOptions, 'cwd'>>;
+
+  /**
+   * @default false
+   */
+  useTsconfigPaths?: boolean;
 }
 
 export type ResolvedBobConfig = PickRequired<BobConfig, 'rootDir' | 'clean' | 'distDir'>;

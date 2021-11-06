@@ -3,8 +3,9 @@ import { join } from 'path';
 import { parse } from 'tsconfck';
 import { error } from '../log/error';
 import { globalConfig } from './cosmiconfig';
+import { retry } from '../utils/retry';
 
-export const resolvedTsconfig = (async () => {
+export const resolvedTsconfig = retry(async () => {
   const {
     config: { rootDir: configRootDir, singleBuild },
   } = await globalConfig;
@@ -26,7 +27,7 @@ export const resolvedTsconfig = (async () => {
   return {
     outDir,
   };
-})().catch(err => {
+}).catch(err => {
   error(err);
   process.exit(1);
 });

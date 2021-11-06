@@ -46,6 +46,7 @@
     "rollup": "^2.59.0",
     "rollup-plugin-delete": "^2.0.0",
     "rollup-plugin-node-externals": "^2.2.0",
+    "rollup-plugin-tsconfig-paths": "^1.0.15",
     "tree-kill": "^1.2.2",
     "tsconfck": "^1.1.1"
   },

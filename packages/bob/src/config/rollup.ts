@@ -1,5 +1,5 @@
 import { bobEsbuildPlugin } from 'bob-esbuild-plugin';
-import path from 'path';
+import path, { join } from 'path';
 import type { InputOptions, OutputOptions, Plugin, RollupBuild } from 'rollup';
 import del from 'rollup-plugin-delete';
 import externals from 'rollup-plugin-node-externals';
@@ -10,6 +10,7 @@ import { globalConfig } from './cosmiconfig';
 import { GetPackageBuildConfig } from './packageBuildConfig';
 import { generatePackageJson } from './packageJson';
 import { rollupBin } from './rollupBin';
+import { retry } from '../utils/retry';
 
 export interface ConfigOptions {
   /**
@@ -68,21 +69,26 @@ export async function getRollupConfig(optionsArg: ConfigOptions = {}) {
 
   const distDir = globalOptions.distDir;
 
-  const globbyPkg = await import('globby');
+  const [globbyPkg, tsPaths] = await Promise.all([
+    import('globby'),
+    globalOptions.useTsconfigPaths ? import('rollup-plugin-tsconfig-paths').then(v => v.tsconfigPaths) : null,
+  ]);
 
   const globby = globbyPkg.default || (globbyPkg as any).globby;
 
-  const input = (
-    await Promise.all(
-      inputFiles.map(pattern => {
-        const glob = path.join(cwd, pattern).replace(/\\/g, '/');
-        debug('Checking glob pattern: ' + glob);
-        return globby(glob);
-      })
+  const input = await retry(async () =>
+    (
+      await Promise.all(
+        inputFiles.map(pattern => {
+          const glob = path.join(cwd, pattern).replace(/\\/g, '/');
+          debug('Checking glob pattern: ' + glob);
+          return globby(glob);
+        })
+      )
     )
-  )
-    .flat()
-    .filter((file, index, self) => self.indexOf(file) === index);
+      .flat()
+      .filter((file, index, self) => self.indexOf(file) === index)
+  );
 
   if (!input.length) throw Error('No input files found!');
 
@@ -219,6 +225,15 @@ export async function getRollupConfig(optionsArg: ConfigOptions = {}) {
       })
     );
   }
+
+  if (tsPaths) {
+    plugins.push(
+      tsPaths({
+        tsConfigPath: join(globalOptions.rootDir, 'tsconfig.json'),
+      })
+    );
+  }
+
   const inputOptions: InputOptions = {
     input,
     plugins,

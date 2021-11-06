@@ -7,6 +7,7 @@ import { globalConfig } from '../config/cosmiconfig';
 import { debug } from '../log/debug';
 import { error } from '../log/error';
 import { getHash } from './hash';
+import { retry } from '../utils/retry';
 
 const { copy, pathExists } = fsExtra;
 
@@ -21,64 +22,70 @@ export async function buildTsc(options: TSCOptions = {}) {
 
   const startTime = Date.now();
 
-  const hashPromise = getHash();
-
-  const tscCommand = options.tscBuildCommand || globalTsc.tscBuildCommand || 'tsc --emitDeclarationOnly';
-
   const { default: globby } = await import('globby');
 
-  const targetDirs = await globby(dirs, {
-    expandDirectories: false,
-    absolute: false,
-    onlyDirectories: true,
-    cwd: rootDirCwd,
-  });
+  await retry(async () => {
+    const hashPromise = Promise.allSettled([getHash()]).then(v => v[0]);
 
-  const { shouldBuild, cleanHash } = await hashPromise;
+    const tscCommand = options.tscBuildCommand || globalTsc.tscBuildCommand || 'tsc --emitDeclarationOnly';
 
-  if (shouldBuild) {
-    debug(!targetDirs.length ? 'No target directories for built types!' : 'Building types for: ' + targetDirs.join(' | '));
-
-    const tsconfig = globalTsc.tsconfig;
-    await command(tscCommand + (tsconfig ? ` -p ${tsconfig}` : ''), {
+    const targetDirs = await globby(dirs, {
+      expandDirectories: false,
+      absolute: false,
+      onlyDirectories: true,
       cwd: rootDirCwd,
-      stdio: 'inherit',
-    }).catch(err => {
-      cleanHash();
-
-      throw err;
     });
-  }
 
-  const { outDir } = await resolvedTsconfig;
+    const { shouldBuild, cleanHash } = await hashPromise.then(v => {
+      if (v.status === 'rejected') throw v.reason;
 
-  await Promise.all(
-    targetDirs.map(async dir => {
-      const from = resolve(rootDirCwd, `${outDir}/${dir}/src`);
+      return v.value;
+    });
 
-      if (!(await pathExists(from))) return;
+    if (shouldBuild) {
+      debug(!targetDirs.length ? 'No target directories for built types!' : 'Building types for: ' + targetDirs.join(' | '));
 
-      await copy(from, resolve(rootDirCwd, `${dir}/${distDir}`), {
-        filter(src) {
-          // Check if is directory
-          if (!parse(src).ext) return true;
-
-          return src.endsWith('.d.ts');
-        },
+      const tsconfig = globalTsc.tsconfig;
+      await command(tscCommand + (tsconfig ? ` -p ${tsconfig}` : ''), {
+        cwd: rootDirCwd,
+        stdio: 'inherit',
       }).catch(err => {
-        const errCode: string | undefined = err?.code;
-        // Silence these specific error that happen when multiple processes access the same file concurrently
-        switch (errCode) {
-          case 'ENOENT':
-          case 'EBUSY':
-          case 'EPERM':
-            return;
-        }
+        cleanHash();
 
-        error(err);
+        throw err;
       });
-    })
-  );
+    }
 
-  debug(`Types ${shouldBuild ? 'built' : 'prepared'} in ${Date.now() - startTime}ms`);
+    const { outDir } = await resolvedTsconfig;
+
+    await Promise.all(
+      targetDirs.map(async dir => {
+        const from = resolve(rootDirCwd, `${outDir}/${dir}/src`);
+
+        if (!(await pathExists(from))) return;
+
+        await copy(from, resolve(rootDirCwd, `${dir}/${distDir}`), {
+          filter(src) {
+            // Check if is directory
+            if (!parse(src).ext) return true;
+
+            return src.endsWith('.d.ts');
+          },
+        }).catch(err => {
+          const errCode: string | undefined = err?.code;
+          // Silence these specific error that happen when multiple processes access the same file concurrently
+          switch (errCode) {
+            case 'ENOENT':
+            case 'EBUSY':
+            case 'EPERM':
+              return;
+          }
+
+          error(err);
+        });
+      })
+    );
+
+    debug(`Types ${shouldBuild ? 'built' : 'prepared'} in ${Date.now() - startTime}ms`);
+  });
 }
