@@ -8,4 +8,5 @@ export const config: import('bob-esbuild').BobConfig = {
     sourcemap: false,
   },
   keepDynamicImport: true,
+  useTsconfigPaths: true,
 };

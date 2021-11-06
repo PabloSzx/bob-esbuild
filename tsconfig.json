@@ -23,7 +23,10 @@
       "bob-esbuild": ["packages/bob/src/index.ts"],
       "bob-esbuild/*": ["packages/bob/src/*"],
       "bob-esbuild-plugin": ["packages/esbuild-plugin/src/index.ts"],
-      "bob-watch": ["packages/bob-watch/src/*"]
+      "bob-watch": ["packages/bob-watch/src/*"],
+      "aliased-deep": ["examples/basic/src/aliased/deep/module.ts"],
+      "~*": ["*"],
+      "*": ["_"]
     },
     "baseUrl": ".",
     "importsNotUsedAsValues": "error",

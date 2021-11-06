@@ -1,17 +1,14 @@
 import { command } from 'execa';
 import fsExtra from 'fs-extra';
 import { parse, resolve } from 'path';
-
-import { resolvedTsconfig } from '../config/tsconfig';
 import { globalConfig } from '../config/cosmiconfig';
+import { resolvedTsconfig } from '../config/tsconfig';
 import { debug } from '../log/debug';
-import { error } from '../log/error';
-import { getHash } from './hash';
 import { retry } from '../utils/retry';
+import { getHash } from './hash';
+import type { TSCOptions } from './types';
 
 const { copy, pathExists } = fsExtra;
-
-import type { TSCOptions } from './types';
 
 export async function buildTsc(options: TSCOptions = {}) {
   const {
@@ -64,25 +61,18 @@ export async function buildTsc(options: TSCOptions = {}) {
 
         if (!(await pathExists(from))) return;
 
-        await copy(from, resolve(rootDirCwd, `${dir}/${distDir}`), {
-          filter(src) {
-            // Check if is directory
-            if (!parse(src).ext) return true;
+        await retry(
+          async () =>
+            await copy(from, resolve(rootDirCwd, `${dir}/${distDir}`), {
+              filter(src) {
+                // Check if is directory
+                if (!parse(src).ext) return true;
 
-            return src.endsWith('.d.ts');
-          },
-        }).catch(err => {
-          const errCode: string | undefined = err?.code;
-          // Silence these specific error that happen when multiple processes access the same file concurrently
-          switch (errCode) {
-            case 'ENOENT':
-            case 'EBUSY':
-            case 'EPERM':
-              return;
-          }
-
-          error(err);
-        });
+                return src.endsWith('.d.ts');
+              },
+            }),
+          10
+        );
       })
     );
 

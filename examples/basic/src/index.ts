@@ -18,3 +18,7 @@ console.log(Bar);
 export { Foo, Bar };
 
 export { B } from './other';
+
+import { Hello } from 'aliased-deep';
+
+console.log(Hello);

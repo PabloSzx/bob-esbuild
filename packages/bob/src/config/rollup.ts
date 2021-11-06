@@ -4,13 +4,14 @@ import type { InputOptions, OutputOptions, Plugin, RollupBuild } from 'rollup';
 import del from 'rollup-plugin-delete';
 import externals from 'rollup-plugin-node-externals';
 import { debug } from '../log/debug';
+import { getDefault } from '../utils/getDefault';
 import { cleanObject } from '../utils/object';
+import { retry } from '../utils/retry';
 import { copyToDist } from './copyToDist';
 import { globalConfig } from './cosmiconfig';
 import { GetPackageBuildConfig } from './packageBuildConfig';
 import { generatePackageJson } from './packageJson';
 import { rollupBin } from './rollupBin';
-import { retry } from '../utils/retry';
 
 export interface ConfigOptions {
   /**
@@ -71,7 +72,7 @@ export async function getRollupConfig(optionsArg: ConfigOptions = {}) {
 
   const [globbyPkg, tsPaths] = await Promise.all([
     import('globby'),
-    globalOptions.useTsconfigPaths ? import('rollup-plugin-tsconfig-paths').then(v => v.tsconfigPaths) : null,
+    globalOptions.useTsconfigPaths ? import('rollup-plugin-tsconfig-paths').then(v => getDefault(v.default)) : null,
   ]);
 
   const globby = globbyPkg.default || (globbyPkg as any).globby;
