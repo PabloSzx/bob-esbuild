@@ -72,9 +72,9 @@ export const rollupBin = (buildConfig: PackageBuildConfig, cwd: string = process
     async buildEnd() {
       await Promise.all(
         pending.map(pendingPromises =>
-          pendingPromises.then(promises => {
+          pendingPromises.then(async promises => {
             return Promise.all(
-              promises.map(result => {
+              promises.map(async result => {
                 if (result.status === 'rejected') throw result.reason;
               })
             );
