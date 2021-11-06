@@ -23,6 +23,10 @@ export const BuildCommand = new Command('build')
         onlyESM,
         skipValidate,
       },
-      tsc: skipTsc ? false : {},
+      tsc: skipTsc
+        ? false
+        : {
+            cwd,
+          },
     });
   });

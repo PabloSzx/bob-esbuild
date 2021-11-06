@@ -50,4 +50,9 @@ export interface TSCOptions {
    * IT HAS TO BE AN ABSOLUTE PATH
    */
   tsconfig?: string;
+
+  /**
+   * @default process.cwd()
+   */
+  cwd?: string;
 }

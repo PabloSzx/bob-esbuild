@@ -1,5 +1,5 @@
 import { bobEsbuildPlugin } from 'bob-esbuild-plugin';
-import path, { join } from 'path';
+import path, { join, resolve } from 'path';
 import type { InputOptions, OutputOptions, Plugin, RollupBuild } from 'rollup';
 import del from 'rollup-plugin-delete';
 import externals from 'rollup-plugin-node-externals';
@@ -56,7 +56,7 @@ export interface ConfigOptions {
 }
 
 export async function getRollupConfig(optionsArg: ConfigOptions = {}) {
-  const cwd = optionsArg.cwd || process.cwd();
+  const cwd = optionsArg.cwd ? resolve(optionsArg.cwd) : process.cwd();
 
   const [buildConfig, { config: globalOptions }] = await Promise.all([GetPackageBuildConfig(cwd), globalConfig]);
 
