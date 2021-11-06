@@ -25,7 +25,7 @@
     "lib"
   ],
   "scripts": {
-    "prepare": "tsup && pnpm -w types",
+    "prepare": "tsup && node -r tsm self-build.ts",
     "postpublish": "gh-release"
   },
   "dependencies": {
