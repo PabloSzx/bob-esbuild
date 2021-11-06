@@ -1,5 +1,21 @@
 # bob-esbuild-cli
 
+## 3.0.0
+
+### Major Changes
+
+- c783b22: Only copy typescript definitions on currently building project
+
+### Patch Changes
+
+- afd2edb: add skipValidate option
+- Updated dependencies [afd2edb]
+- Updated dependencies [c783b22]
+- Updated dependencies [0ecbd1c]
+- Updated dependencies [a695127]
+- Updated dependencies [b8a13ba]
+  - bob-esbuild@3.0.0
+
 ## 2.0.0
 
 ### Patch Changes
