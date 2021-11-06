@@ -6,14 +6,6 @@ import type { Plugin } from 'rollup';
 
 const { copyFile, mkdirp, pathExists } = fsExtra;
 
-const CopyToDist = Symbol();
-
-declare module 'rollup' {
-  interface PluginContext {
-    [CopyToDist]: Promise<void>;
-  }
-}
-
 export interface CopyFilesOptions {
   distDir: string;
   files: string[];
@@ -40,13 +32,21 @@ async function copyFilesToDist({ cwd = process.cwd(), distDir, files }: CopyFile
 }
 
 export const copyToDist = (options: CopyFilesOptions): Plugin => {
+  const pending: Promise<PromiseSettledResult<void>>[] = [];
+
   return {
     name: 'CopyToDist',
     buildStart() {
-      this[CopyToDist] = copyFilesToDist(options);
+      pending.push(Promise.allSettled([copyFilesToDist(options)]).then(v => v[0]));
     },
     async buildEnd() {
-      await this[CopyToDist];
+      await Promise.all(
+        pending.map(v =>
+          v.then(v => {
+            if (v.status === 'rejected') throw v.reason;
+          })
+        )
+      );
     },
   };
 };

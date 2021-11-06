@@ -149,14 +149,6 @@ export async function writePackageJson({ packageJson, distDir, cwd = process.cwd
   );
 }
 
-const GenPackageJson = Symbol();
-
-declare module 'rollup' {
-  interface PluginContext {
-    [GenPackageJson]: Promise<PromiseSettledResult<void>>;
-  }
-}
-
 export interface GeneratePackageJsonOptions {
   packageJson: PackageJSON;
   distDir: string;
@@ -191,19 +183,27 @@ export const generatePackageJson = (options: GeneratePackageJsonOptions, config:
     return null;
   }
 
+  const pending: Promise<PromiseSettledResult<void>>[] = [];
+
   return {
     name: 'GeneratePackageJson',
     async buildStart() {
       if (!manualRewrite && !options.skipValidate) validatePackageJson(options.packageJson, options.distDir);
 
-      this[GenPackageJson] = Promise.allSettled([
-        writePackageJson(manualRewrite ? { ...options, packageJson: await manualRewrite(options.packageJson) } : options),
-      ]).then(v => v[0]);
+      pending.push(
+        Promise.allSettled([
+          writePackageJson(manualRewrite ? { ...options, packageJson: await manualRewrite(options.packageJson) } : options),
+        ]).then(v => v[0])
+      );
     },
     async buildEnd() {
-      await this[GenPackageJson].then(v => {
-        if (v.status === 'rejected') throw v.reason;
-      });
+      await Promise.all(
+        pending.map(v =>
+          v.then(v => {
+            if (v.status === 'rejected') throw v.reason;
+          })
+        )
+      );
     },
   };
 };
