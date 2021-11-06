@@ -44,6 +44,13 @@ export interface ConfigOptions {
    * @default false
    */
   onlyESM?: boolean;
+
+  /**
+   * Skip package.json validate
+   *
+   * @default false
+   */
+  skipValidate?: boolean;
 }
 
 export async function getRollupConfig(optionsArg: ConfigOptions = {}) {
@@ -114,7 +121,10 @@ export async function getRollupConfig(optionsArg: ConfigOptions = {}) {
 
   if (buildConfig.copy?.length) debug(`Copying ${buildConfig.copy.join(' | ')} to ${absoluteDistDir}`);
 
-  const genPackageJson = generatePackageJson({ packageJson: buildConfig.pkg, distDir, cwd }, globalOptions);
+  const genPackageJson = generatePackageJson(
+    { packageJson: buildConfig.pkg, distDir, cwd, skipValidate: options.skipValidate },
+    globalOptions
+  );
 
   const plugins: Plugin[] = [
     externals({

@@ -161,6 +161,7 @@ export interface GeneratePackageJsonOptions {
   packageJson: PackageJSON;
   distDir: string;
   cwd?: string;
+  skipValidate?: boolean;
 }
 
 export const generatePackageJson = (options: GeneratePackageJsonOptions, config: ResolvedBobConfig): Plugin | null => {
@@ -193,7 +194,7 @@ export const generatePackageJson = (options: GeneratePackageJsonOptions, config:
   return {
     name: 'GeneratePackageJson',
     async buildStart() {
-      if (!manualRewrite) validatePackageJson(options.packageJson, options.distDir);
+      if (!manualRewrite && !options.skipValidate) validatePackageJson(options.packageJson, options.distDir);
 
       this[GenPackageJson] = Promise.allSettled([
         writePackageJson(manualRewrite ? { ...options, packageJson: await manualRewrite(options.packageJson) } : options),

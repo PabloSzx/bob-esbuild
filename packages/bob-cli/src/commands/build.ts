@@ -11,7 +11,8 @@ export const BuildCommand = new Command('build')
   .option('--skipTsc', 'Skip TSC build')
   .option('--onlyCJS', 'Only build for CJS')
   .option('--onlyESM', 'Only build for ESM')
-  .action(async ({ cwd, inputFiles, bundle, clean, onlyCJS, onlyESM, skipTsc }) => {
+  .option('--skipValidate', 'Skip package.json validation')
+  .action(async ({ cwd, inputFiles, bundle, clean, onlyCJS, onlyESM, skipTsc, skipValidate }) => {
     await startBuild({
       rollup: {
         cwd,
@@ -20,6 +21,7 @@ export const BuildCommand = new Command('build')
         clean,
         onlyCJS,
         onlyESM,
+        skipValidate,
       },
       tsc: skipTsc ? false : {},
     });
