@@ -1,17 +1,15 @@
 import { bobEsbuildPlugin } from 'bob-esbuild-plugin';
 import path from 'path';
+import type { InputOptions, OutputOptions, Plugin, RollupBuild } from 'rollup';
 import del from 'rollup-plugin-delete';
 import externals from 'rollup-plugin-node-externals';
-
 import { debug } from '../log/debug';
+import { cleanObject } from '../utils/object';
 import { copyToDist } from './copyToDist';
 import { globalConfig } from './cosmiconfig';
 import { GetPackageBuildConfig } from './packageBuildConfig';
 import { generatePackageJson } from './packageJson';
 import { rollupBin } from './rollupBin';
-
-import type { RollupBuild } from 'rollup';
-import type { OutputOptions, InputOptions, Plugin } from 'rollup';
 
 export interface ConfigOptions {
   /**
@@ -53,7 +51,7 @@ export async function getRollupConfig(optionsArg: ConfigOptions = {}) {
 
   const [buildConfig, { config: globalOptions }] = await Promise.all([GetPackageBuildConfig(cwd), globalConfig]);
 
-  const options = { ...globalOptions.packageConfigs?.[buildConfig.pkg.name], ...optionsArg };
+  const options = { ...globalOptions.packageConfigs?.[buildConfig.pkg.name], ...cleanObject(optionsArg) };
 
   const clean = options.clean ?? globalOptions.clean;
 
