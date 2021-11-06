@@ -1,5 +1,11 @@
 # bob-ts
 
+## 1.2.0
+
+### Minor Changes
+
+- 74a843e: Add new "--paths" options for tsconfig paths resolution
+
 ## 1.1.6
 
 ### Patch Changes

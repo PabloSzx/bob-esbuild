@@ -1,5 +1,11 @@
 # bob-esbuild
 
+## 3.0.1
+
+### Patch Changes
+
+- 99f5fe6: Improve plugin promise resolution
+
 ## 3.0.0
 
 ### Major Changes
