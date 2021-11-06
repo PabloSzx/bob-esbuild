@@ -10,12 +10,13 @@ program
   .option('--cwd <dir>', 'Custom target directory', process.cwd())
   .option('--no-clean', "Don't clean output dir (default: true)", true)
   .option('-t, --target <target>', 'Javascript runtime target', getDefaultNodeTargetVersion())
-  .option('--no-sourcemap', 'Disable sourcemap generation');
+  .option('--no-sourcemap', 'Disable sourcemap generation')
+  .option('--paths', 'Resolve tsconfig paths', false);
 
 program
   .parseAsync()
   .then(async () => {
-    const { dir, input, format, clean, cwd, target, sourcemap } = program.opts<{
+    const { dir, input, format, clean, cwd, target, sourcemap, paths } = program.opts<{
       dir: string;
       input: string[];
       format: 'cjs' | 'esm' | 'interop';
@@ -23,6 +24,7 @@ program
       cwd: string;
       target: string;
       sourcemap?: boolean;
+      paths: boolean;
     }>();
 
     process.chdir(resolve(cwd));
@@ -37,6 +39,7 @@ program
       clean,
       target,
       sourcemap,
+      paths,
     });
   })
   .catch(err => {

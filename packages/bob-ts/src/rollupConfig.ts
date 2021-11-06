@@ -6,6 +6,8 @@ import { cleanEmptyFoldersRecursively } from './clean';
 import { existsSync } from 'fs';
 import { getPackageJson } from './packageJson';
 
+import type { tsconfigPaths } from 'rollup-plugin-tsconfig-paths';
+
 export interface RollupConfig {
   entryPoints: string[];
   format: 'cjs' | 'esm' | 'interop';
@@ -15,6 +17,11 @@ export interface RollupConfig {
   esbuild?: EsbuildPluginOptions;
   sourcemap?: OutputOptions['sourcemap'] & EsbuildPluginOptions['sourceMap'];
   rollup?: Partial<OutputOptions>;
+  paths?: boolean | Parameters<typeof tsconfigPaths>[0];
+}
+
+function getDefault<T>(v: T | { default?: T }) {
+  return (('default' in v ? v.default : v) || v) as T;
 }
 
 export const getRollupConfig = async ({
@@ -26,10 +33,14 @@ export const getRollupConfig = async ({
   esbuild,
   sourcemap = true,
   rollup,
+  paths,
 }: RollupConfig) => {
   const dir = resolve(outDir);
 
-  const { globby } = await import('globby');
+  const [{ globby }, tsPaths] = await Promise.all([
+    import('globby'),
+    paths ? import('rollup-plugin-tsconfig-paths').then(v => getDefault(v.default)) : null,
+  ]);
 
   const input = (
     await globby(
@@ -83,6 +94,7 @@ export const getRollupConfig = async ({
             },
           };
         })(),
+      tsPaths && tsPaths(typeof paths === 'boolean' ? undefined : paths),
     ],
   };
 

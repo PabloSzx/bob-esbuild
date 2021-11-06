@@ -43,6 +43,7 @@
     "globby": "^12.0.2",
     "rollup": "^2.59.0",
     "rollup-plugin-delete": "^2.0.0",
+    "rollup-plugin-tsconfig-paths": "^1.0.15",
     "tree-kill": "^1.2.2"
   },
   "devDependencies": {

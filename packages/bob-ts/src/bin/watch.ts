@@ -14,12 +14,13 @@ program
   )
   .option('-t, --target <target>', 'Javascript runtime target', getDefaultNodeTargetVersion())
   .option('--ignore <files...>', 'Patterns of files to ignore watching')
-  .option('--no-sourcemap', 'Disable sourcemap generation');
+  .option('--no-sourcemap', 'Disable sourcemap generation')
+  .option('--paths', 'Resolve tsconfig paths', false);
 
 program
   .parseAsync()
   .then(async () => {
-    const { dir, input, format, clean, command, cwd, target, ignore, sourcemap } = program.opts<{
+    const { dir, input, format, clean, command, cwd, target, ignore, sourcemap, paths } = program.opts<{
       dir: string;
       input: string[];
       format: 'cjs' | 'esm' | 'interop';
@@ -29,6 +30,7 @@ program
       target: string;
       ignore: string[];
       sourcemap?: boolean;
+      paths: boolean;
     }>();
 
     process.chdir(resolve(cwd));
@@ -42,6 +44,7 @@ program
       clean,
       target,
       sourcemap,
+      paths,
     });
 
     const { watcher } = await watchRollup({

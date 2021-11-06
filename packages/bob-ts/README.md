@@ -38,8 +38,10 @@ Options:
   -i, --input <patterns...>  Input patterns (default: ".")
   -f, --format <format>      Format, it can be 'cjs', 'esm' or 'interop' (default: "esm")
   --cwd <dir>                Custom target directory (default: "X")
-  --no-clean                 No clean output dir (default: true)
-  -t, --target <target>      Javascript runtime target (default: "nodeX")
+  --no-clean                 Don't clean output dir (default: true)
+  -t, --target <target>      Javascript runtime target (default: "_YOUR_CURRENT_NODE_VERSION_")
+  --no-sourcemap             Disable sourcemap generation
+  --paths                    Resolve tsconfig paths (default: false)
   -h, --help                 display help for command
 ```
 
@@ -67,6 +69,9 @@ Options:
   -c, --command <commands...>  Execute scripts after successful JS build, You can specify more than a single command
                                to be executed concurrently
   -t, --target <target>        Javascript runtime target (default: "_YOUR_CURRENT_NODE_VERSION_")
+  --ignore <files...>          Patterns of files to ignore watching
+  --no-sourcemap               Disable sourcemap generation
+  --paths                      Resolve tsconfig paths (default: false)
   -h, --help                   display help for command
 ```
 
