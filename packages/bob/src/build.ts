@@ -1,4 +1,4 @@
-import { globalConfig } from './config/index';
+import { globalConfig } from './config/cosmiconfig';
 import { buildRollup } from './rollup/build';
 import { buildTsc } from './tsc/build';
 
