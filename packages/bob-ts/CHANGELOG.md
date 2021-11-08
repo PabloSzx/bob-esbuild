@@ -1,5 +1,11 @@
 # bob-ts
 
+## 1.2.1
+
+### Patch Changes
+
+- 215cbac: Add new "external" programmatic API option
+
 ## 1.2.0
 
 ### Minor Changes
