@@ -1,5 +1,11 @@
 # bob-esbuild
 
+## 3.0.2
+
+### Patch Changes
+
+- f6106d8: Support rewrite exports types
+
 ## 3.0.1
 
 ### Patch Changes

@@ -1,5 +1,11 @@
 # bob-tsm
 
+## 0.3.4
+
+### Patch Changes
+
+- 6ccfc7b: Improved released package
+
 ## 0.3.3
 
 ### Patch Changes
