@@ -32,7 +32,7 @@ export interface PackageJSON extends Record<string, unknown> {
   exports?: Record<string, string | { require?: string; import?: string }>;
 }
 
-function rewritePackageJson(pkg: PackageJSON, distDir: string, cwd: string) {
+export function rewritePackageJson(pkg: PackageJSON, distDir: string, cwd: string = process.cwd()) {
   const newPkg: PackageJSON = {
     name: pkg.name,
   };
