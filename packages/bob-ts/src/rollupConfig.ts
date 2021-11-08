@@ -1,6 +1,6 @@
 import { bobEsbuildPlugin, EsbuildPluginOptions } from 'bob-esbuild-plugin';
 import { resolve } from 'path';
-import type { InputOptions, OutputOptions } from 'rollup';
+import type { InputOptions, OutputOptions, ExternalOption } from 'rollup';
 import del from 'rollup-plugin-delete';
 import { cleanEmptyFoldersRecursively } from './clean';
 import { existsSync } from 'fs';
@@ -18,6 +18,7 @@ export interface RollupConfig {
   sourcemap?: OutputOptions['sourcemap'] & EsbuildPluginOptions['sourceMap'];
   rollup?: Partial<OutputOptions>;
   paths?: boolean | Parameters<typeof tsconfigPaths>[0];
+  external?: ExternalOption;
 }
 
 function getDefault<T>(v: T | { default?: T }) {
@@ -34,6 +35,7 @@ export const getRollupConfig = async ({
   sourcemap = true,
   rollup,
   paths,
+  external,
 }: RollupConfig) => {
   const dir = resolve(outDir);
 
@@ -96,6 +98,7 @@ export const getRollupConfig = async ({
         })(),
       tsPaths && tsPaths(typeof paths === 'boolean' ? undefined : paths),
     ],
+    external,
   };
 
   const isTypeModule = (await getPackageJson()).type === 'module';
