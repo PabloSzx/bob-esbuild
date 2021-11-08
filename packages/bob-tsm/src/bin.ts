@@ -2,11 +2,13 @@
 declare const VERSION: string;
 
 import { ChildProcess, spawn, SpawnOptions } from 'child_process';
-import { Option, program } from 'commander';
+import commanderPkg from './deps/commander.js';
 import { existsSync } from 'fs';
 import { dirname, join } from 'path';
 import { fileURLToPath, pathToFileURL } from 'url';
-import { debouncePromise } from './utils';
+import { debouncePromise, getDefault } from './utils';
+
+const { program, Option } = getDefault(commanderPkg);
 
 program
   .version(VERSION)
@@ -87,7 +89,10 @@ program
     };
 
     if (watch) {
-      const [chokidar, { default: kill }] = await Promise.all([import('chokidar'), import('tree-kill')]);
+      const [chokidar, treeKill] = await Promise.all([
+        import('./deps/chokidar.js').then(v => getDefault(v.default)),
+        import('./deps/treeKill.js').then(v => getDefault(v.default)),
+      ]);
 
       const watcher = chokidar.watch(watch, {
         ignored: ignore,
@@ -100,7 +105,7 @@ program
 
       function killPromise(pid: number) {
         const pendingKillPromise = new Promise<void>(resolve => {
-          kill(pid, () => {
+          treeKill(pid, () => {
             resolve();
             pendingKillPromises.delete(pendingKillPromise);
           });

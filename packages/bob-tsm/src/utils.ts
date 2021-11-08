@@ -4,7 +4,7 @@ import { resolve } from 'path';
 import { existsSync } from 'fs';
 
 import type { Format } from 'esbuild';
-import type { Config, Options, Extension, ConfigFile } from '../config';
+import type { Config, Options, Extension, ConfigFile } from './config';
 export interface Defaults {
   file: string | false;
   isESM: boolean;
@@ -112,4 +112,8 @@ export function debouncePromise<T extends unknown[]>(
       }, delay);
     }
   };
+}
+
+export function getDefault<T>(module: T & { default?: T }): T {
+  return module.default || module;
 }

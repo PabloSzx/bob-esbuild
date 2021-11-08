@@ -19,4 +19,6 @@ export type Loaders = {
 /**
  * TypeScript helper for writing `tsm.js` contents.
  */
-export function define(contents: ConfigFile): ConfigFile;
+export function define(contents: ConfigFile): ConfigFile {
+  return contents;
+}

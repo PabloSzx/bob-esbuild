@@ -13,16 +13,17 @@
   "exports": {
     ".": {
       "import": "./lib/loader.mjs",
-      "require": "./lib/require.js"
+      "require": "./lib/require.js",
+      "types": "./lib/index.d.ts"
     },
     "./*": {
       "import": "./lib/*.mjs",
       "require": "./lib/*.js",
       "types": "./lib/*.d.ts"
     },
-    "./config": "./config/index.js",
     "./package.json": "./package.json"
   },
+  "types": "lib/index.d.ts",
   "bin": {
     "bob-tsm": "./bin/bob-tsm.mjs"
   },
@@ -32,29 +33,34 @@
     "bin"
   ],
   "scripts": {
-    "prepare": "node -r tsm build.ts",
     "dev": "bob-watch --watch=src -c \"pnpm prepare\"",
+    "playground": "bob-watch --watch src playground -c \"pnpm prepare && node bin/bob-tsm.mjs playground/index.ts\"",
+    "prepare": "node -r tsm build.ts",
     "postpublish": "gh-release",
-    "test": "node -r tsm build.ts && c8 node ./test/test.cjs",
-    "playground": "bob-watch --watch src playground -c \"pnpm prepare && node bin/bob-tsm.mjs playground/index.ts\""
-  },
-  "dependencies": {
-    "chokidar": "^3.5.2",
-    "commander": "^8.3.0",
-    "semver": "^7.3.5",
-    "tree-kill": "^1.2.2"
+    "test": "node -r tsm build.ts && c8 node ./test/test.cjs"
   },
   "devDependencies": {
     "@types/semver": "^7.3.9",
     "bob-watch": "workspace:^0.1.0",
     "c8": "^7.10.0",
+    "chokidar": "^3.5.2",
+    "commander": "^8.3.0",
     "esbuild": "^0.13.12",
-    "execa": "^5.1.1"
+    "execa": "^5.1.1",
+    "semver": "^7.3.5",
+    "tree-kill": "^1.2.2"
   },
   "peerDependencies": {
     "esbuild": "*"
   },
+  "optionalDependencies": {
+    "fsevents": "~2.3.2"
+  },
   "engines": {
     "node": "^12.20.0 || >=14.13.0"
+  },
+  "publishConfig": {
+    "access": "public",
+    "directory": "lib"
   }
 }

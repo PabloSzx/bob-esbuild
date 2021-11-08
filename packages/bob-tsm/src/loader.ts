@@ -1,16 +1,18 @@
 // CREDITS TO lukeed https://github.com/lukeed/tsm
 
 import { existsSync, promises } from 'fs';
-import semverGte from 'semver/functions/gte.js';
+import semverGtePkg from './deps/semver.js';
 import { fileURLToPath, URL } from 'url';
-import type { Config, Extension, Options } from '../config';
-import { defaults, finalize } from './utils';
+import type { Config, Extension, Options } from './config';
+import { defaults, finalize, getDefault } from './utils';
 
 if (!process.env.KEEP_LOADER_ARGV) {
   const loaderArgIndex = process.execArgv.findIndex(v => v.startsWith('--loader'));
 
   if (loaderArgIndex !== -1) process.execArgv.splice(loaderArgIndex, 1);
 }
+
+const semverGte = getDefault(semverGtePkg);
 
 const HAS_UPDATED_HOOKS = semverGte(process.versions.node, '16.12.0');
 

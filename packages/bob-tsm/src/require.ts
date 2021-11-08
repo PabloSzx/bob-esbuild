@@ -4,7 +4,7 @@ import { extname } from 'path';
 import { readFileSync } from 'fs';
 import { defaults, finalize } from './utils';
 
-import type { Config, Extension, Options } from '../config';
+import type { Config, Extension, Options } from './config';
 
 type Module = NodeJS.Module & {
   _compile?(source: string, filename: string): typeof loader;
