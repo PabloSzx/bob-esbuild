@@ -33,9 +33,11 @@ importers:
   examples/basic:
     specifiers:
       bob-esbuild-cli: workspace:^3.0.0
+      bob-tsm: workspace:^0.3.4
       shared: workspace:^1.0.0
     dependencies:
       bob-esbuild-cli: link:../../packages/bob-cli
+      bob-tsm: link:../../packages/bob-tsm
       shared: link:../shared
 
   examples/nextjs-custom-server:

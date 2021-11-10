@@ -31,11 +31,15 @@
   ],
   "scripts": {
     "dev": "bob-esbuild watch",
-    "prepare": "bob-esbuild build && node --experimental-json-modules lib/index.js"
+    "prepare": "bob-esbuild build && bob-tsm lib/index.js"
   },
   "dependencies": {
     "bob-esbuild-cli": "workspace:^3.0.0",
+    "bob-tsm": "workspace:^0.3.4",
     "shared": "workspace:^1.0.0"
+  },
+  "publishConfig": {
+    "directory": "lib"
   },
   "buildConfig": {
     "bin": {
@@ -43,8 +47,5 @@
         "input": "src/other.ts"
       }
     }
-  },
-  "publishConfig": {
-    "directory": "lib"
   }
 }
