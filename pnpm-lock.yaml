@@ -75,7 +75,7 @@ importers:
 
   packages/bob:
     specifiers:
-      '@pnpm/exportable-manifest': ^2.1.7
+      '@pnpm/exportable-manifest': ^2.1.8
       '@types/folder-hash': ^4.0.1
       '@types/fs-extra': ^9.0.13
       '@types/lodash.get': ^4.4.6
@@ -102,7 +102,7 @@ importers:
       tsconfck: ^1.1.1
       typescript: ^4.4.4
     dependencies:
-      '@pnpm/exportable-manifest': 2.1.7
+      '@pnpm/exportable-manifest': 2.1.8
       bob-esbuild-plugin: link:../esbuild-plugin
       builtin-modules: 3.2.0
       chalk: 4.1.2
@@ -781,13 +781,13 @@ packages:
     engines: {node: '>=12.17'}
     dev: false
 
-  /@pnpm/exportable-manifest/2.1.7:
-    resolution: {integrity: sha512-vZ5lBRVhdjO6Hvz6+eU4G0WAjwYL8VFAugfphb4uPJ25zFeTBXqhEiyV+f38usmLU8npC6TnOBUDml2qYbSvfw==}
+  /@pnpm/exportable-manifest/2.1.8:
+    resolution: {integrity: sha512-x+SsKXdqn+aDI0mn2PPhtVNGSv20KjHOD0gnX0T7Ljcp8YG83ouNuR9DSIx9c0KrUdo3LaVVH6lK8+54dMjOdw==}
     engines: {node: '>=12.17'}
     dependencies:
       '@pnpm/error': 2.0.0
-      '@pnpm/read-project-manifest': 2.0.6
-      '@pnpm/types': 7.5.0
+      '@pnpm/read-project-manifest': 2.0.7
+      '@pnpm/types': 7.6.0
       ramda: 0.27.1
     dev: false
 
@@ -798,14 +798,14 @@ packages:
       graceful-fs: 4.2.8
     dev: false
 
-  /@pnpm/read-project-manifest/2.0.6:
-    resolution: {integrity: sha512-Xv3NrtWGs6GOuJUEYm8itfBrrpNxkb2tRLRylNsciiIbZrOPjE47kXvg11kSWOWS9QymPbvRw3iFtjR8pfCUTQ==}
+  /@pnpm/read-project-manifest/2.0.7:
+    resolution: {integrity: sha512-CepeM0tKOKygF/lfKQWcFb0KDHPffmbwZjyYh8/jUKmBzZBEIYvVUNInA8TW0w7k7O6uA2LMsxJXadJvO3UXhQ==}
     engines: {node: '>=12.17'}
     dependencies:
       '@pnpm/error': 2.0.0
       '@pnpm/graceful-fs': 1.0.0
-      '@pnpm/types': 7.5.0
-      '@pnpm/write-project-manifest': 2.0.5
+      '@pnpm/types': 7.6.0
+      '@pnpm/write-project-manifest': 2.0.6
       detect-indent: 6.1.0
       fast-deep-equal: 3.1.3
       is-windows: 1.0.2
@@ -816,16 +816,16 @@ packages:
       strip-bom: 4.0.0
     dev: false
 
-  /@pnpm/types/7.5.0:
-    resolution: {integrity: sha512-F5Ei+m2A1tLmNpyvGkKrqB0J0wxzBeDraJv6RZ44iOPR1uk8qmDYo6jYd7sX2vARx1RtKpEKt7RfplJj+tb0EA==}
+  /@pnpm/types/7.6.0:
+    resolution: {integrity: sha512-P4kJm0iCn+Hk+1P/OobJQSOD8/Eu1C4bfuWlow8QXNp+FeRm1yGSOF1HKfznxGbE0YoavPnrhgKYLbEoJg/KNA==}
     engines: {node: '>=12.17'}
     dev: false
 
-  /@pnpm/write-project-manifest/2.0.5:
-    resolution: {integrity: sha512-RETAD8qDl8Nth7PQl5ltjT2znmYNcgCtAyrzfyLcQJ9HDx0Lx9YbdcNRdK2DYTqxZqIruxti3LXI7S7YwKDc8g==}
+  /@pnpm/write-project-manifest/2.0.6:
+    resolution: {integrity: sha512-Nhw7JPPeTagSlGLub9RWry51Ts9x+kvnmxjnrn26eTE1GOu3IjDSAJqu7Qdx8jNph2eSVbGHL132EVQa79Dwyw==}
     engines: {node: '>=12.17'}
     dependencies:
-      '@pnpm/types': 7.5.0
+      '@pnpm/types': 7.6.0
       json5: 2.2.0
       write-file-atomic: 3.0.3
       write-yaml-file: 4.2.0
