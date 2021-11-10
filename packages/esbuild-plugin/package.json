@@ -33,9 +33,9 @@
     "tsconfck": "^1.1.1"
   },
   "devDependencies": {
-    "@types/node": "^16.11.6",
+    "@types/node": "^16.11.7",
     "changesets-github-release": "^0.0.4",
-    "esbuild": "^0.13.12",
+    "esbuild": "^0.13.13",
     "rollup": "^2.59.0",
     "tsup": "^5.6.0"
   },
