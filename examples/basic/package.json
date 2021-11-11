@@ -30,7 +30,7 @@
     "lib"
   ],
   "scripts": {
-    "dev": "bob-esbuild watch",
+    "dev": "bob-esbuild watch --onlyCJS",
     "prepare": "bob-esbuild build && bob-tsm lib/index.js"
   },
   "dependencies": {

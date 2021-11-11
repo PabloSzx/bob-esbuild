@@ -18,7 +18,8 @@ WatchCommand.option('--cwd <dir>', 'Change target current directory')
   .option('--onlyCJS', 'Only build for CJS')
   .option('--onlyESM', 'Only build for ESM')
   .option('--onSuccess <cmd>', 'Execute script after successful JS build')
-  .action(async ({ cwd, input: inputFiles, bundle, clean, onSuccess, onlyCJS, onlyESM, skipTsc }) => {
+  .option('--skipValidate', 'Skip package.json validation')
+  .action(async ({ cwd, input: inputFiles, bundle, clean, onSuccess, onlyCJS, onlyESM, skipTsc, skipValidate }) => {
     const { watcher } = await startWatch({
       rollup: {
         config: {
@@ -28,6 +29,7 @@ WatchCommand.option('--cwd <dir>', 'Change target current directory')
           clean,
           onlyCJS,
           onlyESM,
+          skipValidate,
         },
         onSuccessCommand: onSuccess,
       },
