@@ -1,7 +1,7 @@
 import type { ChildProcess } from 'child_process';
-import { command } from 'execa';
-import kill from 'tree-kill';
+import type { RollupWatcher } from 'rollup';
 import { ConfigOptions, getRollupConfig } from '../config/rollup';
+import { command, treeKill } from '../deps.js';
 import { debug } from '../log/debug';
 import { error } from '../log/error';
 
@@ -12,7 +12,10 @@ export interface WatchRollupOptions {
   onStartCallback?: (builds: number) => void;
 }
 
-export async function watchRollup(options: WatchRollupOptions = {}) {
+export async function watchRollup(options: WatchRollupOptions = {}): Promise<{
+  watcher: RollupWatcher;
+  cleanUp: () => void;
+}> {
   const { watch: rollupWatch } = await import('rollup');
 
   const { inputOptions, outputOptions, write } = await getRollupConfig(options.config);
@@ -56,7 +59,7 @@ export async function watchRollup(options: WatchRollupOptions = {}) {
 
   function killPromise(pid: number) {
     return (pendingKillPromise = new Promise(resolve => {
-      kill(pid, () => {
+      treeKill(pid, () => {
         resolve();
       });
     }));

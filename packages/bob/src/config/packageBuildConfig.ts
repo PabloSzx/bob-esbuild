@@ -1,8 +1,6 @@
-import fsExtra from 'fs-extra';
 import { resolve } from 'path';
+import { readJSON } from '../deps.js';
 import type { PackageJSON } from './packageJson';
-
-const { readJSON } = fsExtra;
 
 export interface PackageBuildConfig {
   input?: string[];

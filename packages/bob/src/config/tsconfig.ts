@@ -1,16 +1,16 @@
 import assert from 'assert';
 import { join } from 'path';
-import { parse } from 'tsconfck';
+import { parseTsconfig } from '../deps.js';
 import { error } from '../log/error';
-import { globalConfig } from './cosmiconfig';
 import { retry } from '../utils/retry';
+import { globalConfig } from './cosmiconfig';
 
 export const resolvedTsconfig = retry(async () => {
   const {
     config: { rootDir: configRootDir, singleBuild },
   } = await globalConfig;
 
-  const parseResult = await parse(join(configRootDir, 'tsconfig.json'));
+  const parseResult = await parseTsconfig(join(configRootDir, 'tsconfig.json'));
 
   const compilerOptions = parseResult.tsconfig.compilerOptions;
 

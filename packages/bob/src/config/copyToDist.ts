@@ -1,10 +1,6 @@
-import fsExtra from 'fs-extra';
-
 import { dirname, join } from 'path';
-
 import type { Plugin } from 'rollup';
-
-const { copyFile, mkdirp, pathExists } = fsExtra;
+import { copyFile, globby, mkdirp, pathExists } from '../deps.js';
 
 export interface CopyFilesOptions {
   distDir: string;
@@ -13,8 +9,6 @@ export interface CopyFilesOptions {
 }
 
 async function copyFilesToDist({ cwd = process.cwd(), distDir, files }: CopyFilesOptions) {
-  const { default: globby } = await import('globby');
-
   const allFiles = await globby(files, { cwd });
 
   await Promise.all(

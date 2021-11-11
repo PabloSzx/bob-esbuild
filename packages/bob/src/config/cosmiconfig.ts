@@ -1,19 +1,41 @@
-import { cosmiconfig } from 'cosmiconfig';
+import type { EsbuildPluginOptions } from 'bob-esbuild-plugin';
+import { transform } from 'esbuild';
 import fs from 'fs';
 import { dirname } from 'path';
-import { transform } from 'esbuild';
-
+import type { InputOptions, OutputOptions, Plugin } from 'rollup';
+import { cosmiconfig } from '../deps.js';
 import { error } from '../log/error';
-import { importFromString } from '../utils/importFromString';
-
-import type { Plugin, InputOptions, OutputOptions } from 'rollup';
-import type { ConfigOptions } from './rollup';
 import type { TSCOptions } from '../tsc/types';
-import type { EsbuildPluginOptions } from 'bob-esbuild-plugin';
-import type { ExternalsOptions } from 'rollup-plugin-node-externals';
+import { importFromString } from '../utils/importFromString';
 import type { PackageJSON } from './packageJson';
+import type { ConfigOptions } from './rollup';
 
 export type PickRequired<T, K extends keyof T> = T & Required<Pick<T, K>>;
+
+export interface ExternalsOptions {
+  /**
+   * Path/to/your/package.json file (or array of paths).
+   * Defaults to all package.json files found in parent directories recursively.
+   * Won't got outside of a git repository.
+   */
+  packagePath?: string | string[];
+  /** Mark node built-in modules like `path`, `fs`... as external. Defaults to `true`. */
+  builtins?: boolean;
+  /** Mark dependencies as external. Defaults to `false`. */
+  deps?: boolean;
+  /** Mark devDependencies as external. Defaults to `true`. */
+  devDeps?: boolean;
+  /** Mark peerDependencies as external. Defaults to `true`. */
+  peerDeps?: boolean;
+  /** Mark optionalDependencies as external. Defaults to `true`. */
+  optDeps?: boolean;
+  /** Force these deps in the list of externals, regardless of other settings. Defaults to `[]`  */
+  include?: string | RegExp | (string | RegExp)[];
+  /** Exclude these deps from the list of externals, regardless of other settings. Defaults to `[]`  */
+  exclude?: string | RegExp | (string | RegExp)[];
+  /** @deprecated Use `exclude` instead. */
+  except?: string | RegExp | (string | RegExp)[];
+}
 
 export interface BobConfig extends Pick<ConfigOptions, 'clean' | 'inputFiles' | 'bundle' | 'onlyCJS' | 'onlyESM'> {
   tsc?: TSCOptions;

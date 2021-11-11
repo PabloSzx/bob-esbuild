@@ -1,10 +1,9 @@
-import { hashElement } from 'folder-hash';
 import { existsSync, unlinkSync } from 'fs';
-import fsExtra from 'fs-extra';
 import { resolve } from 'path';
-import { retry } from '../utils/retry';
 import { globalConfig } from '../config/cosmiconfig';
 import { resolvedTsconfig } from '../config/tsconfig';
+import { hashElement, mkdirp, readJSON, writeJSON } from '../deps.js';
+import { retry } from '../utils/retry';
 
 export async function getHash(): Promise<{
   shouldBuild: boolean;
@@ -53,7 +52,7 @@ export async function getHash(): Promise<{
         },
       }),
       existsSync(typesHashJSON)
-        ? fsExtra.readJSON(typesHashJSON).then(
+        ? readJSON(typesHashJSON).then(
             v => v as { hash: string },
             () => null
           )
@@ -68,13 +67,11 @@ export async function getHash(): Promise<{
   };
 
   if (jsonHash?.hash !== currentHash.hash) {
-    fsExtra.mkdirp(resolve(rootDir, outDir)).then(
+    mkdirp(resolve(rootDir, outDir)).then(
       () => {
-        fsExtra
-          .writeJSON(typesHashJSON, {
-            hash: currentHash.hash,
-          })
-          .catch(() => null);
+        writeJSON(typesHashJSON, {
+          hash: currentHash.hash,
+        }).catch(() => null);
       },
       () => null
     );

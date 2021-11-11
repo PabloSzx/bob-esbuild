@@ -1,10 +1,8 @@
 import { bobEsbuildPlugin } from 'bob-esbuild-plugin';
 import path, { join, resolve } from 'path';
-import type { InputOptions, OutputOptions, Plugin, RollupBuild } from 'rollup';
-import del from 'rollup-plugin-delete';
-import externals from 'rollup-plugin-node-externals';
+import type { ExternalOption, InputOptions, OutputOptions, Plugin, RollupBuild } from 'rollup';
+import { del, externals, globby, tsconfigPaths as tsPaths } from '../deps.js';
 import { debug } from '../log/debug';
-import { getDefault } from '../utils/getDefault';
 import { cleanObject } from '../utils/object';
 import { retry } from '../utils/retry';
 import { copyToDist } from './copyToDist';
@@ -209,13 +207,6 @@ export async function getRollupConfig(optionsArg: ConfigOptions = {}) {
 
   const distDir = globalOptions.distDir;
 
-  const [globbyPkg, tsPaths] = await Promise.all([
-    import('globby'),
-    globalOptions.useTsconfigPaths ? import('rollup-plugin-tsconfig-paths').then(v => getDefault(v.default)) : null,
-  ]);
-
-  const globby = globbyPkg.default || (globbyPkg as any).globby;
-
   const input = await retry(async () =>
     (
       await Promise.all(
@@ -366,7 +357,7 @@ export async function getRollupConfig(optionsArg: ConfigOptions = {}) {
     );
   }
 
-  if (tsPaths) {
+  if (globalOptions.useTsconfigPaths) {
     plugins.push(
       tsPaths({
         tsConfigPath: join(globalOptions.rootDir, 'tsconfig.json'),

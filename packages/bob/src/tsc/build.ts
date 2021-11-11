@@ -1,15 +1,12 @@
-import { command } from 'execa';
-import fsExtra from 'fs-extra';
 import { parse, resolve } from 'path';
 import { globalConfig } from '../config/cosmiconfig';
 import { resolvedTsconfig } from '../config/tsconfig';
+import { command, copy, pathExists, globby } from '../deps.js';
 import { debug } from '../log/debug';
 import { warn } from '../log/warn';
 import { retry } from '../utils/retry';
 import { getHash } from './hash';
 import type { TSCOptions } from './types';
-
-const { copy, pathExists } = fsExtra;
 
 export async function buildTsc(options: TSCOptions = {}) {
   const {
@@ -19,8 +16,6 @@ export async function buildTsc(options: TSCOptions = {}) {
   const dirs = [...(options.dirs || []), ...(globalTsc.dirs || [])];
 
   const startTime = Date.now();
-
-  const { default: globby } = await import('globby');
 
   const hashPromise = Promise.allSettled([retry(getHash)]).then(v => v[0]);
 

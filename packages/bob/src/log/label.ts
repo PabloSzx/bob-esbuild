@@ -1,5 +1,4 @@
-import colors from 'chalk';
-import { format } from 'date-fns';
+import { colors, format } from '../deps.js';
 
 export const makeLabel = (input: string, type: 'info' | 'success' | 'error' | 'warn') =>
   colors[type === 'info' ? 'bgBlue' : type === 'warn' ? 'bgYellow' : type === 'error' ? 'bgRed' : 'bgGreen'](

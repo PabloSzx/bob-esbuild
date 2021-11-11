@@ -1,8 +1,7 @@
 import { bobEsbuildPlugin } from 'bob-esbuild-plugin';
-import get from 'lodash.get';
 import { resolve } from 'path';
 import type { Plugin } from 'rollup';
-import externals from 'rollup-plugin-node-externals';
+import { externals, get } from '../deps.js';
 import { debug } from '../log/debug';
 import { globalConfig } from './cosmiconfig';
 import type { PackageBuildConfig } from './packageBuildConfig';
