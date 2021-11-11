@@ -1,5 +1,13 @@
 # bob-esbuild-cli
 
+## 3.0.1
+
+### Patch Changes
+
+- abff05c: Add skipValidate to watch command
+- Updated dependencies [2939cca]
+  - bob-esbuild@3.1.1
+
 ## 3.0.0
 
 ### Major Changes
