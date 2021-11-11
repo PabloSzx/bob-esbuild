@@ -1,5 +1,18 @@
 # bob-esbuild
 
+## 3.1.0
+
+### Minor Changes
+
+- 1c3c506: Bundle dependencies
+
+### Patch Changes
+
+- 17d1680: new outputOptions config
+- b89ee69: Add external and globby options
+- Updated dependencies [078402e]
+  - bob-esbuild-plugin@3.1.0
+
 ## 3.0.2
 
 ### Patch Changes

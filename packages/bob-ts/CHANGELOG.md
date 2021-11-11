@@ -1,5 +1,13 @@
 # bob-ts
 
+## 1.2.2
+
+### Patch Changes
+
+- 6824b73: Improve released package
+- Updated dependencies [078402e]
+  - bob-esbuild-plugin@3.1.0
+
 ## 1.2.1
 
 ### Patch Changes
