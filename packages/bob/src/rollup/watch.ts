@@ -116,6 +116,10 @@ export async function watchRollup(options: WatchRollupOptions = {}): Promise<{
         debug(`JS watcher for ${cwd} started`);
         break;
       }
+      case 'ERROR': {
+        error(event.error);
+        break;
+      }
     }
   });
 
