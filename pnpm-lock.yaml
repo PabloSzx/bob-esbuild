@@ -32,7 +32,7 @@ importers:
 
   examples/basic:
     specifiers:
-      bob-esbuild-cli: workspace:^3.0.0
+      bob-esbuild-cli: workspace:^3.0.1
       bob-tsm: workspace:^0.3.5
       shared: workspace:^1.0.0
     dependencies:
@@ -69,7 +69,7 @@ importers:
 
   examples/shared:
     specifiers:
-      bob-esbuild-cli: workspace:^3.0.0
+      bob-esbuild-cli: workspace:^3.0.1
     dependencies:
       bob-esbuild-cli: link:../../packages/bob-cli
 
@@ -130,7 +130,7 @@ importers:
 
   packages/bob-cli:
     specifiers:
-      bob-esbuild: workspace:^3.0.0
+      bob-esbuild: workspace:^3.1.1
       changesets-github-release: ^0.0.4
       commander: ^8.3.0
       typescript: ^4.4.4

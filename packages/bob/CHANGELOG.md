@@ -1,5 +1,11 @@
 # bob-esbuild
 
+## 3.1.1
+
+### Patch Changes
+
+- 2939cca: watch mode always logs errors
+
 ## 3.1.0
 
 ### Minor Changes
