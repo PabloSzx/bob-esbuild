@@ -73,6 +73,8 @@ async function main() {
       ),
       'utf-8'
     ),
+    promises.copyFile('README.md', 'lib/README.md'),
+    promises.copyFile('LICENSE', 'lib/LICENSE'),
   ]);
 }
 
