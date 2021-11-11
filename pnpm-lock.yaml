@@ -219,7 +219,6 @@ importers:
   packages/esbuild-plugin:
     specifiers:
       '@rollup/pluginutils': ^4.1.1
-      '@types/node': '>=16.11.1'
       changesets-github-release: ^0.0.4
       esbuild: '>=0.13.12'
       rollup: ^2.59.0
@@ -227,12 +226,11 @@ importers:
       tsup: ^5.6.0
     dependencies:
       '@rollup/pluginutils': 4.1.1
-      tsconfck: 1.1.1_typescript@4.4.4
     devDependencies:
-      '@types/node': 16.11.7
       changesets-github-release: 0.0.4
       esbuild: 0.13.13
       rollup: 2.59.0
+      tsconfck: 1.1.1_typescript@4.4.4
       tsup: 5.6.0_typescript@4.4.4
 
 packages:
@@ -4216,6 +4214,7 @@ packages:
         optional: true
     dependencies:
       typescript: 4.4.4
+    dev: true
 
   /tsm/2.1.4:
     resolution: {integrity: sha512-gz1zckplzOzHdiY1HVVUoH8bl2eWxbU6uJraB31w1NQ+/kQkjix3ldYHBnWaoNnOL9q8ruS+E2Wckdcw56DzrA==}
