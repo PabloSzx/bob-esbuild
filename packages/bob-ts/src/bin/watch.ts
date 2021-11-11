@@ -1,4 +1,4 @@
-import { Option, program } from 'commander';
+import { Option, program } from '../deps.js';
 import { resolve } from 'path';
 import { getDefaultNodeTargetVersion } from '../defaults';
 

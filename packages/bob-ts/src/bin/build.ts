@@ -1,5 +1,5 @@
 import assert from 'assert';
-import { program } from 'commander';
+import { program } from '../deps.js';
 import { resolve } from 'path';
 import { getDefaultNodeTargetVersion } from '../defaults';
 

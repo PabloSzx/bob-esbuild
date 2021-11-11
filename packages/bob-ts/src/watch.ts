@@ -1,7 +1,6 @@
 import type { ChildProcess } from 'child_process';
-import { command } from 'execa';
 import type { InputOptions, OutputOptions } from 'rollup';
-import kill from 'tree-kill';
+import { command, treeKill } from './watchDeps.js';
 
 export interface WatchRollupOptions {
   input: InputOptions;
@@ -58,7 +57,7 @@ export async function watchRollup(options: WatchRollupOptions) {
 
   function killPromise(pid: number) {
     const pendingKillPromise = new Promise<void>(resolve => {
-      kill(pid, () => {
+      treeKill(pid, () => {
         resolve();
         pendingKillPromises.delete(pendingKillPromise);
       });

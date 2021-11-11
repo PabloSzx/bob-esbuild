@@ -1,12 +1,16 @@
 import { bobEsbuildPlugin, EsbuildPluginOptions } from 'bob-esbuild-plugin';
-import { resolve } from 'path';
-import type { InputOptions, OutputOptions, ExternalOption } from 'rollup';
-import del from 'rollup-plugin-delete';
-import { cleanEmptyFoldersRecursively } from './clean';
 import { existsSync } from 'fs';
+import { resolve } from 'path';
+import type { ExternalOption, InputOptions, OutputOptions } from 'rollup';
+import type { CompilerOptions } from 'typescript';
+import { cleanEmptyFoldersRecursively } from './clean';
+import { del, globby, tsconfigPaths } from './deps.js';
 import { getPackageJson } from './packageJson';
 
-import type { tsconfigPaths } from 'rollup-plugin-tsconfig-paths';
+export interface TsConfigPayload {
+  compilerOptions: CompilerOptions;
+  fileNames?: string[];
+}
 
 export interface RollupConfig {
   entryPoints: string[];
@@ -17,12 +21,16 @@ export interface RollupConfig {
   esbuild?: EsbuildPluginOptions;
   sourcemap?: OutputOptions['sourcemap'] & EsbuildPluginOptions['sourceMap'];
   rollup?: Partial<OutputOptions>;
-  paths?: boolean | Parameters<typeof tsconfigPaths>[0];
+  paths?:
+    | boolean
+    | {
+        tsConfigPath: string | string[] | TsConfigPayload | TsConfigPayload[];
+        logLevel: 'none' | 'error' | 'warn' | 'info' | 'debug' | 'trace';
+        colors: boolean;
+        strict: boolean;
+        respectCoreModule: boolean;
+      };
   external?: ExternalOption;
-}
-
-function getDefault<T>(v: T | { default?: T }) {
-  return (('default' in v ? v.default : v) || v) as T;
 }
 
 export const getRollupConfig = async ({
@@ -38,11 +46,6 @@ export const getRollupConfig = async ({
   external,
 }: RollupConfig) => {
   const dir = resolve(outDir);
-
-  const [{ globby }, tsPaths] = await Promise.all([
-    import('globby'),
-    paths ? import('rollup-plugin-tsconfig-paths').then(v => getDefault(v.default)) : null,
-  ]);
 
   const input = (
     await globby(
@@ -96,7 +99,7 @@ export const getRollupConfig = async ({
             },
           };
         })(),
-      tsPaths && tsPaths(typeof paths === 'boolean' ? undefined : paths),
+      paths && tsconfigPaths(typeof paths === 'boolean' ? undefined : paths),
     ],
     external,
   };
