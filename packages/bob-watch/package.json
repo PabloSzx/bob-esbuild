@@ -1,8 +1,6 @@
 {
   "name": "bob-watch",
   "version": "0.1.0",
-  "license": "MIT",
-  "author": "PabloSzx <pablosaez1995@gmail.com>",
   "homepage": "https://github.com/PabloSzx/bob-esbuild",
   "bugs": "https://github.com/PabloSzx/bob-esbuild/issues",
   "repository": {
@@ -10,6 +8,9 @@
     "url": "https://github.com/PabloSzx/bob-esbuild",
     "directory": "packages/bob-watch"
   },
+  "license": "MIT",
+  "author": "PabloSzx <pablosaez1995@gmail.com>",
+  "sideEffects": false,
   "exports": {
     ".": {
       "require": "./lib/index.js",
@@ -34,17 +35,23 @@
     "/bin"
   ],
   "scripts": {
-    "prepare": "node -r tsm build.ts && bob-esbuild tsc",
+    "prepare": "bob-tsm build.ts",
     "postpublish": "gh-release"
   },
-  "dependencies": {
+  "devDependencies": {
+    "bob-esbuild": "workspace:^3.0.0",
+    "bob-esbuild-cli": "workspace:^3.0.0",
+    "bob-tsm": "workspace:^0.3.4",
     "chokidar": "^3.5.2",
     "commander": "^8.3.0",
     "execa": "^5.1.1",
     "tree-kill": "^1.2.2"
   },
-  "devDependencies": {
-    "bob-esbuild": "workspace:^3.0.0",
-    "bob-esbuild-cli": "workspace:^3.0.0"
+  "optionalDependencies": {
+    "fsevents": "~2.3.2"
+  },
+  "publishConfig": {
+    "access": "public",
+    "directory": "lib"
   }
 }

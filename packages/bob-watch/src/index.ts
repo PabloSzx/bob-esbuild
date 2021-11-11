@@ -1,8 +1,10 @@
 import type { ChildProcess } from 'child_process';
-import { FSWatcher, watch, WatchOptions } from 'chokidar';
-import { command } from 'execa';
-import kill from 'tree-kill';
+import type { FSWatcher } from 'chokidar';
+import * as deps from './deps.js';
+import type { WatchOptions } from './types';
 import { debouncePromise } from './utils';
+
+const { treeKill, command, watch } = deps;
 
 export function StartWatcher({
   paths,
@@ -38,7 +40,7 @@ export function StartWatcher({
 
   function killPromise(pid: number) {
     const pendingKillPromise = new Promise<void>(resolve => {
-      kill(pid, () => {
+      treeKill(pid, () => {
         resolve();
         pendingKillPromises.delete(pendingKillPromise);
       });
