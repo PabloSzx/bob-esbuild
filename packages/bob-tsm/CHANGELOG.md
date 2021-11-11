@@ -1,5 +1,11 @@
 # bob-tsm
 
+## 0.3.5
+
+### Patch Changes
+
+- 451d9f8: Prevent ".d.ts" imports
+
 ## 0.3.4
 
 ### Patch Changes
