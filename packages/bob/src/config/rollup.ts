@@ -190,6 +190,11 @@ export interface ConfigOptions {
      */
     unique?: boolean;
   };
+
+  /**
+   * Customize output options
+   */
+  outputOptions?: Partial<OutputOptions>;
 }
 
 export async function getRollupConfig(optionsArg: ConfigOptions = {}) {
@@ -241,7 +246,8 @@ export async function getRollupConfig(optionsArg: ConfigOptions = {}) {
     exports: 'auto',
     sourcemap: false,
     preferConst: true,
-    ...globalOptions.outputOptions,
+    ...cleanObject(options.outputOptions),
+    ...cleanObject(globalOptions.outputOptions),
   };
 
   const esmOpts: OutputOptions = {
@@ -251,7 +257,8 @@ export async function getRollupConfig(optionsArg: ConfigOptions = {}) {
     preserveModules: true,
     sourcemap: false,
     preferConst: true,
-    ...globalOptions.outputOptions,
+    ...cleanObject(options.outputOptions),
+    ...cleanObject(globalOptions.outputOptions),
   };
 
   const outputOptions: OutputOptions[] = options.onlyCJS ? [cjsOpts] : options.onlyESM ? [esmOpts] : [cjsOpts, esmOpts];
