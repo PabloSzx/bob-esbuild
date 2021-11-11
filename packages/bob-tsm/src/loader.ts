@@ -126,6 +126,9 @@ export const getFormat: Inspect | undefined = HAS_UPDATED_HOOKS
   : async function (uri, context, fallback) {
       let options = await toOptions(uri);
       if (options == null) return fallback(uri, context, fallback);
+
+      if (uri.endsWith('.d.ts')) return { format: 'module' };
+
       return { format: options.format === 'cjs' ? 'commonjs' : 'module' };
     };
 
@@ -133,6 +136,8 @@ export const load: Load = async function (url, context, defaultLoad) {
   let options = await toOptions(url);
 
   if (options == null) return defaultLoad(url, context, defaultLoad);
+
+  if (url.endsWith('.d.ts')) return { format: 'module', source: '' };
 
   const format = options.format === 'cjs' ? 'commonjs' : 'module';
 
@@ -157,6 +162,8 @@ export const transformSource: Transform | undefined = HAS_UPDATED_HOOKS
   : async function (source, context, xform) {
       let options = await toOptions(context.url);
       if (options == null) return xform(source, context, xform);
+
+      if (context.url.endsWith('.d.ts')) return { source: '' };
 
       // TODO: decode SAB/U8 correctly
       esbuild = esbuild || (await import('esbuild'));
