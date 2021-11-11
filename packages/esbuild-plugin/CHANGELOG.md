@@ -1,5 +1,11 @@
 # bob-esbuild-plugin
 
+## 3.1.0
+
+### Patch Changes
+
+- 078402e: Improve released package
+
 ## 2.2.0
 
 ### Patch Changes
