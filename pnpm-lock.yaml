@@ -75,7 +75,7 @@ importers:
 
   packages/bob:
     specifiers:
-      '@pnpm/exportable-manifest': ^2.1.8
+      '@pnpm/exportable-manifest': ^2.2.0
       '@types/folder-hash': ^4.0.1
       '@types/fs-extra': ^9.0.13
       '@types/lodash.get': ^4.4.6
@@ -104,7 +104,7 @@ importers:
       bob-esbuild-plugin: link:../esbuild-plugin
       rollup: 2.60.0
     devDependencies:
-      '@pnpm/exportable-manifest': 2.1.8
+      '@pnpm/exportable-manifest': 2.2.0
       '@types/folder-hash': 4.0.1
       '@types/fs-extra': 9.0.13
       '@types/lodash.get': 4.4.6
@@ -785,8 +785,8 @@ packages:
     engines: {node: '>=12.17'}
     dev: true
 
-  /@pnpm/exportable-manifest/2.1.8:
-    resolution: {integrity: sha512-x+SsKXdqn+aDI0mn2PPhtVNGSv20KjHOD0gnX0T7Ljcp8YG83ouNuR9DSIx9c0KrUdo3LaVVH6lK8+54dMjOdw==}
+  /@pnpm/exportable-manifest/2.2.0:
+    resolution: {integrity: sha512-cZ9cZmuaxY1CK9kFWD02iAkuLopIq3+J3s82CK4LL2j3ky3mfE+Ti4gn30A7s03h2ij0CrxfJ2IFugZ+OueaGQ==}
     engines: {node: '>=12.17'}
     dependencies:
       '@pnpm/error': 2.0.0

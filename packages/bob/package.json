@@ -35,7 +35,7 @@
     "rollup": "^2.60.0"
   },
   "devDependencies": {
-    "@pnpm/exportable-manifest": "^2.1.8",
+    "@pnpm/exportable-manifest": "^2.2.0",
     "@types/folder-hash": "^4.0.1",
     "@types/fs-extra": "^9.0.13",
     "@types/lodash.get": "^4.4.6",
