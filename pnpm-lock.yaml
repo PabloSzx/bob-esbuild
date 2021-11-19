@@ -85,7 +85,7 @@ importers:
       chalk: ^4.1.2
       changesets-github-release: ^0.0.4
       cosmiconfig: ^7.0.1
-      date-fns: ^2.25.0
+      date-fns: ^2.26.0
       esbuild: '>=0.13.12'
       execa: ^5.1.1
       fast-glob: ^3.2.7
@@ -113,7 +113,7 @@ importers:
       chalk: 4.1.2
       changesets-github-release: 0.0.4
       cosmiconfig: 7.0.1
-      date-fns: 2.25.0
+      date-fns: 2.26.0
       esbuild: 0.13.13
       execa: 5.1.1
       fast-glob: 3.2.7
@@ -1606,8 +1606,8 @@ packages:
     engines: {node: '>= 6'}
     dev: false
 
-  /date-fns/2.25.0:
-    resolution: {integrity: sha512-ovYRFnTrbGPD4nqaEqescPEv1mNwvt+UTqI3Ay9SzNtey9NZnYu6E2qCcBBgJ6/2VF1zGGygpyTDITqpQQ5e+w==}
+  /date-fns/2.26.0:
+    resolution: {integrity: sha512-VQI812dRi3cusdY/fhoBKvc6l2W8BPWU1FNVnFH9Nttjx4AFBRzfSVb/Eyc7jBT6e9sg1XtAGsYpBQ6c/jygbg==}
     engines: {node: '>=0.11'}
     dev: true
 
