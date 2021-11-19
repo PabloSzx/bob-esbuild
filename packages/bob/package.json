@@ -39,7 +39,7 @@
     "@types/folder-hash": "^4.0.1",
     "@types/fs-extra": "^9.0.13",
     "@types/lodash.get": "^4.4.6",
-    "@types/node": ">=16.11.1",
+    "@types/node": ">=16.11.9",
     "builtin-modules": "^3.2.0",
     "chalk": "^4.1.2",
     "changesets-github-release": "^0.0.4",
