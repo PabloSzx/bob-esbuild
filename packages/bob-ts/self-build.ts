@@ -7,6 +7,10 @@ import { buildRollup } from '../bob/src/rollup/build';
 import pkg from './package.json';
 
 async function main() {
+  await promises.rm('lib', {
+    recursive: true,
+    force: true,
+  });
   await buildRollup({
     inputFiles: ['./src/bin'],
     outputOptions: {
@@ -24,7 +28,7 @@ async function main() {
           resolve('./src/bin/watch.ts'),
           resolve('./src/deps.ts'),
           resolve('./src/watchDeps.ts'),
-        ],
+        ].map(v => v.replace(/\\/g, '/')),
       },
     },
   });

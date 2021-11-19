@@ -9,7 +9,7 @@ async function main() {
       external: ['../deps.js', './deps.js'],
       clean: true,
       globbyOptions: {
-        ignore: [resolve('./src/deps.ts')],
+        ignore: [resolve('./src/deps.ts')].map(v => v.replace(/\\/g, '/')),
       },
     },
   });

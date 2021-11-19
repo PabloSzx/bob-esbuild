@@ -34,6 +34,7 @@
     "prepare": "bob-esbuild build && bob-tsm lib/index.js"
   },
   "dependencies": {
+    "bob-esbuild": "workspace:^3.1.1",
     "bob-esbuild-cli": "workspace:^3.0.1",
     "bob-tsm": "workspace:^0.3.5",
     "shared": "workspace:^1.0.0"
@@ -46,6 +47,17 @@
       "test_cli": {
         "input": "src/other.ts"
       }
+    }
+  },
+  "dependenciesMeta": {
+    "bob-esbuild-cli": {
+      "injected": true
+    },
+    "bob-esbuild": {
+      "injected": true
+    },
+    "bob-tsm": {
+      "injected": true
     }
   }
 }

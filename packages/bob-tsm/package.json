@@ -37,7 +37,7 @@
     "playground": "node ../bob-watch/bin/bob-watch.mjs --watch src playground -c \"pnpm prepare && node bin/bob-tsm.mjs playground/index.ts\"",
     "prepare": "node -r tsm build.ts",
     "postpublish": "gh-release",
-    "test": "node -r tsm build.ts && c8 node ./test/test.cjs"
+    "test": "node -r tsm build.ts && c8 node -r tsm ./test/test.cjs"
   },
   "devDependencies": {
     "@types/semver": "^7.3.9",
@@ -45,8 +45,8 @@
     "c8": "^7.10.0",
     "chokidar": "^3.5.2",
     "commander": "^8.3.0",
-    "esbuild": "^0.13.13",
-    "execa": "^5.1.1",
+    "esbuild": ">=0.13.12",
+    "execa": "^6.0.0",
     "semver": "^7.3.5",
     "tree-kill": "^1.2.2"
   },

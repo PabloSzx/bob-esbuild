@@ -32,7 +32,6 @@
     "/lib"
   ],
   "scripts": {
-    "dev": "bob-esbuild watch",
     "prepare": "node -r tsm self-build.ts",
     "postpublish": "gh-release"
   },
@@ -41,12 +40,12 @@
     "rollup": "^2.60.0"
   },
   "devDependencies": {
-    "@types/node": "^16.11.7",
+    "@types/node": "^16.11.9",
     "bob-esbuild-cli": "workspace:^3.0.0",
     "changesets-github-release": "^0.0.4",
     "commander": "^8.3.0",
-    "esbuild": "^0.13.13",
-    "execa": "^5.1.1",
+    "esbuild": "^0.13.14",
+    "execa": "^6.0.0",
     "globby": "^12.0.2",
     "rollup-plugin-delete": "^2.0.0",
     "rollup-plugin-tsconfig-paths": "^1.0.15",

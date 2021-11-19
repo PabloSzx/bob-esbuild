@@ -76,6 +76,8 @@ async function main() {
     promises.copyFile('README.md', 'lib/README.md'),
     promises.copyFile('LICENSE', 'lib/LICENSE'),
   ]);
+
+  await promises.writeFile('./lib/deps.js', (await promises.readFile('./lib/deps.js', 'utf-8')).replace(/"node:/g, '"'), 'utf-8');
 }
 
 main().catch(err => {

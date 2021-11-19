@@ -1,5 +1,5 @@
 const { join } = require('path');
-const execa = require('execa');
+const { execa } = require('execa');
 const { strictEqual } = require('assert');
 
 async function test() {

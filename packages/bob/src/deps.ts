@@ -2,7 +2,7 @@ export { default as makePublishManifest } from '@pnpm/exportable-manifest';
 export { default as colors } from 'chalk';
 export { cosmiconfig } from 'cosmiconfig';
 export { default as format } from 'date-fns/format/index.js';
-export { command } from 'execa';
+export { execaCommand as command } from 'execa';
 export { hashElement } from 'folder-hash';
 export { globby } from 'globby';
 export { default as get } from 'lodash.get';
