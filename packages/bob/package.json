@@ -45,7 +45,7 @@
     "changesets-github-release": "^0.0.4",
     "cosmiconfig": "^7.0.1",
     "date-fns": "^2.26.0",
-    "esbuild": "^0.13.15",
+    "esbuild": "^0.14.0",
     "execa": "^6.0.0",
     "fast-glob": "^3.2.7",
     "folder-hash": "^4.0.1",
