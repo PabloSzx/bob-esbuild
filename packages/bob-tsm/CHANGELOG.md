@@ -1,5 +1,11 @@
 # bob-tsm
 
+## 0.3.6
+
+### Patch Changes
+
+- af75da4: Respect import maps
+
 ## 0.3.5
 
 ### Patch Changes
