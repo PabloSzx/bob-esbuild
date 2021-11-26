@@ -71,8 +71,16 @@ function check(fileurl: string): string | void {
 
 const root = new URL('file:///' + process.cwd() + '/');
 export const resolve: Resolve = async function (specifier, context, defaultResolve) {
-  // ignore "prefix:" and non-relative identifiers
-  if (/^\w+\:?/.test(specifier)) return defaultResolve(specifier, context, defaultResolve);
+  let defaultResolveResult: Awaited<ReturnType<Resolve>> | false = false;
+
+  try {
+    defaultResolveResult = await defaultResolve(specifier, context, defaultResolve);
+  } catch (err) {}
+
+  // ignore "prefix:", non-relative identifiers, and respect import maps
+  if (defaultResolveResult || /^\w+\:?/.test(specifier)) {
+    return defaultResolveResult || defaultResolve(specifier, context, defaultResolve);
+  }
 
   let match: RegExpExecArray | null;
   let idx: number, ext: Extension, path: string | void;
