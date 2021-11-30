@@ -4696,7 +4696,7 @@ packages:
     engines: {node: ^12.20.0 || >=14.13.0}
     hasBin: true
     peerDependencies:
-      esbuild: '>=13.14'
+      esbuild: 0.14.1
     dependencies:
       esbuild: 0.14.1
     optionalDependencies:
@@ -4709,7 +4709,7 @@ packages:
     name: bob-esbuild
     version: 3.1.1
     peerDependencies:
-      esbuild: '>=13.14'
+      esbuild: 0.14.1
       typescript: '*'
     dependencies:
       bob-esbuild-plugin: link:packages/esbuild-plugin

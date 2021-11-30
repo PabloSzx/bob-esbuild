@@ -51,7 +51,7 @@
     "tree-kill": "^1.2.2"
   },
   "peerDependencies": {
-    "esbuild": ">=13.14"
+    "esbuild": "0.14.1"
   },
   "optionalDependencies": {
     "fsevents": "~2.3.2"
