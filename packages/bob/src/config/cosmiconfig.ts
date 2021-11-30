@@ -130,7 +130,7 @@ export const globalConfig: Promise<CosmiConfigResult> & {
         loader: 'ts',
         format: 'cjs',
         sourcemap: 'inline',
-        target: 'node13.2',
+        target: 'node12.20',
       });
       return importFromString(code, filepath)?.config;
     },

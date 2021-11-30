@@ -17,7 +17,7 @@ async function main() {
       clean: false,
       format: 'interop',
       outDir: 'lib',
-      target: 'node13.2',
+      target: 'node12.20',
       esbuild: {
         define: {
           VERSION: JSON.stringify(pkg.version),
@@ -32,7 +32,7 @@ async function main() {
       clean: false,
       format: 'esm',
       outDir: 'lib',
-      target: 'node13.2',
+      target: 'node12.20',
       esbuild: {
         define: {
           VERSION: JSON.stringify(pkg.version),
@@ -48,7 +48,7 @@ async function main() {
     build({
       bundle: true,
       format: 'cjs',
-      target: 'node13.2',
+      target: 'node12.20',
       entryPoints: ['src/deps.ts'],
       outdir: 'lib',
       platform: 'node',
@@ -76,8 +76,6 @@ async function main() {
     promises.copyFile('README.md', 'lib/README.md'),
     promises.copyFile('LICENSE', 'lib/LICENSE'),
   ]);
-
-  await promises.writeFile('./lib/deps.js', (await promises.readFile('./lib/deps.js', 'utf-8')).replace(/"node:/g, '"'), 'utf-8');
 }
 
 main().catch(err => {

@@ -24,7 +24,7 @@ async function main() {
       clean: false,
       format: 'cjs',
       outDir: 'lib',
-      target: 'node13.2',
+      target: 'node12.20',
       sourcemap: false,
       esbuild: {
         minify: false,
@@ -35,7 +35,7 @@ async function main() {
       clean: false,
       format: 'esm',
       outDir: 'lib',
-      target: 'node13.2',
+      target: 'node12.20',
       sourcemap: false,
       external: ['./deps/semver.js'],
       esbuild: {
@@ -47,7 +47,7 @@ async function main() {
       clean: false,
       format: 'esm',
       outDir: 'lib',
-      target: 'node13.2',
+      target: 'node12.20',
       esbuild: {
         define: {
           VERSION: JSON.stringify(pkg.version),
@@ -66,7 +66,7 @@ async function main() {
       return build({
         bundle: true,
         format: 'cjs',
-        target: 'node13.2',
+        target: 'node12.20',
         entryPoints,
         outdir: 'lib/deps',
         platform: 'node',
@@ -101,7 +101,7 @@ async function main() {
     clean: false,
     format: 'interop',
     outDir: 'lib',
-    target: 'node13.2',
+    target: 'node12.20',
     sourcemap: false,
     esbuild: {
       minify: false,

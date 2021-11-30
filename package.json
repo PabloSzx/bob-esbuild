@@ -21,9 +21,9 @@
   },
   "devDependencies": {
     "@changesets/cli": "^2.18.1",
-    "@types/node": "^16.11.10",
+    "@types/node": "^16.11.11",
     "changesets-github-release": "^0.0.4",
-    "esbuild": "^0.14.0",
+    "esbuild": "^0.14.1",
     "husky": "^7.0.4",
     "prettier": "^2.5.0",
     "pretty-quick": "^3.1.2",
@@ -36,7 +36,7 @@
   },
   "pnpm": {
     "overrides": {
-      "esbuild": "^0.14.0"
+      "esbuild": "^0.14.1"
     }
   }
 }

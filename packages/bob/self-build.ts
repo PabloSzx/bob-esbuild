@@ -1,5 +1,4 @@
 import { build } from 'esbuild';
-import { promises } from 'fs';
 import { resolve } from 'path';
 import { startBuild } from './src/build';
 
@@ -17,15 +16,13 @@ async function main() {
   await build({
     bundle: true,
     format: 'cjs',
-    target: 'node13.2',
+    target: 'node12.20',
     entryPoints: ['src/deps.ts'],
     outdir: 'lib',
     platform: 'node',
     minify: true,
     external: ['rollup', 'fsevents'],
   });
-
-  await promises.writeFile('./lib/deps.js', (await promises.readFile('./lib/deps.js', 'utf-8')).replace(/"node:/g, '"'), 'utf-8');
 }
 
 main().catch(err => {

@@ -36,7 +36,7 @@ async function main() {
   await build({
     bundle: true,
     format: 'cjs',
-    target: 'node13.2',
+    target: 'node12.20',
     entryPoints: ['src/deps.ts', 'src/watchDeps.ts'],
     outdir: 'lib',
     platform: 'node',
@@ -45,12 +45,6 @@ async function main() {
   });
 
   await Promise.all([
-    promises
-      .readFile('./lib/deps.js', 'utf-8')
-      .then(content => promises.writeFile('./lib/deps.js', content.replace(/"node:/g, '"'), 'utf-8')),
-    promises
-      .readFile('./lib/watchDeps.js', 'utf-8')
-      .then(content => promises.writeFile('./lib/watchDeps.js', content.replace(/"node:/g, '"'), 'utf-8')),
     promises.writeFile(
       './lib/package.json',
       JSON.stringify(
