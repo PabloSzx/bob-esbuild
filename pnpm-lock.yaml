@@ -103,7 +103,7 @@ importers:
       chalk: ^4.1.2
       changesets-github-release: ^0.0.4
       cosmiconfig: ^7.0.1
-      date-fns: ^2.26.0
+      date-fns: ^2.27.0
       esbuild: ^0.14.0
       execa: ^6.0.0
       fast-glob: ^3.2.7
@@ -131,7 +131,7 @@ importers:
       chalk: 4.1.2
       changesets-github-release: 0.0.4
       cosmiconfig: 7.0.1
-      date-fns: 2.26.0
+      date-fns: 2.27.0
       esbuild: 0.14.0
       execa: 6.0.0
       fast-glob: 3.2.7
@@ -1636,8 +1636,8 @@ packages:
     engines: {node: '>= 6'}
     dev: false
 
-  /date-fns/2.26.0:
-    resolution: {integrity: sha512-VQI812dRi3cusdY/fhoBKvc6l2W8BPWU1FNVnFH9Nttjx4AFBRzfSVb/Eyc7jBT6e9sg1XtAGsYpBQ6c/jygbg==}
+  /date-fns/2.27.0:
+    resolution: {integrity: sha512-sj+J0Mo2p2X1e306MHq282WS4/A8Pz/95GIFcsPNMPMZVI3EUrAdSv90al1k+p74WGLCruMXk23bfEDZa71X9Q==}
     engines: {node: '>=0.11'}
     dev: true
 
