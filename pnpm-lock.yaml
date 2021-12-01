@@ -15,7 +15,7 @@ importers:
       prettier: ^2.5.0
       pretty-quick: ^3.1.2
       rimraf: ^3.0.2
-      tsm: ^2.1.4
+      tsm: ^2.2.1
       typescript: ^4.5.2
     devDependencies:
       '@changesets/cli': 2.18.1
@@ -26,7 +26,7 @@ importers:
       prettier: 2.5.0
       pretty-quick: 3.1.2_prettier@2.5.0
       rimraf: 3.0.2
-      tsm: 2.1.4
+      tsm: 2.2.1
       typescript: 4.5.2
 
   examples/basic:
@@ -4305,8 +4305,8 @@ packages:
       typescript: 4.5.2
     dev: true
 
-  /tsm/2.1.4:
-    resolution: {integrity: sha512-gz1zckplzOzHdiY1HVVUoH8bl2eWxbU6uJraB31w1NQ+/kQkjix3ldYHBnWaoNnOL9q8ruS+E2Wckdcw56DzrA==}
+  /tsm/2.2.1:
+    resolution: {integrity: sha512-qvJB0baPnxQJolZru11mRgGTdNlx17WqgJnle7eht3Vhb+VUR4/zFA5hFl6NqRe7m8BD9w/6yu0B2XciRrdoJA==}
     engines: {node: '>=12'}
     hasBin: true
     dependencies:
