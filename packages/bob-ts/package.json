@@ -53,7 +53,7 @@
   },
   "peerDependencies": {
     "@types/node": "*",
-    "esbuild": ">=13.14"
+    "esbuild": "0.14.2"
   },
   "engines": {
     "node": "^12.20.0 || >=14.13.0"
