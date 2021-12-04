@@ -56,6 +56,6 @@
       "cjs",
       "esm"
     ],
-    "target": "es2019"
+    "target": "node12.20"
   }
 }
