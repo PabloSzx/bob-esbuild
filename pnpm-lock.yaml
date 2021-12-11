@@ -111,7 +111,7 @@ importers:
       fs-extra: ^10.0.0
       globby: ^12.0.2
       lodash.get: ^4.4.2
-      rollup: ^2.60.2
+      rollup: ^2.61.1
       rollup-plugin-delete: ^2.0.0
       rollup-plugin-node-externals: ^2.2.0
       rollup-plugin-tsconfig-paths: ^1.0.15
@@ -120,7 +120,7 @@ importers:
       typescript: ^4.5.2
     dependencies:
       bob-esbuild-plugin: link:../esbuild-plugin
-      rollup: 2.60.2
+      rollup: 2.61.1
     devDependencies:
       '@pnpm/exportable-manifest': 2.2.0
       '@types/folder-hash': 4.0.1
@@ -169,13 +169,13 @@ importers:
       esbuild: ^0.14.2
       execa: ^6.0.0
       globby: ^12.0.2
-      rollup: ^2.60.2
+      rollup: ^2.61.1
       rollup-plugin-delete: ^2.0.0
       rollup-plugin-tsconfig-paths: ^1.0.15
       tree-kill: ^1.2.2
     dependencies:
       bob-esbuild-plugin: link:../esbuild-plugin
-      rollup: 2.60.2
+      rollup: 2.61.1
     devDependencies:
       '@types/node': 16.11.11
       bob-esbuild-cli: link:../bob-cli
@@ -239,7 +239,7 @@ importers:
       '@rollup/pluginutils': ^4.1.1
       changesets-github-release: ^0.0.4
       esbuild: ^0.14.2
-      rollup: ^2.60.2
+      rollup: ^2.61.1
       tsconfck: ^1.1.1
       tsup: ^5.10.1
     dependencies:
@@ -247,7 +247,7 @@ importers:
     devDependencies:
       changesets-github-release: 0.0.4
       esbuild: 0.14.2
-      rollup: 2.60.2
+      rollup: 2.61.1
       tsconfck: 1.1.1_typescript@4.5.2
       tsup: 5.10.1_typescript@4.5.2
 
@@ -3830,8 +3830,8 @@ packages:
       typescript: 4.5.2
     dev: true
 
-  /rollup/2.60.2:
-    resolution: {integrity: sha512-1Bgjpq61sPjgoZzuiDSGvbI1tD91giZABgjCQBKM5aYLnzjq52GoDuWVwT/cm/MCxCMPU8gqQvkj8doQ5C8Oqw==}
+  /rollup/2.61.1:
+    resolution: {integrity: sha512-BbTXlEvB8d+XFbK/7E5doIcRtxWPRiqr0eb5vQ0+2paMM04Ye4PZY5nHOQef2ix24l/L0SpLd5hwcH15QHPdvA==}
     engines: {node: '>=10.0.0'}
     hasBin: true
     optionalDependencies:
@@ -4332,7 +4332,7 @@ packages:
       joycon: 3.1.1
       postcss-load-config: 3.1.0
       resolve-from: 5.0.0
-      rollup: 2.60.2
+      rollup: 2.61.1
       sucrase: 3.20.3
       tree-kill: 1.2.2
       typescript: 4.5.2
@@ -4714,6 +4714,6 @@ packages:
     dependencies:
       bob-esbuild-plugin: link:packages/esbuild-plugin
       esbuild: 0.14.2
-      rollup: 2.60.2
+      rollup: 2.61.1
       typescript: 4.5.2
     dev: false
