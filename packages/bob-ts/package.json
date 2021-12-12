@@ -37,10 +37,10 @@
   },
   "dependencies": {
     "bob-esbuild-plugin": "workspace:^3.1.0",
-    "rollup": "^2.60.2"
+    "rollup": "^2.61.1"
   },
   "devDependencies": {
-    "@types/node": "^16.11.11",
+    "@types/node": "^16.11.12",
     "bob-esbuild-cli": "workspace:^3.0.1",
     "changesets-github-release": "^0.0.4",
     "commander": "^8.3.0",

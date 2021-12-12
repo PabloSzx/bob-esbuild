@@ -32,14 +32,14 @@
   },
   "dependencies": {
     "bob-esbuild-plugin": "workspace:3.1.0",
-    "rollup": "^2.60.2"
+    "rollup": "^2.61.1"
   },
   "devDependencies": {
     "@pnpm/exportable-manifest": "^2.2.0",
     "@types/folder-hash": "^4.0.1",
     "@types/fs-extra": "^9.0.13",
     "@types/lodash.get": "^4.4.6",
-    "@types/node": "^16.11.11",
+    "@types/node": "^16.11.12",
     "builtin-modules": "^3.2.0",
     "chalk": "^5.0.0",
     "changesets-github-release": "^0.0.4",
@@ -53,11 +53,11 @@
     "globby": "^12.0.2",
     "lodash.get": "^4.4.2",
     "rollup-plugin-delete": "^2.0.0",
-    "rollup-plugin-node-externals": "^2.2.0",
+    "rollup-plugin-node-externals": "^3.0.1",
     "rollup-plugin-tsconfig-paths": "^1.0.15",
     "tree-kill": "^1.2.2",
     "tsconfck": "^1.1.1",
-    "typescript": "^4.5.2"
+    "typescript": "^4.5.3"
   },
   "peerDependencies": {
     "esbuild": ">=13.14",

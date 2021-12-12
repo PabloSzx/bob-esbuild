@@ -34,9 +34,9 @@
   "devDependencies": {
     "changesets-github-release": "^0.0.4",
     "esbuild": "^0.14.2",
-    "rollup": "^2.60.2",
+    "rollup": "^2.61.1",
     "tsconfck": "^1.1.1",
-    "tsup": "^5.10.1"
+    "tsup": "^5.11.1"
   },
   "peerDependencies": {
     "esbuild": ">=13.14",
