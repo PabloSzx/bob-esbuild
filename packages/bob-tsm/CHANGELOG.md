@@ -1,5 +1,11 @@
 # bob-tsm
 
+## 0.3.7
+
+### Patch Changes
+
+- 75c77c6: Update & Require esbuild>=13.14
+
 ## 0.3.6
 
 ### Patch Changes

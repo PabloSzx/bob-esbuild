@@ -1,5 +1,17 @@
 # bob-esbuild
 
+## 3.2.0
+
+### Minor Changes
+
+- a4a848d: Support JSON imports out-of-the-box
+
+### Patch Changes
+
+- 75c77c6: Update & Require esbuild>=13.14
+- Updated dependencies [75c77c6]
+  - bob-esbuild-plugin@3.1.1
+
 ## 3.1.1
 
 ### Patch Changes
