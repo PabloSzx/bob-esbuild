@@ -31,7 +31,7 @@
   ],
   "scripts": {
     "dev": "bob-esbuild watch --onlyCJS",
-    "prepare": "bob-esbuild build && bob-ts --paths -i src -f interop && bob-tsm lib/index.js"
+    "prepare": "bob-esbuild build && bob-ts --paths -i src -f interop && bob-tsm lib/index.js && bob-tsm dist/index.js"
   },
   "dependencies": {
     "bob-esbuild": "workspace:^3.1.1",

@@ -4,7 +4,7 @@ import { resolve } from 'path';
 import type { ExternalOption, InputOptions, OutputOptions } from 'rollup';
 import type { CompilerOptions } from 'typescript';
 import { cleanEmptyFoldersRecursively } from './clean';
-import { del, globby, rollupJson, tsconfigPaths } from './deps.js';
+import { del, globby, rollupJson, tsconfigPaths, externals } from './deps.js';
 import { getPackageJson } from './packageJson';
 
 export interface TsConfigPayload {
@@ -60,14 +60,10 @@ export const getRollupConfig = async ({
   const inputOptions: InputOptions = {
     input,
     plugins: [
-      {
-        name: 'External Node Modules',
-        resolveId(source, importer) {
-          if (!importer || source.startsWith('./') || source.startsWith('/') || source.startsWith('../')) return null;
-
-          return false;
-        },
-      },
+      externals({
+        packagePath: resolve(process.cwd(), 'package.json'),
+        deps: true,
+      }),
       {
         name: 'keep-dynamic-import',
         renderDynamicImport() {
