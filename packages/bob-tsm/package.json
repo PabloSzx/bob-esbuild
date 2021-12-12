@@ -45,7 +45,7 @@
     "c8": "^7.10.0",
     "chokidar": "^3.5.2",
     "commander": "^8.3.0",
-    "esbuild": "^0.14.2",
+    "esbuild": "^0.14.3",
     "execa": "^6.0.0",
     "semver": "^7.3.5",
     "tree-kill": "^1.2.2"

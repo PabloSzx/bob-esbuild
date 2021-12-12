@@ -45,11 +45,11 @@
     "bob-esbuild-cli": "workspace:^3.0.1",
     "changesets-github-release": "^0.0.4",
     "commander": "^8.3.0",
-    "esbuild": "^0.14.2",
+    "esbuild": "^0.14.3",
     "execa": "^6.0.0",
     "globby": "^12.0.2",
     "rollup-plugin-delete": "^2.0.0",
-    "rollup-plugin-node-externals": "^3.0.1",
+    "rollup-plugin-node-externals": "^3.1.0",
     "rollup-plugin-tsconfig-paths": "^1.0.15",
     "tree-kill": "^1.2.2"
   },
