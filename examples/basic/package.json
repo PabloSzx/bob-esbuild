@@ -31,11 +31,12 @@
   ],
   "scripts": {
     "dev": "bob-esbuild watch --onlyCJS",
-    "prepare": "bob-esbuild build && bob-tsm lib/index.js"
+    "prepare": "bob-esbuild build && bob-ts --paths -i src -f interop && bob-tsm lib/index.js"
   },
   "dependencies": {
     "bob-esbuild": "workspace:^3.1.1",
     "bob-esbuild-cli": "workspace:^3.0.1",
+    "bob-ts": "workspace:^1.2.2",
     "bob-tsm": "workspace:^0.3.6",
     "shared": "workspace:^1.0.0"
   },
@@ -57,6 +58,9 @@
       "injected": true
     },
     "bob-tsm": {
+      "injected": true
+    },
+    "bob-ts": {
       "injected": true
     }
   }

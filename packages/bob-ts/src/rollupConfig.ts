@@ -4,7 +4,7 @@ import { resolve } from 'path';
 import type { ExternalOption, InputOptions, OutputOptions } from 'rollup';
 import type { CompilerOptions } from 'typescript';
 import { cleanEmptyFoldersRecursively } from './clean';
-import { del, globby, tsconfigPaths } from './deps.js';
+import { del, globby, rollupJson, tsconfigPaths } from './deps.js';
 import { getPackageJson } from './packageJson';
 
 export interface TsConfigPayload {
@@ -55,7 +55,7 @@ export const getRollupConfig = async ({
         ignore: ['**/node_modules'],
       }
     )
-  ).filter(v => v.endsWith('.tsx') || (v.endsWith('.ts') && !v.endsWith('.d.ts')));
+  ).filter(file => !!file.match(/\.(js|cjs|mjs|ts|tsx|cts|mts|ctsx|mtsx)$/));
 
   const inputOptions: InputOptions = {
     input,
@@ -81,6 +81,9 @@ export const getRollupConfig = async ({
         target,
         sourceMap: sourcemap,
         ...esbuild,
+      }),
+      rollupJson({
+        preferConst: true,
       }),
       clean &&
         del({

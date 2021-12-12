@@ -1,7 +1,7 @@
 import { bobEsbuildPlugin } from 'bob-esbuild-plugin';
 import { resolve } from 'path';
-import type { Plugin } from 'rollup';
-import { externals, get } from '../deps.js';
+import type { Plugin, InputOptions } from 'rollup';
+import { externals, get, rollupJson } from '../deps.js';
 import { debug } from '../log/debug';
 import { globalConfig } from './cosmiconfig';
 import type { PackageBuildConfig } from './packageBuildConfig';
@@ -22,7 +22,7 @@ export const rollupBin = (buildConfig: PackageBuildConfig, cwd: string = process
             Object.entries(buildConfig.bin).map(async ([alias, options]) => {
               if (typeof options.input !== 'string') throw Error(`buildConfig.${alias} expected to have an input field`);
 
-              const inputOptions = {
+              const inputOptions: InputOptions = {
                 input: options.input,
                 plugins: [
                   externals({
@@ -35,6 +35,9 @@ export const rollupBin = (buildConfig: PackageBuildConfig, cwd: string = process
                     sourceMap: false,
                     experimentalBundling: true,
                     ...esbuildPluginOptions,
+                  }),
+                  rollupJson({
+                    preferConst: true,
                   }),
                 ],
               };

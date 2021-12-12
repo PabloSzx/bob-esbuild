@@ -33,17 +33,21 @@ importers:
     specifiers:
       bob-esbuild: workspace:^3.1.1
       bob-esbuild-cli: workspace:^3.0.1
+      bob-ts: workspace:^1.2.2
       bob-tsm: workspace:^0.3.6
       shared: workspace:^1.0.0
     dependencies:
       bob-esbuild: file:packages/bob_esbuild@0.14.2+typescript@4.5.3
       bob-esbuild-cli: file:packages/bob-cli_bob-esbuild@3.1.1
+      bob-ts: file:packages/bob-ts_a993657bd2668659d5619bde315cb0d1
       bob-tsm: file:packages/bob-tsm_esbuild@0.14.2
       shared: link:../shared
     dependenciesMeta:
       bob-esbuild:
         injected: true
       bob-esbuild-cli:
+        injected: true
+      bob-ts:
         injected: true
       bob-tsm:
         injected: true
@@ -94,6 +98,7 @@ importers:
   packages/bob:
     specifiers:
       '@pnpm/exportable-manifest': ^2.2.0
+      '@rollup/plugin-json': ^4.1.0
       '@types/folder-hash': ^4.0.1
       '@types/fs-extra': ^9.0.13
       '@types/lodash.get': ^4.4.6
@@ -123,6 +128,7 @@ importers:
       rollup: 2.61.1
     devDependencies:
       '@pnpm/exportable-manifest': 2.2.0
+      '@rollup/plugin-json': 4.1.0_rollup@2.61.1
       '@types/folder-hash': 4.0.1
       '@types/fs-extra': 9.0.13
       '@types/lodash.get': 4.4.6
@@ -161,6 +167,7 @@ importers:
 
   packages/bob-ts:
     specifiers:
+      '@rollup/plugin-json': ^4.1.0
       '@types/node': ^16.11.12
       bob-esbuild-cli: workspace:^3.0.1
       bob-esbuild-plugin: workspace:^3.1.0
@@ -177,6 +184,7 @@ importers:
       bob-esbuild-plugin: link:../esbuild-plugin
       rollup: 2.61.1
     devDependencies:
+      '@rollup/plugin-json': 4.1.0_rollup@2.61.1
       '@types/node': 16.11.12
       bob-esbuild-cli: link:../bob-cli
       changesets-github-release: 0.0.4
@@ -296,7 +304,7 @@ packages:
     resolution: {integrity: sha512-99catp6bHCaxr4sJ/DbTGgHS4+Rs2RVd2g7iOap6SLGPDknRK9ztKNsE/Fg6QhSeh1FGE5f6gHGQmvvn3I3xhw==}
     engines: {node: '>=6.9.0'}
     dependencies:
-      regenerator-runtime: 0.13.4
+      regenerator-runtime: 0.13.9
     dev: false
 
   /@babel/runtime/7.16.3:
@@ -853,6 +861,27 @@ packages:
       write-yaml-file: 4.2.0
     dev: true
 
+  /@rollup/plugin-json/4.1.0_rollup@2.61.1:
+    resolution: {integrity: sha512-yfLbTdNS6amI/2OpmbiBoW12vngr5NW2jCJVZSBEz+H5KfUJZ2M7sDjk0U6GOOdCWFVScShte29o9NezJ53TPw==}
+    peerDependencies:
+      rollup: ^1.20.0 || ^2.0.0
+    dependencies:
+      '@rollup/pluginutils': 3.1.0_rollup@2.61.1
+      rollup: 2.61.1
+    dev: true
+
+  /@rollup/pluginutils/3.1.0_rollup@2.61.1:
+    resolution: {integrity: sha512-GksZ6pr6TpIjHm8h9lSQ8pi8BE9VeubNT0OMJ3B5uZJ8pz73NPiqOtCog/x2/QzM1ENChPKxMDhiQuRHsqc+lg==}
+    engines: {node: '>= 8.0.0'}
+    peerDependencies:
+      rollup: ^1.20.0||^2.0.0
+    dependencies:
+      '@types/estree': 0.0.39
+      estree-walker: 1.0.1
+      picomatch: 2.3.0
+      rollup: 2.61.1
+    dev: true
+
   /@rollup/pluginutils/4.1.1:
     resolution: {integrity: sha512-clDjivHqWGXi7u+0d2r2sBi4Ie6VLEAzWMIkvJLnDmxoOhBYOTfzGbOQBA32THHm11/LiJbd01tJUpJsbshSWQ==}
     engines: {node: '>= 8.0.0'}
@@ -860,6 +889,10 @@ packages:
       estree-walker: 2.0.2
       picomatch: 2.3.0
     dev: false
+
+  /@types/estree/0.0.39:
+    resolution: {integrity: sha512-EYNwp3bU+98cpU4lAWYYL7Zz+2gryWH1qbdDTidVd6hkiR6weksdbMadyXKXNPEkQFhXM+hVO9ZygomHXp+AIw==}
+    dev: true
 
   /@types/folder-hash/4.0.1:
     resolution: {integrity: sha512-HrIikWNP/7ubX+XB1awPxA+zTI8T3NXgb4g3BQnT4iAWbeZThsaAm+sg+xqO+eK6kPlpOLS6o29FaaWqb2THbA==}
@@ -2011,6 +2044,10 @@ packages:
     resolution: {integrity: sha512-eGuFFw7Upda+g4p+QHvnW0RyTX/SVeJBDM/gCtMARO0cLuT2HcEKnTPvhjV6aGeqrCB/sbNop0Kszm0jsaWU4A==}
     engines: {node: '>=4'}
     hasBin: true
+    dev: true
+
+  /estree-walker/1.0.1:
+    resolution: {integrity: sha512-1fMXF3YP4pZZVozF8j/ZLfvnR8NSIljt56UhbZ5PeeDmmGHpgpdwQt7ITlGvYaQukCvuBRMLEiKiYC+oeIg4cg==}
     dev: true
 
   /estree-walker/2.0.2:
@@ -3773,7 +3810,6 @@ packages:
 
   /regenerator-runtime/0.13.9:
     resolution: {integrity: sha512-p3VT+cOEgxFsRRA9X4lkI1E+k2/CtnKtU4gcxyaCUreilL/vqI6CdZ3wxVUx3UOUg+gnUOQQcRI7BmSI656MYA==}
-    dev: true
 
   /require-directory/2.1.1:
     resolution: {integrity: sha1-jGStX9MNqxyXbiNE/+f3kqam30I=}
@@ -4716,6 +4752,23 @@ packages:
     dependencies:
       bob-esbuild: file:packages/bob_esbuild@0.14.2+typescript@4.5.3
       commander: 8.3.0
+    dev: false
+
+  file:packages/bob-ts_a993657bd2668659d5619bde315cb0d1:
+    resolution: {directory: packages/bob-ts, type: directory}
+    id: file:packages/bob-ts
+    name: bob-ts
+    version: 1.2.2
+    engines: {node: ^12.20.0 || >=14.13.0}
+    hasBin: true
+    peerDependencies:
+      '@types/node': '*'
+      esbuild: '>=13.14'
+    dependencies:
+      '@types/node': 16.11.12
+      bob-esbuild-plugin: link:packages/esbuild-plugin
+      esbuild: 0.14.2
+      rollup: 2.61.1
     dev: false
 
   file:packages/bob-tsm_esbuild@0.14.2:

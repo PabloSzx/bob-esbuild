@@ -1,7 +1,7 @@
 import { bobEsbuildPlugin } from 'bob-esbuild-plugin';
 import path, { join, resolve } from 'path';
 import type { ExternalOption, InputOptions, OutputOptions, Plugin, RollupBuild } from 'rollup';
-import { del, externals, globby, tsconfigPaths as tsPaths } from '../deps.js';
+import { del, externals, globby, tsconfigPaths as tsPaths, rollupJson } from '../deps.js';
 import { debug } from '../log/debug';
 import { cleanObject } from '../utils/object';
 import { retry } from '../utils/retry';
@@ -223,7 +223,7 @@ export async function getRollupConfig(optionsArg: ConfigOptions = {}) {
       )
     )
       .flat()
-      .filter((file, index, self) => self.indexOf(file) === index)
+      .filter((file, index, self) => self.indexOf(file) === index && !!file.match(/\.(js|cjs|mjs|ts|tsx|cts|mts|ctsx|mtsx)$/))
   );
 
   if (!input.length) throw Error('No input files found!');
@@ -277,6 +277,9 @@ export async function getRollupConfig(optionsArg: ConfigOptions = {}) {
       ...globalOptions.externalOptions,
     }),
     rollupBin(buildConfig, cwd),
+    rollupJson({
+      preferConst: true,
+    }),
     ...(globalOptions.plugins || []),
   ];
 

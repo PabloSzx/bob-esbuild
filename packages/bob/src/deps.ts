@@ -11,6 +11,7 @@ export { default as externals } from 'rollup-plugin-node-externals';
 export { default as tsconfigPaths } from 'rollup-plugin-tsconfig-paths';
 export { default as treeKill } from 'tree-kill';
 export { parse as parseTsconfig } from 'tsconfck';
+export { default as rollupJson } from '@rollup/plugin-json';
 import fsExtra from 'fs-extra';
 
 export const { copyFile, mkdirp, pathExists, readJSON, writeJSON, copy, ensureDir } = fsExtra;
