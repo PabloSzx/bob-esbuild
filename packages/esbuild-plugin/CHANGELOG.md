@@ -1,5 +1,11 @@
 # bob-esbuild-plugin
 
+## 3.1.1
+
+### Patch Changes
+
+- 75c77c6: Update & Require esbuild>=13.14
+
 ## 3.1.0
 
 ### Patch Changes

@@ -1,5 +1,21 @@
 # bob-ts
 
+## 2.0.0
+
+### Major Changes
+
+- 5da1598: Improve external module resolution
+
+### Minor Changes
+
+- a4a848d: Support JSON imports out-of-the-box
+
+### Patch Changes
+
+- 75c77c6: Update & Require esbuild>=13.14
+- Updated dependencies [75c77c6]
+  - bob-esbuild-plugin@3.1.1
+
 ## 1.2.2
 
 ### Patch Changes

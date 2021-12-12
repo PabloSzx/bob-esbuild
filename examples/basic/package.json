@@ -34,10 +34,10 @@
     "prepare": "bob-esbuild build && bob-ts --paths -i src -f interop && bob-tsm lib/index.js && bob-tsm dist/index.js"
   },
   "dependencies": {
-    "bob-esbuild": "workspace:^3.1.1",
+    "bob-esbuild": "workspace:^3.2.0",
     "bob-esbuild-cli": "workspace:^3.0.1",
-    "bob-ts": "workspace:^1.2.2",
-    "bob-tsm": "workspace:^0.3.6",
+    "bob-ts": "workspace:^2.0.0",
+    "bob-tsm": "workspace:^0.3.7",
     "shared": "workspace:^1.0.0"
   },
   "publishConfig": {
