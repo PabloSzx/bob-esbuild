@@ -246,14 +246,14 @@ importers:
 
   packages/esbuild-plugin:
     specifiers:
-      '@rollup/pluginutils': ^4.1.1
+      '@rollup/pluginutils': ^4.1.2
       changesets-github-release: ^0.0.4
       esbuild: ^0.14.3
       rollup: ^2.61.1
       tsconfck: ^1.1.1
       tsup: ^5.11.1
     dependencies:
-      '@rollup/pluginutils': 4.1.1
+      '@rollup/pluginutils': 4.1.2
     devDependencies:
       changesets-github-release: 0.0.4
       esbuild: 0.14.3
@@ -884,8 +884,8 @@ packages:
       rollup: 2.61.1
     dev: true
 
-  /@rollup/pluginutils/4.1.1:
-    resolution: {integrity: sha512-clDjivHqWGXi7u+0d2r2sBi4Ie6VLEAzWMIkvJLnDmxoOhBYOTfzGbOQBA32THHm11/LiJbd01tJUpJsbshSWQ==}
+  /@rollup/pluginutils/4.1.2:
+    resolution: {integrity: sha512-ROn4qvkxP9SyPeHaf7uQC/GPFY6L/OWy9+bd9AwcjOAWQwxRscoEyAUD8qCY5o5iL4jqQwoLk2kaTKJPb/HwzQ==}
     engines: {node: '>= 8.0.0'}
     dependencies:
       estree-walker: 2.0.2
