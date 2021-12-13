@@ -16,7 +16,7 @@ importers:
       pretty-quick: ^3.1.2
       rimraf: ^3.0.2
       tsm: ^2.2.1
-      typescript: ^4.5.3
+      typescript: ^4.5.4
     devDependencies:
       '@changesets/cli': 2.18.1
       '@types/node': 16.11.12
@@ -27,7 +27,7 @@ importers:
       pretty-quick: 3.1.2_prettier@2.5.1
       rimraf: 3.0.2
       tsm: 2.2.1
-      typescript: 4.5.3
+      typescript: 4.5.4
 
   examples/basic:
     specifiers:
@@ -37,7 +37,7 @@ importers:
       bob-tsm: workspace:^0.3.7
       shared: workspace:^1.0.0
     dependencies:
-      bob-esbuild: file:packages/bob_esbuild@0.14.3+typescript@4.5.3
+      bob-esbuild: file:packages/bob_esbuild@0.14.3+typescript@4.5.4
       bob-esbuild-cli: file:packages/bob-cli_bob-esbuild@3.2.0
       bob-ts: file:packages/bob-ts_85df8d5416a2a89994f50228b4a0d80c
       bob-tsm: file:packages/bob-tsm_esbuild@0.14.3
@@ -61,7 +61,7 @@ importers:
       next: ^12.0.7
       react: ^17.0.2
       react-dom: ^17.0.2
-      typescript: ^4.5.3
+      typescript: ^4.5.4
     dependencies:
       bob-tsm: file:packages/bob-tsm_esbuild@0.14.3
       next: 12.0.7_react-dom@17.0.2+react@17.0.2
@@ -71,7 +71,7 @@ importers:
       '@types/node': 16.11.12
       '@types/react': 17.0.37
       cross-env: 7.0.3
-      typescript: 4.5.3
+      typescript: 4.5.4
     dependenciesMeta:
       bob-tsm:
         injected: true
@@ -87,7 +87,7 @@ importers:
       bob-esbuild: workspace:^3.2.0
       bob-esbuild-cli: workspace:^3.0.1
     dependencies:
-      bob-esbuild: file:packages/bob_esbuild@0.14.3+typescript@4.5.3
+      bob-esbuild: file:packages/bob_esbuild@0.14.3+typescript@4.5.4
       bob-esbuild-cli: file:packages/bob-cli_bob-esbuild@3.2.0
     dependenciesMeta:
       bob-esbuild:
@@ -122,7 +122,7 @@ importers:
       rollup-plugin-tsconfig-paths: ^1.0.15
       tree-kill: ^1.2.2
       tsconfck: ^1.1.1
-      typescript: ^4.5.3
+      typescript: ^4.5.4
     dependencies:
       bob-esbuild-plugin: link:../esbuild-plugin
       rollup: 2.61.1
@@ -147,23 +147,23 @@ importers:
       lodash.get: 4.4.2
       rollup-plugin-delete: 2.0.0
       rollup-plugin-node-externals: 3.1.0
-      rollup-plugin-tsconfig-paths: 1.0.15_typescript@4.5.3
+      rollup-plugin-tsconfig-paths: 1.0.15_typescript@4.5.4
       tree-kill: 1.2.2
-      tsconfck: 1.1.1_typescript@4.5.3
-      typescript: 4.5.3
+      tsconfck: 1.1.1_typescript@4.5.4
+      typescript: 4.5.4
 
   packages/bob-cli:
     specifiers:
       bob-esbuild: workspace:^3.1.1
       changesets-github-release: ^0.0.4
       commander: ^8.3.0
-      typescript: ^4.5.3
+      typescript: ^4.5.4
     dependencies:
       commander: 8.3.0
     devDependencies:
       bob-esbuild: link:../bob
       changesets-github-release: 0.0.4
-      typescript: 4.5.3
+      typescript: 4.5.4
 
   packages/bob-ts:
     specifiers:
@@ -195,7 +195,7 @@ importers:
       globby: 12.0.2
       rollup-plugin-delete: 2.0.0
       rollup-plugin-node-externals: 3.1.0
-      rollup-plugin-tsconfig-paths: 1.0.15_typescript@4.5.3
+      rollup-plugin-tsconfig-paths: 1.0.15_typescript@4.5.4
       tree-kill: 1.2.2
 
   packages/bob-tsm:
@@ -258,8 +258,8 @@ importers:
       changesets-github-release: 0.0.4
       esbuild: 0.14.3
       rollup: 2.61.1
-      tsconfck: 1.1.1_typescript@4.5.3
-      tsup: 5.11.1_typescript@4.5.3
+      tsconfck: 1.1.1_typescript@4.5.4
+      tsup: 5.11.1_typescript@4.5.4
 
 packages:
 
@@ -3884,12 +3884,12 @@ packages:
       find-up: 6.2.0
     dev: true
 
-  /rollup-plugin-tsconfig-paths/1.0.15_typescript@4.5.3:
+  /rollup-plugin-tsconfig-paths/1.0.15_typescript@4.5.4:
     resolution: {integrity: sha512-D4cjRRFEi4BNw6U2VhuAEOW5qyTElJXZsNnn6X/7C+cubcYPs4HMQwKt8GXngAbv+x0f68gW48/aQfzDA7bFIw==}
     peerDependencies:
       typescript: ^4
     dependencies:
-      typescript: 4.5.3
+      typescript: 4.5.4
     dev: true
 
   /rollup/2.61.1:
@@ -4354,7 +4354,7 @@ packages:
     resolution: {integrity: sha512-Y/arvbn+rrz3JCKl9C4kVNfTfSm2/mEp5FSz5EsZSANGPSlQrpRI5M4PKF+mJnE52jOO90PnPSc3Ur3bTQw0gA==}
     dev: true
 
-  /tsconfck/1.1.1_typescript@4.5.3:
+  /tsconfck/1.1.1_typescript@4.5.4:
     resolution: {integrity: sha512-uEsCWef+3lA9/YqpGt/mdr+nDovhlr+f0zoycYiOyVDDOUb3BjYFA71+Ee3LB/GiZBRDyTfKBK1kGN2iuPPuEA==}
     engines: {node: ^12.20 || ^14.13.1 || >= 16, pnpm: '>=6.7.0'}
     hasBin: true
@@ -4364,7 +4364,7 @@ packages:
       typescript:
         optional: true
     dependencies:
-      typescript: 4.5.3
+      typescript: 4.5.4
     dev: true
 
   /tsm/2.2.1:
@@ -4375,7 +4375,7 @@ packages:
       esbuild: 0.14.3
     dev: true
 
-  /tsup/5.11.1_typescript@4.5.3:
+  /tsup/5.11.1_typescript@4.5.4:
     resolution: {integrity: sha512-4J1kknLCT7dlVoyoGwSl62cUo7QIar89pdOFhK5V5T81M9G2MR1WFbPlFnc6kHC10qgLBeoJdjnrnscJn9yc/w==}
     hasBin: true
     peerDependencies:
@@ -4398,7 +4398,7 @@ packages:
       source-map: 0.7.3
       sucrase: 3.20.3
       tree-kill: 1.2.2
-      typescript: 4.5.3
+      typescript: 4.5.4
     transitivePeerDependencies:
       - supports-color
       - ts-node
@@ -4447,8 +4447,8 @@ packages:
       is-typedarray: 1.0.0
     dev: true
 
-  /typescript/4.5.3:
-    resolution: {integrity: sha512-eVYaEHALSt+s9LbvgEv4Ef+Tdq7hBiIZgii12xXJnukryt3pMgJf6aKhoCZ3FWQsu6sydEnkg11fYXLzhLBjeQ==}
+  /typescript/4.5.4:
+    resolution: {integrity: sha512-VgYs2A2QIRuGphtzFV7aQJduJ2gyfTljngLzjpfW9FoYZF6xuw1W0vW9ghCKLfcWrCFxK81CSGRAvS1pn4fIUg==}
     engines: {node: '>=4.2.0'}
     hasBin: true
     dev: true
@@ -4752,7 +4752,7 @@ packages:
     peerDependencies:
       bob-esbuild: workspace:^3.1.1
     dependencies:
-      bob-esbuild: file:packages/bob_esbuild@0.14.3+typescript@4.5.3
+      bob-esbuild: file:packages/bob_esbuild@0.14.3+typescript@4.5.4
       commander: 8.3.0
     dev: false
 
@@ -4788,7 +4788,7 @@ packages:
       fsevents: 2.3.2
     dev: false
 
-  file:packages/bob_esbuild@0.14.3+typescript@4.5.3:
+  file:packages/bob_esbuild@0.14.3+typescript@4.5.4:
     resolution: {directory: packages/bob, type: directory}
     id: file:packages/bob
     name: bob-esbuild
@@ -4800,5 +4800,5 @@ packages:
       bob-esbuild-plugin: link:packages/esbuild-plugin
       esbuild: 0.14.3
       rollup: 2.61.1
-      typescript: 4.5.3
+      typescript: 4.5.4
     dev: false
