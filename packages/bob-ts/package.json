@@ -41,7 +41,7 @@
   },
   "devDependencies": {
     "@rollup/plugin-json": "^4.1.0",
-    "@types/node": "^16.11.12",
+    "@types/node": "^16.11.13",
     "bob-esbuild-cli": "workspace:^3.0.1",
     "changesets-github-release": "^0.0.4",
     "commander": "^8.3.0",
