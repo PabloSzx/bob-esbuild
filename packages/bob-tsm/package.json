@@ -45,13 +45,13 @@
     "c8": "^7.10.0",
     "chokidar": "^3.5.2",
     "commander": "^8.3.0",
-    "esbuild": "^0.14.3",
+    "esbuild": "^0.14.5",
     "execa": "^6.0.0",
     "semver": "^7.3.5",
     "tree-kill": "^1.2.2"
   },
   "peerDependencies": {
-    "esbuild": ">=0.13.14"
+    "esbuild": ">=0.14.5"
   },
   "optionalDependencies": {
     "fsevents": "~2.3.2"
