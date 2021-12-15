@@ -1,6 +1,6 @@
 {
   "name": "bob-ts",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "homepage": "https://github.com/PabloSzx/bob-esbuild",
   "bugs": "https://github.com/PabloSzx/bob-esbuild/issues",
   "repository": {
@@ -36,7 +36,7 @@
     "postpublish": "gh-release"
   },
   "dependencies": {
-    "bob-esbuild-plugin": "workspace:^3.1.1",
+    "bob-esbuild-plugin": "workspace:^3.1.2",
     "rollup": "^2.61.1"
   },
   "devDependencies": {

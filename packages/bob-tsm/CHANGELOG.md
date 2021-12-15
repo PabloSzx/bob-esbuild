@@ -1,5 +1,11 @@
 # bob-tsm
 
+## 0.3.8
+
+### Patch Changes
+
+- 54baca4: Fix esbuild peer dependency range
+
 ## 0.3.7
 
 ### Patch Changes

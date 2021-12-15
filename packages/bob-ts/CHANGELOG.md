@@ -1,5 +1,13 @@
 # bob-ts
 
+## 2.0.1
+
+### Patch Changes
+
+- 54baca4: Fix esbuild peer dependency range
+- Updated dependencies [54baca4]
+  - bob-esbuild-plugin@3.1.2
+
 ## 2.0.0
 
 ### Major Changes
