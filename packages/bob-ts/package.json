@@ -49,7 +49,7 @@
     "execa": "^6.0.0",
     "globby": "^12.0.2",
     "rollup-plugin-delete": "^2.0.0",
-    "rollup-plugin-node-externals": "^3.1.2",
+    "rollup-plugin-node-externals": "^3.1.1",
     "rollup-plugin-tsconfig-paths": "^1.0.15",
     "tree-kill": "^1.2.2"
   },
