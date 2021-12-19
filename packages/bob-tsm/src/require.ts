@@ -5,6 +5,7 @@ import { readFileSync } from 'fs';
 import { defaults, finalize } from './utils';
 
 import type { Config, Extension, Options } from './config';
+import type { TransformOptions } from 'esbuild';
 
 type Module = NodeJS.Module & {
   _compile?(source: string, filename: string): typeof loader;
@@ -60,15 +61,22 @@ function loader(Module: Module, sourcefile: string) {
   let extn = extname(sourcefile) as Extension;
   let options = config[extn] || {};
   let pitch = Module._compile!.bind(Module);
-  options.sourcefile = sourcefile;
+
+  let banner = options.banner;
 
   if (/\.[mc]?tsx?$/.test(extn)) {
-    options.banner = tsrequire + (options.banner || '');
+    banner = tsrequire + (options.banner || '');
   }
+
+  const transformOptions: TransformOptions = {
+    ...options,
+    banner,
+    sourcefile,
+  };
 
   if (config[extn] != null) {
     Module._compile = source => {
-      let result = transform(source, options);
+      let result = transform(source, transformOptions);
       return pitch(result, sourcefile);
     };
   }
@@ -80,7 +88,7 @@ function loader(Module: Module, sourcefile: string) {
     if (ec !== 'ERR_REQUIRE_ESM') throw err;
 
     let input = readFileSync(sourcefile, 'utf8');
-    let result = transform(input, { ...options, format: 'cjs' });
+    let result = transform(input, { ...transformOptions, format: 'cjs' });
     return pitch(result, sourcefile);
   }
 }
