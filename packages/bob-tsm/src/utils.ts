@@ -58,12 +58,11 @@ export const finalize = function (env: Defaults, custom?: ConfigFile): Config {
     '.jsx': { ...base, loader: 'jsx' },
     '.tsx': { ...base, loader: 'tsx' },
     '.cts': { ...base, format: 'cjs', loader: 'ts' },
+    '.json': { ...base, loader: 'json' },
   };
 
-  if (env.isESM) {
-    config['.json'] = { ...base, loader: 'json' };
-  } else {
-    config['.mjs'] = { ...base, loader: 'js' };
+  if (!env.isESM) {
+    config['.mjs'] = { ...base, format: 'esm', loader: 'js' };
   }
 
   let extn: Extension;

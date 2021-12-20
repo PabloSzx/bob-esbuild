@@ -2,6 +2,9 @@ import { Foo } from 'shared';
 
 import { Bar } from 'shared/deep/two-deep/other';
 import { C } from './innerShared';
+import { createRequire } from 'module';
+
+const require = createRequire(typeof __filename !== 'undefined' ? __filename : import.meta.url);
 
 /**
  * XD

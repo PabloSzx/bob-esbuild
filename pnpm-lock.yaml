@@ -222,6 +222,7 @@ importers:
       fsevents: ~2.3.2
       semver: ^7.3.5
       tree-kill: ^1.2.2
+      typescript-paths: ^1.1.5
     optionalDependencies:
       fsevents: 2.3.2
     devDependencies:
@@ -234,6 +235,7 @@ importers:
       execa: 6.0.0
       semver: 7.3.5
       tree-kill: 1.2.2
+      typescript-paths: 1.1.5_typescript@4.5.4
 
   packages/bob-watch:
     specifiers:
@@ -4475,6 +4477,14 @@ packages:
     resolution: {integrity: sha512-zdu8XMNEDepKKR+XYOXAVPtWui0ly0NtohUscw+UmaHiAWT8hrV1rr//H6V+0DvJ3OQ19S979M0laLfX8rm82Q==}
     dependencies:
       is-typedarray: 1.0.0
+    dev: true
+
+  /typescript-paths/1.1.5_typescript@4.5.4:
+    resolution: {integrity: sha512-dCXBW78tbnXQwYZ2/KN1J5qe3vn+pfwxMdaDvLj7qjYqq5GT0MU/OFWiNu6oItet52SxQGj+a4OjFJE4nl/1fw==}
+    peerDependencies:
+      typescript: ^4
+    dependencies:
+      typescript: 4.5.4
     dev: true
 
   /typescript-paths/1.2.3_typescript@4.5.4:
