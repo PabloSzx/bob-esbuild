@@ -1,5 +1,11 @@
 # bob-tsm
 
+## 0.3.9
+
+### Patch Changes
+
+- 5526c66: Fix: require shouldn't mutate global options
+
 ## 0.3.8
 
 ### Patch Changes
