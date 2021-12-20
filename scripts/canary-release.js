@@ -41,7 +41,7 @@ async function updateVersions() {
     console.warn(`Unable to find any relevant package for canary publishing. Please make sure changesets exists!`);
     process.exit(1);
   } else {
-    const releasePlan = assembleReleasePlan(changesets, packages, config, [], false);
+    const releasePlan = assembleReleasePlan(changesets, packages, config, undefined, false);
 
     if (releasePlan.releases.length === 0) {
       console.warn(`Unable to find any relevant package for canary releasing. Please make sure changesets exists!`);
