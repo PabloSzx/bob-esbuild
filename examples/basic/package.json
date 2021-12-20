@@ -37,7 +37,7 @@
     "bob-esbuild": "workspace:^3.2.1",
     "bob-esbuild-cli": "workspace:^3.0.1",
     "bob-ts": "workspace:^2.0.1",
-    "bob-tsm": "workspace:^0.3.8",
+    "bob-tsm": "workspace:^0.3.9",
     "shared": "workspace:^1.0.0"
   },
   "publishConfig": {
