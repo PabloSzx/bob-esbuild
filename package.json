@@ -43,7 +43,7 @@
   },
   "pnpm": {
     "overrides": {
-      "esbuild": "^0.14.5"
+      "esbuild": "^0.14.7"
     }
   }
 }
