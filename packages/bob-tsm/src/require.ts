@@ -3,11 +3,12 @@
 import type { TransformOptions } from 'esbuild';
 import { readFileSync } from 'fs';
 import { extname } from 'path';
-import { createHandler } from './deps/typescriptPaths.js';
 import type { Config, Extension, Options } from './config';
 import { defaults, finalize } from './utils';
 
-export const tsconfigPathsHandler = process.env.TSCONFIG_PATHS ? createHandler() : undefined;
+export const tsconfigPathsHandler = process.env.TSCONFIG_PATHS
+  ? (require('./deps/typescriptPaths.js') as typeof import('./deps/typescriptPaths.js')).createHandler()
+  : undefined;
 
 type Module = NodeJS.Module & {
   _compile?(source: string, filename: string): typeof loader;
@@ -58,7 +59,7 @@ const tsrequire = (
         } catch (err: any) {
           if (PATHS_ROOT_REQUIRE && 'code' in err && err.code === 'MODULE_NOT_FOUND') {
             const { tsconfigPathsHandler } = $$req(PATHS_ROOT_REQUIRE) as {
-              tsconfigPathsHandler: ReturnType<typeof createHandler>;
+              tsconfigPathsHandler: (request: string, importer: string) => string | undefined;
             };
 
             const tsconfigResolvedPath = tsconfigPathsHandler?.(ident, __filename);

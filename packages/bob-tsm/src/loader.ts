@@ -4,7 +4,6 @@ import { existsSync, promises } from 'fs';
 import { fileURLToPath, pathToFileURL, URL } from 'url';
 import type { Config, Extension, Options } from './config';
 import semverGtePkg from './deps/semver.js';
-import { createHandler } from './deps/typescriptPaths.js';
 import { defaults, finalize, getDefault } from './utils';
 
 if (!process.env.KEEP_LOADER_ARGV) {
@@ -15,7 +14,9 @@ if (!process.env.KEEP_LOADER_ARGV) {
 
 const semverGte = getDefault(semverGtePkg);
 
-export const tsconfigPathsHandler = process.env.TSCONFIG_PATHS ? createHandler() : undefined;
+export const tsconfigPathsHandler = process.env.TSCONFIG_PATHS
+  ? import('./deps/typescriptPaths.js').then(({ createHandler }) => createHandler())
+  : undefined;
 
 const HAS_UPDATED_HOOKS = semverGte(process.versions.node, '16.12.0');
 
@@ -81,7 +82,9 @@ export const resolve: Resolve = async function (specifier, context, defaultResol
   } catch (err: any) {
     if (tsconfigPathsHandler && 'code' in err && err.code === 'ERR_MODULE_NOT_FOUND') {
       try {
-        const tsResolvedUrl = tsconfigPathsHandler(specifier, context.parentURL ? fileURLToPath(context.parentURL) : rootPath);
+        const handlerTsconfigPaths = await tsconfigPathsHandler;
+
+        const tsResolvedUrl = handlerTsconfigPaths?.(specifier, context.parentURL ? fileURLToPath(context.parentURL) : rootPath);
 
         if (tsResolvedUrl) {
           return {
