@@ -1,5 +1,6 @@
 {
   "name": "other",
+  "private": true,
   "scripts": {
     "test": "test_cli --help"
   },
