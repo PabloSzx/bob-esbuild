@@ -1,4 +1,4 @@
-import { default as makePublishManifest } from '@pnpm/exportable-manifest';
+import { default as makePublishManifestPkg } from '@pnpm/exportable-manifest';
 import { default as rollupJson } from '@rollup/plugin-json';
 import { default as colors } from 'chalk';
 import { default as format } from 'date-fns/format/index.js';
@@ -9,6 +9,9 @@ import { default as externals } from 'rollup-plugin-node-externals';
 import { default as tsconfigPaths } from 'rollup-plugin-tsconfig-paths';
 import { default as treeKill } from 'tree-kill';
 import { parse as parseTsconfig } from 'tsconfck';
+import { getDefault } from './utils/getDefault';
+
+const makePublishManifest = getDefault(makePublishManifestPkg);
 
 export { cosmiconfig } from 'cosmiconfig';
 export { execaCommand as command } from 'execa';
