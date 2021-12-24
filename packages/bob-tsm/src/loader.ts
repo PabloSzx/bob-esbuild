@@ -15,7 +15,7 @@ if (!process.env.KEEP_LOADER_ARGV) {
 
 const semverGte = getDefault(semverGtePkg);
 
-export const tsconfigPathsHandler = createHandler();
+export const tsconfigPathsHandler = process.env.TSCONFIG_PATHS ? createHandler() : undefined;
 
 const HAS_UPDATED_HOOKS = semverGte(process.versions.node, '16.12.0');
 

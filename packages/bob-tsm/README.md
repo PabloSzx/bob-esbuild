@@ -22,7 +22,7 @@ npm install -D bob-tsm esbuild
 
 All the arguments that are not part of `bob-tsm` are passed directly to the `node` executable.
 
-````
+```
 Usage: bob-tsm [options] [node arguments...]
 
 Options:
@@ -36,5 +36,7 @@ Options:
   -q, --quiet
   --cjs                             Use CommonJS instead of ESM for ".ts" files. You still can use ".mts" to force ESM in
                                     specific typescript files.
-  -h, --help                        display help for command```
-````
+  --paths                           Use tsconfig paths resolver. It only works as a fallback of the default path resolving and
+                                    you can use the environment variable TS_NODE_PROJECT to customize the tsconfig.json to use.
+  -h, --help                        display help for command
+```

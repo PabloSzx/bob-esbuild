@@ -7,7 +7,7 @@ import { createHandler } from './deps/typescriptPaths.js';
 import type { Config, Extension, Options } from './config';
 import { defaults, finalize } from './utils';
 
-export const tsconfigPathsHandler = createHandler();
+export const tsconfigPathsHandler = process.env.TSCONFIG_PATHS ? createHandler() : undefined;
 
 type Module = NodeJS.Module & {
   _compile?(source: string, filename: string): typeof loader;
@@ -21,13 +21,15 @@ let uconf = env.file && require(env.file);
 let config: Config = finalize(env, uconf);
 
 declare const $$req: NodeJS.Require;
-declare const BOB_TSM_REQUIRE: string;
+declare const TSCONFIG_PATHS: string;
 
 const tsrequire = (
   'var $$req=require("module").createRequire(__filename);require=(' +
   function () {
     let { existsSync } = $$req('fs') as typeof import('fs');
     let $url = $$req('url') as typeof import('url');
+
+    const PATHS_ROOT_REQUIRE = TSCONFIG_PATHS;
 
     return new Proxy(require, {
       // NOTE: only here if source is TS
@@ -54,8 +56,10 @@ const tsrequire = (
           // return the new "[mc]ts" file, or let error
           return existsSync(file) ? $$req(file) : $$req(ident);
         } catch (err: any) {
-          if ('code' in err && err.code === 'MODULE_NOT_FOUND') {
-            const { tsconfigPathsHandler } = $$req(BOB_TSM_REQUIRE) as { tsconfigPathsHandler: ReturnType<typeof createHandler> };
+          if (PATHS_ROOT_REQUIRE && 'code' in err && err.code === 'MODULE_NOT_FOUND') {
+            const { tsconfigPathsHandler } = $$req(PATHS_ROOT_REQUIRE) as {
+              tsconfigPathsHandler: ReturnType<typeof createHandler>;
+            };
 
             const tsconfigResolvedPath = tsconfigPathsHandler?.(ident, __filename);
 
@@ -68,7 +72,7 @@ const tsrequire = (
     });
   } +
   ')();'
-).replace('BOB_TSM_REQUIRE', '"' + __filename + '"');
+).replace('TSCONFIG_PATHS', tsconfigPathsHandler ? '"' + __filename + '"' : '""');
 
 function transform(source: string, options: Options): string {
   esbuild = esbuild || require('esbuild');

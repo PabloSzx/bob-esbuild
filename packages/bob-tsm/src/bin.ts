@@ -26,6 +26,10 @@ program
     '--cjs',
     'Use CommonJS instead of ESM for ".ts" files. You still can use ".mts" to force ESM in specific typescript files.'
   )
+  .option(
+    '--paths',
+    'Use tsconfig paths resolver. It only works as a fallback of the default path resolving and you can use the environment variable TS_NODE_PROJECT to customize the tsconfig.json to use.'
+  )
   .allowUnknownOption()
   .argument('[node arguments...]');
 
@@ -39,9 +43,10 @@ program
       tsmconfig?: string;
       node_env: 'production' | 'prod' | 'development' | 'dev' | 'test';
       quiet?: boolean;
+      paths?: boolean;
     }>();
 
-    const { watch, ignore, cjs, node_env, quiet, tsmconfig } = options;
+    const { watch, ignore, cjs, node_env, quiet, tsmconfig, paths } = options;
 
     const binDirname = dirname(fileURLToPath(import.meta.url));
 
@@ -76,6 +81,12 @@ program
       });
 
       execNodeLog = execNodeLog.replace('$ node', `$ NODE_ENV=${NODE_ENV} node`);
+    }
+
+    if (paths) {
+      Object.assign((spawnEnv ||= { ...process.env }), {
+        TSCONFIG_PATHS: '1',
+      });
     }
 
     const spawnOptions: SpawnOptions = {
