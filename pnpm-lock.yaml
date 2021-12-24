@@ -52,7 +52,7 @@ importers:
       bob-esbuild: file:packages/bob_esbuild@0.14.8+typescript@4.5.4
       bob-esbuild-cli: file:packages/bob-cli_bob-esbuild@3.2.1
       bob-ts: file:packages/bob-ts_662efd90bdf0d190b70fd666c62cd143
-      bob-tsm: file:packages/bob-tsm_esbuild@0.14.8
+      bob-tsm: file:packages/bob-tsm_esbuild@0.14.8+typescript@4.5.4
       shared: link:../shared
     dependenciesMeta:
       bob-esbuild:
@@ -75,7 +75,7 @@ importers:
       react-dom: ^17.0.2
       typescript: ^4.5.4
     dependencies:
-      bob-tsm: file:packages/bob-tsm_esbuild@0.14.8
+      bob-tsm: file:packages/bob-tsm_esbuild@0.14.8+typescript@4.5.4
       next: 12.0.7_react-dom@17.0.2+react@17.0.2
       react: 17.0.2
       react-dom: 17.0.2_react@17.0.2
@@ -128,7 +128,7 @@ importers:
       fs-extra: ^10.0.0
       globby: ^12.0.2
       lodash.get: ^4.4.2
-      rollup: ^2.61.1
+      rollup: ^2.62.0
       rollup-plugin-delete: ^2.0.0
       rollup-plugin-node-externals: ^3.1.2
       rollup-plugin-tsconfig-paths: ^1.1.2
@@ -137,10 +137,10 @@ importers:
       typescript: ^4.5.4
     dependencies:
       bob-esbuild-plugin: link:../esbuild-plugin
-      rollup: 2.61.1
+      rollup: 2.62.0
     devDependencies:
       '@pnpm/exportable-manifest': 2.2.2
-      '@rollup/plugin-json': 4.1.0_rollup@2.61.1
+      '@rollup/plugin-json': 4.1.0_rollup@2.62.0
       '@types/folder-hash': 4.0.1
       '@types/fs-extra': 9.0.13
       '@types/lodash.get': 4.4.6
@@ -188,16 +188,16 @@ importers:
       esbuild: ^0.14.8
       execa: ^6.0.0
       globby: ^12.0.2
-      rollup: ^2.61.1
+      rollup: ^2.62.0
       rollup-plugin-delete: ^2.0.0
       rollup-plugin-node-externals: ^3.1.2
       rollup-plugin-tsconfig-paths: ^1.1.2
       tree-kill: ^1.2.2
     dependencies:
       bob-esbuild-plugin: link:../esbuild-plugin
-      rollup: 2.61.1
+      rollup: 2.62.0
     devDependencies:
-      '@rollup/plugin-json': 4.1.0_rollup@2.61.1
+      '@rollup/plugin-json': 4.1.0_rollup@2.62.0
       '@types/node': 17.0.4
       bob-esbuild-cli: link:../bob-cli
       changesets-github-release: 0.0.4
@@ -265,7 +265,7 @@ importers:
       '@rollup/pluginutils': ^4.1.2
       changesets-github-release: ^0.0.4
       esbuild: ^0.14.8
-      rollup: ^2.61.1
+      rollup: ^2.62.0
       tsconfck: ^1.1.1
       tsup: ^5.11.7
     dependencies:
@@ -273,7 +273,7 @@ importers:
     devDependencies:
       changesets-github-release: 0.0.4
       esbuild: 0.14.8
-      rollup: 2.61.1
+      rollup: 2.62.0
       tsconfck: 1.1.1_typescript@4.5.4
       tsup: 5.11.7_typescript@4.5.4
 
@@ -880,16 +880,16 @@ packages:
       write-yaml-file: 4.2.0
     dev: true
 
-  /@rollup/plugin-json/4.1.0_rollup@2.61.1:
+  /@rollup/plugin-json/4.1.0_rollup@2.62.0:
     resolution: {integrity: sha512-yfLbTdNS6amI/2OpmbiBoW12vngr5NW2jCJVZSBEz+H5KfUJZ2M7sDjk0U6GOOdCWFVScShte29o9NezJ53TPw==}
     peerDependencies:
       rollup: ^1.20.0 || ^2.0.0
     dependencies:
-      '@rollup/pluginutils': 3.1.0_rollup@2.61.1
-      rollup: 2.61.1
+      '@rollup/pluginutils': 3.1.0_rollup@2.62.0
+      rollup: 2.62.0
     dev: true
 
-  /@rollup/pluginutils/3.1.0_rollup@2.61.1:
+  /@rollup/pluginutils/3.1.0_rollup@2.62.0:
     resolution: {integrity: sha512-GksZ6pr6TpIjHm8h9lSQ8pi8BE9VeubNT0OMJ3B5uZJ8pz73NPiqOtCog/x2/QzM1ENChPKxMDhiQuRHsqc+lg==}
     engines: {node: '>= 8.0.0'}
     peerDependencies:
@@ -898,7 +898,7 @@ packages:
       '@types/estree': 0.0.39
       estree-walker: 1.0.1
       picomatch: 2.3.0
-      rollup: 2.61.1
+      rollup: 2.62.0
     dev: true
 
   /@rollup/pluginutils/4.1.2:
@@ -936,8 +936,8 @@ packages:
       ci-info: 3.3.0
     dev: true
 
-  /@types/istanbul-lib-coverage/2.0.3:
-    resolution: {integrity: sha512-sz7iLqvVUg1gIedBOvlkxPlc8/uVzyS5OwGz1cKjXzkl3FpL3al0crU8YGU1WoHkxn0Wxbw5tyi6hvzJKNzFsw==}
+  /@types/istanbul-lib-coverage/2.0.4:
+    resolution: {integrity: sha512-z/QT1XN4K4KYuslS23k62yDIDLwLFkzxOuMplDtObz0+y7VqJCaO2o+SPwHCvLFZh7xazvvoor2tA/hPz9ee7g==}
     dev: true
 
   /@types/lodash.get/4.4.6:
@@ -1256,7 +1256,7 @@ packages:
     dependencies:
       caniuse-lite: 1.0.30001292
       colorette: 1.4.0
-      electron-to-chromium: 1.4.27
+      electron-to-chromium: 1.4.28
       escalade: 3.1.1
       node-releases: 1.1.77
     dev: false
@@ -1312,7 +1312,7 @@ packages:
       foreground-child: 2.0.0
       istanbul-lib-coverage: 3.2.0
       istanbul-lib-report: 3.0.0
-      istanbul-reports: 3.1.1
+      istanbul-reports: 3.1.2
       rimraf: 3.0.2
       test-exclude: 6.0.0
       v8-to-istanbul: 8.1.0
@@ -1808,8 +1808,8 @@ packages:
     engines: {node: '>=10'}
     dev: true
 
-  /electron-to-chromium/1.4.27:
-    resolution: {integrity: sha512-uZ95szi3zUbzRDx1zx/xnsCG+2xgZyy57pDOeaeO4r8zx5Dqe8Jv1ti8cunvBwJHVI5LzPuw8umKwZb3WKYxSQ==}
+  /electron-to-chromium/1.4.28:
+    resolution: {integrity: sha512-Gzbf0wUtKfyPaqf0Plz+Ctinf9eQIzxEqBHwSvbGfeOm9GMNdLxyu1dNiCUfM+x6r4BE0xUJNh3Nmg9gfAtTmg==}
     dev: false
 
   /elliptic/6.5.4:
@@ -2875,8 +2875,8 @@ packages:
       supports-color: 7.2.0
     dev: true
 
-  /istanbul-reports/3.1.1:
-    resolution: {integrity: sha512-q1kvhAXWSsXfMjCdNHNPKZZv94OlspKnoGv+R9RGbnqOOQ0VbNfLFgQDVgi7hHenKsndGq3/o0OBdzDXthWcNw==}
+  /istanbul-reports/3.1.2:
+    resolution: {integrity: sha512-0gHxuT1NNC0aEIL1zbJ+MTgPbbHhU77eJPuU35WKA7TgXiSNlCAx4PENoMrH0Or6M2H80TaZcWKhM0IK6V8gRw==}
     engines: {node: '>=8'}
     dependencies:
       html-escaper: 2.0.2
@@ -3926,8 +3926,8 @@ packages:
       typescript-paths: 1.2.3_typescript@4.5.4
     dev: true
 
-  /rollup/2.61.1:
-    resolution: {integrity: sha512-BbTXlEvB8d+XFbK/7E5doIcRtxWPRiqr0eb5vQ0+2paMM04Ye4PZY5nHOQef2ix24l/L0SpLd5hwcH15QHPdvA==}
+  /rollup/2.62.0:
+    resolution: {integrity: sha512-cJEQq2gwB0GWMD3rYImefQTSjrPYaC6s4J9pYqnstVLJ1CHa/aZNVkD4Epuvg4iLeMA4KRiq7UM7awKK6j7jcw==}
     engines: {node: '>=10.0.0'}
     hasBin: true
     optionalDependencies:
@@ -4428,7 +4428,7 @@ packages:
       joycon: 3.1.1
       postcss-load-config: 3.1.0
       resolve-from: 5.0.0
-      rollup: 2.61.1
+      rollup: 2.62.0
       source-map: 0.7.3
       sucrase: 3.20.3
       tree-kill: 1.2.2
@@ -4557,7 +4557,7 @@ packages:
     resolution: {integrity: sha512-/PRhfd8aTNp9Ggr62HPzXg2XasNFGy5PBt0Rp04du7/8GNNSgxFL6WBTkgMKSL9bFjH+8kKEG3f37FmxiTqUUA==}
     engines: {node: '>=10.12.0'}
     dependencies:
-      '@types/istanbul-lib-coverage': 2.0.3
+      '@types/istanbul-lib-coverage': 2.0.4
       convert-source-map: 1.8.0
       source-map: 0.7.3
     dev: true
@@ -4812,10 +4812,10 @@ packages:
       '@types/node': 17.0.4
       bob-esbuild-plugin: link:packages/esbuild-plugin
       esbuild: 0.14.8
-      rollup: 2.61.1
+      rollup: 2.62.0
     dev: false
 
-  file:packages/bob-tsm_esbuild@0.14.8:
+  file:packages/bob-tsm_esbuild@0.14.8+typescript@4.5.4:
     resolution: {directory: packages/bob-tsm, type: directory}
     id: file:packages/bob-tsm
     name: bob-tsm
@@ -4824,8 +4824,10 @@ packages:
     hasBin: true
     peerDependencies:
       esbuild: '>=0.13.14'
+      typescript: '>=4.1.2'
     dependencies:
       esbuild: 0.14.8
+      typescript: 4.5.4
     optionalDependencies:
       fsevents: 2.3.2
     dev: false
@@ -4841,6 +4843,6 @@ packages:
     dependencies:
       bob-esbuild-plugin: link:packages/esbuild-plugin
       esbuild: 0.14.8
-      rollup: 2.61.1
+      rollup: 2.62.0
       typescript: 4.5.4
     dev: false
