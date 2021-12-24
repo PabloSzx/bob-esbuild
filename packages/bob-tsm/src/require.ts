@@ -72,7 +72,7 @@ const tsrequire = (
     });
   } +
   ')();'
-).replace('TSCONFIG_PATHS', tsconfigPathsHandler ? '"' + __filename + '"' : '""');
+).replace('TSCONFIG_PATHS', tsconfigPathsHandler ? JSON.stringify(__filename) : '""');
 
 function transform(source: string, options: Options): string {
   esbuild = esbuild || require('esbuild');
