@@ -1,7 +1,7 @@
 lockfileVersion: 5.3
 
 overrides:
-  esbuild: ^0.14.7
+  esbuild: ^0.14.8
 
 importers:
 
@@ -13,9 +13,9 @@ importers:
       '@changesets/config': ^1.6.3
       '@changesets/read': ^0.5.2
       '@manypkg/get-packages': ^1.1.3
-      '@types/node': ^17.0.2
+      '@types/node': ^17.0.4
       changesets-github-release: ^0.0.4
-      esbuild: ^0.14.7
+      esbuild: ^0.14.8
       husky: ^7.0.4
       prettier: ^2.5.1
       pretty-quick: ^3.1.3
@@ -30,7 +30,7 @@ importers:
       '@changesets/config': 1.6.3
       '@changesets/read': 0.5.2
       '@manypkg/get-packages': 1.1.3
-      '@types/node': 17.0.2
+      '@types/node': 17.0.4
       changesets-github-release: 0.0.4
       esbuild: 0.14.8
       husky: 7.0.4
@@ -51,7 +51,7 @@ importers:
     dependencies:
       bob-esbuild: file:packages/bob_esbuild@0.14.8+typescript@4.5.4
       bob-esbuild-cli: file:packages/bob-cli_bob-esbuild@3.2.1
-      bob-ts: file:packages/bob-ts_780a6970107b1ec00500a20d67197f94
+      bob-ts: file:packages/bob-ts_662efd90bdf0d190b70fd666c62cd143
       bob-tsm: file:packages/bob-tsm_esbuild@0.14.8
       shared: link:../shared
     dependenciesMeta:
@@ -66,7 +66,7 @@ importers:
 
   examples/nextjs-custom-server:
     specifiers:
-      '@types/node': ^17.0.2
+      '@types/node': ^17.0.4
       '@types/react': ^17.0.38
       bob-tsm: workspace:^0.3.9
       cross-env: ^7.0.3
@@ -80,7 +80,7 @@ importers:
       react: 17.0.2
       react-dom: 17.0.2_react@17.0.2
     devDependencies:
-      '@types/node': 17.0.2
+      '@types/node': 17.0.4
       '@types/react': 17.0.38
       cross-env: 7.0.3
       typescript: 4.5.4
@@ -114,14 +114,14 @@ importers:
       '@types/folder-hash': ^4.0.1
       '@types/fs-extra': ^9.0.13
       '@types/lodash.get': ^4.4.6
-      '@types/node': ^17.0.2
+      '@types/node': ^17.0.4
       bob-esbuild-plugin: workspace:3.1.2
       builtin-modules: ^3.2.0
       chalk: ^5.0.0
       changesets-github-release: ^0.0.4
       cosmiconfig: ^7.0.1
       date-fns: ^2.27.0
-      esbuild: ^0.14.7
+      esbuild: ^0.14.8
       execa: ^6.0.0
       fast-glob: ^3.2.7
       folder-hash: ^4.0.1
@@ -144,7 +144,7 @@ importers:
       '@types/folder-hash': 4.0.1
       '@types/fs-extra': 9.0.13
       '@types/lodash.get': 4.4.6
-      '@types/node': 17.0.2
+      '@types/node': 17.0.4
       builtin-modules: 3.2.0
       chalk: 5.0.0
       changesets-github-release: 0.0.4
@@ -180,12 +180,12 @@ importers:
   packages/bob-ts:
     specifiers:
       '@rollup/plugin-json': ^4.1.0
-      '@types/node': ^17.0.2
+      '@types/node': ^17.0.4
       bob-esbuild-cli: workspace:^3.0.1
       bob-esbuild-plugin: workspace:^3.1.2
       changesets-github-release: ^0.0.4
       commander: ^8.3.0
-      esbuild: ^0.14.7
+      esbuild: ^0.14.8
       execa: ^6.0.0
       globby: ^12.0.2
       rollup: ^2.61.1
@@ -198,7 +198,7 @@ importers:
       rollup: 2.61.1
     devDependencies:
       '@rollup/plugin-json': 4.1.0_rollup@2.61.1
-      '@types/node': 17.0.2
+      '@types/node': 17.0.4
       bob-esbuild-cli: link:../bob-cli
       changesets-github-release: 0.0.4
       commander: 8.3.0
@@ -217,12 +217,12 @@ importers:
       c8: ^7.10.0
       chokidar: ^3.5.2
       commander: ^8.3.0
-      esbuild: ^0.14.7
+      esbuild: ^0.14.8
       execa: ^6.0.0
       fsevents: ~2.3.2
       semver: ^7.3.5
       tree-kill: ^1.2.2
-      typescript-paths: ^1.1.5
+      typescript-paths: ^1.2.3
     optionalDependencies:
       fsevents: 2.3.2
     devDependencies:
@@ -235,7 +235,7 @@ importers:
       execa: 6.0.0
       semver: 7.3.5
       tree-kill: 1.2.2
-      typescript-paths: 1.1.5_typescript@4.5.4
+      typescript-paths: 1.2.3_typescript@4.5.4
 
   packages/bob-watch:
     specifiers:
@@ -262,7 +262,7 @@ importers:
     specifiers:
       '@rollup/pluginutils': ^4.1.2
       changesets-github-release: ^0.0.4
-      esbuild: ^0.14.7
+      esbuild: ^0.14.8
       rollup: ^2.61.1
       tsconfck: ^1.1.1
       tsup: ^5.11.7
@@ -918,14 +918,14 @@ packages:
   /@types/fs-extra/9.0.13:
     resolution: {integrity: sha512-nEnwB++1u5lVDM2UI4c1+5R+FYaKfaAzS4OococimjVm3nQw3TuzH5UNsocrcTBbhnerblyHj4A49qXbIiZdpA==}
     dependencies:
-      '@types/node': 17.0.2
+      '@types/node': 17.0.4
     dev: true
 
   /@types/glob/7.2.0:
     resolution: {integrity: sha512-ZUxbzKl0IfJILTS6t7ip5fQQM/J3TJYubDm3nMbgubNNYS62eXeUpoLUC8/7fJNiFYHTrGPQn7hspDUzIHX3UA==}
     dependencies:
       '@types/minimatch': 3.0.5
-      '@types/node': 17.0.2
+      '@types/node': 17.0.4
     dev: true
 
   /@types/is-ci/3.0.0:
@@ -960,8 +960,8 @@ packages:
     resolution: {integrity: sha512-NxmtBRGipjx1B225OeMdI+CQmLbYqvvmYbukDTJGDgzIDgPQ1EcjGmYxGhOk5hTBqeB558S6RgHSpq2iiqifAQ==}
     dev: true
 
-  /@types/node/17.0.2:
-    resolution: {integrity: sha512-JepeIUPFDARgIs0zD/SKPgFsJEAF0X5/qO80llx59gOxFTboS9Amv3S+QfB7lqBId5sFXJ99BN0J6zFRvL9dDA==}
+  /@types/node/17.0.4:
+    resolution: {integrity: sha512-6xwbrW4JJiJLgF+zNypN5wr2ykM9/jHcL7rQ8fZe2vuftggjzZeRSM4OwRc6Xk8qWjwJ99qVHo/JgOGmomWRog==}
 
   /@types/normalize-package-data/2.4.1:
     resolution: {integrity: sha512-Gj7cI7z+98M282Tqmp2K5EIsoouUEzbBJhQQzDE3jSIRk6r9gsz0oUokqIUR4u1R3dMHo0pDHM7sNOHyhulypw==}
@@ -2885,7 +2885,7 @@ packages:
     resolution: {integrity: sha512-mk0umAQ5lT+CaOJ+Qp01N6kz48sJG2kr2n1rX0koqKf6FIygQV0qLOdN9SCYID4IVeSigDOcPeGLozdMLYfb5g==}
     engines: {node: ^10.13.0 || ^12.13.0 || ^14.15.0 || >=15.0.0}
     dependencies:
-      '@types/node': 17.0.2
+      '@types/node': 17.0.4
       merge-stream: 2.0.0
       supports-color: 8.1.1
     dev: false
@@ -4479,14 +4479,6 @@ packages:
       is-typedarray: 1.0.0
     dev: true
 
-  /typescript-paths/1.1.5_typescript@4.5.4:
-    resolution: {integrity: sha512-dCXBW78tbnXQwYZ2/KN1J5qe3vn+pfwxMdaDvLj7qjYqq5GT0MU/OFWiNu6oItet52SxQGj+a4OjFJE4nl/1fw==}
-    peerDependencies:
-      typescript: ^4
-    dependencies:
-      typescript: 4.5.4
-    dev: true
-
   /typescript-paths/1.2.3_typescript@4.5.4:
     resolution: {integrity: sha512-7Bh5Y0aLg6o7w9/D9nez/DrYMUTB+cma+1HNJ327zApvy+/WjHPKlkMTEj6vIMpDR5ddTxrtU8DuXqmz9/QVtw==}
     peerDependencies:
@@ -4804,7 +4796,7 @@ packages:
       commander: 8.3.0
     dev: false
 
-  file:packages/bob-ts_780a6970107b1ec00500a20d67197f94:
+  file:packages/bob-ts_662efd90bdf0d190b70fd666c62cd143:
     resolution: {directory: packages/bob-ts, type: directory}
     id: file:packages/bob-ts
     name: bob-ts
@@ -4815,7 +4807,7 @@ packages:
       '@types/node': '*'
       esbuild: '>=0.13.14'
     dependencies:
-      '@types/node': 17.0.2
+      '@types/node': 17.0.4
       bob-esbuild-plugin: link:packages/esbuild-plugin
       esbuild: 0.14.8
       rollup: 2.61.1

@@ -11,6 +11,8 @@ const require = createRequire(typeof __filename !== 'undefined' ? __filename : i
  */
 export const A = C * 1;
 
+console.log('node', process.version);
+
 import('shared/package.json').then(({ default: { name, version } }) => console.log('esm', { name, version }));
 Promise.resolve(require('shared/package.json')).then(({ name, version }) => console.log('cjs', { name, version }));
 

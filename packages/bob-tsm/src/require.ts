@@ -3,7 +3,7 @@
 import type { TransformOptions } from 'esbuild';
 import { readFileSync } from 'fs';
 import { extname } from 'path';
-import { createHandler } from './deps/typescriptPaths';
+import { createHandler } from './deps/typescriptPaths.js';
 import type { Config, Extension, Options } from './config';
 import { defaults, finalize } from './utils';
 
@@ -68,7 +68,7 @@ const tsrequire = (
     });
   } +
   ')();'
-).replace('BOB_TSM_REQUIRE', JSON.stringify(__filename));
+).replace('BOB_TSM_REQUIRE', '"' + __filename + '"');
 
 function transform(source: string, options: Options): string {
   esbuild = esbuild || require('esbuild');

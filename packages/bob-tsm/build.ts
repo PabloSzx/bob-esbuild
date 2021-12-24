@@ -26,7 +26,7 @@ async function main() {
       outDir: 'lib',
       target: 'node12.20',
       sourcemap: false,
-      external: ['./deps/typescriptPaths'],
+      external: ['./deps/typescriptPaths.js'],
       esbuild: {
         minify: false,
       },
@@ -38,7 +38,7 @@ async function main() {
       outDir: 'lib',
       target: 'node12.20',
       sourcemap: false,
-      external: ['./deps/semver.js', './deps/typescriptPaths'],
+      external: ['./deps/semver.js', './deps/typescriptPaths.js'],
       esbuild: {
         minify: false,
       },
@@ -56,7 +56,7 @@ async function main() {
         minify: false,
       },
       sourcemap: false,
-      external: ['./deps/commander.js', './deps/treeKill.js', './deps/chokidar.js', './deps/typescriptPaths'],
+      external: ['./deps/commander.js', './deps/treeKill.js', './deps/chokidar.js', './deps/typescriptPaths.js'],
       rollup: {
         banner: '#!/usr/bin/env node\n',
       },

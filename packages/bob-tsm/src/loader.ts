@@ -1,9 +1,10 @@
 // CREDITS TO lukeed https://github.com/lukeed/tsm
 
 import { existsSync, promises } from 'fs';
-import semverGtePkg from './deps/semver.js';
-import { fileURLToPath, URL } from 'url';
+import { fileURLToPath, pathToFileURL, URL } from 'url';
 import type { Config, Extension, Options } from './config';
+import semverGtePkg from './deps/semver.js';
+import { createHandler } from './deps/typescriptPaths.js';
 import { defaults, finalize, getDefault } from './utils';
 
 if (!process.env.KEEP_LOADER_ARGV) {
@@ -13,6 +14,8 @@ if (!process.env.KEEP_LOADER_ARGV) {
 }
 
 const semverGte = getDefault(semverGtePkg);
+
+export const tsconfigPathsHandler = createHandler();
 
 const HAS_UPDATED_HOOKS = semverGte(process.versions.node, '16.12.0');
 
@@ -70,16 +73,28 @@ function check(fileurl: string): string | void {
 }
 
 const root = new URL('file:///' + process.cwd() + '/');
-export const resolve: Resolve = async function (specifier, context, defaultResolve) {
-  let defaultResolveResult: Awaited<ReturnType<Resolve>> | false = false;
+const rootPath = fileURLToPath(root);
 
+export const resolve: Resolve = async function (specifier, context, defaultResolve) {
   try {
-    defaultResolveResult = await defaultResolve(specifier, context, defaultResolve);
-  } catch (err) {}
+    return await defaultResolve(specifier, context, defaultResolve);
+  } catch (err: any) {
+    if (tsconfigPathsHandler && 'code' in err && err.code === 'ERR_MODULE_NOT_FOUND') {
+      try {
+        const tsResolvedUrl = tsconfigPathsHandler(specifier, context.parentURL ? fileURLToPath(context.parentURL) : rootPath);
+
+        if (tsResolvedUrl) {
+          return {
+            url: pathToFileURL(tsResolvedUrl).href,
+          };
+        }
+      } catch (err) {}
+    }
+  }
 
   // ignore "prefix:", non-relative identifiers, and respect import maps
-  if (defaultResolveResult || /^\w+\:?/.test(specifier)) {
-    return defaultResolveResult || defaultResolve(specifier, context, defaultResolve);
+  if (/^\w+\:?/.test(specifier)) {
+    return defaultResolve(specifier, context, defaultResolve);
   }
 
   let match: RegExpExecArray | null;
