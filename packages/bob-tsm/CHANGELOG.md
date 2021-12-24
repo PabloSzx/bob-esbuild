@@ -1,5 +1,11 @@
 # bob-tsm
 
+## 0.4.1
+
+### Patch Changes
+
+- a138e87: Set "typescript>=4.1.2" as peer dependency
+
 ## 0.4.0
 
 ### Minor Changes
