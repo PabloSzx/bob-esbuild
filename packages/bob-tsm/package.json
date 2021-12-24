@@ -48,7 +48,8 @@
     "esbuild": "^0.14.7",
     "execa": "^6.0.0",
     "semver": "^7.3.5",
-    "tree-kill": "^1.2.2"
+    "tree-kill": "^1.2.2",
+    "typescript-paths": "^1.2.3"
   },
   "peerDependencies": {
     "esbuild": ">=0.13.14"

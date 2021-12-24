@@ -9,6 +9,9 @@ export const config: import('bob-esbuild').BobConfig = {
   outputOptions: {
     sourcemap: false,
   },
+  esbuildPluginOptions: {
+    target: 'node13.2',
+  },
   keepDynamicImport: true,
   useTsconfigPaths: true,
   packageConfigs: {
