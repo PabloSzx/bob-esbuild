@@ -1,8 +1,8 @@
-import { rewritePackageJson } from '../bob/src/config/packageJson';
 import { build } from 'esbuild';
 import { promises } from 'fs';
 import { resolve } from 'path';
 import { buildCode } from '../bob-ts/src/build';
+import { writePackageJson } from '../bob/src/config/packageJson';
 import { buildTsc } from '../bob/src/tsc/build';
 import pkg from './package.json';
 
@@ -72,28 +72,18 @@ async function main() {
         outdir: 'lib/deps',
         platform: 'node',
         minify: true,
-        external: ['fsevents'],
+        external: ['fsevents', 'typescript'],
       });
     }),
-
-    promises.writeFile(
-      './lib/package.json',
-      JSON.stringify(
-        rewritePackageJson(
-          {
-            ...pkg,
-            bin: {
-              'bob-tsm': './bin.mjs',
-            },
-          },
-          'lib',
-          process.cwd()
-        ),
-        null,
-        2
-      ),
-      'utf8'
-    ),
+    writePackageJson({
+      packageJson: {
+        ...pkg,
+        bin: {
+          'bob-tsm': './bin.mjs',
+        },
+      },
+      distDir: 'lib',
+    }),
     promises.copyFile('LICENSE', 'lib/LICENSE'),
     promises.copyFile('README.md', 'lib/README.md'),
   ]);

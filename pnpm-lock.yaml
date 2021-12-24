@@ -222,6 +222,7 @@ importers:
       fsevents: ~2.3.2
       semver: ^7.3.5
       tree-kill: ^1.2.2
+      typescript: ^4.5.4
       typescript-paths: ^1.2.3
     optionalDependencies:
       fsevents: 2.3.2
@@ -235,6 +236,7 @@ importers:
       execa: 6.0.0
       semver: 7.3.5
       tree-kill: 1.2.2
+      typescript: 4.5.4
       typescript-paths: 1.2.3_typescript@4.5.4
 
   packages/bob-watch:

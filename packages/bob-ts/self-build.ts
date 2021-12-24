@@ -2,7 +2,7 @@ import { build } from 'esbuild';
 import { promises } from 'fs';
 import { resolve } from 'path';
 import { startBuild } from '../bob/src/build';
-import { rewritePackageJson } from '../bob/src/config/packageJson';
+import { writePackageJson } from '../bob/src/config/packageJson';
 import { buildRollup } from '../bob/src/rollup/build';
 import pkg from './package.json';
 
@@ -45,25 +45,16 @@ async function main() {
   });
 
   await Promise.all([
-    promises.writeFile(
-      './lib/package.json',
-      JSON.stringify(
-        rewritePackageJson(
-          {
-            ...pkg,
-            bin: {
-              'bob-ts': './bin/build.mjs',
-              'bob-ts-watch': './bin/watch.mjs',
-            },
-          },
-          'lib',
-          process.cwd()
-        ),
-        null,
-        2
-      ),
-      'utf8'
-    ),
+    writePackageJson({
+      packageJson: {
+        ...pkg,
+        bin: {
+          'bob-ts': './bin/build.mjs',
+          'bob-ts-watch': './bin/watch.mjs',
+        },
+      },
+      distDir: 'lib',
+    }),
     promises.copyFile('LICENSE', 'lib/LICENSE'),
     promises.copyFile('README.md', 'lib/README.md'),
   ]);

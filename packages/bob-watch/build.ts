@@ -1,8 +1,8 @@
 import { build } from 'esbuild';
 import { promises } from 'fs';
-import { buildTsc } from '../bob/src/index';
-import { rewritePackageJson } from '../bob/src/config/packageJson';
 import { buildCode } from '../bob-ts/src/build';
+import { writePackageJson } from '../bob/src/config/packageJson';
+import { buildTsc } from '../bob/src/index';
 import pkg from './package.json';
 
 async function main() {
@@ -56,23 +56,15 @@ async function main() {
       external: ['fsevents'],
     }),
     buildTsc(),
-    promises.writeFile(
-      'lib/package.json',
-      JSON.stringify(
-        rewritePackageJson(
-          {
-            ...pkg,
-            bin: {
-              'bob-watch': './bin.mjs',
-            },
-          },
-          'lib'
-        ),
-        null,
-        2
-      ),
-      'utf-8'
-    ),
+    writePackageJson({
+      distDir: 'lib',
+      packageJson: {
+        ...pkg,
+        bin: {
+          'bob-watch': './bin.mjs',
+        },
+      },
+    }),
     promises.copyFile('README.md', 'lib/README.md'),
     promises.copyFile('LICENSE', 'lib/LICENSE'),
   ]);
