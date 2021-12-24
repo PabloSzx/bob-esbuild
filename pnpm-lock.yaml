@@ -52,7 +52,7 @@ importers:
       bob-esbuild: file:packages/bob_esbuild@0.14.8+typescript@4.5.4
       bob-esbuild-cli: file:packages/bob-cli_bob-esbuild@3.2.1
       bob-ts: file:packages/bob-ts_662efd90bdf0d190b70fd666c62cd143
-      bob-tsm: file:packages/bob-tsm_esbuild@0.14.8
+      bob-tsm: file:packages/bob-tsm_esbuild@0.14.8+typescript@4.5.4
       shared: link:../shared
     dependenciesMeta:
       bob-esbuild:
@@ -75,7 +75,7 @@ importers:
       react-dom: ^17.0.2
       typescript: ^4.5.4
     dependencies:
-      bob-tsm: file:packages/bob-tsm_esbuild@0.14.8
+      bob-tsm: file:packages/bob-tsm_esbuild@0.14.8+typescript@4.5.4
       next: 12.0.7_react-dom@17.0.2+react@17.0.2
       react: 17.0.2
       react-dom: 17.0.2_react@17.0.2
@@ -4815,7 +4815,7 @@ packages:
       rollup: 2.61.1
     dev: false
 
-  file:packages/bob-tsm_esbuild@0.14.8:
+  file:packages/bob-tsm_esbuild@0.14.8+typescript@4.5.4:
     resolution: {directory: packages/bob-tsm, type: directory}
     id: file:packages/bob-tsm
     name: bob-tsm
@@ -4824,8 +4824,10 @@ packages:
     hasBin: true
     peerDependencies:
       esbuild: '>=0.13.14'
+      typescript: '>=4.5.4'
     dependencies:
       esbuild: 0.14.8
+      typescript: 4.5.4
     optionalDependencies:
       fsevents: 2.3.2
     dev: false
