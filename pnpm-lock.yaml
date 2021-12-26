@@ -131,7 +131,7 @@ importers:
       rollup: ^2.62.0
       rollup-plugin-delete: ^2.0.0
       rollup-plugin-node-externals: ^3.1.2
-      rollup-plugin-tsconfig-paths: ^1.1.2
+      rollup-plugin-tsconfig-paths: ^1.1.3
       tree-kill: ^1.2.2
       tsconfck: ^1.1.1
       typescript: ^4.5.4
@@ -159,7 +159,7 @@ importers:
       lodash.get: 4.4.2
       rollup-plugin-delete: 2.0.0
       rollup-plugin-node-externals: 3.1.2
-      rollup-plugin-tsconfig-paths: 1.1.2_typescript@4.5.4
+      rollup-plugin-tsconfig-paths: 1.1.3_typescript@4.5.4
       tree-kill: 1.2.2
       tsconfck: 1.1.1_typescript@4.5.4
       typescript: 4.5.4
@@ -191,7 +191,7 @@ importers:
       rollup: ^2.62.0
       rollup-plugin-delete: ^2.0.0
       rollup-plugin-node-externals: ^3.1.2
-      rollup-plugin-tsconfig-paths: ^1.1.2
+      rollup-plugin-tsconfig-paths: ^1.1.3
       tree-kill: ^1.2.2
     dependencies:
       bob-esbuild-plugin: link:../esbuild-plugin
@@ -207,7 +207,7 @@ importers:
       globby: 12.0.2
       rollup-plugin-delete: 2.0.0
       rollup-plugin-node-externals: 3.1.2
-      rollup-plugin-tsconfig-paths: 1.1.2_typescript@4.5.4
+      rollup-plugin-tsconfig-paths: 1.1.3_typescript@4.5.4
       tree-kill: 1.2.2
 
   packages/bob-tsm:
@@ -3917,13 +3917,13 @@ packages:
       find-up: 6.2.0
     dev: true
 
-  /rollup-plugin-tsconfig-paths/1.1.2_typescript@4.5.4:
-    resolution: {integrity: sha512-wPAkgAs7/uRENDsx1RFrqS9mY/HlGgvhZsAdylvYt0PKzKtnifW/F5YjVDXmHyp9eElOumFhki8dlnY0nN8IZw==}
+  /rollup-plugin-tsconfig-paths/1.1.3_typescript@4.5.4:
+    resolution: {integrity: sha512-K6oO40XVescO9dqHj+IbwzXj4p3A+uT8R2Mjoi1H5GEn3QSMh3SAjBeH26y8uNXiy6rz9ZwK1Uezg1/PXHarow==}
     peerDependencies:
       typescript: ^4.1.2
     dependencies:
       typescript: 4.5.4
-      typescript-paths: 1.2.3_typescript@4.5.4
+      typescript-paths: 1.2.5_typescript@4.5.4
     dev: true
 
   /rollup/2.62.0:
@@ -4483,6 +4483,14 @@ packages:
 
   /typescript-paths/1.2.3_typescript@4.5.4:
     resolution: {integrity: sha512-7Bh5Y0aLg6o7w9/D9nez/DrYMUTB+cma+1HNJ327zApvy+/WjHPKlkMTEj6vIMpDR5ddTxrtU8DuXqmz9/QVtw==}
+    peerDependencies:
+      typescript: ^4.1.2
+    dependencies:
+      typescript: 4.5.4
+    dev: true
+
+  /typescript-paths/1.2.5_typescript@4.5.4:
+    resolution: {integrity: sha512-QTonpnJqdBXFbQ8MK5qtRfj4I7wj5AA7Y0bhO8biXdBYAsbhvPX8icIy/AJaJ4fIJ0oYGYiazuDJsZjZilF02w==}
     peerDependencies:
       typescript: ^4.1.2
     dependencies:
