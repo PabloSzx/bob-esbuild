@@ -9,7 +9,7 @@ import { getPackageJson } from './packageJson';
 
 export interface TsConfigPayload {
   compilerOptions: CompilerOptions;
-  fileNames?: string[];
+  fileNames: string[];
 }
 
 export interface RollupConfig {
