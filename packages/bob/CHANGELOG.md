@@ -1,5 +1,14 @@
 # bob-esbuild
 
+## 3.2.2
+
+### Patch Changes
+
+- bd58512: Use typescript peer dependency
+- ebf0d1c: Bump recommended esbuild version
+- Updated dependencies [ebf0d1c]
+  - bob-esbuild-plugin@3.1.3
+
 ## 3.2.1
 
 ### Patch Changes
