@@ -1,5 +1,17 @@
 # bob-ts
 
+## 3.0.0
+
+### Major Changes
+
+- a958cf1: Set "typescript" as peer dependency
+
+### Patch Changes
+
+- ebf0d1c: Bump recommended esbuild version
+- Updated dependencies [ebf0d1c]
+  - bob-esbuild-plugin@3.1.3
+
 ## 2.0.1
 
 ### Patch Changes

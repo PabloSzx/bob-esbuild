@@ -1,5 +1,11 @@
 # bob-tsm
 
+## 0.4.2
+
+### Patch Changes
+
+- ebf0d1c: Bump recommended esbuild version
+
 ## 0.4.1
 
 ### Patch Changes
