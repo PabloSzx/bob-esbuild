@@ -39,7 +39,7 @@
     "tsup": "^5.11.9"
   },
   "peerDependencies": {
-    "esbuild": ">=0.13.14",
+    "esbuild": ">=0.14.9",
     "rollup": "*"
   },
   "publishConfig": {

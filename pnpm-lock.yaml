@@ -51,7 +51,7 @@ importers:
     dependencies:
       bob-esbuild: file:packages/bob_esbuild@0.14.9+typescript@4.5.4
       bob-esbuild-cli: file:packages/bob-cli_bob-esbuild@3.2.1
-      bob-ts: file:packages/bob-ts_173cbb17c9f04933542ff73f54fb5665
+      bob-ts: file:packages/bob-ts_4f83ed05784358e3fc50c0b77836da9c
       bob-tsm: file:packages/bob-tsm_esbuild@0.14.9+typescript@4.5.4
       shared: link:../shared
     dependenciesMeta:
@@ -4800,7 +4800,7 @@ packages:
       commander: 8.3.0
     dev: false
 
-  file:packages/bob-ts_173cbb17c9f04933542ff73f54fb5665:
+  file:packages/bob-ts_4f83ed05784358e3fc50c0b77836da9c:
     resolution: {directory: packages/bob-ts, type: directory}
     id: file:packages/bob-ts
     name: bob-ts
@@ -4809,12 +4809,14 @@ packages:
     hasBin: true
     peerDependencies:
       '@types/node': '*'
-      esbuild: '>=0.13.14'
+      esbuild: '>=0.14.9'
+      typescript: '*'
     dependencies:
       '@types/node': 17.0.5
       bob-esbuild-plugin: link:packages/esbuild-plugin
       esbuild: 0.14.9
       rollup: 2.62.0
+      typescript: 4.5.4
     dev: false
 
   file:packages/bob-tsm_esbuild@0.14.9+typescript@4.5.4:
@@ -4825,7 +4827,7 @@ packages:
     engines: {node: ^12.20.0 || >=14.13.0}
     hasBin: true
     peerDependencies:
-      esbuild: '>=0.13.14'
+      esbuild: '>=0.14.9'
       typescript: '>=4.1.2'
     dependencies:
       esbuild: 0.14.9
@@ -4840,7 +4842,7 @@ packages:
     name: bob-esbuild
     version: 3.2.1
     peerDependencies:
-      esbuild: '>=0.13.14'
+      esbuild: '>=0.14.9'
       typescript: '*'
     dependencies:
       bob-esbuild-plugin: link:packages/esbuild-plugin
