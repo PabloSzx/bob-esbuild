@@ -21,7 +21,7 @@ async function main() {
     outdir: 'lib',
     platform: 'node',
     minify: true,
-    external: ['rollup', 'fsevents'],
+    external: ['rollup', 'fsevents', 'typescript'],
   });
 }
 
