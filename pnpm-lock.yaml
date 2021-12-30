@@ -225,7 +225,7 @@ importers:
       semver: ^7.3.5
       tree-kill: ^1.2.2
       typescript: ^4.5.4
-      typescript-paths: ^1.2.5
+      typescript-paths: ^1.2.6
     optionalDependencies:
       fsevents: 2.3.2
     devDependencies:
@@ -239,7 +239,7 @@ importers:
       semver: 7.3.5
       tree-kill: 1.2.2
       typescript: 4.5.4
-      typescript-paths: 1.2.5_typescript@4.5.4
+      typescript-paths: 1.2.6_typescript@4.5.4
 
   packages/bob-watch:
     specifiers:
@@ -4485,6 +4485,14 @@ packages:
 
   /typescript-paths/1.2.5_typescript@4.5.4:
     resolution: {integrity: sha512-QTonpnJqdBXFbQ8MK5qtRfj4I7wj5AA7Y0bhO8biXdBYAsbhvPX8icIy/AJaJ4fIJ0oYGYiazuDJsZjZilF02w==}
+    peerDependencies:
+      typescript: ^4.1.2
+    dependencies:
+      typescript: 4.5.4
+    dev: true
+
+  /typescript-paths/1.2.6_typescript@4.5.4:
+    resolution: {integrity: sha512-ZgEx/dLjt5J1FjcuYos6d2I49gJat3kb9TZR2hYqNXaCNAhknp35K+tX2sBAHhcKRMPB8pvnjYIwPYNtS8Vv5w==}
     peerDependencies:
       typescript: ^4.1.2
     dependencies:
