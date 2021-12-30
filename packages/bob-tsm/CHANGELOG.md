@@ -1,5 +1,12 @@
 # bob-tsm
 
+## 0.4.3
+
+### Patch Changes
+
+- 3407fd1: Async check if file exists on ESM
+- 4367476: Define `__dirname` & `__filename` for ESM
+
 ## 0.4.2
 
 ### Patch Changes

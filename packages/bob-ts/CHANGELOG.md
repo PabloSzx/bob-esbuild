@@ -1,5 +1,11 @@
 # bob-ts
 
+## 3.0.1
+
+### Patch Changes
+
+- bd701b3: Allow customize "keepDynamicImport"
+
 ## 3.0.0
 
 ### Major Changes
