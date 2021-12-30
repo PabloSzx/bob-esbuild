@@ -31,6 +31,19 @@ export interface RollupConfig {
         respectCoreModule: boolean;
       };
   external?: ExternalOption;
+  /**
+   * If dynamic imports `await import("foo")` should be kept as `import`
+   * and NOT be transpiled as `await Promise.resolve(require("foo"))`
+   *
+   * This is specially useful when is needed to import an `ES Module` from `CommonJS`,
+   * for example, when an external package has `"type": "module"`.
+   *
+   * If an array of strings is specified, the dynamic imports are only kept
+   * for those specified modules
+   *
+   * @default true
+   */
+  keepDynamicImport?: boolean | string[] | ((moduleName: string) => boolean);
 }
 
 export const getRollupConfig = async ({
@@ -44,6 +57,7 @@ export const getRollupConfig = async ({
   rollup,
   paths,
   external,
+  keepDynamicImport = true,
 }: RollupConfig) => {
   const dir = resolve(outDir);
 
@@ -57,14 +71,66 @@ export const getRollupConfig = async ({
     )
   ).filter(file => !!file.match(/\.(js|cjs|mjs|ts|tsx|cts|mts|ctsx|mtsx)$/));
 
-  const inputOptions: InputOptions = {
-    input,
-    plugins: [
-      externals({
-        packagePath: resolve(process.cwd(), 'package.json'),
-        deps: true,
+  const plugins: InputOptions['plugins'] = [
+    externals({
+      packagePath: resolve(process.cwd(), 'package.json'),
+      deps: true,
+    }),
+    bobEsbuildPlugin({
+      target,
+      sourceMap: sourcemap,
+      ...esbuild,
+    }),
+    rollupJson({
+      preferConst: true,
+    }),
+    clean &&
+      del({
+        targets: [`${dir}/**/*.js`, `${dir}/**/*.mjs`, `${dir}/**/*.cjs`, `${dir}/**/*.map`],
       }),
-      {
+    clean &&
+      (() => {
+        let deleted = false;
+
+        return {
+          name: 'Clean Empty Directories',
+          async buildEnd() {
+            if (deleted) return;
+            deleted = true;
+            if (existsSync(dir)) await cleanEmptyFoldersRecursively(dir);
+          },
+        };
+      })(),
+    paths && tsconfigPaths(typeof paths === 'boolean' ? undefined : paths),
+  ];
+
+  if (keepDynamicImport) {
+    if (Array.isArray(keepDynamicImport)) {
+      plugins.unshift({
+        name: 'keep-dynamic-import',
+        renderDynamicImport({ targetModuleId }) {
+          if (!targetModuleId || !keepDynamicImport.includes(targetModuleId)) return null;
+
+          return {
+            left: 'import(',
+            right: ')',
+          };
+        },
+      });
+    } else if (typeof keepDynamicImport === 'function') {
+      plugins.unshift({
+        name: 'keep-dynamic-import',
+        renderDynamicImport({ targetModuleId }) {
+          if (!targetModuleId || !keepDynamicImport(targetModuleId)) return null;
+
+          return {
+            left: 'import(',
+            right: ')',
+          };
+        },
+      });
+    } else {
+      plugins.unshift({
         name: 'keep-dynamic-import',
         renderDynamicImport() {
           return {
@@ -72,34 +138,13 @@ export const getRollupConfig = async ({
             right: ')',
           };
         },
-      },
-      bobEsbuildPlugin({
-        target,
-        sourceMap: sourcemap,
-        ...esbuild,
-      }),
-      rollupJson({
-        preferConst: true,
-      }),
-      clean &&
-        del({
-          targets: [`${dir}/**/*.js`, `${dir}/**/*.mjs`, `${dir}/**/*.cjs`, `${dir}/**/*.map`],
-        }),
-      clean &&
-        (() => {
-          let deleted = false;
+      });
+    }
+  }
 
-          return {
-            name: 'Clean Empty Directories',
-            async buildEnd() {
-              if (deleted) return;
-              deleted = true;
-              if (existsSync(dir)) await cleanEmptyFoldersRecursively(dir);
-            },
-          };
-        })(),
-      paths && tsconfigPaths(typeof paths === 'boolean' ? undefined : paths),
-    ],
+  const inputOptions: InputOptions = {
+    input,
+    plugins,
     external,
   };
 
