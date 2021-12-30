@@ -1,6 +1,7 @@
 // CREDITS TO lukeed https://github.com/lukeed/tsm
 
 import { existsSync, promises } from 'fs';
+import { dirname } from 'path';
 import { fileURLToPath, pathToFileURL, URL } from 'url';
 import type { Config, Extension, Options } from './config';
 import semverGtePkg from './deps/semver.js';
@@ -158,6 +159,12 @@ export const getFormat: Inspect | undefined = HAS_UPDATED_HOOKS
       return { format: options.format === 'cjs' ? 'commonjs' : 'module' };
     };
 
+function getDirnames(url: string) {
+  const filename = fileURLToPath(url);
+
+  return { __dirname: JSON.stringify(dirname(filename)), __filename: JSON.stringify(filename) };
+}
+
 export const load: Load = async function (url, context, defaultLoad) {
   let options = await toOptions(url);
 
@@ -171,10 +178,13 @@ export const load: Load = async function (url, context, defaultLoad) {
 
   esbuild = esbuild || (await import('esbuild'));
 
+  const isModule = format === 'module';
+
   const { code: source } = await esbuild.transform(rawSource.toString(), {
     ...options,
+    define: isModule ? { ...getDirnames(url), ...options.define } : options.define,
     sourcefile: url,
-    format: format === 'module' ? 'esm' : 'cjs',
+    format: isModule ? 'esm' : 'cjs',
   });
 
   return {
@@ -191,12 +201,15 @@ export const transformSource: Transform | undefined = HAS_UPDATED_HOOKS
 
       if (context.url.endsWith('.d.ts')) return { source: '' };
 
+      const isModule = context.format === 'module';
+
       // TODO: decode SAB/U8 correctly
       esbuild = esbuild || (await import('esbuild'));
       let result = await esbuild.transform(source.toString(), {
         ...options,
+        define: isModule ? { ...getDirnames(context.url), ...options.define } : options.define,
         sourcefile: context.url,
-        format: context.format === 'module' ? 'esm' : 'cjs',
+        format: isModule ? 'esm' : 'cjs',
       });
 
       return { source: result.code };
