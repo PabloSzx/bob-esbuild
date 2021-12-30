@@ -1,11 +1,11 @@
 // CREDITS TO lukeed https://github.com/lukeed/tsm
 
-import { existsSync, promises } from 'fs';
+import { promises } from 'fs';
 import { dirname } from 'path';
 import { fileURLToPath, pathToFileURL, URL } from 'url';
 import type { Config, Extension, Options } from './config';
 import semverGtePkg from './deps/semver.js';
-import { defaults, finalize, getDefault } from './utils';
+import { defaults, fileExists, finalize, getDefault } from './utils';
 
 if (!process.env.KEEP_LOADER_ARGV) {
   const loaderArgIndex = process.execArgv.findIndex(v => v.startsWith('--loader'));
@@ -69,13 +69,14 @@ async function toOptions(uri: string): Promise<Options | void> {
   return config[extn as `.${string}`];
 }
 
-function check(fileurl: string): string | void {
-  let tmp = fileURLToPath(fileurl);
-  if (existsSync(tmp)) return fileurl;
+async function check(fileurl: string): Promise<string | void> {
+  if (await fileExists(fileURLToPath(fileurl))) return fileurl;
 }
 
 const root = new URL('file:///' + process.cwd() + '/');
 const rootPath = fileURLToPath(root);
+
+let scriptExtensions: `.${string}`[];
 
 export const resolve: Resolve = async function (specifier, context, defaultResolve) {
   try {
@@ -112,14 +113,14 @@ export const resolve: Resolve = async function (specifier, context, defaultResol
       return { url: output.href };
     }
     // source ident exists
-    path = check(output.href);
+    path = await check(output.href);
     if (path) return { url: path };
     // parent importer is a ts file
     // source ident is js & NOT exists
     if (isJS.test(ext) && isTS.test(context.parentURL)) {
       // reconstruct ".js" -> ".ts" source file
       path = output.href.substring(0, (idx = match.index));
-      if ((path = check(path + ext.replace('js', 'ts')))) {
+      if ((path = await check(path + ext.replace('js', 'ts')))) {
         idx += ext.length;
         if (idx > output.href.length) {
           path += output.href.substring(idx);
@@ -131,17 +132,19 @@ export const resolve: Resolve = async function (specifier, context, defaultResol
     }
   }
 
-  config = config || (await getConfig());
+  config ||= await getConfig();
 
-  for (ext in config) {
-    path = check(output.href + ext);
+  scriptExtensions ||= (Object.keys(config) as Array<typeof ext>).filter(v => v !== '.json');
+
+  for (ext of scriptExtensions) {
+    path = await check(output.href + ext);
     if (path) return { url: path };
   }
 
   // Check if + "/index.{ts,tsx,mts,cts}" exists
   const trailingOutputHref = output.href.endsWith('/') ? output.href : output.href + '/';
-  for (ext in config) {
-    path = check(trailingOutputHref + 'index' + ext);
+  for (ext of scriptExtensions) {
+    path = await check(trailingOutputHref + 'index' + ext);
     if (path) return { url: path };
   }
 

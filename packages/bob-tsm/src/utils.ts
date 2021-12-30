@@ -1,14 +1,21 @@
 // CREDITS TO lukeed https://github.com/lukeed/tsm
 
-import { resolve } from 'path';
-import { existsSync } from 'fs';
-
 import type { Format } from 'esbuild';
-import type { Config, Options, Extension, ConfigFile } from './config';
+import { existsSync, PathLike, promises } from 'fs';
+import { resolve } from 'path';
+import type { Config, ConfigFile, Extension, Options } from './config';
+
 export interface Defaults {
   file: string | false;
   isESM: boolean;
   options: Options;
+}
+
+export function fileExists(url: PathLike) {
+  return promises.access(url).then(
+    () => true,
+    () => false
+  );
 }
 
 export const defaults = function (format: Format): Defaults {

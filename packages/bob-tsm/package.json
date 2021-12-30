@@ -33,7 +33,7 @@
     "bin"
   ],
   "scripts": {
-    "dev": "node ../bob-watch/bin/bob-watch.mjs --watch=src -c \"pnpm prepare\"",
+    "dev": "node ../bob-watch/bin/bob-watch.mjs --watch=src -c \"pnpm i\"",
     "playground": "node ../bob-watch/bin/bob-watch.mjs --watch src playground -c \"pnpm prepare && node bin/bob-tsm.mjs playground/index.ts\"",
     "prepare": "node -r tsm build.ts",
     "postpublish": "gh-release",
