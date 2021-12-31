@@ -1,5 +1,11 @@
 # bob-tsm
 
+## 0.4.4
+
+### Patch Changes
+
+- 23dbed1: ESM: Try resolve adding script extensions (.ts, .tsx, .jsx, ...)
+
 ## 0.4.3
 
 ### Patch Changes
