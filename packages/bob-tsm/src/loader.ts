@@ -1,7 +1,7 @@
 // CREDITS TO lukeed https://github.com/lukeed/tsm
 
 import { promises } from 'fs';
-import { dirname } from 'path';
+import { dirname, extname } from 'path';
 import { fileURLToPath, pathToFileURL, URL } from 'url';
 import type { Config, Extension, Options } from './config';
 import semverGtePkg from './deps/semver.js';
@@ -82,18 +82,35 @@ export const resolve: Resolve = async function (specifier, context, defaultResol
   try {
     return await defaultResolve(specifier, context, defaultResolve);
   } catch (err: any) {
-    if (tsconfigPathsHandler && 'code' in err && err.code === 'ERR_MODULE_NOT_FOUND') {
-      try {
-        const handlerTsconfigPaths = await tsconfigPathsHandler;
+    if ('code' in err && err.code === 'ERR_MODULE_NOT_FOUND') {
+      if (tsconfigPathsHandler) {
+        try {
+          const handlerTsconfigPaths = await tsconfigPathsHandler;
 
-        const tsResolvedUrl = handlerTsconfigPaths?.(specifier, context.parentURL ? fileURLToPath(context.parentURL) : rootPath);
+          const tsResolvedUrl = handlerTsconfigPaths?.(
+            specifier,
+            context.parentURL ? fileURLToPath(context.parentURL) : rootPath
+          );
 
-        if (tsResolvedUrl) {
-          return {
-            url: pathToFileURL(tsResolvedUrl).href,
-          };
+          if (tsResolvedUrl) {
+            return {
+              url: pathToFileURL(tsResolvedUrl).href,
+            };
+          }
+        } catch (err) {}
+      }
+
+      if (extname(specifier) === '') {
+        config ||= await getConfig();
+
+        scriptExtensions ||= (Object.keys(config) as Array<typeof ext>).filter(v => v !== '.json');
+
+        for (const ext of scriptExtensions) {
+          try {
+            return await defaultResolve(specifier + ext, context, defaultResolve);
+          } catch (err) {}
         }
-      } catch (err) {}
+      }
     }
   }
 
