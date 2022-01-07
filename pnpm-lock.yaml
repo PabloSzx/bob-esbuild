@@ -123,7 +123,7 @@ importers:
       date-fns: ^2.28.0
       esbuild: ^0.14.10
       execa: ^6.0.0
-      fast-glob: ^3.2.7
+      fast-glob: ^3.2.8
       folder-hash: ^4.0.1
       fs-extra: ^10.0.0
       globby: ^12.0.2
@@ -152,7 +152,7 @@ importers:
       date-fns: 2.28.0
       esbuild: 0.14.10
       execa: 6.0.0
-      fast-glob: 3.2.7
+      fast-glob: 3.2.8
       folder-hash: 4.0.1
       fs-extra: 10.0.0
       globby: 12.0.2
@@ -2193,6 +2193,17 @@ packages:
       micromatch: 4.0.4
     dev: true
 
+  /fast-glob/3.2.8:
+    resolution: {integrity: sha512-UsiHHXoDbC3iS7vBOFvld7Q9XqBu318xztdHiL10Fjov3AK5GI5bek2ZJkxZcjPguOYH39UL1W4A6w+l7tpNtw==}
+    engines: {node: '>=8'}
+    dependencies:
+      '@nodelib/fs.stat': 2.0.5
+      '@nodelib/fs.walk': 1.2.8
+      glob-parent: 5.1.2
+      merge2: 1.4.1
+      micromatch: 4.0.4
+    dev: true
+
   /fastq/1.13.0:
     resolution: {integrity: sha512-YpkpUnK8od0o1hmeSc7UUs/eB/vIPWJYjKck2QKIzAf71Vm1AAQ3EbuZB3g2JIy+pg+ERD0vqI79KyZiB2e2Nw==}
     dependencies:
@@ -2407,7 +2418,7 @@ packages:
       '@types/glob': 7.2.0
       array-union: 2.1.0
       dir-glob: 3.0.1
-      fast-glob: 3.2.7
+      fast-glob: 3.2.8
       glob: 7.2.0
       ignore: 5.2.0
       merge2: 1.4.1
@@ -2432,7 +2443,7 @@ packages:
     dependencies:
       array-union: 3.0.1
       dir-glob: 3.0.1
-      fast-glob: 3.2.7
+      fast-glob: 3.2.8
       ignore: 5.2.0
       merge2: 1.4.1
       slash: 4.0.0
