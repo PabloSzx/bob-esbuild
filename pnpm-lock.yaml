@@ -40,14 +40,14 @@ importers:
 
   examples/basic:
     specifiers:
-      bob-esbuild: workspace:^3.2.2
+      bob-esbuild: workspace:^3.2.3
       bob-esbuild-cli: workspace:^3.0.1
       bob-ts: workspace:^3.0.1
       bob-tsm: workspace:^0.4.4
       shared: workspace:^1.0.0
     dependencies:
       bob-esbuild: file:packages/bob_esbuild@0.14.11+typescript@4.5.4
-      bob-esbuild-cli: file:packages/bob-cli_bob-esbuild@3.2.2
+      bob-esbuild-cli: file:packages/bob-cli_bob-esbuild@3.2.3
       bob-ts: file:packages/bob-ts_74b606df015848a84d3ecd7816cb8275
       bob-tsm: file:packages/bob-tsm_esbuild@0.14.11+typescript@4.5.4
       shared: link:../shared
@@ -93,11 +93,11 @@ importers:
 
   examples/shared:
     specifiers:
-      bob-esbuild: workspace:^3.2.2
+      bob-esbuild: workspace:^3.2.3
       bob-esbuild-cli: workspace:^3.0.1
     dependencies:
       bob-esbuild: file:packages/bob_esbuild@0.14.11+typescript@4.5.4
-      bob-esbuild-cli: file:packages/bob-cli_bob-esbuild@3.2.2
+      bob-esbuild-cli: file:packages/bob-cli_bob-esbuild@3.2.3
     dependenciesMeta:
       bob-esbuild:
         injected: true
@@ -3765,7 +3765,7 @@ packages:
     engines: {node: '>=12.20'}
     dev: true
 
-  file:packages/bob-cli_bob-esbuild@3.2.2:
+  file:packages/bob-cli_bob-esbuild@3.2.3:
     resolution: {directory: packages/bob-cli, type: directory}
     id: file:packages/bob-cli
     name: bob-esbuild-cli
@@ -3819,11 +3819,12 @@ packages:
     resolution: {directory: packages/bob, type: directory}
     id: file:packages/bob
     name: bob-esbuild
-    version: 3.2.2
+    version: 3.2.3
     peerDependencies:
       esbuild: '>=0.14.11'
       typescript: '*'
     dependencies:
+      '@pnpm/types': 7.9.0
       bob-esbuild-plugin: link:packages/esbuild-plugin
       esbuild: 0.14.11
       rollup: 2.64.0
