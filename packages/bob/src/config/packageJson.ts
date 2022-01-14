@@ -36,6 +36,7 @@ export function rewritePackageJson(pkg: PackageJSON, distDir: string, cwd: strin
     'description',
     'sideEffects',
     'peerDependencies',
+    'peerDependenciesMeta',
     'dependencies',
     'optionalDependencies',
     'repository',
