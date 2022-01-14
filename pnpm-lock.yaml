@@ -107,6 +107,7 @@ importers:
   packages/bob:
     specifiers:
       '@pnpm/exportable-manifest': ^2.2.4
+      '@pnpm/types': ^7.9.0
       '@rollup/plugin-json': ^4.1.0
       '@types/folder-hash': ^4.0.1
       '@types/fs-extra': ^9.0.13
@@ -133,6 +134,7 @@ importers:
       tsconfck: ^1.1.1
       typescript: ^4.5.4
     dependencies:
+      '@pnpm/types': 7.9.0
       bob-esbuild-plugin: link:../esbuild-plugin
       rollup: 2.64.0
     devDependencies:
@@ -805,7 +807,6 @@ packages:
   /@pnpm/types/7.9.0:
     resolution: {integrity: sha512-WJol7zZKMktP8bvoFEh/ANCrYsIDcfpGFgRZmAMeULuskFVND4NLXXIkBqNhtmv+ipt6mVUnsZTGHrVaXrlsNA==}
     engines: {node: '>=12.17'}
-    dev: true
 
   /@pnpm/write-project-manifest/2.0.10:
     resolution: {integrity: sha512-39fH8i9BY84OuJhovKnC05DZiOEa3gnwhLpt/Gk2RhcD2CDj76NWjKqauyHeAYihpjDWJB92xuLR3gk9qTyzEQ==}

@@ -3,23 +3,22 @@ import type { Plugin } from 'rollup';
 import { ensureDir, get, writeJSON, makePublishManifest } from '../deps.js';
 import { warn } from '../log/warn';
 import type { ResolvedBobConfig } from './cosmiconfig';
-import type { PackageBuildConfig } from './packageBuildConfig';
 import { rewriteExports } from './rewrite-exports';
+import type { ProjectManifest } from '@pnpm/types';
+import type { PackageBuildConfig } from './packageBuildConfig';
 
-export interface PackageJSON extends Record<string, unknown> {
-  name: string;
-  type?: string;
-  main?: string;
-  module?: string;
-  types?: string;
-  bin?: Record<string, string>;
-  publishConfig?: {
-    directory?: string;
-  };
+export interface PackageJSON extends ProjectManifest, Record<string, unknown> {
   files?: string[];
-  buildConfig?: PackageBuildConfig;
+  type?: string;
   exports?: Record<string, string | { require?: string; import?: string }>;
+  buildConfig?: PackageBuildConfig;
 }
+
+export const getPackageJsonName = (pkg: PackageJSON): string => {
+  if ('name' in pkg && pkg.name) return pkg.name;
+
+  throw Error('Invalid package.json without name: ' + JSON.stringify(pkg));
+};
 
 export function rewritePackageJson(pkg: PackageJSON, distDir: string, cwd: string = process.cwd()) {
   const newPkg: PackageJSON = {
@@ -127,16 +126,20 @@ export function validatePackageJson(pkg: PackageJSON, distDir: string) {
   }
 }
 
-export async function writePackageJson({ packageJson, distDir, cwd = process.cwd() }: GeneratePackageJsonOptions) {
+export async function writePackageJson({
+  packageJson,
+  distDir,
+  cwd = process.cwd(),
+  rewritePackage,
+}: GeneratePackageJsonOptions) {
   const distDirPath = resolve(cwd, distDir);
   await ensureDir(distDirPath);
-  await writeJSON(
-    resolve(distDirPath, 'package.json'),
-    await makePublishManifest(cwd, rewritePackageJson(packageJson, distDir, cwd)),
-    {
-      spaces: 2,
-    }
-  );
+
+  const pkg = (await makePublishManifest(cwd, rewritePackageJson(packageJson, distDir, cwd))) as PackageJSON;
+
+  await writeJSON(resolve(distDirPath, 'package.json'), rewritePackage ? await rewritePackage(pkg) : pkg, {
+    spaces: 2,
+  });
 }
 
 export interface GeneratePackageJsonOptions {
@@ -144,10 +147,11 @@ export interface GeneratePackageJsonOptions {
   distDir: string;
   cwd?: string;
   skipValidate?: boolean;
+  rewritePackage?: (pkg: PackageJSON) => Promise<PackageJSON> | PackageJSON;
 }
 
 export const generatePackageJson = (options: GeneratePackageJsonOptions, config: ResolvedBobConfig): Plugin | null => {
-  const manualRewrite = config.manualRewritePackageJson?.[options.packageJson.name];
+  const manualRewrite = config.manualRewritePackageJson?.[getPackageJsonName(options.packageJson)];
 
   if (!options.packageJson.publishConfig?.directory) {
     if (manualRewrite) {

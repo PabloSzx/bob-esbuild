@@ -8,7 +8,7 @@ import { retry } from '../utils/retry';
 import { copyToDist } from './copyToDist';
 import { globalConfig } from './cosmiconfig';
 import { GetPackageBuildConfig } from './packageBuildConfig';
-import { generatePackageJson } from './packageJson';
+import { generatePackageJson, getPackageJsonName } from './packageJson';
 import { rollupBin } from './rollupBin';
 
 export interface ConfigOptions {
@@ -202,7 +202,7 @@ export async function getRollupConfig(optionsArg: ConfigOptions = {}) {
 
   const [buildConfig, { config: globalOptions }] = await Promise.all([GetPackageBuildConfig(cwd), globalConfig]);
 
-  const options = { ...globalOptions.packageConfigs?.[buildConfig.pkg.name], ...cleanObject(optionsArg) };
+  const options = { ...globalOptions.packageConfigs?.[getPackageJsonName(buildConfig.pkg)], ...cleanObject(optionsArg) };
 
   const clean = options.clean ?? globalOptions.clean;
 
