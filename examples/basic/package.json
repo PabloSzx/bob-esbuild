@@ -35,7 +35,7 @@
     "test": "bob-tsm --cjs --paths src/index.ts && bob-tsm --paths src/index.ts"
   },
   "dependencies": {
-    "bob-esbuild": "workspace:^3.2.2",
+    "bob-esbuild": "workspace:^3.2.3",
     "bob-esbuild-cli": "workspace:^3.0.1",
     "bob-ts": "workspace:^3.0.1",
     "bob-tsm": "workspace:^0.4.4",

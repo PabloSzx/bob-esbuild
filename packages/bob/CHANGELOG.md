@@ -1,5 +1,12 @@
 # bob-esbuild
 
+## 3.2.3
+
+### Patch Changes
+
+- 0696aae: allow to rewrite package.json before writeFile with config "rewritePackage" & improve PackageJSON type
+- ab336b9: Keep "peerDependenciesMeta" on package.json rewrite
+
 ## 3.2.2
 
 ### Patch Changes
