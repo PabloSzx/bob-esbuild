@@ -40,10 +40,5 @@
   },
   "engines": {
     "pnpm": ">=6.7.1"
-  },
-  "pnpm": {
-    "overrides": {
-      "esbuild": "^0.14.10"
-    }
   }
 }
