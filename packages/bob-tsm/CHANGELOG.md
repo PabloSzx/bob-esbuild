@@ -1,5 +1,11 @@
 # bob-tsm
 
+## 0.4.5
+
+### Patch Changes
+
+- c09357a: Set "typescript" as optional peer dependency
+
 ## 0.4.4
 
 ### Patch Changes
