@@ -216,7 +216,7 @@ importers:
       '@types/semver': ^7.3.9
       bob-esbuild-plugin: workspace:^3.1.3
       c8: ^7.11.0
-      chokidar: ^3.5.2
+      chokidar: ^3.5.3
       commander: ^8.3.0
       esbuild: ^0.14.11
       execa: ^6.0.0
@@ -231,7 +231,7 @@ importers:
       '@types/semver': 7.3.9
       bob-esbuild-plugin: link:../esbuild-plugin
       c8: 7.11.0
-      chokidar: 3.5.2
+      chokidar: 3.5.3
       commander: 8.3.0
       esbuild: 0.14.11
       execa: 6.0.0
@@ -245,7 +245,7 @@ importers:
       bob-esbuild: workspace:^3.2.1
       bob-esbuild-cli: workspace:^3.0.1
       bob-tsm: workspace:^0.4.0
-      chokidar: ^3.5.2
+      chokidar: ^3.5.3
       commander: ^8.3.0
       execa: ^6.0.0
       fsevents: ~2.3.2
@@ -256,7 +256,7 @@ importers:
       bob-esbuild: link:../bob
       bob-esbuild-cli: link:../bob-cli
       bob-tsm: link:../bob-tsm
-      chokidar: 3.5.2
+      chokidar: 3.5.3
       commander: 8.3.0
       execa: 6.0.0
       tree-kill: 1.2.2
@@ -1212,6 +1212,21 @@ packages:
 
   /chokidar/3.5.2:
     resolution: {integrity: sha512-ekGhOnNVPgT77r4K/U3GDhu+FQ2S8TnK/s2KbIGXi0SZWuwkZ2QNyfWdZW+TVfn84DpEP7rLeCt2UI6bJ8GwbQ==}
+    engines: {node: '>= 8.10.0'}
+    dependencies:
+      anymatch: 3.1.2
+      braces: 3.0.2
+      glob-parent: 5.1.2
+      is-binary-path: 2.1.0
+      is-glob: 4.0.3
+      normalize-path: 3.0.0
+      readdirp: 3.6.0
+    optionalDependencies:
+      fsevents: 2.3.2
+    dev: true
+
+  /chokidar/3.5.3:
+    resolution: {integrity: sha512-Dr3sfKRP6oTcjf2JmUmFJfeVMvXBdegxB0iVQ5eb2V10uFJUCAS8OByZdVAyVb8xXNz3GjjTgj9kLWsZTqE6kw==}
     engines: {node: '>= 8.10.0'}
     dependencies:
       anymatch: 3.1.2
