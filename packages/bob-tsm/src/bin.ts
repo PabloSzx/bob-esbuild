@@ -15,6 +15,7 @@ program
   .option('--tsmconfig <config>', 'Configuration file path', 'tsm.js')
   .option('--watch <patterns...>', 'Enable & specify watch mode')
   .option('--ignore <patterns...>', 'Ignore watch patterns')
+  .option('--keep-esm-loader', 'Keep ESM Loader for forks (It can break certain environments like Next.js custom server)')
   .addOption(
     new Option(
       '--node-env,--node_env <NODE_ENV>',
@@ -44,9 +45,10 @@ program
       node_env: 'production' | 'prod' | 'development' | 'dev' | 'test';
       quiet?: boolean;
       paths?: boolean;
+      keepEsmLoader?: boolean;
     }>();
 
-    const { watch, ignore, cjs, node_env, quiet, tsmconfig, paths } = options;
+    const { watch, ignore, cjs, node_env, quiet, tsmconfig, paths, keepEsmLoader } = options;
 
     const binDirname = dirname(fileURLToPath(import.meta.url));
 
@@ -86,6 +88,12 @@ program
     if (paths) {
       Object.assign((spawnEnv ||= { ...process.env }), {
         TSCONFIG_PATHS: '1',
+      });
+    }
+
+    if (keepEsmLoader) {
+      Object.assign((spawnEnv ||= { ...process.env }), {
+        KEEP_LOADER_ARGV: '1',
       });
     }
 
