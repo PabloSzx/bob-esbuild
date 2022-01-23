@@ -39,9 +39,9 @@
     "commander": "^8.3.0"
   },
   "devDependencies": {
-    "bob-esbuild": "workspace:^3.2.1",
+    "bob-esbuild": "workspace:^3.2.3",
     "changesets-github-release": "^0.0.4",
-    "typescript": "^4.5.4"
+    "typescript": "^4.5.5"
   },
   "engines": {
     "node": ">=12.0.0"
