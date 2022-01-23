@@ -43,7 +43,7 @@ importers:
       bob-esbuild: workspace:^3.2.3
       bob-esbuild-cli: workspace:^3.0.1
       bob-ts: workspace:^3.0.1
-      bob-tsm: workspace:^0.4.5
+      bob-tsm: workspace:^0.4.6
       shared: workspace:^1.0.0
     dependencies:
       bob-esbuild: file:packages/bob_esbuild@0.14.13+typescript@4.5.5
@@ -65,7 +65,7 @@ importers:
     specifiers:
       '@types/node': ^17.0.10
       '@types/react': ^17.0.38
-      bob-tsm: workspace:^0.4.5
+      bob-tsm: workspace:^0.4.6
       cross-env: ^7.0.3
       next: ^12.0.8
       react: ^17.0.2
@@ -3820,7 +3820,7 @@ packages:
     resolution: {directory: packages/bob-tsm, type: directory}
     id: file:packages/bob-tsm
     name: bob-tsm
-    version: 0.4.5
+    version: 0.4.6
     engines: {node: ^12.20.0 || >=14.13.0}
     hasBin: true
     peerDependencies:

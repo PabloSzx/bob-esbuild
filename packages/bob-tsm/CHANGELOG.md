@@ -1,5 +1,11 @@
 # bob-tsm
 
+## 0.4.6
+
+### Patch Changes
+
+- b349c7e: Add "--keep-esm-loader" option, it enables to keep the ESM Loader for forks (It can break certain environments like Next.js custom server)
+
 ## 0.4.5
 
 ### Patch Changes
