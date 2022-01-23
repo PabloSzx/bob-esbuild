@@ -38,7 +38,7 @@ async function main() {
       outDir: 'lib',
       target: 'node12.20',
       sourcemap: false,
-      external: ['./deps/semver.js', './deps/typescriptPaths.js'],
+      external: ['./deps/typescriptPaths.js'],
       esbuild: {
         minify: false,
       },

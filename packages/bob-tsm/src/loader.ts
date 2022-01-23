@@ -4,8 +4,7 @@ import { promises } from 'fs';
 import { dirname, extname } from 'path';
 import { fileURLToPath, pathToFileURL, URL } from 'url';
 import type { Config, Extension, Options } from './config';
-import semverGtePkg from './deps/semver.js';
-import { defaults, fileExists, finalize, getDefault } from './utils';
+import { defaults, fileExists, finalize, getNodeVersion } from './utils';
 
 if (!process.env.KEEP_LOADER_ARGV) {
   const loaderArgIndex = process.execArgv.findIndex(v => v.startsWith('--loader'));
@@ -13,13 +12,13 @@ if (!process.env.KEEP_LOADER_ARGV) {
   if (loaderArgIndex !== -1) process.execArgv.splice(loaderArgIndex, 1);
 }
 
-const semverGte = getDefault(semverGtePkg);
-
 export const tsconfigPathsHandler = process.env.TSCONFIG_PATHS
   ? import('./deps/typescriptPaths.js').then(({ createHandler }) => createHandler())
   : undefined;
 
-const HAS_UPDATED_HOOKS = semverGte(process.versions.node, '16.12.0');
+const { major, minor } = getNodeVersion();
+
+const HAS_UPDATED_HOOKS = major > 16 || (major === 16 && minor >= 12);
 
 let config: Config;
 let esbuild: typeof import('esbuild');

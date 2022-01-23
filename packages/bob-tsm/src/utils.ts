@@ -123,3 +123,16 @@ export function debouncePromise<T extends unknown[]>(
 export function getDefault<T>(module: T & { default?: T }): T {
   return module.default || module;
 }
+
+export function getNodeVersion() {
+  const [major, minor, patch] = process.version
+    .slice(1)
+    .split('.')
+    .map(v => parseInt(v, 10)) as [major: number, minor: number, patch: number];
+
+  return {
+    major,
+    minor,
+    patch,
+  };
+}
