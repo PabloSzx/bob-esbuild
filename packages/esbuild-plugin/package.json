@@ -35,7 +35,7 @@
     "changesets-github-release": "^0.0.4",
     "esbuild": "^0.14.13",
     "rollup": "^2.66.0",
-    "tsconfck": "^1.1.1",
+    "tsconfck": "^1.1.2",
     "tsup": "^5.11.11"
   },
   "peerDependencies": {
