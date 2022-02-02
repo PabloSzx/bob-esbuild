@@ -124,7 +124,7 @@ importers:
       fast-glob: ^3.2.11
       folder-hash: ^4.0.1
       fs-extra: ^10.0.0
-      globby: ^12.2.0
+      globby: ^13.1.1
       lodash.get: ^4.4.2
       rollup: ^2.66.0
       rollup-plugin-delete: ^2.0.0
@@ -154,7 +154,7 @@ importers:
       fast-glob: 3.2.11
       folder-hash: 4.0.1
       fs-extra: 10.0.0
-      globby: 12.2.0
+      globby: 13.1.1
       lodash.get: 4.4.2
       rollup-plugin-delete: 2.0.0
       rollup-plugin-node-externals: 3.1.2
@@ -186,7 +186,7 @@ importers:
       commander: ^8.3.0
       esbuild: ^0.14.13
       execa: ^6.0.0
-      globby: ^12.2.0
+      globby: ^13.1.1
       rollup: ^2.66.0
       rollup-plugin-delete: ^2.0.0
       rollup-plugin-node-externals: ^3.1.2
@@ -204,7 +204,7 @@ importers:
       commander: 8.3.0
       esbuild: 0.14.13
       execa: 6.0.0
-      globby: 12.2.0
+      globby: 13.1.1
       rollup-plugin-delete: 2.0.0
       rollup-plugin-node-externals: 3.1.2
       rollup-plugin-tsconfig-paths: 1.1.6_rollup@2.66.0+typescript@4.5.5
@@ -1017,11 +1017,6 @@ packages:
   /array-union/2.1.0:
     resolution: {integrity: sha512-HGyxoOTYUyCM6stUe6EJgnd4EoewAI7zMdfqO+kGjnlZmBDz/cR5pf8r/cR4Wq60sL/p0IkcjUEEPwS3GFrIyw==}
     engines: {node: '>=8'}
-    dev: true
-
-  /array-union/3.0.1:
-    resolution: {integrity: sha512-1OvF9IbWwaeiM9VhzYXVQacMibxpXOMYVNIvMtKRyX9SImBXpKcFr8XvFDeEslCyuH/t6KRt7HEO94AlP8Iatw==}
-    engines: {node: '>=12'}
     dev: true
 
   /arrify/1.0.1:
@@ -1983,11 +1978,10 @@ packages:
       slash: 3.0.0
     dev: true
 
-  /globby/12.2.0:
-    resolution: {integrity: sha512-wiSuFQLZ+urS9x2gGPl1H5drc5twabmm4m2gTR27XDFyjUHJUNsS8o/2aKyIF6IoBaR630atdher0XJ5g6OMmA==}
+  /globby/13.1.1:
+    resolution: {integrity: sha512-XMzoDZbGZ37tufiv7g0N4F/zp3zkwdFtVbV3EHsVl1KQr4RPLfNoT068/97RPshz2J5xYNEjLKKBKaGHifBd3Q==}
     engines: {node: ^12.20.0 || ^14.13.1 || >=16.0.0}
     dependencies:
-      array-union: 3.0.1
       dir-glob: 3.0.1
       fast-glob: 3.2.11
       ignore: 5.2.0
