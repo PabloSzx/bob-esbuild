@@ -1,5 +1,11 @@
 # bob-ts
 
+## 3.0.2
+
+### Patch Changes
+
+- 5d2289b: Update bundled globby version to v13.1.1
+
 ## 3.0.1
 
 ### Patch Changes
