@@ -32,11 +32,11 @@
     "@rollup/pluginutils": "^4.1.2"
   },
   "devDependencies": {
-    "changesets-github-release": "^0.0.4",
-    "esbuild": "^0.14.13",
-    "rollup": "^2.66.0",
-    "tsconfck": "^1.1.1",
-    "tsup": "^5.11.11"
+    "changesets-github-release": "^0.1.0",
+    "esbuild": "^0.14.18",
+    "rollup": "^2.67.0",
+    "tsconfck": "^1.1.2",
+    "tsup": "^5.11.13"
   },
   "peerDependencies": {
     "esbuild": ">=0.14.13",
