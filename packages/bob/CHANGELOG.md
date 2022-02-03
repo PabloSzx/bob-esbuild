@@ -1,5 +1,12 @@
 # bob-esbuild
 
+## 3.2.4
+
+### Patch Changes
+
+- edbb808: fix package.json rewrite & "type":"module" usage
+- 5d2289b: Update bundled globby version to v13.1.1
+
 ## 3.2.3
 
 ### Patch Changes
