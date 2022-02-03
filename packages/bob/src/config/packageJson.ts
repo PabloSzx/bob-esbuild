@@ -44,6 +44,7 @@ export function rewritePackageJson(pkg: PackageJSON, distDir: string, cwd: strin
     'author',
     'license',
     'engines',
+    'type',
   ];
 
   for (const field of fields) {
@@ -78,6 +79,12 @@ export function validatePackageJson(pkg: PackageJSON, distDir: string) {
 
   function expect(key: string | string[], expected: string | undefined) {
     const received = get(pkg, key);
+
+    if (expected === undefined) {
+      if (received === undefined) return;
+
+      throw Error(`"${key}" should NOT be specified in "${pkg.name}"`);
+    }
 
     if (!received) throw Error(`"${key}" not specified in "${pkg.name}"`);
 
@@ -186,7 +193,11 @@ export const generatePackageJson = (options: GeneratePackageJsonOptions, config:
 
       pending.push(
         Promise.allSettled([
-          writePackageJson(manualRewrite ? { ...options, packageJson: await manualRewrite(options.packageJson) } : options),
+          writePackageJson(
+            manualRewrite
+              ? { ...options, packageJson: await manualRewrite(options.packageJson), rewritePackage: manualRewrite }
+              : options
+          ),
         ]).then(v => v[0])
       );
     },
