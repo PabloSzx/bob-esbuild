@@ -33,8 +33,8 @@
   },
   "devDependencies": {
     "changesets-github-release": "^0.1.0",
-    "esbuild": "^0.14.18",
-    "rollup": "^2.67.0",
+    "esbuild": "^0.14.21",
+    "rollup": "^2.67.2",
     "tsconfck": "^1.1.2",
     "tsup": "^5.11.13"
   },

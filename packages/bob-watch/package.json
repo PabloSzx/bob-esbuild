@@ -44,7 +44,7 @@
     "bob-tsm": "workspace:^0.4.5",
     "chokidar": "^3.5.3",
     "commander": "^9.0.0",
-    "execa": "^6.0.0",
+    "execa": "^6.1.0",
     "tree-kill": "^1.2.2"
   },
   "optionalDependencies": {
