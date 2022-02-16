@@ -44,6 +44,8 @@ export interface RollupConfig {
    * @default true
    */
   keepDynamicImport?: boolean | string[] | ((moduleName: string) => boolean);
+  plugins?: InputOptions['plugins'];
+  inputOptions?: Omit<InputOptions, 'plugins' | 'external' | 'input'>;
 }
 
 export const getRollupConfig = async ({
@@ -58,6 +60,8 @@ export const getRollupConfig = async ({
   paths,
   external,
   keepDynamicImport = true,
+  inputOptions: customInputOptions,
+  plugins: customPlugins,
 }: RollupConfig) => {
   const dir = resolve(outDir);
 
@@ -72,6 +76,7 @@ export const getRollupConfig = async ({
   ).filter(file => !!file.match(/\.(js|cjs|mjs|ts|tsx|cts|mts|ctsx|mtsx)$/));
 
   const plugins: InputOptions['plugins'] = [
+    ...(customPlugins || []),
     externals({
       packagePath: resolve(process.cwd(), 'package.json'),
       deps: true,
@@ -143,6 +148,7 @@ export const getRollupConfig = async ({
   }
 
   const inputOptions: InputOptions = {
+    ...customInputOptions,
     input,
     plugins,
     external,
