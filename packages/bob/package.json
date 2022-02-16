@@ -50,7 +50,7 @@
     "esbuild": "^0.14.18",
     "execa": "^6.0.0",
     "fast-glob": "^3.2.11",
-    "folder-hash": "^4.0.1",
+    "folder-hash": "^4.0.2",
     "fs-extra": "^10.0.0",
     "globby": "^13.1.1",
     "lodash.get": "^4.4.2",
