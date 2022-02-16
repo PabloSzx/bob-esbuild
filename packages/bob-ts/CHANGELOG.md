@@ -1,5 +1,14 @@
 # bob-ts
 
+## 3.1.0
+
+### Minor Changes
+
+- eedd60d: New options for programmatic usage:
+
+  - "plugins": Allow specifying custom rollup plugins
+  - "inputOptions": Customize specific input options
+
 ## 3.0.2
 
 ### Patch Changes

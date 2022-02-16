@@ -42,7 +42,7 @@ importers:
     specifiers:
       bob-esbuild: workspace:^3.2.4
       bob-esbuild-cli: workspace:^3.0.1
-      bob-ts: workspace:^3.0.2
+      bob-ts: workspace:^3.1.0
       bob-tsm: workspace:^0.4.6
       shared: workspace:^1.0.0
     dependencies:
@@ -3276,7 +3276,7 @@ packages:
     resolution: {directory: packages/bob-ts, type: directory}
     id: file:packages/bob-ts
     name: bob-ts
-    version: 3.0.2
+    version: 3.1.0
     engines: {node: ^12.20.0 || >=14.13.0}
     hasBin: true
     peerDependencies:
