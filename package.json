@@ -23,7 +23,7 @@
   "devDependencies": {
     "@changesets/apply-release-plan": "^5.0.4",
     "@changesets/assemble-release-plan": "^5.0.5",
-    "@changesets/cli": "^2.20.0",
+    "@changesets/cli": "^2.21.1",
     "@changesets/config": "^1.6.4",
     "@changesets/read": "^0.5.3",
     "@manypkg/get-packages": "^1.1.3",
