@@ -1,5 +1,11 @@
 # bob-tsm
 
+## 0.4.7
+
+### Patch Changes
+
+- 4889dc1: Bump
+
 ## 0.4.6
 
 ### Patch Changes

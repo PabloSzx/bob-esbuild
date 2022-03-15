@@ -1,5 +1,13 @@
 # bob-esbuild-cli
 
+## 3.0.2
+
+### Patch Changes
+
+- 4889dc1: Bump
+- Updated dependencies [4889dc1]
+  - bob-esbuild@3.2.5
+
 ## 3.0.1
 
 ### Patch Changes
