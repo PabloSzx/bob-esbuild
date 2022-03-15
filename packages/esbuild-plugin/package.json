@@ -29,14 +29,14 @@
     "postpublish": "gh-release"
   },
   "dependencies": {
-    "@rollup/pluginutils": "^4.1.2"
+    "@rollup/pluginutils": "^4.2.0"
   },
   "devDependencies": {
     "changesets-github-release": "^0.1.0",
-    "esbuild": "^0.14.21",
-    "rollup": "^2.67.2",
-    "tsconfck": "^1.1.2",
-    "tsup": "^5.11.13"
+    "esbuild": "^0.14.27",
+    "rollup": "^2.70.1",
+    "tsconfck": "^1.2.0",
+    "tsup": "^5.12.1"
   },
   "peerDependencies": {
     "esbuild": ">=0.14.13",
