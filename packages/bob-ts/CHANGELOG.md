@@ -1,5 +1,13 @@
 # bob-ts
 
+## 3.1.1
+
+### Patch Changes
+
+- 4889dc1: Bump
+- Updated dependencies [4889dc1]
+  - bob-esbuild-plugin@3.1.4
+
 ## 3.1.0
 
 ### Minor Changes

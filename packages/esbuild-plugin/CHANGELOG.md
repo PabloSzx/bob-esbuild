@@ -1,5 +1,11 @@
 # bob-esbuild-plugin
 
+## 3.1.4
+
+### Patch Changes
+
+- 4889dc1: Bump
+
 ## 3.1.3
 
 ### Patch Changes
