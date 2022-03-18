@@ -167,10 +167,10 @@ importers:
     specifiers:
       bob-esbuild: workspace:^3.2.5
       changesets-github-release: ^0.1.0
-      commander: ^9.0.0
+      commander: ^9.1.0
       typescript: ^4.6.2
     dependencies:
-      commander: 9.0.0
+      commander: 9.1.0
     devDependencies:
       bob-esbuild: link:../bob
       changesets-github-release: 0.1.0
@@ -183,7 +183,7 @@ importers:
       bob-esbuild-cli: workspace:^3.0.2
       bob-esbuild-plugin: workspace:^3.1.4
       changesets-github-release: ^0.1.0
-      commander: ^9.0.0
+      commander: ^9.1.0
       esbuild: ^0.14.27
       execa: ^6.1.0
       globby: ^13.1.1
@@ -201,7 +201,7 @@ importers:
       '@types/node': 17.0.21
       bob-esbuild-cli: link:../bob-cli
       changesets-github-release: 0.1.0
-      commander: 9.0.0
+      commander: 9.1.0
       esbuild: 0.14.27
       execa: 6.1.0
       globby: 13.1.1
@@ -217,7 +217,7 @@ importers:
       bob-esbuild-plugin: workspace:^3.1.4
       c8: ^7.11.0
       chokidar: ^3.5.3
-      commander: ^9.0.0
+      commander: ^9.1.0
       esbuild: ^0.14.27
       execa: ^6.1.0
       fsevents: ~2.3.2
@@ -231,7 +231,7 @@ importers:
       bob-esbuild-plugin: link:../esbuild-plugin
       c8: 7.11.0
       chokidar: 3.5.3
-      commander: 9.0.0
+      commander: 9.1.0
       esbuild: 0.14.27
       execa: 6.1.0
       tree-kill: 1.2.2
@@ -244,7 +244,7 @@ importers:
       bob-esbuild-cli: workspace:^3.0.1
       bob-tsm: workspace:^0.4.6
       chokidar: ^3.5.3
-      commander: ^9.0.0
+      commander: ^9.1.0
       execa: ^6.1.0
       fsevents: ~2.3.2
       tree-kill: ^1.2.2
@@ -255,7 +255,7 @@ importers:
       bob-esbuild-cli: link:../bob-cli
       bob-tsm: link:../bob-tsm
       chokidar: 3.5.3
-      commander: 9.0.0
+      commander: 9.1.0
       execa: 6.1.0
       tree-kill: 1.2.2
 
@@ -1095,8 +1095,8 @@ packages:
     engines: {node: '>= 6'}
     dev: true
 
-  /commander/9.0.0:
-    resolution: {integrity: sha512-JJfP2saEKbQqvW+FI93OYUB4ByV5cizMpFMiiJI8xDbBvQvSkIk0VvQdn1CZ8mqAO8Loq2h0gYTYtDFUZUeERw==}
+  /commander/9.1.0:
+    resolution: {integrity: sha512-i0/MaqBtdbnJ4XQs4Pmyb+oFQl+q0lsAmokVUH92SlSw4fkeAcG3bVon+Qt7hmtF+u3Het6o4VgrcY3qAoEB6w==}
     engines: {node: ^12.20.0 || >=14}
 
   /concat-map/0.0.1:
@@ -3293,7 +3293,7 @@ packages:
       bob-esbuild: workspace:^3.2.5
     dependencies:
       bob-esbuild: file:packages/bob_esbuild@0.14.27+typescript@4.6.2
-      commander: 9.0.0
+      commander: 9.1.0
     dev: false
 
   file:packages/bob-ts_738abcd01278e5c06957008fdfa59a6c:

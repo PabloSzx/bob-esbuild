@@ -43,7 +43,7 @@
     "bob-esbuild-cli": "workspace:^3.0.1",
     "bob-tsm": "workspace:^0.4.6",
     "chokidar": "^3.5.3",
-    "commander": "^9.0.0",
+    "commander": "^9.1.0",
     "execa": "^6.1.0",
     "tree-kill": "^1.2.2"
   },
