@@ -1,5 +1,13 @@
 # bob-esbuild
 
+## 3.2.6
+
+### Patch Changes
+
+- ee099eb: Update dependencies
+- Updated dependencies [ee099eb]
+  - bob-esbuild-plugin@3.1.5
+
 ## 3.2.5
 
 ### Patch Changes

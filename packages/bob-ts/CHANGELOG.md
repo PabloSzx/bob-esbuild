@@ -1,5 +1,13 @@
 # bob-ts
 
+## 3.1.2
+
+### Patch Changes
+
+- ee099eb: Set "typescript" and "@types/node" as optional peer dependency
+- Updated dependencies [ee099eb]
+  - bob-esbuild-plugin@3.1.5
+
 ## 3.1.1
 
 ### Patch Changes
