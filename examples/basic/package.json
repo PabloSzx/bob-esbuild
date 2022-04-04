@@ -41,6 +41,11 @@
     "bob-tsm": "workspace:^0.4.7",
     "shared": "workspace:^1.0.0"
   },
+  "devDependencies": {
+    "@types/node": "^17.0.23",
+    "esbuild": "^0.14.31",
+    "typescript": "^4.6.3"
+  },
   "publishConfig": {
     "directory": "lib"
   },
