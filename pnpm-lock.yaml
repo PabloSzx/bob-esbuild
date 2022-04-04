@@ -131,7 +131,7 @@ importers:
       rollup-plugin-node-externals: ^3.1.2
       rollup-plugin-tsconfig-paths: ^1.1.6
       tree-kill: ^1.2.2
-      tsconfck: ^1.2.0
+      tsconfck: ^1.2.2
       typescript: ^4.6.2
     dependencies:
       '@pnpm/types': 7.10.0
@@ -160,7 +160,7 @@ importers:
       rollup-plugin-node-externals: 3.1.2
       rollup-plugin-tsconfig-paths: 1.1.6_rollup@2.70.1+typescript@4.6.2
       tree-kill: 1.2.2
-      tsconfck: 1.2.0_typescript@4.6.2
+      tsconfck: 1.2.2_typescript@4.6.2
       typescript: 4.6.2
 
   packages/bob-cli:
@@ -265,7 +265,7 @@ importers:
       changesets-github-release: ^0.1.0
       esbuild: ^0.14.27
       rollup: ^2.70.1
-      tsconfck: ^1.2.0
+      tsconfck: ^1.2.2
       tsup: ^5.12.1
     dependencies:
       '@rollup/pluginutils': 4.2.0
@@ -273,7 +273,7 @@ importers:
       changesets-github-release: 0.1.0
       esbuild: 0.14.27
       rollup: 2.70.1
-      tsconfck: 1.2.0_typescript@4.6.2
+      tsconfck: 1.2.2_typescript@4.6.2
       tsup: 5.12.1_typescript@4.6.2
 
 packages:
@@ -3002,8 +3002,8 @@ packages:
     resolution: {integrity: sha512-Y/arvbn+rrz3JCKl9C4kVNfTfSm2/mEp5FSz5EsZSANGPSlQrpRI5M4PKF+mJnE52jOO90PnPSc3Ur3bTQw0gA==}
     dev: true
 
-  /tsconfck/1.2.0_typescript@4.6.2:
-    resolution: {integrity: sha512-uKBM6x6i5e7Tfof5Zhll2ypgYKwWZhsxsHOoCH/7enlcHjjlcZ8FnxFrqgVFtpN6ymzZX3zoDaVGIlkh/g4x6w==}
+  /tsconfck/1.2.2_typescript@4.6.2:
+    resolution: {integrity: sha512-x5YpjOqjJnMs1EsJvQBQbrysrY32eGoZRRr5YvbN1hwlrXKc7jiphCOUrT7xbFdOWk8sh+EtMYbGPbTO8rDmcw==}
     engines: {node: ^12.20 || ^14.13.1 || >= 16}
     hasBin: true
     peerDependencies:
