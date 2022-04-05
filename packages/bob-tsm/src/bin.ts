@@ -15,6 +15,7 @@ program
   .option('--tsmconfig <config>', 'Configuration file path', 'tsm.js')
   .option('--watch <patterns...>', 'Enable & specify watch mode')
   .option('--ignore <patterns...>', 'Ignore watch patterns')
+  .option('--no-sourcemap', "Don't generate/enable source maps")
   .option('--keep-esm-loader', 'Keep ESM Loader for forks (It can break certain environments like Next.js custom server)')
   .addOption(
     new Option(
@@ -46,17 +47,21 @@ program
       quiet?: boolean;
       paths?: boolean;
       keepEsmLoader?: boolean;
+      sourcemap?: boolean;
     }>();
 
-    const { watch, ignore, cjs, node_env, quiet, tsmconfig, paths, keepEsmLoader } = options;
+    const { watch, ignore, cjs, node_env, quiet, tsmconfig, paths, keepEsmLoader, sourcemap } = options;
 
     const binDirname = dirname(fileURLToPath(import.meta.url));
 
     const spawnArgs = [
       '--require=' + join(binDirname, 'require.js'),
       '--loader=' + pathToFileURL(join(binDirname, 'loader.mjs')).href,
-      '--enable-source-maps',
     ];
+
+    if (sourcemap) {
+      spawnArgs.push('--enable-source-maps');
+    }
 
     if (tsmconfig && existsSync(tsmconfig)) {
       spawnArgs.push('--tsmconfig', tsmconfig);
@@ -74,6 +79,10 @@ program
 
     if (cjs) {
       Object.assign((spawnEnv ||= { ...process.env }), { FORCE_CJS: '1' });
+    }
+
+    if (!sourcemap) {
+      Object.assign((spawnEnv ||= { ...process.env }), { DISABLE_SOURCEMAP: '1' });
     }
 
     if (node_env) {

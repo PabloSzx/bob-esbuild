@@ -44,7 +44,7 @@ export const defaults = function (format: Format): Defaults {
     options: {
       format,
       charset: 'utf8',
-      sourcemap: 'inline',
+      sourcemap: process.env.DISABLE_SOURCEMAP ? false : 'inline',
       target: 'node' + process.versions.node,
       logLevel: isQuiet ? 'silent' : 'warning',
       color: enabled,
