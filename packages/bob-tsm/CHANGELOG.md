@@ -1,5 +1,11 @@
 # bob-tsm
 
+## 0.4.8
+
+### Patch Changes
+
+- cbe654d: New option "--no-sourcemap" to disable sourcemaps
+
 ## 0.4.7
 
 ### Patch Changes
