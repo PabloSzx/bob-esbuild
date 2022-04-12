@@ -280,7 +280,7 @@ importers:
       esbuild: ^0.14.32
       rollup: ^2.70.1
       tsconfck: ^1.2.2
-      tsup: ^5.12.4
+      tsup: ^5.12.5
     dependencies:
       '@rollup/pluginutils': 4.2.0
     devDependencies:
@@ -288,7 +288,7 @@ importers:
       esbuild: 0.14.32
       rollup: 2.70.1
       tsconfck: 1.2.2_typescript@4.6.3
-      tsup: 5.12.4_typescript@4.6.3
+      tsup: 5.12.5_typescript@4.6.3
 
 packages:
 
@@ -3044,8 +3044,8 @@ packages:
       esbuild: 0.14.32
     dev: true
 
-  /tsup/5.12.4_typescript@4.6.3:
-    resolution: {integrity: sha512-uUraITfIj2h6rXAdeaVUYrZ2Is9joLFyEGZN5mGAke874JojCizb2MCUcE0wGdcERtyob5mbbFUKkMgal8SlFw==}
+  /tsup/5.12.5_typescript@4.6.3:
+    resolution: {integrity: sha512-lKwzJsB49sDto51QjqOB4SdiBLKRvgTymEBuBCovcksdDwFEz3esrkbf3m497PXntUKVTzcgOfPdTgknMtvufw==}
     hasBin: true
     peerDependencies:
       typescript: ^4.1.0
