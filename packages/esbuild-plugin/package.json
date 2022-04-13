@@ -29,7 +29,7 @@
     "postpublish": "gh-release"
   },
   "dependencies": {
-    "@rollup/pluginutils": "^4.2.0"
+    "@rollup/pluginutils": "^4.2.1"
   },
   "devDependencies": {
     "changesets-github-release": "^0.1.0",
