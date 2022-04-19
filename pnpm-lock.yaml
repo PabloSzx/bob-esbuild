@@ -143,7 +143,7 @@ importers:
       rollup: ^2.70.1
       rollup-plugin-delete: ^2.0.0
       rollup-plugin-node-externals: ^3.1.2
-      rollup-plugin-tsconfig-paths: ^1.1.6
+      rollup-plugin-tsconfig-paths: ^1.1.8
       tree-kill: ^1.2.2
       tsconfck: ^1.2.2
       typescript: ^4.6.3
@@ -172,7 +172,7 @@ importers:
       lodash.get: 4.4.2
       rollup-plugin-delete: 2.0.0
       rollup-plugin-node-externals: 3.1.2
-      rollup-plugin-tsconfig-paths: 1.1.6_rollup@2.70.1+typescript@4.6.3
+      rollup-plugin-tsconfig-paths: 1.1.8_rollup@2.70.1+typescript@4.6.3
       tree-kill: 1.2.2
       tsconfck: 1.2.2_typescript@4.6.3
       typescript: 4.6.3
@@ -204,7 +204,7 @@ importers:
       rollup: ^2.70.1
       rollup-plugin-delete: ^2.0.0
       rollup-plugin-node-externals: ^3.1.2
-      rollup-plugin-tsconfig-paths: ^1.1.6
+      rollup-plugin-tsconfig-paths: ^1.1.8
       tree-kill: ^1.2.2
       typescript: ^4.6.3
     dependencies:
@@ -221,7 +221,7 @@ importers:
       globby: 13.1.1
       rollup-plugin-delete: 2.0.0
       rollup-plugin-node-externals: 3.1.2
-      rollup-plugin-tsconfig-paths: 1.1.6_rollup@2.70.1+typescript@4.6.3
+      rollup-plugin-tsconfig-paths: 1.1.8_rollup@2.70.1+typescript@4.6.3
       tree-kill: 1.2.2
       typescript: 4.6.3
 
@@ -287,8 +287,8 @@ importers:
       changesets-github-release: 0.1.0
       esbuild: 0.14.36
       rollup: 2.70.1
-      tsconfck: 1.2.2
-      tsup: 5.12.5
+      tsconfck: 1.2.2_typescript@4.6.3
+      tsup: 5.12.5_typescript@4.6.3
 
 packages:
 
@@ -2713,8 +2713,8 @@ packages:
       find-up: 6.3.0
     dev: true
 
-  /rollup-plugin-tsconfig-paths/1.1.6_rollup@2.70.1+typescript@4.6.3:
-    resolution: {integrity: sha512-g+SOMt2jfjgUekeCqLDuw9HQhxogzp9pU8Hccb8bR7o+ebNLKkuIeGHnbdva2XN4a7JnMKpKqKwtlZzPTM5rDQ==}
+  /rollup-plugin-tsconfig-paths/1.1.8_rollup@2.70.1+typescript@4.6.3:
+    resolution: {integrity: sha512-Ysxtb7H3i03zMznT8UNdk0eH0Hrr79er0E7/mOOf3weB90jA/2YYkvnv3ZKgHf5ve2vBPOT6JnWZv95VsRYSXw==}
     peerDependencies:
       rollup: ^2
     dependencies:
@@ -3025,17 +3025,6 @@ packages:
     resolution: {integrity: sha512-Y/arvbn+rrz3JCKl9C4kVNfTfSm2/mEp5FSz5EsZSANGPSlQrpRI5M4PKF+mJnE52jOO90PnPSc3Ur3bTQw0gA==}
     dev: true
 
-  /tsconfck/1.2.2:
-    resolution: {integrity: sha512-x5YpjOqjJnMs1EsJvQBQbrysrY32eGoZRRr5YvbN1hwlrXKc7jiphCOUrT7xbFdOWk8sh+EtMYbGPbTO8rDmcw==}
-    engines: {node: ^12.20 || ^14.13.1 || >= 16}
-    hasBin: true
-    peerDependencies:
-      typescript: ^4.3.5
-    peerDependenciesMeta:
-      typescript:
-        optional: true
-    dev: true
-
   /tsconfck/1.2.2_typescript@4.6.3:
     resolution: {integrity: sha512-x5YpjOqjJnMs1EsJvQBQbrysrY32eGoZRRr5YvbN1hwlrXKc7jiphCOUrT7xbFdOWk8sh+EtMYbGPbTO8rDmcw==}
     engines: {node: ^12.20 || ^14.13.1 || >= 16}
@@ -3057,7 +3046,7 @@ packages:
       esbuild: 0.14.36
     dev: true
 
-  /tsup/5.12.5:
+  /tsup/5.12.5_typescript@4.6.3:
     resolution: {integrity: sha512-lKwzJsB49sDto51QjqOB4SdiBLKRvgTymEBuBCovcksdDwFEz3esrkbf3m497PXntUKVTzcgOfPdTgknMtvufw==}
     hasBin: true
     peerDependencies:
@@ -3080,6 +3069,7 @@ packages:
       source-map: 0.7.3
       sucrase: 3.21.0
       tree-kill: 1.2.2
+      typescript: 4.6.3
     transitivePeerDependencies:
       - postcss
       - supports-color
@@ -3316,6 +3306,9 @@ packages:
     hasBin: true
     peerDependencies:
       bob-esbuild: workspace:^3.2.5
+    peerDependenciesMeta:
+      bob-esbuild:
+        optional: true
     dependencies:
       bob-esbuild: file:packages/bob_esbuild@0.14.36+typescript@4.6.3
       commander: 9.1.0
