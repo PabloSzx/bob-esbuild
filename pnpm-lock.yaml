@@ -229,7 +229,7 @@ importers:
     specifiers:
       '@types/semver': ^7.3.9
       bob-esbuild-plugin: workspace:^3.1.4
-      c8: ^7.11.0
+      c8: ^7.11.2
       chokidar: ^3.5.3
       commander: ^9.1.0
       esbuild: ^0.14.36
@@ -243,7 +243,7 @@ importers:
     devDependencies:
       '@types/semver': 7.3.9
       bob-esbuild-plugin: link:../esbuild-plugin
-      c8: 7.11.0
+      c8: 7.11.2
       chokidar: 3.5.3
       commander: 9.1.0
       esbuild: 0.14.36
@@ -287,8 +287,8 @@ importers:
       changesets-github-release: 0.1.0
       esbuild: 0.14.36
       rollup: 2.70.1
-      tsconfck: 1.2.2
-      tsup: 5.12.5
+      tsconfck: 1.2.2_typescript@4.6.3
+      tsup: 5.12.5_typescript@4.6.3
 
 packages:
 
@@ -509,6 +509,22 @@ packages:
   /@istanbuljs/schema/0.1.3:
     resolution: {integrity: sha512-ZXRY4jNvVgSVQ8DL3LTcakaAtXwTVUxE81hslsyD2AtoXW/wVob10HkOJ1X/pAlcI7D+2YoZKg5do8G/w6RYgA==}
     engines: {node: '>=8'}
+    dev: true
+
+  /@jridgewell/resolve-uri/3.0.5:
+    resolution: {integrity: sha512-VPeQ7+wH0itvQxnG+lIzWgkysKIr3L9sslimFW55rHMdGu/qCQ5z5h9zq4gI8uBtqkpHhsF4Z/OwExufUCThew==}
+    engines: {node: '>=6.0.0'}
+    dev: true
+
+  /@jridgewell/sourcemap-codec/1.4.11:
+    resolution: {integrity: sha512-Fg32GrJo61m+VqYSdRSjRXMjQ06j8YIYfcTqndLYVAaHmroZHLJZCydsWBOTDqXS2v+mjxohBWEMfg97GXmYQg==}
+    dev: true
+
+  /@jridgewell/trace-mapping/0.3.8:
+    resolution: {integrity: sha512-zdpaWDz5IEyHlu1EO+B+qRHmJkSxMVV6SXngDry9n1ZqslLXFH9Dw6lRqDidm/sOJAWdRltJsmZ1SK28/uZKsw==}
+    dependencies:
+      '@jridgewell/resolve-uri': 3.0.5
+      '@jridgewell/sourcemap-codec': 1.4.11
     dev: true
 
   /@manypkg/find-root/1.1.0:
@@ -974,8 +990,8 @@ packages:
       load-tsconfig: 0.2.3
     dev: true
 
-  /c8/7.11.0:
-    resolution: {integrity: sha512-XqPyj1uvlHMr+Y1IeRndC2X5P7iJzJlEJwBpCdBbq2JocXOgJfr+JVfJkyNMGROke5LfKrhSFXGFXnwnRJAUJw==}
+  /c8/7.11.2:
+    resolution: {integrity: sha512-6ahJSrhS6TqSghHm+HnWt/8Y2+z0hM/FQyB1ybKhAR30+NYL9CTQ1uwHxuWw6U7BHlHv6wvhgOrH81I+lfCkxg==}
     engines: {node: '>=10.12.0'}
     hasBin: true
     dependencies:
@@ -988,7 +1004,7 @@ packages:
       istanbul-reports: 3.1.4
       rimraf: 3.0.2
       test-exclude: 6.0.0
-      v8-to-istanbul: 8.1.1
+      v8-to-istanbul: 9.0.0
       yargs: 16.2.0
       yargs-parser: 20.2.9
     dev: true
@@ -3025,17 +3041,6 @@ packages:
     resolution: {integrity: sha512-Y/arvbn+rrz3JCKl9C4kVNfTfSm2/mEp5FSz5EsZSANGPSlQrpRI5M4PKF+mJnE52jOO90PnPSc3Ur3bTQw0gA==}
     dev: true
 
-  /tsconfck/1.2.2:
-    resolution: {integrity: sha512-x5YpjOqjJnMs1EsJvQBQbrysrY32eGoZRRr5YvbN1hwlrXKc7jiphCOUrT7xbFdOWk8sh+EtMYbGPbTO8rDmcw==}
-    engines: {node: ^12.20 || ^14.13.1 || >= 16}
-    hasBin: true
-    peerDependencies:
-      typescript: ^4.3.5
-    peerDependenciesMeta:
-      typescript:
-        optional: true
-    dev: true
-
   /tsconfck/1.2.2_typescript@4.6.3:
     resolution: {integrity: sha512-x5YpjOqjJnMs1EsJvQBQbrysrY32eGoZRRr5YvbN1hwlrXKc7jiphCOUrT7xbFdOWk8sh+EtMYbGPbTO8rDmcw==}
     engines: {node: ^12.20 || ^14.13.1 || >= 16}
@@ -3057,7 +3062,7 @@ packages:
       esbuild: 0.14.36
     dev: true
 
-  /tsup/5.12.5:
+  /tsup/5.12.5_typescript@4.6.3:
     resolution: {integrity: sha512-lKwzJsB49sDto51QjqOB4SdiBLKRvgTymEBuBCovcksdDwFEz3esrkbf3m497PXntUKVTzcgOfPdTgknMtvufw==}
     hasBin: true
     peerDependencies:
@@ -3080,6 +3085,7 @@ packages:
       source-map: 0.7.3
       sucrase: 3.21.0
       tree-kill: 1.2.2
+      typescript: 4.6.3
     transitivePeerDependencies:
       - postcss
       - supports-color
@@ -3144,13 +3150,13 @@ packages:
     engines: {node: '>= 10.0.0'}
     dev: true
 
-  /v8-to-istanbul/8.1.1:
-    resolution: {integrity: sha512-FGtKtv3xIpR6BYhvgH8MI/y78oT7d8Au3ww4QIxymrCtZEh5b8gCw2siywE+puhEmuWKDtmfrvF5UlB298ut3w==}
+  /v8-to-istanbul/9.0.0:
+    resolution: {integrity: sha512-HcvgY/xaRm7isYmyx+lFKA4uQmfUbN0J4M0nNItvzTvH/iQ9kW5j/t4YSR+Ge323/lrgDAWJoF46tzGQHwBHFw==}
     engines: {node: '>=10.12.0'}
     dependencies:
+      '@jridgewell/trace-mapping': 0.3.8
       '@types/istanbul-lib-coverage': 2.0.4
       convert-source-map: 1.8.0
-      source-map: 0.7.3
     dev: true
 
   /validate-npm-package-license/3.0.4:
@@ -3316,6 +3322,9 @@ packages:
     hasBin: true
     peerDependencies:
       bob-esbuild: workspace:^3.2.5
+    peerDependenciesMeta:
+      bob-esbuild:
+        optional: true
     dependencies:
       bob-esbuild: file:packages/bob_esbuild@0.14.36+typescript@4.6.3
       commander: 9.1.0
