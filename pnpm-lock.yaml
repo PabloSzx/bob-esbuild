@@ -3342,7 +3342,7 @@ packages:
     hasBin: true
     peerDependencies:
       '@types/node': '*'
-      esbuild: '>=0.14.38'
+      esbuild: '>=0.14.39'
       typescript: '*'
     peerDependenciesMeta:
       '@types/node':
@@ -3365,7 +3365,7 @@ packages:
     engines: {node: '>=14.13.1'}
     hasBin: true
     peerDependencies:
-      esbuild: '>=0.14.38'
+      esbuild: '>=0.14.39'
       typescript: '>=4.1.2'
     peerDependenciesMeta:
       typescript:
@@ -3383,8 +3383,13 @@ packages:
     name: bob-esbuild
     version: 3.2.6
     peerDependencies:
-      esbuild: '>=0.14.38'
+      esbuild: '>=0.14.39'
       typescript: '*'
+    peerDependenciesMeta:
+      esbuild:
+        optional: true
+      typescript:
+        optional: true
     dependencies:
       '@pnpm/types': 8.0.1
       bob-esbuild-plugin: link:packages/esbuild-plugin
