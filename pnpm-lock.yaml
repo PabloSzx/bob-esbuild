@@ -3385,6 +3385,11 @@ packages:
     peerDependencies:
       esbuild: '>=0.14.38'
       typescript: '*'
+    peerDependenciesMeta:
+      esbuild:
+        optional: true
+      typescript:
+        optional: true
     dependencies:
       '@pnpm/types': 8.0.1
       bob-esbuild-plugin: link:packages/esbuild-plugin
