@@ -39,9 +39,9 @@
     "postpublish": "gh-release"
   },
   "devDependencies": {
-    "bob-esbuild": "workspace:^3.2.5",
-    "bob-esbuild-cli": "workspace:^3.0.2",
-    "bob-tsm": "workspace:^0.4.7",
+    "bob-esbuild": "workspace:^4.0.0",
+    "bob-esbuild-cli": "workspace:^4.0.0",
+    "bob-tsm": "workspace:^1.0.0",
     "chokidar": "^3.5.3",
     "commander": "^9.2.0",
     "execa": "^6.1.0",

@@ -1,5 +1,11 @@
 # bob-tsm
 
+## 1.0.0
+
+### Major Changes
+
+- 9fb97f8: Require Node.js >=14.13.1
+
 ## 0.4.8
 
 ### Patch Changes
