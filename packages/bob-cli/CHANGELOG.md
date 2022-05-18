@@ -1,5 +1,17 @@
 # bob-esbuild-cli
 
+## 4.0.0
+
+### Major Changes
+
+- 9fb97f8: Require Node.js >=14.13.1
+
+### Patch Changes
+
+- 3b414e1: Make bob-esbuild optional peer dependency
+- Updated dependencies [9fb97f8]
+  - bob-esbuild@4.0.0
+
 ## 3.0.2
 
 ### Patch Changes

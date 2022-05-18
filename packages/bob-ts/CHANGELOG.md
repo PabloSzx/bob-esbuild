@@ -1,5 +1,16 @@
 # bob-ts
 
+## 4.0.0
+
+### Major Changes
+
+- 9fb97f8: Require Node.js >=14.13.1
+
+### Patch Changes
+
+- Updated dependencies [9fb97f8]
+  - bob-esbuild-plugin@4.0.0
+
 ## 3.1.2
 
 ### Patch Changes
