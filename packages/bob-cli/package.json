@@ -36,7 +36,7 @@
     "postpublish": "gh-release"
   },
   "dependencies": {
-    "commander": "^9.2.0"
+    "commander": "^9.3.0"
   },
   "devDependencies": {
     "bob-esbuild": "workspace:^4.0.0",

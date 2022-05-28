@@ -44,7 +44,7 @@
     "bob-esbuild-plugin": "workspace:^4.0.0",
     "c8": "^7.11.3",
     "chokidar": "^3.5.3",
-    "commander": "^9.2.0",
+    "commander": "^9.3.0",
     "esbuild": "^0.14.39",
     "execa": "^6.1.0",
     "tree-kill": "^1.2.2",
