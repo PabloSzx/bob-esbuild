@@ -1,5 +1,11 @@
 # bob-watch
 
+## 0.1.2
+
+### Patch Changes
+
+- c99d3d4: Fix commander dependency
+
 ## 0.1.1
 
 ### Patch Changes
