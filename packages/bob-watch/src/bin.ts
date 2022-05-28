@@ -1,5 +1,4 @@
-import { program } from 'commander';
-import { StartWatcher } from './index';
+import { program, StartWatcher } from './index';
 
 declare const VERSION: string;
 

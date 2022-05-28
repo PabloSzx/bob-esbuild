@@ -6,6 +6,8 @@ import { debouncePromise } from './utils';
 
 const { treeKill, command, watch } = deps;
 
+export const { program } = deps;
+
 export function StartWatcher({
   paths,
   ignored,
