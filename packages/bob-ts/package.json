@@ -37,7 +37,7 @@
   },
   "dependencies": {
     "bob-esbuild-plugin": "workspace:^4.0.0",
-    "rollup": "^2.73.0"
+    "rollup": "^2.75.1"
   },
   "devDependencies": {
     "@rollup/plugin-json": "^4.1.0",

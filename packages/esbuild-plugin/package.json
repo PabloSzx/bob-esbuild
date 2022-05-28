@@ -34,7 +34,7 @@
   "devDependencies": {
     "changesets-github-release": "^0.1.0",
     "esbuild": "^0.14.39",
-    "rollup": "^2.73.0",
+    "rollup": "^2.75.1",
     "tsconfck": "^2.0.0",
     "tsup": "^5.12.8"
   },
