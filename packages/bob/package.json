@@ -33,7 +33,7 @@
   "dependencies": {
     "@pnpm/types": "^8.0.1",
     "bob-esbuild-plugin": "workspace:4.0.0",
-    "rollup": "^2.75.1"
+    "rollup": "^2.75.6"
   },
   "devDependencies": {
     "@pnpm/exportable-manifest": "^3.0.2",
