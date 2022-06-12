@@ -47,7 +47,7 @@
     "commander": "^9.3.0",
     "esbuild": "^0.14.41",
     "execa": "^6.1.0",
-    "globby": "^13.1.1",
+    "globby": "^13.1.2",
     "rollup-plugin-delete": "^2.0.0",
     "rollup-plugin-node-externals": "^4.0.0",
     "rollup-plugin-tsconfig-paths": "^1.1.8",

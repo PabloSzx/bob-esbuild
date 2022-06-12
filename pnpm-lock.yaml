@@ -138,7 +138,7 @@ importers:
       fast-glob: ^3.2.11
       folder-hash: ^4.0.2
       fs-extra: ^10.1.0
-      globby: ^13.1.1
+      globby: ^13.1.2
       lodash.get: ^4.4.2
       rollup: ^2.75.1
       rollup-plugin-delete: ^2.0.0
@@ -168,7 +168,7 @@ importers:
       fast-glob: 3.2.11
       folder-hash: 4.0.2
       fs-extra: 10.1.0
-      globby: 13.1.1
+      globby: 13.1.2
       lodash.get: 4.4.2
       rollup-plugin-delete: 2.0.0
       rollup-plugin-node-externals: 4.0.0_rollup@2.75.1
@@ -200,7 +200,7 @@ importers:
       commander: ^9.3.0
       esbuild: ^0.14.41
       execa: ^6.1.0
-      globby: ^13.1.1
+      globby: ^13.1.2
       rollup: ^2.75.1
       rollup-plugin-delete: ^2.0.0
       rollup-plugin-node-externals: ^4.0.0
@@ -218,7 +218,7 @@ importers:
       commander: 9.3.0
       esbuild: 0.14.41
       execa: 6.1.0
-      globby: 13.1.1
+      globby: 13.1.2
       rollup-plugin-delete: 2.0.0
       rollup-plugin-node-externals: 4.0.0_rollup@2.75.1
       rollup-plugin-tsconfig-paths: 1.1.8_jwmgqiuzdyjonbaioghejmsiny
@@ -1753,8 +1753,8 @@ packages:
       slash: 3.0.0
     dev: true
 
-  /globby/13.1.1:
-    resolution: {integrity: sha512-XMzoDZbGZ37tufiv7g0N4F/zp3zkwdFtVbV3EHsVl1KQr4RPLfNoT068/97RPshz2J5xYNEjLKKBKaGHifBd3Q==}
+  /globby/13.1.2:
+    resolution: {integrity: sha512-LKSDZXToac40u8Q1PQtZihbNdTYSNMuWe+K5l+oa6KgDzSvVrHXlJy40hUP522RjAIoNLJYBJi7ow+rbFpIhHQ==}
     engines: {node: ^12.20.0 || ^14.13.1 || >=16.0.0}
     dependencies:
       dir-glob: 3.0.1
