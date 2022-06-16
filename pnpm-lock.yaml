@@ -71,7 +71,7 @@ importers:
   examples/nextjs-custom-server:
     specifiers:
       '@types/node': ^17.0.36
-      '@types/react': ^18.0.9
+      '@types/react': ^18.0.14
       bob-tsm: workspace:^1.0.0
       cross-env: ^7.0.3
       esbuild: ^0.14.41
@@ -86,7 +86,7 @@ importers:
       react-dom: 18.1.0_react@18.1.0
     devDependencies:
       '@types/node': 17.0.36
-      '@types/react': 18.0.9
+      '@types/react': 18.0.14
       cross-env: 7.0.3
       esbuild: 0.14.41
       typescript: 4.7.2
@@ -838,8 +838,8 @@ packages:
     resolution: {integrity: sha512-JCB8C6SnDoQf0cNycqd/35A7MjcnK+ZTqE7judS6o7utxUCg6imJg3QK2qzHKszlTjcj2cn+NwMB2i96ubpj7w==}
     dev: true
 
-  /@types/react/18.0.9:
-    resolution: {integrity: sha512-9bjbg1hJHUm4De19L1cHiW0Jvx3geel6Qczhjd0qY5VKVE2X5+x77YxAepuCwVh4vrgZJdgEJw48zrhRIeF4Nw==}
+  /@types/react/18.0.14:
+    resolution: {integrity: sha512-x4gGuASSiWmo0xjDLpm5mPb52syZHJx02VKbqUKdLmKtAwIh63XClGsiTI1K6DO5q7ox4xAsQrU+Gl3+gGXF9Q==}
     dependencies:
       '@types/prop-types': 15.7.5
       '@types/scheduler': 0.16.2
