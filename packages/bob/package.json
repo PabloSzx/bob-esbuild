@@ -31,7 +31,7 @@
     "postpublish": "gh-release"
   },
   "dependencies": {
-    "@pnpm/types": "^8.0.1",
+    "@pnpm/types": "^8.2.0",
     "bob-esbuild-plugin": "workspace:4.0.0",
     "rollup": "^2.75.1"
   },
