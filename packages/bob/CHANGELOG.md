@@ -1,5 +1,12 @@
 # bob-esbuild
 
+## 4.0.1
+
+### Patch Changes
+
+- 22bb51b: Re-export writePackageJson and rewritePackageJson from index
+- caf3cac: exports["."] is not required for rewrite package json
+
 ## 4.0.0
 
 ### Major Changes
