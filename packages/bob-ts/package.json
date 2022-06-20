@@ -37,22 +37,22 @@
   },
   "dependencies": {
     "bob-esbuild-plugin": "workspace:^4.0.0",
-    "rollup": "^2.75.1"
+    "rollup": "^2.75.6"
   },
   "devDependencies": {
     "@rollup/plugin-json": "^4.1.0",
-    "@types/node": "^17.0.36",
+    "@types/node": "^18.0.0",
     "bob-esbuild-cli": "workspace:^4.0.0",
     "changesets-github-release": "^0.1.0",
     "commander": "^9.3.0",
-    "esbuild": "^0.14.41",
+    "esbuild": "^0.14.46",
     "execa": "^6.1.0",
-    "globby": "^13.1.1",
+    "globby": "^13.1.2",
     "rollup-plugin-delete": "^2.0.0",
     "rollup-plugin-node-externals": "^4.0.0",
     "rollup-plugin-tsconfig-paths": "^1.1.8",
     "tree-kill": "^1.2.2",
-    "typescript": "^4.7.2"
+    "typescript": "^4.7.4"
   },
   "peerDependencies": {
     "@types/node": "*",
