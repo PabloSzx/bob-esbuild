@@ -1,5 +1,11 @@
 # bob-esbuild
 
+## 4.0.3
+
+### Patch Changes
+
+- 40bae3b: Put exports.types first as required by typescript
+
 ## 4.0.2
 
 ### Patch Changes
