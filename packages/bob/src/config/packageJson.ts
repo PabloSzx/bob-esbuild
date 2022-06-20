@@ -55,7 +55,7 @@ export function rewritePackageJson(pkg: PackageJSON, distDir: string, cwd: strin
 
   newPkg.main = withoutDistDir(pkg.main);
   newPkg.module = withoutDistDir(pkg.module);
-  newPkg.types = withoutDistDir(pkg.types) || 'index.d.ts';
+  newPkg.types = withoutDistDir(pkg.types);
 
   if (pkg.exports) {
     newPkg.exports = rewriteExports(pkg.exports, withoutDistDir);
