@@ -1,5 +1,11 @@
 # bob-esbuild
 
+## 4.0.2
+
+### Patch Changes
+
+- 765968e: Don't add "types" field if it doesn't already exists on package.json
+
 ## 4.0.1
 
 ### Patch Changes
