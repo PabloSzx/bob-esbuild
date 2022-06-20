@@ -5,3 +5,4 @@ export * from './tsc';
 export * from './utils';
 export * from './build';
 export * from './watch';
+export { writePackageJson, rewritePackageJson } from './config/packageJson';
