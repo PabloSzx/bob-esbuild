@@ -15,9 +15,9 @@ export function rewriteExports(
       newValue = withoutDistDir(newValue)!;
     } else if (typeof newValue === 'object' && newValue != null) {
       newValue = {
+        types: newValue.types != null ? withoutDistDir(newValue.types) : undefined,
         require: newValue.require != null ? withoutDistDir(newValue.require) : undefined,
         import: newValue.import != null ? withoutDistDir(newValue.import) : undefined,
-        types: newValue.types != null ? withoutDistDir(newValue.types) : undefined,
       };
     }
 
