@@ -26,7 +26,7 @@
     "prepare": "bob-esbuild build"
   },
   "dependencies": {
-    "bob-esbuild": "workspace:^4.0.0",
+    "bob-esbuild": "workspace:^4.0.1",
     "bob-esbuild-cli": "workspace:^4.0.0"
   },
   "devDependencies": {
