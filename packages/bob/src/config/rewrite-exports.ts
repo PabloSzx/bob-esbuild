@@ -6,8 +6,6 @@ export function rewriteExports(
 
   newExports['./package.json'] = './package.json';
 
-  if (!newExports['.']) throw Error('No "." specified in "exports"');
-
   for (const [key, value] of Object.entries(newExports)) {
     if (!value) continue;
 
