@@ -120,7 +120,7 @@ importers:
 
   packages/bob:
     specifiers:
-      '@pnpm/exportable-manifest': ^3.0.4
+      '@pnpm/exportable-manifest': ^3.0.7
       '@pnpm/types': ^8.2.0
       '@rollup/plugin-json': ^4.1.0
       '@types/folder-hash': ^4.0.1
@@ -152,7 +152,7 @@ importers:
       bob-esbuild-plugin: link:../esbuild-plugin
       rollup: 2.75.6
     devDependencies:
-      '@pnpm/exportable-manifest': 3.0.4
+      '@pnpm/exportable-manifest': 3.0.7
       '@rollup/plugin-json': 4.1.0_rollup@2.75.6
       '@types/folder-hash': 4.0.1
       '@types/fs-extra': 9.0.13
@@ -693,14 +693,14 @@ packages:
       '@pnpm/constants': 6.1.0
     dev: true
 
-  /@pnpm/exportable-manifest/3.0.4:
-    resolution: {integrity: sha512-Tsll9bJ6OPwmYPOQdMjqf3kgqnWQaqXyzi1BGrbsUxnXumCTrNceLkTOV/fSjuCMPTHnfFJhHAaGxtbwUecb3w==}
+  /@pnpm/exportable-manifest/3.0.7:
+    resolution: {integrity: sha512-S2ykKz2XAdKqGNgl5QvqmsEBsDqEcjk3q7UUJbfe46RIZN9gvuKJtxGkUKUb6OV1jk14PEU55wvyqS1I9F87vA==}
     engines: {node: '>=14.6'}
     dependencies:
       '@pnpm/error': 3.0.1
-      '@pnpm/read-project-manifest': 3.0.4
-      '@pnpm/types': 8.2.0
-      ramda: 0.27.2
+      '@pnpm/read-project-manifest': 3.0.6
+      '@pnpm/types': 8.4.0
+      ramda: 0.28.0
     dev: true
 
   /@pnpm/graceful-fs/2.0.0:
@@ -710,14 +710,14 @@ packages:
       graceful-fs: 4.2.10
     dev: true
 
-  /@pnpm/read-project-manifest/3.0.4:
-    resolution: {integrity: sha512-YtPdr82a1mrgQJefX3XZ8mp8yl9h50HTvyl3eqHjiZUB53ey1iFvkSzd9UjAeq2opeAnWeUK8JlMW/10KkUS1g==}
+  /@pnpm/read-project-manifest/3.0.6:
+    resolution: {integrity: sha512-nKFODeo/K7kLSLXMJcGywANaiyL9JlLQHKG3SWJaAjkP3QBgYWqqXhGWx8ZPsk5z9k0RL0gPEpt3wod8FAbTPg==}
     engines: {node: '>=14.6'}
     dependencies:
       '@pnpm/error': 3.0.1
       '@pnpm/graceful-fs': 2.0.0
-      '@pnpm/types': 8.2.0
-      '@pnpm/write-project-manifest': 3.0.3
+      '@pnpm/types': 8.4.0
+      '@pnpm/write-project-manifest': 3.0.5
       detect-indent: 6.1.0
       fast-deep-equal: 3.1.3
       is-windows: 1.0.2
@@ -731,12 +731,17 @@ packages:
   /@pnpm/types/8.2.0:
     resolution: {integrity: sha512-Lr976vR4mezo3iL4bwGXyZFaDuVhkoko1Dr159mj+/GrqghiVmZFSZQQZNkfWEvMq1v3NSCTtPPzMTZASKJzCg==}
     engines: {node: '>=14.6'}
+    dev: false
 
-  /@pnpm/write-project-manifest/3.0.3:
-    resolution: {integrity: sha512-nQBL/6iXTDOI3pYIUEb0VQLhjvgklpdstKP1fup5NuYUsvlNProVnWxHVxaU3y7kdAFcHGrHXJY4twLRX+pk8Q==}
+  /@pnpm/types/8.4.0:
+    resolution: {integrity: sha512-sq/UdSq/jWCpYglw9SFmvR8qzUEi0p2oZIO0AHjkWWQg4Qrolf6DgD0WWmLiEP2WxHjbYeyD3ZzWzQor1+6cvw==}
+    engines: {node: '>=14.6'}
+
+  /@pnpm/write-project-manifest/3.0.5:
+    resolution: {integrity: sha512-d56Lz1bIGSvaGRFG9rNliOayq8dLyLiexRaFX3KVO9zCziLJ7i2SNkYlw3bUhDCRYKEDcWvr34zS7NwKRlkBgQ==}
     engines: {node: '>=14.6'}
     dependencies:
-      '@pnpm/types': 8.2.0
+      '@pnpm/types': 8.4.0
       json5: 2.2.1
       write-file-atomic: 3.0.3
       write-yaml-file: 4.2.0
@@ -2786,8 +2791,8 @@ packages:
     engines: {node: '>=8'}
     dev: true
 
-  /ramda/0.27.2:
-    resolution: {integrity: sha512-SbiLPU40JuJniHexQSAgad32hfwd+DRUdwF2PlVuI5RZD0/vahUco7R8vD86J/tcEKKF9vZrUVwgtmGCqlCKyA==}
+  /ramda/0.28.0:
+    resolution: {integrity: sha512-9QnLuG/kPVgWvMQ4aODhsBUFKOUmnbUnsSXACv+NCQZcHbeb+v8Lodp8OVxtRULN1/xOyYLLaL6npE6dMq5QTA==}
     dev: true
 
   /react-dom/18.2.0_react@18.2.0:
@@ -3681,7 +3686,7 @@ packages:
       typescript:
         optional: true
     dependencies:
-      '@pnpm/types': 8.2.0
+      '@pnpm/types': 8.4.0
       bob-esbuild-plugin: link:packages/esbuild-plugin
       esbuild: 0.14.46
       rollup: 2.75.6
