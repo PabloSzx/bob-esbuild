@@ -16,6 +16,7 @@ program
   .option('--watch <patterns...>', 'Enable & specify watch mode')
   .option('--ignore <patterns...>', 'Ignore watch patterns')
   .option('--no-sourcemap', "Don't generate/enable source maps")
+  .option('--restart-on-fail', 'Restart node on execution error')
   .option('--keep-esm-loader', 'Keep ESM Loader for forks (It can break certain environments like Next.js custom server)')
   .addOption(
     new Option(
@@ -48,9 +49,10 @@ program
       paths?: boolean;
       keepEsmLoader?: boolean;
       sourcemap?: boolean;
+      restartOnFail?: boolean;
     }>();
 
-    const { watch, ignore, cjs, node_env, quiet, tsmconfig, paths, keepEsmLoader, sourcemap } = options;
+    const { watch, ignore, cjs, node_env, quiet, tsmconfig, paths, keepEsmLoader, sourcemap, restartOnFail } = options;
 
     const binDirname = dirname(fileURLToPath(import.meta.url));
 
@@ -174,7 +176,17 @@ program
 
         pendingKillPromises.size && (await Promise.all(pendingKillPromises));
 
-        nodeProcesses.push(spawnNode());
+        const nodeProcess = spawnNode();
+
+        if (restartOnFail) {
+          nodeProcess.once('exit', function onExit(code) {
+            if (typeof code === 'number' && code !== 0) {
+              debouncedExec();
+            }
+          });
+        }
+
+        nodeProcesses.push(nodeProcess);
       }
 
       const debouncedExec = debouncePromise(
@@ -192,7 +204,22 @@ program
 
       execNode();
     } else {
-      spawnNode().on('exit', process.exit);
+      function execNode() {
+        spawnNode().once(
+          'exit',
+          restartOnFail
+            ? code => {
+                if (typeof code === 'number' && code !== 0) {
+                  setTimeout(execNode, 500);
+                } else {
+                  process.exit(code!);
+                }
+              }
+            : process.exit
+        );
+      }
+
+      execNode();
     }
   })
   .catch(err => {
