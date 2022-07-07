@@ -1,5 +1,11 @@
 # bob-tsm
 
+## 1.1.0
+
+### Minor Changes
+
+- 085921c: New "--restart-on-fail" option to restart node execution when Node process exits with a non-zero exit code
+
 ## 1.0.0
 
 ### Major Changes
