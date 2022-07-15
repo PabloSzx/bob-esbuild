@@ -140,7 +140,7 @@ importers:
       fs-extra: ^10.1.0
       globby: ^13.1.2
       lodash.get: ^4.4.2
-      rollup: ^2.75.6
+      rollup: ^2.77.0
       rollup-plugin-delete: ^2.0.0
       rollup-plugin-node-externals: ^4.0.0
       rollup-plugin-tsconfig-paths: ^1.1.8
@@ -150,10 +150,10 @@ importers:
     dependencies:
       '@pnpm/types': 8.2.0
       bob-esbuild-plugin: link:../esbuild-plugin
-      rollup: 2.75.6
+      rollup: 2.77.0
     devDependencies:
       '@pnpm/exportable-manifest': 3.0.4
-      '@rollup/plugin-json': 4.1.0_rollup@2.75.6
+      '@rollup/plugin-json': 4.1.0_rollup@2.77.0
       '@types/folder-hash': 4.0.1
       '@types/fs-extra': 9.0.13
       '@types/lodash.get': 4.4.7
@@ -171,8 +171,8 @@ importers:
       globby: 13.1.2
       lodash.get: 4.4.2
       rollup-plugin-delete: 2.0.0
-      rollup-plugin-node-externals: 4.0.0_rollup@2.75.6
-      rollup-plugin-tsconfig-paths: 1.1.8_63sirsnfvviu2qxghjzgkmnlpm
+      rollup-plugin-node-externals: 4.0.0_rollup@2.77.0
+      rollup-plugin-tsconfig-paths: 1.1.8_55kiftncucr43pz4hskma6yi2q
       tree-kill: 1.2.2
       tsconfck: 2.0.1_typescript@4.7.4
       typescript: 4.7.4
@@ -201,7 +201,7 @@ importers:
       esbuild: ^0.14.46
       execa: ^6.1.0
       globby: ^13.1.2
-      rollup: ^2.75.6
+      rollup: ^2.77.0
       rollup-plugin-delete: ^2.0.0
       rollup-plugin-node-externals: ^4.0.0
       rollup-plugin-tsconfig-paths: ^1.1.8
@@ -209,9 +209,9 @@ importers:
       typescript: ^4.7.4
     dependencies:
       bob-esbuild-plugin: link:../esbuild-plugin
-      rollup: 2.75.6
+      rollup: 2.77.0
     devDependencies:
-      '@rollup/plugin-json': 4.1.0_rollup@2.75.6
+      '@rollup/plugin-json': 4.1.0_rollup@2.77.0
       '@types/node': 18.0.0
       bob-esbuild-cli: link:../bob-cli
       changesets-github-release: 0.1.0
@@ -220,8 +220,8 @@ importers:
       execa: 6.1.0
       globby: 13.1.2
       rollup-plugin-delete: 2.0.0
-      rollup-plugin-node-externals: 4.0.0_rollup@2.75.6
-      rollup-plugin-tsconfig-paths: 1.1.8_63sirsnfvviu2qxghjzgkmnlpm
+      rollup-plugin-node-externals: 4.0.0_rollup@2.77.0
+      rollup-plugin-tsconfig-paths: 1.1.8_55kiftncucr43pz4hskma6yi2q
       tree-kill: 1.2.2
       typescript: 4.7.4
 
@@ -278,7 +278,7 @@ importers:
       '@rollup/pluginutils': ^4.2.1
       changesets-github-release: ^0.1.0
       esbuild: ^0.14.46
-      rollup: ^2.75.6
+      rollup: ^2.77.0
       tsconfck: ^2.0.1
       tsup: ^6.1.2
     dependencies:
@@ -286,7 +286,7 @@ importers:
     devDependencies:
       changesets-github-release: 0.1.0
       esbuild: 0.14.46
-      rollup: 2.75.6
+      rollup: 2.77.0
       tsconfck: 2.0.1
       tsup: 6.1.2
 
@@ -742,16 +742,16 @@ packages:
       write-yaml-file: 4.2.0
     dev: true
 
-  /@rollup/plugin-json/4.1.0_rollup@2.75.6:
+  /@rollup/plugin-json/4.1.0_rollup@2.77.0:
     resolution: {integrity: sha512-yfLbTdNS6amI/2OpmbiBoW12vngr5NW2jCJVZSBEz+H5KfUJZ2M7sDjk0U6GOOdCWFVScShte29o9NezJ53TPw==}
     peerDependencies:
       rollup: ^1.20.0 || ^2.0.0
     dependencies:
-      '@rollup/pluginutils': 3.1.0_rollup@2.75.6
-      rollup: 2.75.6
+      '@rollup/pluginutils': 3.1.0_rollup@2.77.0
+      rollup: 2.77.0
     dev: true
 
-  /@rollup/pluginutils/3.1.0_rollup@2.75.6:
+  /@rollup/pluginutils/3.1.0_rollup@2.77.0:
     resolution: {integrity: sha512-GksZ6pr6TpIjHm8h9lSQ8pi8BE9VeubNT0OMJ3B5uZJ8pz73NPiqOtCog/x2/QzM1ENChPKxMDhiQuRHsqc+lg==}
     engines: {node: '>= 8.0.0'}
     peerDependencies:
@@ -760,7 +760,7 @@ packages:
       '@types/estree': 0.0.39
       estree-walker: 1.0.1
       picomatch: 2.3.1
-      rollup: 2.75.6
+      rollup: 2.77.0
     dev: true
 
   /@rollup/pluginutils/4.2.1:
@@ -2919,29 +2919,29 @@ packages:
       del: 5.1.0
     dev: true
 
-  /rollup-plugin-node-externals/4.0.0_rollup@2.75.6:
+  /rollup-plugin-node-externals/4.0.0_rollup@2.77.0:
     resolution: {integrity: sha512-7L0lqN+AEJqS13x240F5zyArHn2tNpHC7Ju8vtS893DkutIU89k5v3A7jhnOqLvOXAzjm9Ha7UZdwHOPyqiPDQ==}
     engines: {node: '>=14.0.0', rollup: '>=2.60.0'}
     peerDependencies:
       rollup: ^2.60.0
     dependencies:
       find-up: 5.0.0
-      rollup: 2.75.6
+      rollup: 2.77.0
     dev: true
 
-  /rollup-plugin-tsconfig-paths/1.1.8_63sirsnfvviu2qxghjzgkmnlpm:
+  /rollup-plugin-tsconfig-paths/1.1.8_55kiftncucr43pz4hskma6yi2q:
     resolution: {integrity: sha512-Ysxtb7H3i03zMznT8UNdk0eH0Hrr79er0E7/mOOf3weB90jA/2YYkvnv3ZKgHf5ve2vBPOT6JnWZv95VsRYSXw==}
     peerDependencies:
       rollup: ^2
     dependencies:
-      rollup: 2.75.6
+      rollup: 2.77.0
       typescript-paths: 1.3.1_typescript@4.7.4
     transitivePeerDependencies:
       - typescript
     dev: true
 
-  /rollup/2.75.6:
-    resolution: {integrity: sha512-OEf0TgpC9vU6WGROJIk1JA3LR5vk/yvqlzxqdrE2CzzXnqKXNzbAwlWUXis8RS3ZPe7LAq+YUxsRa0l3r27MLA==}
+  /rollup/2.77.0:
+    resolution: {integrity: sha512-vL8xjY4yOQEw79DvyXLijhnhh+R/O9zpF/LEgkCebZFtb6ELeN9H3/2T0r8+mp+fFTBHZ5qGpOpW2ela2zRt3g==}
     engines: {node: '>=10.0.0'}
     hasBin: true
     optionalDependencies:
@@ -3332,7 +3332,7 @@ packages:
       joycon: 3.1.1
       postcss-load-config: 3.1.4
       resolve-from: 5.0.0
-      rollup: 2.75.6
+      rollup: 2.77.0
       source-map: 0.8.0-beta.0
       sucrase: 3.21.0
       tree-kill: 1.2.2
@@ -3643,7 +3643,7 @@ packages:
       '@types/node': 18.0.0
       bob-esbuild-plugin: link:packages/esbuild-plugin
       esbuild: 0.14.46
-      rollup: 2.75.6
+      rollup: 2.77.0
       typescript: 4.7.4
     dev: false
 
@@ -3684,6 +3684,6 @@ packages:
       '@pnpm/types': 8.2.0
       bob-esbuild-plugin: link:packages/esbuild-plugin
       esbuild: 0.14.46
-      rollup: 2.75.6
+      rollup: 2.77.0
       typescript: 4.7.4
     dev: false
