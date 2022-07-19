@@ -31,23 +31,23 @@
     "postpublish": "gh-release"
   },
   "dependencies": {
-    "@pnpm/types": "^8.2.0",
+    "@pnpm/types": "^8.4.0",
     "bob-esbuild-plugin": "workspace:4.0.0",
-    "rollup": "^2.75.6"
+    "rollup": "^2.77.0"
   },
   "devDependencies": {
-    "@pnpm/exportable-manifest": "^3.0.4",
+    "@pnpm/exportable-manifest": "^3.0.7",
     "@rollup/plugin-json": "^4.1.0",
-    "@types/folder-hash": "^4.0.1",
+    "@types/folder-hash": "^4.0.2",
     "@types/fs-extra": "^9.0.13",
     "@types/lodash.get": "^4.4.7",
-    "@types/node": "^18.0.0",
+    "@types/node": "^18.0.6",
     "builtin-modules": "^3.3.0",
     "chalk": "^5.0.1",
     "changesets-github-release": "^0.1.0",
     "cosmiconfig": "^7.0.1",
     "date-fns": "^2.28.0",
-    "esbuild": "^0.14.46",
+    "esbuild": "^0.14.49",
     "execa": "^6.1.0",
     "fast-glob": "^3.2.11",
     "folder-hash": "^4.0.2",
@@ -55,7 +55,7 @@
     "globby": "^13.1.2",
     "lodash.get": "^4.4.2",
     "rollup-plugin-delete": "^2.0.0",
-    "rollup-plugin-node-externals": "^4.0.0",
+    "rollup-plugin-node-externals": "^4.1.1",
     "rollup-plugin-tsconfig-paths": "^1.1.8",
     "tree-kill": "^1.2.2",
     "tsconfck": "^2.0.1",

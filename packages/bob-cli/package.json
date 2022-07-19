@@ -36,10 +36,10 @@
     "postpublish": "gh-release"
   },
   "dependencies": {
-    "commander": "^9.3.0"
+    "commander": "^9.4.0"
   },
   "devDependencies": {
-    "bob-esbuild": "workspace:^4.0.0",
+    "bob-esbuild": "workspace:^4.0.3",
     "changesets-github-release": "^0.1.0",
     "typescript": "^4.7.4"
   },
