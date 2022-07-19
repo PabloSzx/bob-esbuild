@@ -1,5 +1,11 @@
 # bob-tsm
 
+## 1.1.1
+
+### Patch Changes
+
+- be4c165: Fix compatibility with Node.js v18
+
 ## 1.1.0
 
 ### Minor Changes
