@@ -4,7 +4,7 @@ import type { TransformOptions } from 'esbuild';
 import { readFileSync } from 'fs';
 import { extname } from 'path';
 import type { Config, Extension, Options } from './config';
-import { defaults, finalize } from './utils';
+import { defaults, finalize, nodeMajor } from './utils';
 
 export const tsconfigPathsHandler = process.env.TSCONFIG_PATHS
   ? (require('./deps/typescriptPaths.js') as typeof import('./deps/typescriptPaths.js')).createHandler()
@@ -126,10 +126,19 @@ if (config['.js'] == null) {
   require.extensions['.js'] = loader;
 }
 
-const prevEmitWarning = process.emitWarning;
+if (nodeMajor < 18) {
+  const prevEmitWarning = process.emitWarning;
 
-process.emitWarning = ((...args: Parameters<typeof prevEmitWarning>) => {
-  if (typeof args[0] === 'string' && args[0].startsWith('--experimental-loader is an experimental feature')) return;
+  process.emitWarning = ((...args: Parameters<typeof prevEmitWarning>) => {
+    if (typeof args[0] === 'string' && args[0].startsWith('--experimental-loader is an experimental feature')) return;
 
-  prevEmitWarning(...args);
-}) as typeof prevEmitWarning;
+    prevEmitWarning(...args);
+  }) as typeof prevEmitWarning;
+} else {
+  const prevConsoleError = console.error;
+
+  console.error = (...args) => {
+    if (typeof args[0] === 'string' && args[0].includes('Custom ESM Loaders is an experimental feature')) return;
+    prevConsoleError(...args);
+  };
+}
