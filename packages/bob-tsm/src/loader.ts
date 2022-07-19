@@ -4,7 +4,7 @@ import { promises } from 'fs';
 import { dirname, extname } from 'path';
 import { fileURLToPath, pathToFileURL, URL } from 'url';
 import type { Config, Extension, Options } from './config';
-import { defaults, fileExists, finalize, getNodeVersion } from './utils';
+import { defaults, fileExists, finalize, nodeMajor, nodeMinor } from './utils';
 
 if (!process.env.KEEP_LOADER_ARGV) {
   const loaderArgIndex = process.execArgv.findIndex(v => v.startsWith('--loader'));
@@ -16,9 +16,7 @@ export const tsconfigPathsHandler = process.env.TSCONFIG_PATHS
   ? import('./deps/typescriptPaths.js').then(({ createHandler }) => createHandler())
   : undefined;
 
-const { major, minor } = getNodeVersion();
-
-const HAS_UPDATED_HOOKS = major > 16 || (major === 16 && minor >= 12);
+const HAS_UPDATED_HOOKS = nodeMajor > 16 || (nodeMajor === 16 && nodeMinor >= 12);
 
 let config: Config;
 let esbuild: typeof import('esbuild');
@@ -37,7 +35,7 @@ type Resolve = (
     parentURL?: string;
   },
   fallback: Resolve
-) => Promisable<{ url: string; format?: Format | null }>;
+) => Promisable<{ url: string; format?: Format | null; shortCircuit: boolean }>;
 
 type Inspect = (url: string, context: object, fallback: Inspect) => Promisable<{ format: Format }>;
 
@@ -51,7 +49,7 @@ type Load = (
   url: string,
   context: { format: Format | null | undefined },
   defaultLoad: Load
-) => Promise<{ format: Format; source: Source }>;
+) => Promise<{ format: Format; source: Source; shortCircuit: boolean }>;
 
 async function getConfig(): Promise<Config> {
   let mod = await setup;
@@ -94,6 +92,7 @@ export const resolve: Resolve = async function (specifier, context, defaultResol
           if (tsResolvedUrl) {
             return {
               url: pathToFileURL(tsResolvedUrl).href,
+              shortCircuit: true,
             };
           }
         } catch (err) {}
@@ -126,11 +125,11 @@ export const resolve: Resolve = async function (specifier, context, defaultResol
   if ((match = EXTN.exec(output.href))) {
     ext = match[0] as Extension;
     if (!context.parentURL || isTS.test(ext)) {
-      return { url: output.href };
+      return { url: output.href, shortCircuit: true };
     }
     // source ident exists
     path = await check(output.href);
-    if (path) return { url: path };
+    if (path) return { url: path, shortCircuit: true };
     // parent importer is a ts file
     // source ident is js & NOT exists
     if (isJS.test(ext) && isTS.test(context.parentURL)) {
@@ -141,7 +140,7 @@ export const resolve: Resolve = async function (specifier, context, defaultResol
         if (idx > output.href.length) {
           path += output.href.substring(idx);
         }
-        return { url: path };
+        return { url: path, shortCircuit: true };
       }
       // return original, let it error
       return defaultResolve(specifier, context, defaultResolve);
@@ -154,14 +153,14 @@ export const resolve: Resolve = async function (specifier, context, defaultResol
 
   for (ext of scriptExtensions) {
     path = await check(output.href + ext);
-    if (path) return { url: path };
+    if (path) return { url: path, shortCircuit: true };
   }
 
   // Check if + "/index.{ts,tsx,mts,cts}" exists
   const trailingOutputHref = output.href.endsWith('/') ? output.href : output.href + '/';
   for (ext of scriptExtensions) {
     path = await check(trailingOutputHref + 'index' + ext);
-    if (path) return { url: path };
+    if (path) return { url: path, shortCircuit: true };
   }
 
   return defaultResolve(specifier, context, defaultResolve);
@@ -189,7 +188,7 @@ export const load: Load = async function (url, context, defaultLoad) {
 
   if (options == null) return defaultLoad(url, context, defaultLoad);
 
-  if (url.endsWith('.d.ts')) return { format: 'module', source: '' };
+  if (url.endsWith('.d.ts')) return { format: 'module', source: '', shortCircuit: true };
 
   const format = options.format === 'cjs' ? 'commonjs' : 'module';
 
@@ -209,6 +208,7 @@ export const load: Load = async function (url, context, defaultLoad) {
   return {
     format,
     source,
+    shortCircuit: true,
   };
 };
 
