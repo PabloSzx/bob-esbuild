@@ -1,5 +1,11 @@
 # bob-tsm
 
+## 1.1.2
+
+### Patch Changes
+
+- f496750: Properly hide Experimental loaders message on Node>=v16.17.0
+
 ## 1.1.1
 
 ### Patch Changes
