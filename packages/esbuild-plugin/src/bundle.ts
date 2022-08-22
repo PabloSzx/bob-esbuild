@@ -17,7 +17,7 @@ export const bundle = async (
     let code: string | undefined;
     let map: any;
     for (const plugin of plugins) {
-      if (plugin.transform && plugin.name !== 'esbuild') {
+      if (plugin.transform && plugin.name !== 'esbuild' && typeof plugin.transform === 'function') {
         const transformed = (await plugin.transform.call(
           // @ts-expect-error
           pluginContext,
@@ -67,7 +67,7 @@ export const bundle = async (
 
             let contents: string | undefined;
             for (const plugin of plugins) {
-              if (plugin.load && plugin.name !== 'esbuild') {
+              if (plugin.load && plugin.name !== 'esbuild' && typeof plugin.load === 'function') {
                 const loaded = (await plugin.load.call(pluginContext, args.path)) as LoadResult;
                 if (loaded == null) {
                   continue;
