@@ -4,7 +4,7 @@ import type { TransformOptions } from 'esbuild';
 import { readFileSync } from 'fs';
 import { extname } from 'path';
 import type { Config, Extension, Options } from './config';
-import { defaults, finalize, nodeMajor } from './utils';
+import { defaults, finalize, nodeMajor, nodeMinor } from './utils';
 
 export const tsconfigPathsHandler = process.env.TSCONFIG_PATHS
   ? (require('./deps/typescriptPaths.js') as typeof import('./deps/typescriptPaths.js')).createHandler()
@@ -126,7 +126,7 @@ if (config['.js'] == null) {
   require.extensions['.js'] = loader;
 }
 
-if (nodeMajor < 18) {
+if (nodeMajor < 16 || (nodeMajor === 16 && nodeMinor < 17)) {
   const prevEmitWarning = process.emitWarning;
 
   process.emitWarning = ((...args: Parameters<typeof prevEmitWarning>) => {
