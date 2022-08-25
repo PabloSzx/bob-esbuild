@@ -12,8 +12,185 @@ export interface TsConfigPayload {
   fileNames: string[];
 }
 
+export interface GlobbyOptions {
+  /**
+   * Return the absolute path for entries.
+   *
+   * @default false
+   */
+  absolute?: boolean;
+  /**
+   * If set to `true`, then patterns without slashes will be matched against
+   * the basename of the path if it contains slashes.
+   *
+   * @default false
+   */
+  baseNameMatch?: boolean;
+  /**
+   * Enables Bash-like brace expansion.
+   *
+   * @default true
+   */
+  braceExpansion?: boolean;
+  /**
+   * Enables a case-sensitive mode for matching files.
+   *
+   * @default true
+   */
+  caseSensitiveMatch?: boolean;
+  /**
+   * Specifies the maximum number of concurrent requests from a reader to read
+   * directories.
+   *
+   * @default os.cpus().length
+   */
+  concurrency?: number;
+  /**
+   * Specifies the maximum depth of a read directory relative to the start
+   * directory.
+   *
+   * @default Infinity
+   */
+  deep?: number;
+  /**
+   * Allow patterns to match entries that begin with a period (`.`).
+   *
+   * @default false
+   */
+  dot?: boolean;
+  /**
+   * Enables Bash-like `extglob` functionality.
+   *
+   * @default true
+   */
+  extglob?: boolean;
+  /**
+   * Indicates whether to traverse descendants of symbolic link directories.
+   *
+   * @default true
+   */
+  followSymbolicLinks?: boolean;
+  /**
+   * Custom implementation of methods for working with the file system.
+   *
+   * @default fs.*
+   */
+  fs?: any;
+  /**
+   * Enables recursively repeats a pattern containing `**`.
+   * If `false`, `**` behaves exactly like `*`.
+   *
+   * @default true
+   */
+  globstar?: boolean;
+  /**
+   * An array of glob patterns to exclude matches.
+   * This is an alternative way to use negative patterns.
+   *
+   * @default []
+   */
+  ignore?: string[];
+  /**
+   * Mark the directory path with the final slash.
+   *
+   * @default false
+   */
+  markDirectories?: boolean;
+  /**
+   * Returns objects (instead of strings) describing entries.
+   *
+   * @default false
+   */
+  objectMode?: boolean;
+  /**
+   * Return only directories.
+   *
+   * @default false
+   */
+  onlyDirectories?: boolean;
+  /**
+   * Return only files.
+   *
+   * @default true
+   */
+  onlyFiles?: boolean;
+  /**
+   * Enables an object mode (`objectMode`) with an additional `stats` field.
+   *
+   * @default false
+   */
+  stats?: boolean;
+  /**
+   * By default this package suppress only `ENOENT` errors.
+   * Set to `true` to suppress any error.
+   *
+   * @default false
+   */
+  suppressErrors?: boolean;
+  /**
+   * Throw an error when symbolic link is broken if `true` or safely
+   * return `lstat` call if `false`.
+   *
+   * @default false
+   */
+  throwErrorOnBrokenSymbolicLink?: boolean;
+  /**
+   * Ensures that the returned entries are unique.
+   *
+   * @default true
+   */
+  unique?: boolean;
+  /**
+	If set to `true`, `globby` will automatically glob directories for you. If you define an `Array` it will only glob files that matches the patterns inside the `Array`. You can also define an `Object` with `files` and `extensions` like in the example below.
+
+	Note that if you set this option to `false`, you won't get back matched directories unless you set `onlyFiles: false`.
+
+	@default true
+
+	@example
+	```
+	import {globby} from 'globby';
+
+	const paths = await globby('images', {
+		expandDirectories: {
+			files: ['cat', 'unicorn', '*.jpg'],
+			extensions: ['png']
+		}
+	});
+
+	console.log(paths);
+	//=> ['cat.png', 'unicorn.png', 'cow.jpg', 'rainbow.jpg']
+	```
+	*/
+  readonly expandDirectories?: boolean | readonly string[] | { files?: readonly string[]; extensions?: readonly string[] };
+
+  /**
+	Respect ignore patterns in `.gitignore` files that apply to the globbed files.
+
+	@default false
+	*/
+  readonly gitignore?: boolean;
+
+  /**
+	Glob patterns to look for ignore files, which are then used to ignore globbed files.
+
+	This is a more generic form of the `gitignore` option, allowing you to find ignore files with a [compatible syntax](http://git-scm.com/docs/gitignore). For instance, this works with Babel's `.babelignore`, Prettier's `.prettierignore`, or ESLint's `.eslintignore` files.
+
+	@default undefined
+	*/
+  readonly ignoreFiles?: string | readonly string[];
+
+  /**
+	The current working directory in which to search.
+
+	@default process.cwd()
+	*/
+  readonly cwd?: URL | string;
+}
+
 export interface RollupConfig {
   entryPoints: string[];
+  globbyOptions?: GlobbyOptions;
   format: 'cjs' | 'esm' | 'interop';
   outDir: string;
   clean: boolean;
@@ -50,6 +227,7 @@ export interface RollupConfig {
 
 export const getRollupConfig = async ({
   entryPoints,
+  globbyOptions,
   format,
   outDir,
   clean,
@@ -71,6 +249,7 @@ export const getRollupConfig = async ({
       {
         absolute: true,
         ignore: ['**/node_modules'],
+        ...globbyOptions,
       }
     )
   ).filter(file => !!file.match(/\.(js|cjs|mjs|ts|tsx|cts|mts|ctsx|mtsx)$/));
