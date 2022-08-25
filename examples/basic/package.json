@@ -37,7 +37,7 @@
   "dependencies": {
     "bob-esbuild": "workspace:^4.0.3",
     "bob-esbuild-cli": "workspace:^4.0.0",
-    "bob-ts": "workspace:^4.0.0",
+    "bob-ts": "workspace:^4.1.0",
     "bob-tsm": "workspace:^1.1.2",
     "shared": "workspace:^1.0.0"
   },
