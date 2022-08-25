@@ -1,5 +1,11 @@
 # bob-ts
 
+## 4.1.1
+
+### Patch Changes
+
+- 89af531: Return rollup input, output and result on `buildCode`
+
 ## 4.1.0
 
 ### Minor Changes

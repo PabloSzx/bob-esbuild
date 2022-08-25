@@ -46,7 +46,7 @@ importers:
       '@types/node': ^18.7.9
       bob-esbuild: workspace:^4.0.3
       bob-esbuild-cli: workspace:^4.0.0
-      bob-ts: workspace:^4.1.0
+      bob-ts: workspace:^4.1.1
       bob-tsm: workspace:^1.1.2
       esbuild: ^0.15.5
       shared: workspace:^1.0.0
@@ -3893,7 +3893,7 @@ packages:
     resolution: {directory: packages/bob-ts, type: directory}
     id: file:packages/bob-ts
     name: bob-ts
-    version: 4.1.0
+    version: 4.1.1
     engines: {node: '>=14.13.1'}
     hasBin: true
     peerDependencies:
