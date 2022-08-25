@@ -378,5 +378,6 @@ export const getRollupConfig = async ({
   return {
     inputOptions,
     outputOptions,
+    input,
   };
 };

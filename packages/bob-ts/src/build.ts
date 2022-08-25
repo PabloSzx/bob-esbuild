@@ -3,13 +3,20 @@ import { getRollupConfig } from './rollupConfig';
 
 export async function buildCode(config: RollupConfig) {
   const { rollup } = await import('rollup');
-  const { inputOptions, outputOptions } = await getRollupConfig(config);
+  const { inputOptions, outputOptions, input } = await getRollupConfig(config);
 
   const build = await rollup(inputOptions);
 
-  await Promise.all(
+  const result = await Promise.all(
     outputOptions.map(output => {
       return build.write(output);
     })
   );
+
+  return {
+    result,
+    inputOptions,
+    outputOptions,
+    input,
+  };
 }
