@@ -1,5 +1,11 @@
 # bob-ts
 
+## 4.1.0
+
+### Minor Changes
+
+- b389104: New "globbyOptions" available for `buildCode` function to override options for globby file scan
+
 ## 4.0.0
 
 ### Major Changes
