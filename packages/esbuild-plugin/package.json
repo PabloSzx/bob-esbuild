@@ -36,7 +36,7 @@
     "esbuild": "^0.15.5",
     "rollup": "^2.78.1",
     "tsconfck": "^2.0.1",
-    "tsup": "^6.2.2"
+    "tsup": "^6.7.0"
   },
   "peerDependencies": {
     "esbuild": ">=0.14.39",
