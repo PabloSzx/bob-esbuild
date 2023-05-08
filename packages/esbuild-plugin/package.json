@@ -33,10 +33,10 @@
   },
   "devDependencies": {
     "changesets-github-release": "^0.1.0",
-    "esbuild": "^0.15.5",
+    "esbuild": "^0.17.18",
     "rollup": "^2.78.1",
     "tsconfck": "^2.0.1",
-    "tsup": "^6.2.2"
+    "tsup": "^6.7.0"
   },
   "peerDependencies": {
     "esbuild": ">=0.14.39",
@@ -52,7 +52,8 @@
   },
   "publishConfig": {
     "access": "public",
-    "directory": "lib"
+    "directory": "lib",
+    "linkDirectory": false
   },
   "tsup": {
     "entryPoints": [

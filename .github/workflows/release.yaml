@@ -19,10 +19,10 @@ jobs:
           # This makes Actions fetch all Git history so that Changesets can generate changelogs with the correct commits
           fetch-depth: 0
 
-      - name: Setup Node.js 14.x
+      - name: Setup Node.js 16.x
         uses: actions/setup-node@master
         with:
-          node-version: 14.x
+          node-version: 16.x
 
       - name: Cache pnpm modules
         uses: actions/cache@v3
@@ -34,7 +34,7 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-
       - name: install pnpm
-        run: npm i pnpm@^7.1.1 -g
+        run: npm i pnpm@^8.4.0 -g
 
       - name: Install Dependencies
         run: pnpm i

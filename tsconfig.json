@@ -29,7 +29,6 @@
       "*": ["_"]
     },
     "baseUrl": ".",
-    "importsNotUsedAsValues": "error",
     "resolveJsonModule": true
   },
   "include": ["**/types.d.ts", "**/src/**/*.ts", "**/test/**/*.ts", "bob-esbuild.config.ts", "packages/**/*.ts"]
