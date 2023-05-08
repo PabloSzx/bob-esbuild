@@ -60,16 +60,16 @@ importers:
     dependencies:
       bob-esbuild:
         specifier: workspace:^4.0.3
-        version: file:packages/bob/lib(esbuild@0.17.18)(typescript@5.0.4)
+        version: file:packages/bob(esbuild@0.17.18)(typescript@5.0.4)
       bob-esbuild-cli:
         specifier: workspace:^4.0.0
         version: file:packages/bob-cli(bob-esbuild@4.0.3)
       bob-ts:
         specifier: workspace:^4.1.1
-        version: file:packages/bob-ts/lib(@types/node@18.7.9)(esbuild@0.17.18)(typescript@5.0.4)
+        version: file:packages/bob-ts(@types/node@18.7.9)(esbuild@0.17.18)(typescript@5.0.4)
       bob-tsm:
         specifier: workspace:^1.1.2
-        version: file:packages/bob-tsm/lib(esbuild@0.17.18)(typescript@5.0.4)
+        version: file:packages/bob-tsm(esbuild@0.17.18)(typescript@5.0.4)
       shared:
         specifier: workspace:^1.0.0
         version: link:../shared
@@ -98,7 +98,7 @@ importers:
     dependencies:
       bob-tsm:
         specifier: workspace:^1.1.2
-        version: file:packages/bob-tsm/lib(esbuild@0.17.18)(typescript@5.0.4)
+        version: file:packages/bob-tsm(esbuild@0.17.18)(typescript@5.0.4)
       next:
         specifier: ^12.3.4
         version: 12.3.4(react-dom@18.2.0)(react@18.2.0)
@@ -132,13 +132,13 @@ importers:
     dependencies:
       basic:
         specifier: workspace:1.0.0
-        version: link:../basic/lib
+        version: link:../basic
 
   examples/shared:
     dependencies:
       bob-esbuild:
         specifier: workspace:^4.0.3
-        version: file:packages/bob/lib(esbuild@0.17.18)(typescript@5.0.4)
+        version: file:packages/bob(esbuild@0.17.18)(typescript@5.0.4)
       bob-esbuild-cli:
         specifier: workspace:^4.0.0
         version: file:packages/bob-cli(bob-esbuild@4.0.3)
@@ -162,7 +162,7 @@ importers:
         version: 8.5.0
       bob-esbuild-plugin:
         specifier: workspace:4.0.0
-        version: link:../esbuild-plugin/lib
+        version: link:../esbuild-plugin
       rollup:
         specifier: ^2.78.1
         version: 2.78.1
@@ -249,7 +249,7 @@ importers:
     devDependencies:
       bob-esbuild:
         specifier: workspace:^4.0.3
-        version: link:../bob/lib
+        version: link:../bob
       changesets-github-release:
         specifier: ^0.1.0
         version: 0.1.0
@@ -261,7 +261,7 @@ importers:
     dependencies:
       bob-esbuild-plugin:
         specifier: workspace:^4.0.0
-        version: link:../esbuild-plugin/lib
+        version: link:../esbuild-plugin
       rollup:
         specifier: ^2.78.1
         version: 2.78.1
@@ -318,7 +318,7 @@ importers:
         version: 7.3.12
       bob-esbuild-plugin:
         specifier: workspace:^4.0.0
-        version: link:../esbuild-plugin/lib
+        version: link:../esbuild-plugin
       c8:
         specifier: ^7.12.0
         version: 7.12.0
@@ -353,13 +353,13 @@ importers:
     devDependencies:
       bob-esbuild:
         specifier: workspace:^4.0.3
-        version: link:../bob/lib
+        version: link:../bob
       bob-esbuild-cli:
         specifier: workspace:^4.0.0
         version: link:../bob-cli
       bob-tsm:
         specifier: workspace:^1.1.0
-        version: link:../bob-tsm/lib
+        version: link:../bob-tsm
       chokidar:
         specifier: ^3.5.3
         version: 3.5.3
@@ -4025,6 +4025,27 @@ packages:
     engines: {node: '>=10'}
     dev: true
 
+  file:packages/bob(esbuild@0.17.18)(typescript@5.0.4):
+    resolution: {directory: packages/bob, type: directory}
+    id: file:packages/bob
+    name: bob-esbuild
+    version: 4.0.3
+    peerDependencies:
+      esbuild: '>=0.14.39'
+      typescript: '*'
+    peerDependenciesMeta:
+      esbuild:
+        optional: true
+      typescript:
+        optional: true
+    dependencies:
+      '@pnpm/types': 8.10.0
+      bob-esbuild-plugin: link:packages/esbuild-plugin
+      esbuild: 0.17.18
+      rollup: 2.79.1
+      typescript: 5.0.4
+    dev: false
+
   file:packages/bob-cli(bob-esbuild@4.0.3):
     resolution: {directory: packages/bob-cli, type: directory}
     id: file:packages/bob-cli
@@ -4038,13 +4059,13 @@ packages:
       bob-esbuild:
         optional: true
     dependencies:
-      bob-esbuild: file:packages/bob/lib(esbuild@0.17.18)(typescript@5.0.4)
+      bob-esbuild: file:packages/bob(esbuild@0.17.18)(typescript@5.0.4)
       commander: 9.5.0
     dev: false
 
-  file:packages/bob-ts/lib(@types/node@18.7.9)(esbuild@0.17.18)(typescript@5.0.4):
-    resolution: {directory: packages/bob-ts/lib, type: directory}
-    id: file:packages/bob-ts/lib
+  file:packages/bob-ts(@types/node@18.7.9)(esbuild@0.17.18)(typescript@5.0.4):
+    resolution: {directory: packages/bob-ts, type: directory}
+    id: file:packages/bob-ts
     name: bob-ts
     version: 4.1.1
     engines: {node: '>=14.13.1'}
@@ -4060,15 +4081,15 @@ packages:
         optional: true
     dependencies:
       '@types/node': 18.7.9
-      bob-esbuild-plugin: link:packages/esbuild-plugin/lib
+      bob-esbuild-plugin: link:packages/esbuild-plugin
       esbuild: 0.17.18
       rollup: 2.79.1
       typescript: 5.0.4
     dev: false
 
-  file:packages/bob-tsm/lib(esbuild@0.17.18)(typescript@5.0.4):
-    resolution: {directory: packages/bob-tsm/lib, type: directory}
-    id: file:packages/bob-tsm/lib
+  file:packages/bob-tsm(esbuild@0.17.18)(typescript@5.0.4):
+    resolution: {directory: packages/bob-tsm, type: directory}
+    id: file:packages/bob-tsm
     name: bob-tsm
     version: 1.1.2
     engines: {node: '>=14.13.1'}
@@ -4084,25 +4105,4 @@ packages:
       typescript: 5.0.4
     optionalDependencies:
       fsevents: 2.3.2
-    dev: false
-
-  file:packages/bob/lib(esbuild@0.17.18)(typescript@5.0.4):
-    resolution: {directory: packages/bob/lib, type: directory}
-    id: file:packages/bob/lib
-    name: bob-esbuild
-    version: 4.0.3
-    peerDependencies:
-      esbuild: '>=0.14.39'
-      typescript: '*'
-    peerDependenciesMeta:
-      esbuild:
-        optional: true
-      typescript:
-        optional: true
-    dependencies:
-      '@pnpm/types': 8.10.0
-      bob-esbuild-plugin: link:packages/esbuild-plugin/lib
-      esbuild: 0.17.18
-      rollup: 2.79.1
-      typescript: 5.0.4
     dev: false
