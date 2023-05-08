@@ -45,10 +45,10 @@
     "c8": "^7.12.0",
     "chokidar": "^3.5.3",
     "commander": "^9.4.0",
-    "esbuild": "^0.15.5",
+    "esbuild": "^0.17.18",
     "execa": "^6.1.0",
     "tree-kill": "^1.2.2",
-    "typescript": "^4.7.4",
+    "typescript": "^5.0.4",
     "typescript-paths": "^1.4.0"
   },
   "peerDependencies": {

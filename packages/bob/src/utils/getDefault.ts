@@ -1,3 +1,3 @@
 export function getDefault<T>(v: T | { default?: T }) {
-  return (('default' in v ? v.default : v) || v) as T;
+  return ((typeof v === 'object' && v != null && 'default' in v ? v.default : v) || v) as T;
 }
