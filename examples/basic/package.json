@@ -47,7 +47,8 @@
     "typescript": "^5.0.4"
   },
   "publishConfig": {
-    "directory": "lib"
+    "directory": "lib",
+    "linkDirectory": false
   },
   "buildConfig": {
     "bin": {

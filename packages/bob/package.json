@@ -75,6 +75,7 @@
   },
   "publishConfig": {
     "access": "public",
-    "directory": "lib"
+    "directory": "lib",
+    "linkDirectory": false
   }
 }
