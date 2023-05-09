@@ -44,7 +44,7 @@
     "@types/node": "^18.7.9",
     "bob-esbuild-cli": "workspace:^4.0.0",
     "changesets-github-release": "^0.1.0",
-    "commander": "^9.4.0",
+    "commander": "^9.5.0",
     "esbuild": "^0.17.18",
     "execa": "^6.1.0",
     "globby": "^13.1.2",
