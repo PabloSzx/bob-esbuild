@@ -21,7 +21,7 @@
     "types": "pnpm --filter bob-esbuild build:types"
   },
   "devDependencies": {
-    "@changesets/apply-release-plan": "^6.0.4",
+    "@changesets/apply-release-plan": "^6.1.4",
     "@changesets/assemble-release-plan": "^5.2.1",
     "@changesets/cli": "^2.24.3",
     "@changesets/config": "^2.1.1",
