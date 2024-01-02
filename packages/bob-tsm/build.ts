@@ -32,6 +32,17 @@ async function main() {
       },
     }),
     buildCode({
+      entryPoints: ['./src/register.ts'],
+      clean: false,
+      format: 'cjs',
+      outDir: 'lib',
+      target: 'node18',
+      sourcemap: false,
+      esbuild: {
+        minify: false,
+      },
+    }),
+    buildCode({
       entryPoints: ['./src/loader.ts'],
       clean: false,
       format: 'esm',

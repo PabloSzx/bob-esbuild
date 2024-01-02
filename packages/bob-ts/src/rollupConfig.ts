@@ -254,8 +254,10 @@ export const getRollupConfig = async ({
     )
   ).filter(file => !!file.match(/\.(js|cjs|mjs|ts|tsx|cts|mts|ctsx|mtsx)$/));
 
+  const customPluginsAwaited = (await customPlugins) || [];
+
   const plugins: InputOptions['plugins'] = [
-    ...(customPlugins || []),
+    ...Array.from(Array.isArray(customPluginsAwaited) ? customPluginsAwaited : [customPluginsAwaited]),
     externals({
       packagePath: resolve(process.cwd(), 'package.json'),
       deps: true,
@@ -348,7 +350,6 @@ export const getRollupConfig = async ({
             preserveModules: true,
             exports: 'auto',
             sourcemap,
-            preferConst: true,
             ...rollup,
           },
           {
@@ -358,7 +359,6 @@ export const getRollupConfig = async ({
             preserveModules: true,
             exports: 'auto',
             sourcemap,
-            preferConst: true,
             ...rollup,
           },
         ]
@@ -370,7 +370,6 @@ export const getRollupConfig = async ({
             preserveModules: true,
             exports: 'auto',
             sourcemap,
-            preferConst: true,
             ...rollup,
           },
         ];

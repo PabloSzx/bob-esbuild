@@ -53,16 +53,15 @@ export const rollupBin = (buildConfig: PackageBuildConfig, cwd: string = process
               const binOutputFile = resolve(cwd, distDir, pkgBin);
               await bundle.write({
                 banner: `#!/usr/bin/env node`,
-                preferConst: true,
                 sourcemap: false,
                 file: binOutputFile,
                 format: binOutputFile.endsWith('.mjs')
                   ? 'es'
                   : binOutputFile.endsWith('.cjs')
-                  ? 'cjs'
-                  : buildConfig.pkg.type === 'module'
-                  ? 'es'
-                  : 'cjs',
+                    ? 'cjs'
+                    : buildConfig.pkg.type === 'module'
+                      ? 'es'
+                      : 'cjs',
               });
 
               debug(`Bin ${alias} built in ${binOutputFile}`);

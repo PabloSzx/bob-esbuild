@@ -15,7 +15,7 @@ export interface PackageBuildConfig {
 }
 
 export async function GetPackageBuildConfig(cwd: string = process.cwd()): Promise<PackageBuildConfig> {
-  const pkg: PackageJSON = await readJSON(resolve(cwd, 'package.json'));
+  const pkg: PackageJSON = (await readJSON(resolve(cwd, 'package.json'))) as PackageJSON;
 
   if (!pkg.name) throw Error('Invalid "name" field for package.json in ' + cwd);
 

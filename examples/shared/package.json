@@ -30,8 +30,8 @@
     "bob-esbuild-cli": "workspace:^4.0.0"
   },
   "devDependencies": {
-    "esbuild": "^0.17.18",
-    "typescript": "^5.0.4"
+    "esbuild": "^0.19.11",
+    "typescript": "^5.3.3"
   },
   "dependenciesMeta": {
     "bob-esbuild-cli": {

@@ -25,18 +25,18 @@
     "lib"
   ],
   "scripts": {
-    "prepare": "tsup && node -r tsm self-build.ts",
+    "prepare": "tsup && bun self-build.ts",
     "postpublish": "gh-release"
   },
   "dependencies": {
-    "@rollup/pluginutils": "^4.2.1"
+    "@rollup/pluginutils": "^5.1.0"
   },
   "devDependencies": {
     "changesets-github-release": "^0.1.0",
-    "esbuild": "^0.17.18",
-    "rollup": "^2.78.1",
-    "tsconfck": "^2.0.1",
-    "tsup": "^6.7.0"
+    "esbuild": "^0.19.11",
+    "rollup": "^4.9.2",
+    "tsconfck": "^3.0.0",
+    "tsup": "^8.0.1"
   },
   "peerDependencies": {
     "esbuild": ">=0.14.39",

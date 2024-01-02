@@ -1,6 +1,6 @@
-import { parse, TSConfckParseResult } from 'tsconfck';
+import { parse, TSConfckCache, TSConfckParseNativeResult, TSConfckParseResult } from 'tsconfck';
 
-const cache = new Map<string, TSConfckParseResult>();
+const cache = new TSConfckCache<TSConfckParseResult | TSConfckParseNativeResult>();
 
 export const getTypescriptConfig = async (
   cwd: string,

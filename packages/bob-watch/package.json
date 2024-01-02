@@ -43,12 +43,12 @@
     "bob-esbuild-cli": "workspace:^4.0.0",
     "bob-tsm": "workspace:^1.1.0",
     "chokidar": "^3.5.3",
-    "commander": "^9.4.0",
+    "commander": "^11.1.0",
     "execa": "^6.1.0",
     "tree-kill": "^1.2.2"
   },
   "optionalDependencies": {
-    "fsevents": "~2.3.2"
+    "fsevents": "~2.3.3"
   },
   "publishConfig": {
     "access": "public",
