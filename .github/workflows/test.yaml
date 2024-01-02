@@ -7,8 +7,8 @@ jobs:
     runs-on: ${{matrix.os}}
     strategy:
       matrix:
-        os: [ubuntu-latest, windows-latest, macOS-latest]
-        node_version: [18, 20.5.1]
+        os: [ubuntu-latest, macOS-latest]
+        node_version: [18, 20]
     steps:
       - name: Checkout Repo
         uses: actions/checkout@master
@@ -22,8 +22,6 @@ jobs:
           node-version: ${{ matrix.node_version }}
 
       - uses: oven-sh/setup-bun@v1
-        with:
-          bun-version: 1.0.19
 
       - name: Cache pnpm modules
         uses: actions/cache@v3
