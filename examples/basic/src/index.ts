@@ -20,10 +20,10 @@ console.log(Foo);
 
 console.log(Bar);
 
-// export { Foo, Bar };
+export { Foo, Bar };
 
-// export { B } from './other';
+export { B } from './other';
 
-// import { Hello } from 'aliased-deep';
+import { Hello } from 'aliased-deep';
 
-// console.log(Hello);
+console.log(Hello);
