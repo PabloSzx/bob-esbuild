@@ -32,16 +32,16 @@
   ],
   "scripts": {
     "dev": "node bin/run.mjs watch",
-    "prepare": "node -r tsm self-build.ts",
+    "prepare": "bun self-build.ts",
     "postpublish": "gh-release"
   },
   "dependencies": {
-    "commander": "^9.4.0"
+    "commander": "^11.1.0"
   },
   "devDependencies": {
     "bob-esbuild": "workspace:^4.0.3",
     "changesets-github-release": "^0.1.0",
-    "typescript": "^5.0.4"
+    "typescript": "^5.3.3"
   },
   "peerDependencies": {
     "bob-esbuild": "workspace:^4.0.0"

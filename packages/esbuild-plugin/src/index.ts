@@ -103,8 +103,11 @@ export const bobEsbuildPlugin = (options: EsbuildPluginOptions = {}): Plugin => 
       return;
     },
 
-    options(options) {
-      plugins = options.plugins?.filter((v): v is Plugin => !!v && typeof v === 'object') || [];
+    async options(options) {
+      const customPlugins = (await options.plugins) || [];
+      const customPluginsList = Array.isArray(customPlugins) ? customPlugins : [customPlugins];
+
+      plugins = customPluginsList?.filter((v): v is Plugin => !!v && typeof v === 'object') || [];
       return null;
     },
 

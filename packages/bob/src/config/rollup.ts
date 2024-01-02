@@ -245,7 +245,6 @@ export async function getRollupConfig(optionsArg: ConfigOptions = {}) {
     preserveModules: true,
     exports: 'auto',
     sourcemap: false,
-    preferConst: true,
     ...cleanObject(options.outputOptions),
     ...cleanObject(globalOptions.outputOptions),
   };
@@ -256,7 +255,6 @@ export async function getRollupConfig(optionsArg: ConfigOptions = {}) {
     entryFileNames: typeModule ? '[name].js' : '[name].mjs',
     preserveModules: true,
     sourcemap: false,
-    preferConst: true,
     ...cleanObject(options.outputOptions),
     ...cleanObject(globalOptions.outputOptions),
   };

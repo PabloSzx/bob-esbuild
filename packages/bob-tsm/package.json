@@ -35,21 +35,21 @@
   "scripts": {
     "dev": "node ../bob-watch/bin/bob-watch.mjs --watch=src -c \"pnpm i\"",
     "playground": "node ../bob-watch/bin/bob-watch.mjs --watch src playground -c \"pnpm prepare && node bin/bob-tsm.mjs playground/index.ts\"",
-    "prepare": "node -r tsm build.ts",
+    "prepare": "bun build.ts",
     "postpublish": "gh-release",
-    "test": "node -r tsm build.ts && c8 node -r tsm ./test/test.cjs"
+    "test": "bun build.ts && c8 bun ./test/test.cjs"
   },
   "devDependencies": {
-    "@types/semver": "^7.3.12",
+    "@types/semver": "^7.5.6",
     "bob-esbuild-plugin": "workspace:^4.0.0",
-    "c8": "^7.12.0",
+    "c8": "^8.0.1",
     "chokidar": "^3.5.3",
-    "commander": "^9.4.0",
-    "esbuild": "^0.17.18",
+    "commander": "^11.1.0",
+    "esbuild": "^0.19.11",
     "execa": "^6.1.0",
     "tree-kill": "^1.2.2",
-    "typescript": "^5.0.4",
-    "typescript-paths": "^1.4.0"
+    "typescript": "^5.3.3",
+    "typescript-paths": "^1.5.1"
   },
   "peerDependencies": {
     "esbuild": ">=0.14.39",
@@ -61,7 +61,7 @@
     }
   },
   "optionalDependencies": {
-    "fsevents": "~2.3.2"
+    "fsevents": "~2.3.3"
   },
   "engines": {
     "node": ">=14.13.1"

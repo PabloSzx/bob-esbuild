@@ -7,7 +7,7 @@ import { rewriteExports } from './rewrite-exports';
 import type { ProjectManifest } from '@pnpm/types';
 import type { PackageBuildConfig } from './packageBuildConfig';
 
-export interface PackageJSON extends ProjectManifest, Record<string, unknown> {
+export interface PackageJSON extends Omit<ProjectManifest, 'exports'>, Record<string, unknown> {
   files?: string[];
   type?: string;
   exports?: Record<string, string | { require?: string; import?: string }>;
@@ -142,7 +142,7 @@ export async function writePackageJson({
   const distDirPath = resolve(cwd, distDir);
   await ensureDir(distDirPath);
 
-  const pkg = (await makePublishManifest(cwd, rewritePackageJson(packageJson, distDir, cwd))) as PackageJSON;
+  const pkg = (await makePublishManifest(cwd, rewritePackageJson(packageJson, distDir, cwd) as ProjectManifest)) as PackageJSON;
 
   await writeJSON(resolve(distDirPath, 'package.json'), rewritePackage ? await rewritePackage(pkg) : pkg, {
     spaces: 2,
