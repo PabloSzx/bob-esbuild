@@ -4,7 +4,7 @@ import { promises } from 'fs';
 import { dirname, extname } from 'path';
 import { fileURLToPath, pathToFileURL, URL } from 'url';
 import type { Config, Extension, Options } from './config';
-import { defaults, fileExists, finalize } from './utils';
+import { defaults, fileExists, finalize, nodeMajor, nodeMinor } from './utils';
 
 if (!process.env.KEEP_LOADER_ARGV) {
   const loaderArgIndex = process.execArgv.findIndex(v => v.startsWith('--loader'));
@@ -15,6 +15,8 @@ if (!process.env.KEEP_LOADER_ARGV) {
 export const tsconfigPathsHandler = process.env.TSCONFIG_PATHS
   ? import('./deps/typescriptPaths.js').then(({ createHandler }) => createHandler())
   : undefined;
+
+const HAS_UPDATED_HOOKS = nodeMajor > 16 || (nodeMajor === 16 && nodeMinor >= 12);
 
 let config: Config;
 let esbuild: typeof import('esbuild');
@@ -34,6 +36,14 @@ type Resolve = (
   },
   fallback: Resolve
 ) => Promisable<{ url: string; format?: Format | null; shortCircuit: boolean }>;
+
+type Inspect = (url: string, context: object, fallback: Inspect) => Promisable<{ format: Format }>;
+
+type Transform = (
+  source: Source,
+  context: Record<'url' | 'format', string>,
+  fallback: Transform
+) => Promisable<{ source: Source }>;
 
 type Load = (
   url: string,
@@ -156,6 +166,17 @@ export const resolve: Resolve = async function (specifier, context, defaultResol
   return defaultResolve(specifier, context, defaultResolve);
 };
 
+export const getFormat: Inspect | undefined = HAS_UPDATED_HOOKS
+  ? undefined
+  : async function (uri, context, fallback) {
+      let options = await toOptions(uri);
+      if (options == null) return fallback(uri, context, fallback);
+
+      if (uri.endsWith('.d.ts')) return { format: 'module' };
+
+      return { format: options.format === 'cjs' ? 'commonjs' : 'module' };
+    };
+
 function getDirnames(url: string) {
   const filename = fileURLToPath(url);
 
@@ -190,3 +211,25 @@ export const load: Load = async function (url, context, defaultLoad) {
     shortCircuit: true,
   };
 };
+
+export const transformSource: Transform | undefined = HAS_UPDATED_HOOKS
+  ? undefined
+  : async function (source, context, xform) {
+      let options = await toOptions(context.url);
+      if (options == null) return xform(source, context, xform);
+
+      if (context.url.endsWith('.d.ts')) return { source: '' };
+
+      const isModule = context.format === 'module';
+
+      // TODO: decode SAB/U8 correctly
+      esbuild = esbuild || (await import('esbuild'));
+      let result = await esbuild.transform(source.toString(), {
+        ...options,
+        define: isModule ? { ...getDirnames(context.url), ...options.define } : options.define,
+        sourcefile: context.url,
+        format: isModule ? 'esm' : 'cjs',
+      });
+
+      return { source: result.code };
+    };
