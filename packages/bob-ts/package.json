@@ -46,7 +46,7 @@
     "changesets-github-release": "^0.1.0",
     "commander": "^11.1.0",
     "esbuild": "^0.19.11",
-    "execa": "^6.1.0",
+    "execa": "^8.0.1",
     "globby": "^14.0.0",
     "rollup-plugin-delete": "^2.0.0",
     "rollup-plugin-node-externals": "^6.1.2",
