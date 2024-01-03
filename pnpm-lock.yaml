@@ -208,8 +208,8 @@ importers:
         specifier: ^0.19.11
         version: 0.19.11
       execa:
-        specifier: ^6.1.0
-        version: 6.1.0
+        specifier: ^8.0.1
+        version: 8.0.1
       fast-glob:
         specifier: ^3.3.2
         version: 3.3.2
@@ -289,8 +289,8 @@ importers:
         specifier: ^0.19.11
         version: 0.19.11
       execa:
-        specifier: ^6.1.0
-        version: 6.1.0
+        specifier: ^8.0.1
+        version: 8.0.1
       globby:
         specifier: ^14.0.0
         version: 14.0.0
@@ -336,8 +336,8 @@ importers:
         specifier: ^0.19.11
         version: 0.19.11
       execa:
-        specifier: ^6.1.0
-        version: 6.1.0
+        specifier: ^8.0.1
+        version: 8.0.1
       tree-kill:
         specifier: ^1.2.2
         version: 1.2.2
@@ -371,8 +371,8 @@ importers:
         specifier: ^11.1.0
         version: 11.1.0
       execa:
-        specifier: ^6.1.0
-        version: 6.1.0
+        specifier: ^8.0.1
+        version: 8.0.1
       tree-kill:
         specifier: ^1.2.2
         version: 1.2.2
@@ -1993,18 +1993,18 @@ packages:
       strip-final-newline: 2.0.0
     dev: true
 
-  /execa@6.1.0:
-    resolution: {integrity: sha512-QVWlX2e50heYJcCPG0iWtf8r0xjEYfz/OYLGDYH+IyjWezzPNxz63qNFOu0l4YftGWuizFVZHHs8PrLU5p2IDA==}
-    engines: {node: ^12.20.0 || ^14.13.1 || >=16.0.0}
+  /execa@8.0.1:
+    resolution: {integrity: sha512-VyhnebXciFV2DESc+p6B+y0LjSm0krU4OgJN44qFAhBY0TJ+1V61tYD2+wHusZ6F9n5K+vl8k0sTy7PEfV4qpg==}
+    engines: {node: '>=16.17'}
     dependencies:
       cross-spawn: 7.0.3
-      get-stream: 6.0.1
-      human-signals: 3.0.1
+      get-stream: 8.0.1
+      human-signals: 5.0.0
       is-stream: 3.0.0
       merge-stream: 2.0.0
       npm-run-path: 5.2.0
       onetime: 6.0.0
-      signal-exit: 3.0.7
+      signal-exit: 4.1.0
       strip-final-newline: 3.0.0
     dev: true
 
@@ -2187,6 +2187,11 @@ packages:
     engines: {node: '>=10'}
     dev: true
 
+  /get-stream@8.0.1:
+    resolution: {integrity: sha512-VaUJspBffn/LMCJVoMvSAdmscJyS1auj5Zulnn5UoYcY531UWmdwhRWkcGKnGU93m5HSXP9LP2usOryrBtQowA==}
+    engines: {node: '>=16'}
+    dev: true
+
   /get-symbol-description@1.0.0:
     resolution: {integrity: sha512-2EmdH1YvIQiZpltCNgkuiUnyukzxM/R6NDJX31Ke3BG1Nq5b0S2PhX59UKi9vZpPDQVdqn+1IcaAwnzTT5vCjw==}
     engines: {node: '>= 0.4'}
@@ -2364,9 +2369,9 @@ packages:
     engines: {node: '>=10.17.0'}
     dev: true
 
-  /human-signals@3.0.1:
-    resolution: {integrity: sha512-rQLskxnM/5OCldHo+wNXbpVgDn5A17CUoKX+7Sokwaknlq7CdSnphy0W39GU8dw59XiCXmFXDg4fRuckQRKewQ==}
-    engines: {node: '>=12.20.0'}
+  /human-signals@5.0.0:
+    resolution: {integrity: sha512-AXcZb6vzzrFAUE61HnN4mpLqd/cSIwNQjtNWR0euPm6y0iqx3G4gOXaIDdtdDwZmhwe82LA6+zinmW4UBWVePQ==}
+    engines: {node: '>=16.17.0'}
     dev: true
 
   /husky@8.0.3:
