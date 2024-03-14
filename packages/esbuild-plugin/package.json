@@ -33,13 +33,13 @@
   },
   "devDependencies": {
     "changesets-github-release": "^0.1.0",
-    "esbuild": "^0.19.11",
+    "esbuild": "^0.20.2",
     "rollup": "^4.9.2",
     "tsconfck": "^3.0.0",
     "tsup": "^8.0.1"
   },
   "peerDependencies": {
-    "esbuild": ">=0.14.39",
+    "esbuild": ">=0.20.2",
     "rollup": "*"
   },
   "peerDependenciesMeta": {
