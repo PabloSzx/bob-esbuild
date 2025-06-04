@@ -37,7 +37,7 @@
   },
   "dependencies": {
     "bob-esbuild-plugin": "workspace:^4.0.0",
-    "rollup": "^4.9.2"
+    "rollup": "^2.79.1"
   },
   "devDependencies": {
     "@rollup/plugin-json": "^6.1.0",
@@ -49,7 +49,7 @@
     "execa": "^6.1.0",
     "globby": "^14.0.0",
     "rollup-plugin-delete": "^2.0.0",
-    "rollup-plugin-node-externals": "^6.1.2",
+    "rollup-plugin-node-externals": "^4.1.1",
     "rollup-plugin-tsconfig-paths": "^1.5.2",
     "tree-kill": "^1.2.2",
     "typescript": "^5.3.3"
