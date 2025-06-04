@@ -8,7 +8,7 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-latest, macOS-latest]
-        node_version: [18, 20.5.1]
+        node_version: [20, 22]
     steps:
       - name: Checkout Repo
         uses: actions/checkout@master
@@ -23,6 +23,12 @@ jobs:
 
       - uses: oven-sh/setup-bun@v1
 
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: latest
+          run_install: false
+
       - name: Cache pnpm modules
         uses: actions/cache@v3
         env:
@@ -32,8 +38,6 @@ jobs:
           key: ${{ runner.os }}-${{ matrix.node_version }}-${{ hashFiles('./pnpm-lock.yaml') }}
           restore-keys: |
             ${{ runner.os }}-${{ matrix.node_version }}-
-      - name: install pnpm
-        run: npm i pnpm@latest -g
 
       - name: Install Dependencies & prepare
         run: pnpm i
