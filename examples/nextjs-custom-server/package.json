@@ -19,7 +19,7 @@
     "@types/react": "^18.2.46",
     "cross-env": "^7.0.3",
     "esbuild": "^0.19.11",
-    "typescript": "^5.3.3"
+    "typescript": "^5.8.3"
   },
   "dependenciesMeta": {
     "bob-tsm": {
