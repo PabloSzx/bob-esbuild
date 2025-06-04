@@ -17,12 +17,17 @@ jobs:
           # This makes Actions fetch all Git history so that Changesets can generate changelogs with the correct commits
           fetch-depth: 0
 
-      - name: Setup Node.js 20.5.1
+      - name: Setup Node.js 22
         uses: actions/setup-node@v2
         with:
-          node-version: 20.5.1
+          node-version: 22
 
-      - uses: oven-sh/setup-bun@v1
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: latest
+          run_install: false
+      - uses: oven-sh/setup-bun@v2
 
       - name: Setup NPM credentials
         run: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" >> ~/.npmrc
