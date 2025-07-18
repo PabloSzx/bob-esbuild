@@ -29,7 +29,7 @@
     "@manypkg/get-packages": "^2.2.0",
     "@types/node": "^20.10.6",
     "changesets-github-release": "^0.1.0",
-    "esbuild": "^0.19.11",
+    "esbuild": "^0.25.7",
     "husky": "^8.0.3",
     "prettier": "^3.1.1",
     "pretty-quick": "^3.1.3",
