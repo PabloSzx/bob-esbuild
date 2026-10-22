@@ -22,7 +22,7 @@
   },
   "devDependencies": {
     "@changesets/apply-release-plan": "^7.0.0",
-    "@changesets/assemble-release-plan": "^6.0.0",
+    "@changesets/assemble-release-plan": "^6.0.10",
     "@changesets/cli": "^2.27.1",
     "@changesets/config": "^3.0.0",
     "@changesets/read": "^0.6.0",
